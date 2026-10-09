@@ -395,3 +395,4 @@ html[data-theme="light"] .project-art{box-shadow:0 10px 26px rgba(23,44,70,.07)}
  .travel-gallery-grid{grid-template-columns:1fr}
  .story-grid b{font-size:8px}
 }
+.credential-unavailable{font-size:9px;color:var(--muted);font-weight:700;white-space:nowrap}
