@@ -85,7 +85,7 @@
         '"></video><span class="travel-wall-video-badge" aria-hidden="true">▶</span>';
     } else {
       media = '<img class="travel-wall-image" src="' + esc(item.src) + '" loading="lazy" decoding="async" alt="' +
-        esc(label) + '" onerror="this.parentElement.classList.add(\'media-load-failed\')">';
+        esc(label) + '" onerror="this.parentElement.parentElement.classList.add(\'media-load-failed\')">';
     }
     return '<button type="button" class="travel-wall-item" data-media-index="' + index +
       '" data-shape="' + shape + '" data-type="' + item.type +
