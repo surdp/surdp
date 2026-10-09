@@ -6,8 +6,11 @@
 
 **Bridging business needs, clinical workflows, and technology solutions.**
 
-[![GitHub](https://img.shields.io/badge/GitHub-surdp-181717?logo=github)](https://github.com/surdp)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?logo=linkedin)](https://www.linkedin.com/in/suraj-dp-2a91441bb/)
+<a href="https://github.com/surdp" title="GitHub profile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="34" alt="GitHub"/></a>&nbsp;&nbsp;
+<a href="https://www.linkedin.com/in/suraj-dp-2a91441bb/" title="LinkedIn profile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="34" alt="LinkedIn"/></a>&nbsp;&nbsp;
+<a href="https://www.instagram.com/suraj.d.p/" title="Instagram profile"><img src="https://cdn.simpleicons.org/instagram/E4405F" width="34" alt="Instagram"/></a>&nbsp;&nbsp;
+<a href="mailto:suraj.dp412@gmail.com" title="Email Suraj"><img src="https://cdn.simpleicons.org/gmail/EA4335" width="34" alt="Gmail"/></a>&nbsp;&nbsp;
+<a href="https://wa.me/917676416123" title="WhatsApp Suraj"><img src="https://cdn.simpleicons.org/whatsapp/25D366" width="34" alt="WhatsApp"/></a>
 
 </div>
 
@@ -29,17 +32,57 @@ I’m particularly interested in opportunities where I can combine business anal
 
 ## Core Competencies
 
-| Business Analysis & Solution Delivery | Quality Assurance & Automation | Healthcare IT |
-|---|---|---|
-| Requirements gathering, analysis, documentation and traceability | Functional, regression, integration and end-to-end testing | Oracle Health / Cerner |
-| Business, functional and non-functional requirements | UAT and functional validation | EHR / EMR and clinical workflows |
-| User stories, use cases and acceptance criteria | Defect, issue and root-cause analysis | Emergency Medicine / FirstNet |
-| Functional specifications and workflow documentation | Automation readiness and regression coverage | Oncology / PowerChart Oncology |
-| Current-state / future-state and gap analysis | API testing and data validation | Blood Bank Transfusion |
-| Process mapping and improvement | Eggplant automation | MPages and laboratory workflows |
-| Stakeholder workshops and cross-functional coordination | Selenium/Java, TOSCA and Worksoft exposure | Enterprise healthcare applications |
-| Change-impact, dependency and risk analysis | Jira and Azure DevOps | Clinical workflow validation |
-| Agile/Scrum and SDLC delivery support | Postman, SQL and JSON validation | Global client collaboration |
+<table>
+  <thead>
+    <tr>
+      <th align="left" width="33%">Business Analysis & Solution Delivery</th>
+      <th align="left" width="33%">QA, Testing & Automation</th>
+      <th align="left" width="34%">Healthcare IT & Interoperability</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Requirements elicitation, analysis, documentation and traceability</td>
+      <td>Functional, regression, integration and end-to-end testing</td>
+      <td>Oracle Health / Cerner and EHR / EMR workflows</td>
+    </tr>
+    <tr>
+      <td>Business, functional and non-functional requirements</td>
+      <td>Test planning, test scenarios and coverage analysis</td>
+      <td>Emergency Medicine / FirstNet</td>
+    </tr>
+    <tr>
+      <td>User stories, use cases, acceptance criteria and specifications</td>
+      <td>UAT, functional validation and release readiness</td>
+      <td>Oncology / PowerChart Oncology</td>
+    </tr>
+    <tr>
+      <td>Current-state / future-state, gap and impact analysis</td>
+      <td>Defect lifecycle, root-cause and issue analysis</td>
+      <td>Blood Bank Transfusion, MPages and laboratory workflows</td>
+    </tr>
+    <tr>
+      <td>Process mapping, workflow analysis and improvement</td>
+      <td>Test automation and regression optimization</td>
+      <td>HL7 and FHIR interoperability concepts</td>
+    </tr>
+    <tr>
+      <td>Stakeholder workshops and cross-functional coordination</td>
+      <td>API testing, SQL and JSON/data validation</td>
+      <td>Clinical data exchange and system integration concepts</td>
+    </tr>
+    <tr>
+      <td>Change, dependency, risk and requirements traceability</td>
+      <td>Eggplant; Selenium/Java; TOSCA and Worksoft exposure</td>
+      <td>Revenue Cycle Management (RCM) concepts</td>
+    </tr>
+    <tr>
+      <td>Agile/Scrum, SDLC and delivery coordination</td>
+      <td>Jira, Azure DevOps and test evidence management</td>
+      <td>Clinical workflows, patient administration and healthcare data quality</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Technology Toolkit
 
@@ -47,7 +90,7 @@ I’m particularly interested in opportunities where I can combine business anal
 - **Testing and automation:** Eggplant, Selenium/Java, TOSCA and Worksoft exposure, functional and regression testing, API validation.
 - **Tools and collaboration:** Jira, Azure DevOps, Postman, BMC AppSight, Git, GitHub, Maven.
 - **Data and development:** SQL, JSON validation, JavaScript and Node.js; exploring Playwright, Python, data analytics and practical AI applications.
-- **Delivery practices:** Agile/Scrum, SDLC, defect lifecycle management, change-impact analysis, stakeholder communication.
+- **Healthcare interoperability and operations:** Familiarity with healthcare workflow concepts; continuing to build knowledge of HL7, FHIR and Revenue Cycle Management (RCM).
 
 ## Professional Experience
 
@@ -81,11 +124,9 @@ I’m particularly interested in opportunities where I can combine business anal
 ## Projects
 
 ### Focus Flow
-A personal project included in my GitHub portfolio. Visit the repository list to open the project and review its implementation, README, and technology stack.
+A productivity and focus project included in my GitHub portfolio. Explore the repository for the project's implementation, features, setup instructions, and technology stack.
 
-**Project link:** [Find Focus Flow in my repositories](https://github.com/surdp?tab=repositories)
-
-*The direct repository URL and project-specific feature summary can be added here after confirming the exact repository.*
+**Project link:** [Browse my repositories](https://github.com/surdp?tab=repositories)
 
 ### LinkedIn Skills Automation with Playwright
 [View repository →](https://github.com/surdp/linkedin-skills-automation)
@@ -94,8 +135,8 @@ A Node.js and Playwright prototype that inspects a LinkedIn profile’s skills i
 
 - Connects to an existing Chrome session through Chrome DevTools Protocol (CDP).
 - Navigates to the configured skills page and collects skill names from page elements.
-- Uses bounded scrolling and selector-based inspection to gather the visible skills inventory.
-- Prints the collected skills in alphabetical order for easier review.
+- Uses bounded scrolling and selector-based inspection to gather the skills inventory.
+- Prints collected skill names in alphabetical order for easier review.
 - Keeps the published version focused on read-only inspection; profile-changing experiments are not part of the recommended public setup.
 
 **Technology:** JavaScript · Node.js · Playwright · Chrome DevTools Protocol · Git
@@ -103,7 +144,7 @@ A Node.js and Playwright prototype that inspects a LinkedIn profile’s skills i
 ### Explore More Projects
 [Browse all repositories →](https://github.com/surdp?tab=repositories)
 
-I use personal projects to practise problem-solving, explore automation, and build practical tools. Each project can be expanded here with a verified repository link, purpose, key features, technology stack, and screenshots or demo where available.
+I use personal projects to practise problem-solving, explore automation, and build practical tools. Project descriptions and direct links can be added as each repository is reviewed.
 
 ## Achievements & Recognition
 
@@ -122,12 +163,8 @@ Bangalore Institute of Technology · 2022 · CGPA: 8.3
 
 ## Resumes
 
-Choose the version most relevant to the opportunity:
-
 - **[Business Analyst Resume (PDF)](./Suraj_DP_Business_Analyst_Resume.pdf)** — Requirements analysis, stakeholder management, process improvement, UAT, and healthcare IT.
 - **[Automation Engineer Resume (PDF)](./Suraj_DP_Automation_Engineer_Resume.pdf)** — QA engineering, test automation, regression testing, API/data validation, and healthcare application testing.
-
-> To make these downloads work, upload both PDFs to the root of this profile repository with the exact filenames above. Because the repository is public, confirm that you are comfortable sharing the phone number and email address shown in your resume PDFs.
 
 ## Professional Interests
 
@@ -135,8 +172,15 @@ Healthcare technology · Business analysis · Clinical workflow optimization · 
 
 ## Connect
 
-- **GitHub:** [github.com/surdp](https://github.com/surdp)
-- **LinkedIn:** [Connect on LinkedIn](https://www.linkedin.com/in/suraj-dp-2a91441bb/)
+<div align="center">
+
+<a href="https://github.com/surdp" title="GitHub"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="30" alt="GitHub"/></a>&nbsp;&nbsp;
+<a href="https://www.linkedin.com/in/suraj-dp-2a91441bb/" title="LinkedIn"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="30" alt="LinkedIn"/></a>&nbsp;&nbsp;
+<a href="https://www.instagram.com/suraj.d.p/" title="Instagram"><img src="https://cdn.simpleicons.org/instagram/E4405F" width="30" alt="Instagram"/></a>&nbsp;&nbsp;
+<a href="mailto:suraj.dp412@gmail.com" title="Email"><img src="https://cdn.simpleicons.org/gmail/EA4335" width="30" alt="Email"/></a>&nbsp;&nbsp;
+<a href="https://wa.me/917676416123" title="WhatsApp"><img src="https://cdn.simpleicons.org/whatsapp/25D366" width="30" alt="WhatsApp"/></a>
+
+</div>
 
 ---
 
