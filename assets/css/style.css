@@ -532,3 +532,20 @@ html[data-theme="light"] .project-art{box-shadow:0 10px 26px rgba(23,44,70,.07)}
 @media(max-width:1050px){.trip-grid{grid-template-columns:1fr}.trip-section .section-header>p{max-width:none}}
 @media(max-width:850px){.trip-dashboard,.travel-media-dashboard{padding:13px}.trip-dashboard-top{grid-template-columns:120px minmax(0,1fr)}.trip-total-block{padding:11px}.trip-total-block strong{font-size:25px}.travel-section .travel-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.trip-dashboard-top{grid-template-columns:1fr}.trip-total-block{display:grid;grid-template-columns:1fr auto;align-items:center}.trip-total-block .summary-kicker,.trip-total-block small{grid-column:1}.trip-total-block strong{grid-column:2;grid-row:1/3;font-size:28px}.trip-search{min-height:44px}.trip-card{padding:12px}.trip-card h3{font-size:14px}.trip-route-summary{font-size:9px}.trip-details>summary{font-size:9px}.trip-section .section-header>p{font-size:11px}.travel-media-filters{gap:7px}.travel-media-filter{flex:1;min-width:0}.travel-section .travel-gallery-grid{gap:8px}.travel-section .travel-card-copy{padding:10px}.travel-section .travel-card-copy h3{font-size:11px}.travel-section .travel-card-copy p{font-size:9px}}
+/* Poster-style itinerary cards inspired by illustrated route maps */
+.trip-section .section-header>p{max-width:510px;color:var(--muted);font-size:12px;line-height:1.8}
+.trip-dashboard{padding:16px}
+.trip-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}
+.trip-card{padding:0;border:1px solid var(--line2);border-radius:13px;overflow:hidden;background:var(--panel);box-shadow:0 10px 28px rgba(0,0,0,.1)}
+.trip-poster{width:100%;background:#e8e7bd;overflow:hidden}
+.trip-poster svg{display:block;width:100%;height:auto;aspect-ratio:420/650}
+.trip-card-copy{padding:14px}
+.trip-card-copy .trip-overview{margin:0 0 12px;color:var(--muted);font-size:11px;line-height:1.75}
+.trip-card-copy .trip-details{border-top:1px solid var(--line);padding-top:11px}
+.trip-card-copy .trip-details>summary{font-size:10px}
+.trip-card-copy .trip-details-content{padding-top:13px}
+.trip-card-copy .trip-map-area{margin-top:13px}
+.trip-card-copy .trip-map-link{min-width:0}
+.trip-card-copy .trip-map-link small{overflow-wrap:anywhere}
+@media(max-width:1100px){.trip-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}}
+@media(max-width:700px){.trip-dashboard{padding:10px}.trip-grid{grid-template-columns:1fr;gap:14px}.trip-card{max-width:460px;width:100%;margin:0 auto}.trip-poster svg{aspect-ratio:420/650}.trip-card-copy{padding:12px}}
