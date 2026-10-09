@@ -419,7 +419,7 @@
   function mapMarkerIcon(number) {
     return L.divIcon({
       className: "trip-leaflet-marker-wrap",
-      html: '<span class="trip-leaflet-marker">' + number + '</span>',
+      html: '<span class="trip-leaflet-marker"><span>' + number + '</span></span>',
       iconSize: [28, 28],
       iconAnchor: [14, 14],
       popupAnchor: [0, -13]
@@ -523,6 +523,15 @@
     setTimeout(() => map.invalidateSize(), 60);
   }
 
+  function disposeTripMaps() {
+    if (mapObserver) mapObserver.disconnect();
+    mapInstances.forEach(map => {
+      try { map.remove(); } catch (_) {}
+    });
+    mapInstances.clear();
+    roadRouteQueue.length = 0;
+  }
+
   function observeTripMaps() {
     if (mapObserver) mapObserver.disconnect();
     const elements = Array.from(container.querySelectorAll("[data-trip-map]"));
@@ -577,6 +586,7 @@
         [trip.title, trip.region, trip.overview, ...trip.stops.map(stop => stop.name)]
           .join(" ").toLowerCase().includes(query)
       );
+      disposeTripMaps();
       container.innerHTML = filtered.map(renderTrip).join("");
       observeTripMaps();
       const count = document.getElementById("tripResultsCount");
