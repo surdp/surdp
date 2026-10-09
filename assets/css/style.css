@@ -1982,3 +1982,48 @@ html[data-theme="light"] .goals-graph-node.is-active text{fill:#075cc8}
 @media(prefers-reduced-motion:reduce){
  .career-growth-arrow,.career-track-arrow,.career-growth-stage,.career-next-card,.goals-focus-card{animation:none!important;transition:none!important}
 }
+
+
+/* Final accessibility/readability adjustments for the interactive sections */
+.career-track[hidden],.career-cards-grid[hidden],.career-growth-view[hidden]{display:none!important}
+.career-track-arrow{font-size:22px!important;width:28px;height:28px;padding:0;border-radius:50%}
+.career-track-arrow:active{scale:.94}
+.career-growth-stage.is-active .career-growth-node{transform:scale(1.04)}
+.goals-close{box-sizing:border-box;flex:0 0 38px;width:38px;height:38px;min-width:38px;min-height:38px;padding:0;display:grid;place-items:center;text-align:center}
+.goals-close span{display:grid;place-items:center;width:100%;height:100%;line-height:1;transform:none}
+.goals-dialog-header{display:grid;grid-template-columns:minmax(0,1fr) 38px;align-items:center;column-gap:16px}
+.goals-dialog-header>div{min-width:0}
+.goals-category{font-size:10px}
+.goals-roadmap-copy h3{font-size:18px}
+.goals-roadmap-copy p:last-child{font-size:10px}
+.goals-milestone small{font-size:8px}
+.goals-milestone b{font-size:10px}
+.goals-milestone p{font-size:9px}
+.goals-focus-card b{font-size:10px}
+.goals-focus-card p{font-size:9px}
+.goals-focus-card ul{font-size:9px}
+.goals-focus-count,.goals-subheading span{font-size:9px}
+.career-growth-stage small{font-size:8px}
+.career-growth-stage>span:last-child{font-size:10px}
+.career-growth-detail p:not(.overline){font-size:11px}
+.career-growth-detail .career-skill-cloud span{font-size:10px}
+.experience-hub .career-detail-list li{font-size:11px;line-height:1.7}
+.experience-hub .career-skill-cloud span{font-size:10px;line-height:1.45}
+.experience-hub .career-tab{font-size:10px}
+.workflow-explorer-section .workflow-solution-tab b{font-size:12px}
+.workflow-explorer-section .workflow-solution-tab small{font-size:11px}
+.workflow-explorer-section .workflow-subtab{font-size:10px}
+.workflow-explorer-section .workflow-stage b{font-size:12px}
+.workflow-explorer-section .workflow-stage small{font-size:11px;line-height:1.55}
+.workflow-explorer-section .workflow-stage-detail b{font-size:13px}
+.workflow-explorer-section .workflow-stage-detail p{font-size:12px;line-height:1.7}
+.workflow-explorer-section .workflow-platform-tags span{font-size:11px;padding:7px 10px}
+.workflow-explorer-section .workflow-footnote b{font-size:11px}
+@media(max-width:760px){
+ .goals-dialog-header{grid-template-columns:minmax(0,1fr) 38px;align-items:start}
+ .goals-dialog-header h2{font-size:clamp(22px,6vw,29px)}
+ .goals-close{align-self:start}
+ .career-growth-stage>span:last-child{font-size:10px}
+ .workflow-explorer-section .workflow-stage b{font-size:12px}
+ .workflow-explorer-section .workflow-stage small{font-size:10px}
+}
