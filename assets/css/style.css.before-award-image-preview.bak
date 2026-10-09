@@ -656,33 +656,3 @@ html[data-theme="light"] .project-art{box-shadow:0 10px 26px rgba(23,44,70,.07)}
   .travel-memory-viewer .travel-viewer-video{max-height:70vh}
 }
 @media(prefers-reduced-motion:reduce){.travel-wall-image,.travel-viewer-image{transition:none}}
-
-/* Clickable award recognition previews */
-.awards article.award-preview-trigger {
-  cursor: pointer;
-  border-radius: 10px;
-  padding-inline: 10px;
-  margin-inline: -10px;
-  transition: background .18s ease, transform .18s ease;
-}
-.awards article.award-preview-trigger:hover {
-  background: color-mix(in srgb, var(--accent) 5%, transparent);
-  transform: translateX(3px);
-}
-.awards article.award-preview-trigger:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-}
-.award-image-viewer .viewer-stage {
-  background: #090d14;
-}
-.award-image-viewer .viewer-stage img {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  max-height: calc(90vh - 112px);
-  object-fit: contain;
-}
-@media (prefers-reduced-motion: reduce) {
-  .awards article.award-preview-trigger { transition: none; }
-}
