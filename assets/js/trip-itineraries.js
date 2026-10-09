@@ -521,7 +521,7 @@
       String(trip.id).padStart(2, "0") + '  /  ' + xmlText(regionLabel) + '</text>' +
       '<rect x="338" y="13" width="58" height="23" rx="6" fill="#f0cf70" opacity=".98"/>' +
       '<text x="367" y="28.5" text-anchor="middle" fill="#243a32" font-size="9" font-family="Arial, sans-serif" font-weight="800">' +
-      pts.length + ' STOPS</text>' + titleSvg +
+      trip.stops.length + ' STOPS</text>' + titleSvg +
       '<text x="24" y="' + (titleLines.length === 1 ? 96 : 115) + '" fill="#b8d9b6" font-family="Arial, sans-serif" font-size="9.5" letter-spacing="1.3">YOUR ROUTE · SOUTH INDIA</text>' +
       '<rect y="' + headerH + '" width="' + W + '" height="' + (H-headerH) + '" fill="url(#tripLand' + trip.id + ')"/>' +
       '<path d="M -10 184 C 56 151, 88 223, 143 207 S 262 158, 430 220 L430 505 L-10 505Z" fill="#d7e3ad" opacity=".38"/>' +
