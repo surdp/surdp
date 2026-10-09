@@ -60,6 +60,15 @@
     if (/gallery|images/.test(value)) return "images";
     if (/resume|cv/.test(value)) return "file-text";
     if (/contact|email/.test(value)) return "send";
+    if (/jira|azure devops|confluence/.test(value)) return "list-check";
+    if (/git|github|version control/.test(value)) return "git-branch";
+    if (/selenium|playwright|eggplant|tosca|worksoft|automation/.test(value)) return "test-tube";
+    if (/java(script)?/.test(value)) return "code-2";
+    if (/maven|package/.test(value)) return "package";
+    if (/power bi|analytics|reporting/.test(value)) return "chart-no-axes-column";
+    if (/bpmn|process mapping/.test(value)) return "workflow";
+    if (/hl7|fhir|interoperability/.test(value)) return "network";
+    if (/oracle health|cerner|firstnet|mpages/.test(value)) return "heart-pulse";
     if (/discover|arrival|registration|search/.test(value)) return "search";
     if (/analyz|result|analytics|data/.test(value)) return "chart-no-axes-combined";
     if (/define|requirement|documentation|notes|traceability/.test(value)) return "file-check";
