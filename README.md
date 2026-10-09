@@ -4,7 +4,7 @@
 
 ### Business Analyst · Healthcare IT · QA & Test Automation
 
-**Turning business needs into clear requirements, reliable delivery, and measurable outcomes.**
+**“From ambiguity to alignment. From requirements to outcomes.”**
 
 [🌐 Portfolio](https://surdp.github.io/surdp/)
 
@@ -20,17 +20,17 @@
 
 ## About Me
 
-I’m a **Business Analyst and Healthcare IT professional with 4+ years of experience** across business analysis, requirements management, process improvement, solution delivery, quality assurance, and enterprise healthcare systems.
+I’m a **Business Analyst with 4+ years of experience** across requirements analysis, process improvement, quality assurance, automation, solution delivery, and enterprise healthcare technology. I work to connect stakeholder goals with technically feasible requirements and outcomes that can be validated.
 
-My experience sits at the intersection of business needs, technology solutions, and end-user outcomes. I work with business stakeholders, clinical users, technical teams, developers, and delivery teams to understand requirements, assess current and future-state processes, identify gaps, and translate business needs into practical technology solutions.
+My business analysis toolkit includes stakeholder discovery, requirements elicitation, AS-IS and TO-BE process mapping, gap and impact analysis, functional and non-functional requirements, user stories, use cases, business rules, acceptance criteria, and requirement traceability. I collaborate across business, product, engineering, QA, and delivery teams to clarify scope, surface dependencies, support prioritisation, and keep decisions connected to delivery.
 
-At **Oracle Health (Cerner)**, I supported enterprise healthcare applications and clinical workflows across Emergency Medicine, Oncology, and Blood Bank/Transfusion. My work included application upgrades, requirements and workflow analysis, functional validation, UAT, testing, automation, issue resolution, and coordination with global stakeholders.
+My QA and technical background helps me make requirements testable. I have worked across functional and regression testing, UAT support, defect investigation, API validation with Postman, data checks with SQL, and Eggplant automation for healthcare application upgrades. My working tools include Jira, Azure DevOps, Postman, SQL, Eggplant, and related software delivery tools.
 
-I currently work at **Tech Mahindra as a Senior Business Analyst**, supporting healthcare technology initiatives and collaborating with business users and technical teams on requirements, configuration, validation, process improvement, and solution delivery.
+At **Tech Mahindra**, I work as a **Senior Business Analyst** supporting healthcare technology initiatives, translating operational needs into structured requirements and supporting validation and delivery. Previously, at **Oracle Health (Cerner)**, I supported upgrades and clinical workflows across Emergency Medicine/FirstNet, Oncology, Blood Bank/Transfusion, and MPages, including upgrade impact analysis, functional and regression validation, issue investigation, automation support, and collaboration with global client teams.
 
-I’m particularly interested in opportunities where I can combine business analysis, healthcare technology, process improvement, automation, and problem-solving to deliver measurable business and user impact.
+I’m interested in roles where I can bring this combination of business analysis, quality engineering, technical collaboration, and structured problem-solving to different industries and complex products.
 
-**Interested roles:** Business Analyst · Senior Business Analyst · Business Systems Analyst · Healthcare Business Analyst · IT Business Analyst · Business Consultant · Product / Systems Analyst
+**Interested roles:** Business Analyst · Senior Business Analyst · Business Systems Analyst · IT Business Analyst · Business Consultant · Product / Systems Analyst · Healthcare Business Analyst
 
 ## Core Competencies
 
