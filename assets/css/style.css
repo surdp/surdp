@@ -2438,3 +2438,55 @@ html[data-theme="light"] .career-role-visual:before{
   body{background-attachment:scroll}
   .hero:before{transform:none}
 }
+
+
+/* Final pass: larger, clearer SVG icons and consistent scenic backdrop */
+.hero:before{
+  background:
+    linear-gradient(90deg,color-mix(in srgb,var(--bg) 77%,transparent),color-mix(in srgb,var(--bg) 37%,transparent) 48%,color-mix(in srgb,var(--bg) 63%,transparent)),
+    linear-gradient(0deg,var(--bg) 0%,transparent 35%,color-mix(in srgb,var(--bg) 9%,transparent));
+  opacity:.74;
+}
+html[data-theme="light"] .hero:before{
+  background:
+    linear-gradient(90deg,rgba(246,249,253,.82),rgba(246,249,253,.57) 48%,rgba(246,249,253,.78)),
+    linear-gradient(0deg,var(--bg) 0%,transparent 44%,rgba(255,255,255,.12));
+  opacity:.88;
+}
+.portfolio-lucide{font-style:normal}
+.portfolio-lucide svg,.tool-tags span>i svg,.resume-icon svg,.credential-footer-mark svg,.movie-setup-icon svg,.travel-empty-icon svg,.credential-empty>span svg,.theme-toggle svg{
+  display:block;width:1em;height:1em;stroke-width:1.9;flex:none;
+}
+.tool-tags span>i{display:inline-grid;place-items:center}
+.tool-tags span>i svg{width:15px;height:15px}
+.resume-icon{display:grid;place-items:center}
+.resume-icon svg{width:21px;height:21px}
+.credential-footer-mark{display:grid;place-items:center}
+.credential-footer-mark svg{width:15px;height:15px}
+.movie-setup-icon{display:grid;place-items:center}
+.movie-setup-icon svg{width:25px;height:25px}
+.travel-empty-icon{display:grid;place-items:center}
+.travel-empty-icon svg{width:23px;height:23px}
+.credential-empty>span{display:inline-grid;place-items:center}
+.credential-empty>span svg{width:19px;height:19px}
+.theme-toggle{display:grid;place-items:center}
+.theme-toggle svg{width:19px;height:19px}
+.atlas-icon svg{width:15px;height:15px}
+.workflow-solution-icon svg{width:21px;height:21px}
+.workflow-stage-symbol svg{width:18px;height:18px}
+.ba-step-icon svg{width:21px;height:21px}
+.ba-process-icon svg{width:18px;height:18px}
+.ba-list-icon svg{width:15px;height:15px}
+.ba-layer-icon svg{width:16px;height:16px}
+.expertise-icon svg{width:24px;height:24px}
+.goals-category span svg{width:16px;height:16px}
+.goals-focus-card>span svg{width:17px;height:17px}
+@media(max-width:1450px){
+  .career-cards-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .career-next-card{grid-column:1/-1}
+}
+@media(max-width:600px){
+  body{background-attachment:scroll}
+  .hero:before{opacity:.82}
+  .career-cards-grid{grid-template-columns:minmax(0,1fr)}
+}
