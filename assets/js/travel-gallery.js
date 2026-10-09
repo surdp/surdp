@@ -9,6 +9,9 @@
   const videoButton = document.getElementById("travelVideosButton");
   const photoCountNode = document.getElementById("travelPhotoCount");
   const videoCountNode = document.getElementById("travelVideoCount");
+  const loadMoreButton = document.getElementById("travelGalleryLoadMore");
+  const pageSize = 36;
+  let visibleCount = pageSize;
   const viewer = document.getElementById("mediaViewer");
   const viewerTitle = document.getElementById("mediaViewerTitle");
   const viewerMeta = document.getElementById("mediaViewerMeta");
@@ -42,7 +45,8 @@
   }
 
   function render() {
-    visibleMedia = visibleItems();
+    const allVisible = visibleItems();
+    visibleMedia = allVisible.slice(0, visibleCount);
     const photos = travelMedia.filter(item => item.type === "image");
     const videos = travelMedia.filter(item => item.type === "video");
 
@@ -50,8 +54,13 @@
     if (videoCountNode) videoCountNode.textContent = String(videos.length);
 
     syncButtons();
-    empty.hidden = visibleMedia.length > 0;
+    empty.hidden = allVisible.length > 0;
     grid.hidden = visibleMedia.length === 0;
+    if (loadMoreButton) {
+      loadMoreButton.hidden = visibleMedia.length >= allVisible.length;
+      loadMoreButton.textContent = "Load more " + (activeType === "image" ? "photos" : "videos") +
+        " (" + (allVisible.length - visibleMedia.length) + " remaining)";
+    }
 
     if (!visibleMedia.length) {
       if (emptyTitle) emptyTitle.textContent = activeType === "image"
@@ -120,10 +129,16 @@
 
   photoButton?.addEventListener("click", () => {
     activeType = "image";
+    visibleCount = pageSize;
     render();
   });
   videoButton?.addEventListener("click", () => {
     activeType = "video";
+    visibleCount = pageSize;
+    render();
+  });
+  loadMoreButton?.addEventListener("click", () => {
+    visibleCount += pageSize;
     render();
   });
 
