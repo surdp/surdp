@@ -507,6 +507,7 @@
       });
       workflowStages.append(button);
     });
+    refreshPortfolioIcons();
     renderWorkflowStageDetail(flow.stages[currentStageIndex], currentStageIndex);
   }
   function activateWorkflow(solutionKey, flowIndex = 0) {
@@ -731,13 +732,17 @@
     if(goalsFocusGrid){
       goalsFocusGrid.innerHTML="";
       goal.focus.forEach(item=>{
+        const iconName=portfolioIconName(item[1]);
         const card=document.createElement("article");card.className="goals-focus-card";
-        const icon=document.createElement("span");icon.textContent=item[0];icon.setAttribute("aria-hidden","true");
+        const icon=document.createElement("span");
+        icon.innerHTML=iconName?'<i class="portfolio-lucide" data-lucide="'+iconName+'" aria-hidden="true"></i>':item[0];
+        icon.setAttribute("aria-hidden","true");
         const title=document.createElement("b");title.textContent=item[1];
         const desc=document.createElement("p");desc.textContent=item[2];
         card.append(icon,title,desc);goalsFocusGrid.append(card);
       });
     }
+    refreshPortfolioIcons();
   }
   function selectGoalMilestone(index) {
     const goal=goalLibrary[activeGoalCategory];
