@@ -119,12 +119,21 @@
 
 
 
-<dialog class="media-viewer" id="mediaViewer" aria-labelledby="mediaViewerTitle">
+<dialog class="media-viewer travel-memory-viewer" id="mediaViewer" aria-labelledby="mediaViewerTitle">
   <div class="viewer-header">
-    <div><h3 id="mediaViewerTitle">Travel memory</h3><p id="mediaViewerMeta"></p></div>
+    <div class="travel-viewer-heading"><h3 id="mediaViewerTitle">Travel memory</h3><p id="mediaViewerMeta"></p></div>
     <button class="viewer-close" id="mediaViewerClose" type="button">Close ✕</button>
   </div>
-  <div class="viewer-stage" id="mediaViewerStage"></div>
+  <div class="travel-viewer-toolbar" role="toolbar" aria-label="Photo and video controls">
+    <button type="button" id="travelPreviousMemory" aria-label="Previous memory">← Previous</button>
+    <span class="travel-viewer-toolbar-divider"></span>
+    <button type="button" id="travelRotateLeft" aria-label="Rotate left">↶ Rotate</button>
+    <button type="button" id="travelResetRotation" aria-label="Reset rotation">Reset</button>
+    <button type="button" id="travelRotateRight" aria-label="Rotate right">Rotate ↻</button>
+    <span class="travel-viewer-toolbar-divider"></span>
+    <button type="button" id="travelNextMemory" aria-label="Next memory">Next →</button>
+  </div>
+  <div class="viewer-stage travel-viewer-stage" id="mediaViewerStage"></div>
 </dialog>
 
 <section id="movies" class="section divider movie-section">
@@ -170,20 +179,19 @@
 <section id="travel-gallery" class="section divider travel-section">
   <div class="container">
     <div class="section-header reveal">
-      <div><p class="overline">09 / TRAVEL PHOTOS &amp; VIDEOS</p><h2>Moments from the <em class="gradient">road.</em></h2></div>
-      <div><p>A separate gallery for the photos and videos you have personally captured. Trips and itineraries live in the section above.</p><div class="travel-status">PERSONAL PHOTOS &amp; VIDEOS</div></div>
+      <div><p class="overline">09 / TRAVEL PHOTO WALL</p><h2>Little moments. <em class="gradient">One big journey.</em></h2></div>
+      <div><p>A mixed wall of personal travel photos and videos. Select any tile to open it large, move between memories, or rotate photos.</p><div class="travel-status">TRAVEL PHOTOS &amp; VIDEOS · MIXED WALL</div></div>
     </div>
     <div class="travel-media-dashboard reveal">
-      <div class="travel-media-filters" role="group" aria-label="Choose travel media type">
-        <button id="travelPhotosButton" class="travel-media-filter active" type="button" aria-pressed="true">Photos <span id="travelPhotoCount">—</span></button>
-        <button id="travelVideosButton" class="travel-media-filter" type="button" aria-pressed="false">Videos <span id="travelVideoCount">—</span></button>
+      <div class="travel-wall-toolbar">
+        <span id="travelWallCount">Loading your memories…</span>
+        <span class="travel-wall-hint">Select any memory to view</span>
       </div>
       <div class="travel-empty" id="travelGalleryEmpty">
         <div class="travel-empty-icon" aria-hidden="true">▧</div>
-        <div><h3 id="travelGalleryEmptyTitle">Your travel photos will appear here.</h3><p id="travelGalleryEmptyText">Your trip list is documented separately. Add your own travel photos to the gallery when you are ready; no placeholder images are shown.</p></div>
+        <div><h3 id="travelGalleryEmptyTitle">Your travel memories will appear here.</h3><p id="travelGalleryEmptyText">Add your personal photos and videos to assets/gallery. They will appear together in one mosaic wall; no filenames need to be renamed.</p></div>
       </div>
       <div class="travel-gallery-grid" id="travelGalleryGrid" aria-live="polite" hidden></div>
-      <div class="travel-load-more-wrap"><button id="travelGalleryLoadMore" class="button secondary travel-load-more" type="button" hidden>Load more</button></div>
     </div>
   </div>
 </section>
@@ -206,6 +214,6 @@
 <script src="assets/js/movie-gallery.js?v=20261009-2" defer></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
 <script src="assets/js/trip-itineraries.js?v=20261009-3" defer></script>
-<script src="assets/js/travel-gallery.js?v=20261009-2" defer></script>
+<script src="assets/js/travel-gallery.js?v=20261009-3" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body></html>
