@@ -1,23 +1,21 @@
 (() => {
   "use strict";
 
-  const root = document.getElementById("movieGalleryGrid");
-  if (!root) return;
-
-  const search = document.getElementById("movieSearch");
-  const results = document.getElementById("movieResultsCount");
-  const empty = document.getElementById("movieGalleryEmpty");
+  const grid = document.getElementById("movieGalleryGrid");
   const setup = document.getElementById("movieGallerySetup");
+  const empty = document.getElementById("movieGalleryEmpty");
   const loadMore = document.getElementById("movieLoadMore");
-  const totalNode = document.getElementById("movieTotal");
-  const photoNode = document.getElementById("moviePhotoCount");
-  const videoNode = document.getElementById("movieVideoCount");
-  const identifiedNode = document.getElementById("movieIdentifiedCount");
-  const typeButtons = Array.from(document.querySelectorAll("[data-movie-filter]"));
+  const photoButton = document.getElementById("moviePhotosButton");
+  const videoButton = document.getElementById("movieVideosButton");
+  const photoCount = document.getElementById("moviePhotoCount");
+  const videoCount = document.getElementById("movieVideoCount");
   const batchSize = 48;
-  let allItems = [];
-  let activeType = "all";
+  let photos = [];
+  let videos = [];
+  let activeType = "photo";
   let visibleCount = batchSize;
+
+  if (!grid) return;
 
   function esc(value) {
     return String(value == null ? "" : value).replace(/[&<>"']/g, function (c) {
@@ -25,117 +23,89 @@
     });
   }
 
-  function itemLabel(item) {
-    const filename = item.filename || (item.src || "").split("/").pop() || "Media file";
-    if (item.titleIdentified && item.title) return item.title;
-    return (item.type === "video" ? "Video" : "Photo") + " — " + filename;
-  }
-
-  function itemCard(item) {
-    const title = itemLabel(item);
+  function card(item, index) {
+    const label = (item.type === "video" ? "Video " : "Photo ") + String(index + 1);
     const src = esc(item.src || "");
-    const name = esc(title);
-    const filename = esc(item.filename || "");
-    const status = item.titleIdentified
-      ? '<span class="movie-review-status is-identified">TITLE IDENTIFIED</span>'
-      : '<span class="movie-review-status">TITLE TO REVIEW</span>';
-    let media = "";
     if (item.type === "video") {
-      media = '<video class="movie-media-video" controls preload="none" playsinline aria-label="' + name + '"><source src="' + src + '" type="video/mp4">Your browser does not support HTML video.</video>';
-    } else {
-      media = '<a class="movie-media-open" href="' + src + '" target="_blank" rel="noopener noreferrer" aria-label="Open full image for ' + name + '"><img src="' + src + '" loading="lazy" decoding="async" alt="' + name + '" onerror="this.style.display=\'none\';this.parentElement.classList.add(\'movie-image-failed\')"><span class="movie-image-fallback" aria-hidden="true">IMAGE PREVIEW UNAVAILABLE</span><span class="movie-open-hint">Open image ↗</span></a>';
+      return '<article class="movie-media-card movie-video-card"><div class="movie-media-frame">' +
+        '<video class="movie-media-video" controls preload="metadata" playsinline aria-label="' + label + '">' +
+        '<source src="' + src + '" type="video/mp4">Your browser does not support HTML video.</video></div></article>';
     }
-    return '<article class="movie-media-card">' +
-      '<div class="movie-media-frame">' + media +
-      '<span class="movie-kind">' + (item.type === "video" ? "VIDEO" : "PHOTO") + '</span></div>' +
-      '<div class="movie-media-copy"><h3 title="' + name + '">' + name + '</h3>' +
-      '<p class="movie-original-name" title="' + filename + '">' + filename + '</p>' +
-      status + '</div></article>';
+    return '<article class="movie-media-card movie-photo-card"><a class="movie-media-open" href="' + src +
+      '" target="_blank" rel="noopener noreferrer" aria-label="Open photo ' + String(index + 1) +
+      ' in a new tab"><div class="movie-media-frame"><img src="' + src +
+      '" loading="lazy" decoding="async" alt="Photo ' + String(index + 1) +
+      '" onerror="this.style.display=\'none\';this.parentElement.classList.add(\'movie-image-failed\')">' +
+      '<span class="movie-image-fallback" aria-hidden="true">IMAGE UNAVAILABLE</span>' +
+      '<span class="movie-open-hint" aria-hidden="true">Open photo ↗</span></div></a></article>';
   }
 
-  function getFilteredItems() {
-    const query = (search && search.value ? search.value : "").trim().toLowerCase();
-    return allItems.filter(function (item) {
-      const identified = Boolean(item.titleIdentified && item.title);
-      const matchesType = activeType === "all" ||
-        (activeType === "photo" && item.type === "photo") ||
-        (activeType === "video" && item.type === "video") ||
-        (activeType === "identified" && identified) ||
-        (activeType === "review" && !identified);
-      const haystack = [item.title, item.filename, item.sourceRelativePath, item.type, item.reviewStatus]
-        .join(" ").toLowerCase();
-      return matchesType && (!query || haystack.includes(query));
-    });
+  function setActiveButtons() {
+    if (photoButton) {
+      const active = activeType === "photo";
+      photoButton.classList.toggle("active", active);
+      photoButton.setAttribute("aria-pressed", String(active));
+    }
+    if (videoButton) {
+      const active = activeType === "video";
+      videoButton.classList.toggle("active", active);
+      videoButton.setAttribute("aria-pressed", String(active));
+    }
   }
 
   function render() {
-    const filtered = getFilteredItems();
-    const visible = filtered.slice(0, visibleCount);
-    root.innerHTML = visible.map(itemCard).join("");
-    root.hidden = visible.length === 0;
-    if (empty) empty.hidden = visible.length !== 0;
-    if (results) {
-      results.textContent = "Showing " + visible.length + " of " + filtered.length +
-        " results · " + allItems.length + " total media files";
-    }
+    const items = activeType === "photo" ? photos : videos;
+    const visible = items.slice(0, visibleCount);
+    grid.innerHTML = visible.map(card).join("");
+    grid.hidden = visible.length === 0;
+    if (empty) empty.hidden = items.length !== 0;
     if (loadMore) {
-      loadMore.hidden = visible.length >= filtered.length;
-      loadMore.textContent = "Load more (" + (filtered.length - visible.length) + " remaining) ↓";
+      loadMore.hidden = visible.length >= items.length;
+      loadMore.textContent = "Load more " + (activeType === "photo" ? "photos" : "videos") +
+        " (" + (items.length - visible.length) + " remaining)";
     }
-    if (setup) setup.hidden = true;
+    setActiveButtons();
   }
 
-  typeButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-      activeType = button.dataset.movieFilter || "all";
-      typeButtons.forEach(function (other) {
-        const selected = other === button;
-        other.classList.toggle("active", selected);
-        other.setAttribute("aria-pressed", String(selected));
-      });
-      visibleCount = batchSize;
-      render();
-    });
-  });
-
-  if (search) search.addEventListener("input", function () {
+  if (photoButton) photoButton.addEventListener("click", function () {
+    activeType = "photo";
     visibleCount = batchSize;
     render();
   });
-
+  if (videoButton) videoButton.addEventListener("click", function () {
+    activeType = "video";
+    visibleCount = batchSize;
+    render();
+  });
   if (loadMore) loadMore.addEventListener("click", function () {
     visibleCount += batchSize;
     render();
   });
 
-  fetch("assets/movies/media-library.json")
+  fetch("assets/movies/media-library.json?v=1")
     .then(function (response) {
-      if (!response.ok) throw new Error("Media library is not installed yet.");
+      if (!response.ok) throw new Error("Media library is not installed.");
       return response.json();
     })
     .then(function (library) {
-      const photos = Array.isArray(library.photos) ? library.photos : [];
-      const videos = Array.isArray(library.videos) ? library.videos : [];
-      allItems = photos.concat(videos).filter(function (item) {
-        return item && item.src && (item.type === "photo" || item.type === "video");
-      });
-      allItems.sort(function (a, b) {
-        return String(a.id || a.imageId || a.videoId || a.filename).localeCompare(
-          String(b.id || b.imageId || b.videoId || b.filename), undefined, {numeric:true}
-        );
-      });
-      if (totalNode) totalNode.textContent = String(allItems.length);
-      if (photoNode) photoNode.textContent = String(photos.length);
-      if (videoNode) videoNode.textContent = String(videos.length);
-      if (identifiedNode) identifiedNode.textContent = String(allItems.filter(function (item) {
-        return Boolean(item.titleIdentified && item.title);
-      }).length);
+      photos = Array.isArray(library.photos) ? library.photos.filter(function (item) {
+        return item && item.type === "photo" && item.src;
+      }) : [];
+      videos = Array.isArray(library.videos) ? library.videos.filter(function (item) {
+        return item && item.type === "video" && item.src;
+      }) : [];
+      if (photoCount) photoCount.textContent = String(photos.length);
+      if (videoCount) videoCount.textContent = String(videos.length);
       if (setup) setup.hidden = true;
+      if (empty) empty.hidden = true;
       render();
     })
     .catch(function () {
-      root.hidden = true;
+      grid.hidden = true;
+      if (empty) empty.hidden = true;
       if (setup) setup.hidden = false;
-      if (results) results.textContent = "Media library not installed yet";
+      if (loadMore) loadMore.hidden = true;
+      if (photoCount) photoCount.textContent = "—";
+      if (videoCount) videoCount.textContent = "—";
     });
 })();
