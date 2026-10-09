@@ -464,7 +464,71 @@ html[data-theme="light"] .project-art{box-shadow:0 10px 26px rgba(23,44,70,.07)}
 .movie-media-copy,.movie-review-status,.movie-kind,.movie-open-hint{display:none!important}
 .movie-setup-note{margin-top:4px}
 .movie-load-more-wrap{padding-top:14px}
-.mobile-dock{grid-template-columns:repeat(6,minmax(0,1fr))}
+.mobile-dock{grid-template-columns:repeat(7,minmax(0,1fr))}
 @media(max-width:1100px){.movie-media-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:850px){.movie-media-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.movie-dashboard{padding:11px}.movie-filters{gap:8px}.movie-filter{flex:1;justify-content:center;padding:9px 10px}.movie-filter span{min-width:20px;height:18px}.movie-media-grid{gap:8px}.movie-load-more-wrap .button{width:100%}.movie-section .section-header>p{align-self:flex-start}}
+/* Completed trip itineraries */
+.trip-section .section-header{margin-bottom:24px}
+.trip-section .section-header>p{max-width:510px;color:var(--muted);font-size:12px;line-height:1.8}
+.trip-dashboard{padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--panel);box-shadow:var(--shadow)}
+.trip-dashboard-top{display:grid;grid-template-columns:minmax(140px,190px) minmax(0,1fr);gap:12px;margin-bottom:14px}
+.trip-total-block{display:flex;flex-direction:column;gap:5px;padding:14px;border:1px solid var(--line);border-radius:11px;background:var(--panel2)}
+.trip-total-block .summary-kicker{font:8px "DM Mono",monospace;letter-spacing:.1em;color:var(--faint)}
+.trip-total-block strong{font-size:29px;line-height:1;color:var(--text)}
+.trip-total-block small{font-size:10px;color:var(--muted)}
+.trip-search{align-self:stretch;display:flex;align-items:center;gap:10px;min-width:0;padding:0 13px;border:1px solid var(--line2);border-radius:10px;background:var(--bg);color:var(--muted)}
+.trip-search>span{font-size:20px;color:var(--accent)}
+.trip-search input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:var(--text);font:inherit;font-size:12px}
+.trip-search input::placeholder{color:var(--faint)}
+.trip-results-bar{padding:12px 0;margin-bottom:12px;border-top:1px solid var(--line);color:var(--muted);font:9px "DM Mono",monospace}
+.trip-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;align-items:start}
+.trip-card{min-width:0;border:1px solid var(--line);border-radius:13px;background:var(--bg);padding:15px;overflow:hidden}
+.trip-card-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:11px}
+.trip-index{color:var(--accent);font:8px "DM Mono",monospace;letter-spacing:.1em}
+.trip-region{padding:4px 6px;border:1px solid var(--line);border-radius:5px;color:var(--muted);font:7px "DM Mono",monospace;letter-spacing:.04em}
+.trip-card h3{margin:0 0 7px;color:var(--text);font-size:16px;line-height:1.45;letter-spacing:-.02em}
+.trip-overview{margin:0 0 12px;color:var(--muted);font-size:11px;line-height:1.75}
+.trip-route-summary{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:13px;padding:10px;border-radius:8px;background:var(--panel2);color:var(--text);font-size:10px;font-weight:700;overflow-wrap:anywhere}
+.trip-route-summary i{color:var(--accent);font-style:normal}
+.trip-details{border-top:1px solid var(--line);padding-top:10px}
+.trip-details>summary{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--accent);font-size:10px;font-weight:800;cursor:pointer;list-style:none}
+.trip-details>summary::-webkit-details-marker{display:none}
+.trip-details>summary:after{content:"+";font-size:16px;font-weight:500}
+.trip-details[open]>summary:after{content:"−"}
+.trip-details>summary span{margin-left:auto;color:var(--faint);font:8px "DM Mono",monospace;font-weight:400;white-space:nowrap}
+.trip-details-content{padding-top:14px}
+.trip-stop-list{position:relative;display:grid;gap:0;margin:0;padding:0;list-style:none}
+.trip-stop-list:before{position:absolute;content:"";left:13px;top:15px;bottom:15px;width:1px;background:var(--line2)}
+.trip-stop{position:relative;display:grid;grid-template-columns:27px minmax(0,1fr);gap:9px;align-items:start;padding:0 0 13px}
+.trip-stop:last-child{padding-bottom:5px}
+.trip-stop-number{z-index:1;display:grid;place-items:center;width:27px;height:27px;border:1px solid var(--line2);border-radius:50%;background:var(--panel);color:var(--accent);font:8px "DM Mono",monospace}
+.trip-stop b{display:block;padding-top:4px;color:var(--text);font-size:10px;line-height:1.5}
+.trip-stop p{margin:4px 0 0;color:var(--muted);font-size:9px;line-height:1.65}
+.trip-map-area{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.trip-map-area h4{margin:0 0 5px;color:var(--text);font-size:12px}
+.trip-map-area>p{margin:0 0 10px;color:var(--muted);font-size:9px;line-height:1.65}
+.trip-map-links{display:grid;grid-template-columns:1fr;gap:7px}
+.trip-map-link{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--line2);border-radius:8px;background:var(--panel);color:var(--text)}
+.trip-map-link:hover,.trip-map-link:focus-visible{border-color:var(--accent);background:var(--panel2)}
+.trip-map-icon{display:grid;place-items:center;flex:0 0 28px;height:28px;border-radius:7px;background:var(--panel2);color:var(--accent);font-size:14px}
+.trip-map-link b{display:block;font-size:10px}
+.trip-map-link small{display:block;margin-top:3px;color:var(--muted);font-size:9px;line-height:1.5;overflow-wrap:anywhere}
+.trip-map-option{margin:12px 0 7px;color:var(--text);font-size:10px;font-weight:800}
+.trip-map-note{color:var(--muted);font-size:10px}
+
+/* Separate personal travel media gallery */
+.travel-media-dashboard{padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--panel);box-shadow:var(--shadow)}
+.travel-media-filters{display:flex;gap:8px;margin-bottom:16px}
+.travel-media-filter{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:112px;padding:9px 12px;border:1px solid var(--line2);border-radius:8px;background:transparent;color:var(--muted);font-size:10px;font-weight:800;cursor:pointer}
+.travel-media-filter.active,.travel-media-filter:hover{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--panel));color:var(--accent)}
+.travel-media-filter span{font:9px "DM Mono",monospace}
+.travel-section .travel-gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.travel-section .travel-gallery-grid[hidden]{display:none}
+.travel-section .travel-card{min-width:0}
+.travel-section .travel-card-button{height:100%}
+.travel-section .travel-thumb{aspect-ratio:4/3}
+.travel-section .travel-thumb img{width:100%;height:100%;object-fit:cover}
+@media(max-width:1050px){.trip-grid{grid-template-columns:1fr}.trip-section .section-header>p{max-width:none}}
+@media(max-width:850px){.trip-dashboard,.travel-media-dashboard{padding:13px}.trip-dashboard-top{grid-template-columns:120px minmax(0,1fr)}.trip-total-block{padding:11px}.trip-total-block strong{font-size:25px}.travel-section .travel-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.trip-dashboard-top{grid-template-columns:1fr}.trip-total-block{display:grid;grid-template-columns:1fr auto;align-items:center}.trip-total-block .summary-kicker,.trip-total-block small{grid-column:1}.trip-total-block strong{grid-column:2;grid-row:1/3;font-size:28px}.trip-search{min-height:44px}.trip-card{padding:12px}.trip-card h3{font-size:14px}.trip-route-summary{font-size:9px}.trip-details>summary{font-size:9px}.trip-section .section-header>p{font-size:11px}.travel-media-filters{gap:7px}.travel-media-filter{flex:1;min-width:0}.travel-section .travel-gallery-grid{gap:8px}.travel-section .travel-card-copy{padding:10px}.travel-section .travel-card-copy h3{font-size:11px}.travel-section .travel-card-copy p{font-size:9px}}
