@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "description": "Personal trip photos and videos only. Itinerary data is maintained separately in assets/js/trip-itineraries.js.",
+  "photos": [],
+  "videos": []
+}
