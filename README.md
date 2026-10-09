@@ -6,7 +6,7 @@
 
 **Bridging business needs, clinical workflows, and technology solutions.**
 
-<a href="https://github.com/surdp" title="GitHub profile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="34" alt="GitHub"/></a>&nbsp;&nbsp;
+<a href="https://github.com/surdp" title="GitHub profile"><img src="https://cdn.simpleicons.org/github/FFFFFF" width="34" alt="GitHub"/></a>&nbsp;&nbsp;
 <a href="https://www.linkedin.com/in/suraj-dp-2a91441bb/" title="LinkedIn profile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="34" alt="LinkedIn"/></a>&nbsp;&nbsp;
 <a href="https://www.instagram.com/suraj.d.p/" title="Instagram profile"><img src="https://cdn.simpleicons.org/instagram/E4405F" width="34" alt="Instagram"/></a>&nbsp;&nbsp;
 <a href="mailto:suraj.dp412@gmail.com" title="Email Suraj"><img src="https://cdn.simpleicons.org/gmail/EA4335" width="34" alt="Gmail"/></a>&nbsp;&nbsp;
@@ -182,7 +182,7 @@ Healthcare technology · Business analysis · Clinical workflow optimization · 
 
 <div align="center">
 
-<a href="https://github.com/surdp" title="GitHub"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="30" alt="GitHub"/></a>&nbsp;&nbsp;
+<a href="https://github.com/surdp" title="GitHub"><img src="https://cdn.simpleicons.org/github/FFFFFF" width="30" alt="GitHub"/></a>&nbsp;&nbsp;
 <a href="https://www.linkedin.com/in/suraj-dp-2a91441bb/" title="LinkedIn"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="30" alt="LinkedIn"/></a>&nbsp;&nbsp;
 <a href="https://www.instagram.com/suraj.d.p/" title="Instagram"><img src="https://cdn.simpleicons.org/instagram/E4405F" width="30" alt="Instagram"/></a>&nbsp;&nbsp;
 <a href="mailto:suraj.dp412@gmail.com" title="Email"><img src="https://cdn.simpleicons.org/gmail/EA4335" width="30" alt="Email"/></a>&nbsp;&nbsp;
