@@ -407,7 +407,7 @@
       ': ' + esc(trip.title) + '">' +
       '<div class="trip-map-loading"><span class="trip-map-spinner" aria-hidden="true"></span>Loading street map…</div></div>' +
       '<div class="trip-map-attribution-note" id="trip-map-note-' + trip.id +
-      '">Street map · route will be drawn when map data is available</div></div>';
+      '">OpenStreetMap · marker positions are estimates; use Google Maps for navigation</div></div>';
   }
 
   function renderTripMapError(element, message) {
@@ -468,7 +468,7 @@
         L.geoJSON(route, {
           style: {color:"#287be8", weight:5, opacity:0.98, lineCap:"round", lineJoin:"round"}
         }).addTo(job.map);
-        if (job.note) job.note.textContent = "Road route · OpenStreetMap contributors · Routing by OSRM";
+        if (job.note) job.note.textContent = "Road route via OSRM · marker positions are estimates; verify in Google Maps.";
       } catch (error) {
         if (job.note) job.note.textContent = "Approximate route line shown; use Google Maps directions below for navigation.";
       }
