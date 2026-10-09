@@ -19,6 +19,108 @@
   setTheme(root.dataset.theme || "dark");
   themeToggle?.addEventListener("click", () => setTheme(root.dataset.theme === "dark" ? "light" : "dark"));
 
+  // Consistent semantic icon styling across the portfolio. If the icon CDN is
+  // unavailable, retain the original symbols as a graceful fallback.
+  const portfolioIconSelectors = [
+    ".atlas-icon", ".mobile-dock a span", ".ba-step-icon", ".ba-process-icon",
+    ".ba-list-icon", ".ba-layer-icon", ".ba-visual-outcomes > div > span",
+    ".ba-panel-symbol", ".expertise-icon", ".workflow-solution-icon",
+    ".workflow-stage-symbol", ".career-next-rocket", ".career-next-star",
+    ".goals-category span", ".goals-target-icon", ".goals-focus-card > span"
+  ].join(",");
+  function portfolioIconName(label, node) {
+    const value = String(label || "").toLowerCase();
+    const cls = node?.classList || { contains: () => false };
+    if (cls.contains("career-next-rocket")) return "rocket";
+    if (cls.contains("career-next-star")) return "sparkles";
+    if (node?.closest(".workflow-solution-tab")) {
+      const key = node.closest(".workflow-solution-tab").dataset.solution;
+      return ({em:"heart-pulse",oncology:"ribbon",bloodbank:"droplet",lab:"flask-conical"})[key] || "activity";
+    }
+    if (/(^|\s)(intro|home)(\s|$)/.test(value)) return "house";
+    if (/about|profile/.test(value)) return "user-round";
+    if (/career|experience/.test(value)) return "briefcase-business";
+    if (/healthcare|clinical|patient/.test(value)) return "heart-pulse";
+    if (/project/.test(value)) return "folder-kanban";
+    if (/credential|certification|award/.test(value)) return "badge-check";
+    if (/movie|film/.test(value)) return "clapperboard";
+    if (/trip|travel/.test(value)) return "plane";
+    if (/gallery|images/.test(value)) return "images";
+    if (/resume|cv/.test(value)) return "file-text";
+    if (/contact|email/.test(value)) return "send";
+    if (/discover|arrival|registration|search/.test(value)) return "search";
+    if (/analyz|result|analytics|data/.test(value)) return "chart-no-axes-combined";
+    if (/define|requirement|documentation|notes|traceability/.test(value)) return "file-check";
+    if (/design|process|workflow|mapping/.test(value)) return "workflow";
+    if (/deliver|impact|value|growth ahead|long-term vision/.test(value)) return "rocket";
+    if (/business strategy|business value/.test(value)) return "target";
+    if (/people|stakeholder|collaboration|team/.test(value)) return "users-round";
+    if (/quality|validation|testing|regression/.test(value)) return "shield-check";
+    if (/bank|finance/.test(value)) return "landmark";
+    if (/retail|e-commerce|shopping/.test(value)) return "shopping-bag";
+    if (/manufactur|factory/.test(value)) return "factory";
+    if (/telecom|technology|technical|integration/.test(value)) return "network";
+    if (/government|public/.test(value)) return "landmark";
+    if (/other industr/.test(value)) return "layers";
+    if (/sql|database/.test(value)) return "database";
+    if (/postman|api/.test(value)) return "braces";
+    if (/power bi|reporting/.test(value)) return "chart-column";
+    if (/eggplant|laboratory|laboratory solutions|lab/.test(value)) return "flask-conical";
+    if (/oncology/.test(value)) return "ribbon";
+    if (/blood bank|transfusion/.test(value)) return "droplet";
+    if (/emergency|firstnet/.test(value)) return "heart-pulse";
+    if (/personal|user/.test(value)) return "user-round";
+    if (/career growth/.test(value)) return "trending-up";
+    if (/domain expertise/.test(value)) return "stethoscope";
+    if (/certifications/.test(value)) return "graduation-cap";
+    if (/discover/.test(value)) return "search";
+    if (/analyze/.test(value)) return "chart-no-axes-combined";
+    if (/define/.test(value)) return "file-check";
+    if (/design/.test(value)) return "panels-top-left";
+    if (/deliver/.test(value)) return "arrow-up-right";
+    const glyph = String(label || "").trim();
+    const glyphs = {
+      "⌂":"house","◎":"circle-dot","▣":"square","♡":"heart-pulse","▤":"file-text",
+      "✦":"sparkles","↗":"arrow-up-right","▧":"images","⌁":"activity","⚙":"settings",
+      "✚":"plus","♙":"user-round","⌘":"command","✓":"check","◈":"layers","▦":"layout-grid",
+      "⇄":"arrow-left-right","◇":"diamond","⚗":"flask-conical","♧":"users-round","◉":"circle-dot",
+      "↔":"arrow-left-right","✿":"flower-2","♥":"heart","▥":"chart-no-axes-combined","➤":"arrow-right",
+      "⌕":"search","♜":"trophy","✳":"sparkles","♟":"user-round","↻":"refresh-cw","⚠":"triangle-alert",
+      "⌬":"hexagon","⌖":"crosshair","♡":"heart-pulse","⌂":"house"
+    };
+    return glyphs[glyph] || null;
+  }
+  function refreshPortfolioIcons() {
+    if (!window.lucide || typeof window.lucide.createIcons !== "function") return;
+    document.querySelectorAll(portfolioIconSelectors).forEach(node => {
+      if (node.querySelector("svg")) return;
+      const raw = node.textContent.trim();
+      if (!raw || /^\d+$/.test(raw)) return;
+      let label = raw;
+      const link = node.closest(".atlas-link,.mobile-dock a");
+      if (link) label = link.querySelector("b")?.textContent || raw;
+      const listItem = node.closest("li");
+      if (listItem) label = listItem.querySelector("b")?.textContent || raw;
+      const step = node.closest(".ba-step,.ba-process-step,.workflow-stage,.goals-focus-card");
+      if (step) label = step.querySelector("h3,b")?.textContent || raw;
+      const layer = node.closest(".ba-stack-layer");
+      if (layer) label = layer.querySelector(".ba-stack-title")?.textContent || raw;
+      const heading = node.closest("header");
+      if (heading && node.classList.contains("ba-panel-symbol")) label = heading.querySelector("h3")?.textContent || raw;
+      const solutionTab = node.closest(".workflow-solution-tab");
+      if (solutionTab) label = solutionTab.querySelector("b")?.textContent || raw;
+      const goalsButton = node.closest("[data-goal-category]");
+      if (goalsButton) label = goalsButton.dataset.goalCategory.replace(/-/g," ");
+      const expertise = node.closest(".expertise-card");
+      if (expertise) label = expertise.querySelector("h3")?.textContent || raw;
+      const name = portfolioIconName(label, node) || portfolioIconName(raw, node);
+      if (!name) return;
+      node.innerHTML = '<i class="portfolio-lucide" data-lucide="' + name + '" aria-hidden="true"></i>';
+    });
+    window.lucide.createIcons({attrs: {"stroke-width": 1.9, "aria-hidden": "true"}});
+  }
+  refreshPortfolioIcons();
+
   function closeMenu() {
     nav?.classList.remove("open");
     navButton?.setAttribute("aria-expanded", "false");
