@@ -2035,3 +2035,268 @@ html[data-theme="light"] .goals-graph-node.is-active text{fill:#075cc8}
 @media(max-width:760px){
  .career-journey[data-focused-role="cerner"] .career-track-arrow,.career-journey[data-focused-role="techmahindra"] .career-track-arrow{left:-10px!important}
 }
+
+
+/* Portfolio-wide visual polish: clearer backgrounds, larger content, no decorative numbering */
+:root{
+  --surface-grid:rgba(117,183,255,.055);
+  --surface-glow:rgba(76,143,255,.12);
+}
+html[data-theme="light"]{
+  --surface-grid:rgba(35,100,180,.045);
+  --surface-glow:rgba(75,133,218,.10);
+}
+body{
+  background-color:var(--bg);
+  background-image:
+    radial-gradient(ellipse at 12% 8%,var(--surface-glow),transparent 38%),
+    radial-gradient(ellipse at 88% 24%,color-mix(in srgb,var(--accent2) 7%,transparent),transparent 34%),
+    linear-gradient(var(--surface-grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--surface-grid) 1px,transparent 1px);
+  background-size:auto,auto,48px 48px,48px 48px;
+  background-attachment:fixed;
+}
+html[data-theme="light"] body{
+  background-image:
+    radial-gradient(ellipse at 12% 8%,rgba(54,135,228,.09),transparent 38%),
+    radial-gradient(ellipse at 88% 24%,rgba(104,119,216,.06),transparent 34%),
+    linear-gradient(rgba(35,100,180,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(35,100,180,.045) 1px,transparent 1px);
+}
+.hero{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  padding-top:clamp(76px,8vw,126px);
+  padding-bottom:clamp(44px,5vw,70px);
+  background:transparent;
+}
+.hero:before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,color-mix(in srgb,var(--bg) 76%,transparent),color-mix(in srgb,var(--bg) 44%,transparent) 48%,color-mix(in srgb,var(--bg) 65%,transparent)),
+    linear-gradient(0deg,var(--bg) 0%,transparent 34%,color-mix(in srgb,var(--bg) 10%,transparent)),
+    url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=88") center 43%/cover;
+  opacity:.88;
+  transform:scale(1.015);
+}
+.hero:after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  pointer-events:none;
+  opacity:.2;
+  background-image:linear-gradient(rgba(117,183,255,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(117,183,255,.18) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:linear-gradient(90deg,black,transparent 76%);
+}
+html[data-theme="light"] .hero:before{
+  background:
+    linear-gradient(90deg,rgba(245,248,253,.92),rgba(245,248,253,.74) 48%,rgba(245,248,253,.88)),
+    linear-gradient(0deg,var(--bg) 0%,transparent 42%,rgba(255,255,255,.12)),
+    url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=88") center 43%/cover;
+  opacity:.96;
+}
+.hero-grid{gap:clamp(28px,4vw,64px);align-items:center;position:relative;z-index:1}
+.hero-copy{max-width:790px}
+.hero h1{font-size:clamp(43px,5.2vw,78px);line-height:1.02;max-width:790px;letter-spacing:-.06em}
+.hero-lede{font-size:clamp(14px,1.15vw,17px);line-height:1.85;max-width:660px}
+.hero .intro{font-size:clamp(15px,1.2vw,18px)}
+.hero .pills span{font-size:10px;padding:7px 10px}
+.hero .button{font-size:12px;padding:13px 17px}
+.hero .social-row a{font-size:11px}
+.hero-workflow-panel{backdrop-filter:blur(14px);background:color-mix(in srgb,var(--panel) 88%,transparent);border-color:color-mix(in srgb,var(--accent) 28%,var(--line2))}
+html[data-theme="light"] .hero-workflow-panel{background:rgba(255,255,255,.84)}
+.hero .metrics{position:relative;z-index:1}
+.hero .metrics>div{justify-content:center;min-height:100px}
+.hero .metrics strong{font-size:clamp(26px,2.6vw,34px)}
+.hero .metrics small{font-size:10px}
+.hero .metrics strong{font-variant-numeric:tabular-nums}
+.hero-workflow-panel .ba-step-number,.ba-process-number{display:none!important}
+.hero-workflow-panel .ba-step-icon{
+  display:grid;place-items:center;width:34px;height:34px;flex:none;margin:0 0 10px;
+  border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));border-radius:11px;
+  background:color-mix(in srgb,var(--accent) 13%,var(--panel2));color:var(--accent);
+  font-size:21px;line-height:1;box-shadow:0 5px 16px color-mix(in srgb,var(--accent) 10%,transparent);
+}
+.ba-process-icon{
+  display:grid;place-items:center;width:27px;height:27px;flex:none;margin-bottom:4px;
+  border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line));border-radius:8px;
+  background:color-mix(in srgb,var(--accent) 12%,var(--panel));color:var(--accent);
+  font-size:17px;line-height:1;
+}
+.hero-workflow-panel .ba-step h3{font-size:11px}
+.hero-workflow-panel .ba-step p{font-size:9px;line-height:1.55}
+.ba-process-step b{font-size:10px}
+.ba-process-step small{font-size:9px;line-height:1.5}
+.ba-process-step{padding:10px 8px;align-items:flex-start}
+.ba-process-step:not(:last-child)::after{content:"→";top:13px;right:-8px;font-size:13px}
+.ba-visual-outcomes b{font-size:9px}
+.ba-visual-outcomes small{font-size:8px}
+.atlas-rail{width:clamp(118px,10vw,150px);gap:5px}
+.atlas-link{gap:10px;min-height:39px}
+.atlas-link .atlas-icon{
+  flex:0 0 25px;width:25px;height:25px;display:grid;place-items:center;
+  border:1px solid var(--line);border-radius:8px;background:var(--panel2);
+  color:var(--accent);font-size:14px;line-height:1;
+}
+.atlas-link b{font-size:10px}
+.atlas-link:hover .atlas-icon,.atlas-link.active .atlas-icon{border-color:color-mix(in srgb,var(--accent) 40%,var(--line));background:color-mix(in srgb,var(--accent) 12%,var(--panel2))}
+.about-grid{align-items:stretch;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:clamp(22px,2.3vw,36px)}
+.about-visual{height:100%;min-height:100%;display:flex;flex-direction:column;padding:clamp(18px,2vw,28px);background-image:radial-gradient(ellipse at 50% 19%,color-mix(in srgb,var(--accent2) 13%,transparent),transparent 55%),linear-gradient(155deg,color-mix(in srgb,var(--panel) 96%,transparent),color-mix(in srgb,var(--bg2) 98%,transparent))}
+.ba-visual-heading{padding-bottom:18px}
+.ba-visual-eyebrow{font-size:10px}
+.ba-visual-heading h2{font-size:clamp(27px,2.5vw,37px);line-height:1.1}
+.ba-visual-heading>p:not(.ba-visual-eyebrow){font-size:12px;line-height:1.75;max-width:530px}
+.ba-visual-status{font-size:9px;padding:7px 10px}
+.ba-visual-main{flex:1;min-height:390px;grid-template-columns:minmax(0,.94fr) minmax(0,1.12fr) minmax(0,.94fr);gap:10px;margin-top:16px}
+.ba-visual-main .ba-info-panel{padding:13px 11px 10px}
+.ba-visual-main .ba-info-panel>header{gap:8px;padding-bottom:10px;margin-bottom:8px}
+.ba-visual-main .ba-panel-symbol{width:27px;height:27px;font-size:15px}
+.ba-visual-main .ba-info-panel h3{font-size:11px}
+.ba-visual-main .ba-info-list li{grid-template-columns:24px minmax(0,1fr);gap:7px;padding:9px 0}
+.ba-visual-main .ba-list-icon{width:23px;height:24px;font-size:14px}
+.ba-visual-main .ba-info-list b{font-size:10px;line-height:1.45}
+.ba-visual-main .ba-info-list small{font-size:8.5px;line-height:1.5}
+.ba-core-panel{display:flex;flex-direction:column;min-height:0}
+.ba-core-badge{padding:17px 10px;margin-bottom:12px}
+.ba-core-mark{width:31px;height:31px;font-size:12px}
+.ba-core-badge b{font-size:12px}
+.ba-core-badge small{font-size:9px}
+.ba-visual-stack{display:grid;grid-template-rows:repeat(7,minmax(0,1fr));gap:5px;flex:1}
+.ba-stack-layer{min-height:43px;padding:8px 9px;grid-template-columns:29px minmax(0,1fr);grid-template-rows:auto auto}
+.ba-layer-icon{width:25px;height:26px;font-size:15px;grid-row:1/span 2}
+.ba-stack-title{font-size:9px;line-height:1.35}
+.ba-stack-detail{font-size:7.5px;line-height:1.4}
+.ba-tools-panel .ba-info-list li{padding-block:9px}
+.ba-process-panel{margin-top:15px;padding:14px 13px 12px}
+.ba-process-header h3{font-size:12px}
+.ba-process-header>span{font-size:8px}
+.ba-process-steps{gap:9px}
+.ba-process-step{min-height:89px;padding:10px 8px}
+.ba-process-step:not(:last-child)::after{right:-8px;top:15px}
+.ba-process-icon{width:27px;height:27px;font-size:17px;margin-bottom:5px}
+.ba-process-step b{font-size:10px;line-height:1.4}
+.ba-process-step small{font-size:9px;line-height:1.5}
+.ba-visual-outcomes{margin-top:10px;gap:8px}
+.ba-visual-outcomes>div{grid-template-columns:25px minmax(0,1fr);gap:3px 7px;padding:9px}
+.ba-visual-outcomes>div>span{width:24px;height:25px;font-size:14px}
+.ba-visual-outcomes b{font-size:9px}
+.ba-visual-outcomes small{font-size:8px}
+.about-copy .lead{font-size:clamp(18px,1.5vw,22px);line-height:1.55}
+.about-copy p{font-size:13px;line-height:1.9}
+.about-copy .quote{margin-top:28px;padding:24px;border-radius:18px;min-height:142px;background:linear-gradient(125deg,color-mix(in srgb,var(--accent) 9%,var(--panel)),color-mix(in srgb,var(--accent2) 8%,var(--panel)))}
+.about-copy .quote b{font-size:16px;line-height:1.55}
+.about-copy .quote p{font-size:12px;line-height:1.8;margin:9px 0 14px}
+.about-copy .quote-link{font-size:12px}
+.experience-hub .career-cards-grid{align-items:start}
+.experience-hub .career-role-card{align-self:start;height:auto}
+.experience-hub .career-role-body{flex:initial}
+.experience-hub .career-card-footer{margin-top:14px}
+.experience-hub .career-detail-list li{font-size:11px;line-height:1.75;padding:7px 0}
+.experience-hub .career-solution-mini-grid{align-content:start}
+.experience-hub .career-solution-mini-grid>div{min-height:66px;padding:10px}
+.experience-hub .career-solution-mini-grid b{font-size:10px}
+.experience-hub .career-solution-mini-grid span{font-size:9px;line-height:1.55}
+.experience-hub .career-skill-cloud span{font-size:10px;padding:6px 8px}
+.experience-hub .career-tab{font-size:10px;padding:8px 10px}
+.experience-hub .career-role-heading h3{font-size:17px}
+.experience-hub .career-role-heading p{font-size:11px}
+.experience-hub .career-next-card{min-height:100%;background:linear-gradient(150deg,color-mix(in srgb,var(--accent) 13%,var(--panel)),color-mix(in srgb,var(--accent2) 8%,var(--panel)))}
+.experience-hub .career-next-art{height:105px;margin-bottom:16px}
+.experience-hub .career-next-card h3{font-size:18px;line-height:1.3}
+.experience-hub .career-next-card>p:not(.overline){font-size:10px;line-height:1.8}
+.experience-hub .career-next-pill{font-size:9px;line-height:1.6}
+.experience-hub .career-next-card .button{font-size:10px;padding:11px 10px}
+.expertise-section-header h2{font-size:clamp(36px,4vw,56px)}
+.workflow-explorer-section .workflow-stage b{font-size:12px}
+.workflow-explorer-section .workflow-stage small{font-size:10px;line-height:1.6}
+.workflow-explorer-section .workflow-stage-detail b{font-size:13px}
+.workflow-explorer-section .workflow-stage-detail p{font-size:12px}
+.goals-dialog-header h2{font-size:clamp(27px,3vw,36px)}
+.goals-milestone b,.goals-focus-card b{font-size:10px}
+.goals-milestone p,.goals-focus-card p,.goals-focus-card ul{font-size:9px;line-height:1.65}
+.section.divider{background:transparent}
+@media(max-width:1150px){
+ .about-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .ba-visual-main{min-height:430px}
+ .ba-visual-main .ba-info-panel{padding:10px 8px}
+ .ba-visual-main .ba-info-list li{grid-template-columns:20px minmax(0,1fr);gap:6px;padding:7px 0}
+ .ba-visual-main .ba-list-icon{width:20px;height:21px;font-size:12px}
+ .ba-visual-main .ba-info-list b{font-size:9px}
+ .ba-visual-main .ba-info-list small{font-size:8px}
+ .ba-stack-title{font-size:8px}
+ .ba-stack-detail{font-size:7px}
+ .career-cards-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .career-next-card{grid-column:1/-1;display:grid;grid-template-columns:90px minmax(0,1fr) auto;align-items:center;gap:10px}
+ .career-next-art{grid-row:1/span 4;width:90px;height:90px;margin:0}
+ .career-next-pill{grid-column:2}
+ .career-goals-open{grid-column:3;grid-row:2/span 2;width:auto}
+}
+@media(max-width:850px){
+ .hero{padding-top:66px}
+ .hero:before{background-position:center}
+ .hero-grid{gap:30px}
+ .about-grid{grid-template-columns:minmax(0,1fr);align-items:stretch}
+ .about-visual{height:auto;min-height:0}
+ .ba-visual-main{min-height:0}
+ .career-cards-grid{grid-template-columns:minmax(0,1fr)}
+ .career-role-card--techm,.career-role-card--cerner,.career-next-card{grid-column:auto;grid-row:auto}
+ .experience-hub .career-role-card{width:100%}
+}
+@media(max-width:760px){
+ .ba-visual-main{grid-template-columns:minmax(0,1fr)}
+ .ba-core-panel{grid-row:auto}
+ .ba-visual-stack{grid-template-rows:none}
+ .ba-stack-layer{min-height:46px}
+ .ba-process-steps{grid-template-columns:minmax(0,1fr)}
+ .ba-process-step{display:grid;grid-template-columns:34px minmax(0,1fr);grid-template-rows:auto auto;align-items:center;column-gap:10px;min-height:0;padding:11px 12px}
+ .ba-process-icon{grid-column:1;grid-row:1/span 2;margin:0;width:29px;height:29px}
+ .ba-process-step b{grid-column:2;font-size:11px}
+ .ba-process-step small{grid-column:2;font-size:10px}
+ .ba-process-step:not(:last-child)::after{content:"↓";top:auto;right:auto;left:22px;bottom:-15px}
+ .career-growth-roadmap{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .career-growth-line{display:none}
+}
+@media(max-width:600px){
+ .hero{padding-top:54px;padding-bottom:37px}
+ .hero:before{background-position:55% center;opacity:.86}
+ .hero h1{font-size:clamp(38px,10vw,54px)}
+ .hero-lede{font-size:13px}
+ .hero .metrics>div{min-height:76px}
+ .hero .metrics small{font-size:8px}
+ .about-visual{padding:15px}
+ .ba-visual-heading h2{font-size:29px}
+ .ba-visual-heading>p:not(.ba-visual-eyebrow){font-size:11px}
+ .ba-visual-main .ba-info-panel{padding:13px}
+ .ba-visual-main .ba-info-panel h3{font-size:12px}
+ .ba-visual-main .ba-info-list li{grid-template-columns:25px minmax(0,1fr);gap:8px;padding:9px 0}
+ .ba-visual-main .ba-list-icon{width:23px;height:24px}
+ .ba-visual-main .ba-info-list b{font-size:11px}
+ .ba-visual-main .ba-info-list small{font-size:9px}
+ .ba-stack-title{font-size:10px}
+ .ba-stack-detail{font-size:8.5px}
+ .ba-process-header{flex-direction:column;gap:4px}
+ .ba-process-header>span{max-width:100%;text-align:left;font-size:8px}
+ .ba-process-step b{font-size:11px}
+ .ba-process-step small{font-size:10px}
+ .ba-visual-outcomes{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .ba-visual-outcomes b{font-size:9px}
+ .ba-visual-outcomes small{font-size:8px}
+ .about-copy .quote{padding:20px;min-height:0}
+ .about-copy .quote b{font-size:15px}
+ .experience-hub .career-detail-list li{font-size:10px}
+ .experience-hub .career-solution-mini-grid{grid-template-columns:1fr 1fr}
+ .experience-hub .career-solution-mini-grid b{font-size:9px}
+ .experience-hub .career-solution-mini-grid span{font-size:8px}
+ .experience-hub .career-tab{font-size:9px}
+ .experience-hub .career-skill-cloud span{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero:before{transform:none}
+}
