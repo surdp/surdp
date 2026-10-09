@@ -893,7 +893,6 @@ html[data-theme="light"] .project-art{box-shadow:0 10px 26px rgba(23,44,70,.07)}
 .about-copy p { max-width: 720px; }
 .about-copy .lead { max-width: 690px; }
 .about-copy .quote { align-items: flex-start; margin-top: 26px; }
-.about-copy .quote > span { flex: none; font-size: 27px; font-weight: 800; }
 .about-copy .quote b { display: block; font-size: 13px; line-height: 1.6; letter-spacing: -.015em; }
 .about-copy .quote p { margin: 6px 0 10px; font-size: 10.5px; line-height: 1.75; }
 .quote-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 2px; color: var(--accent); font-size: 10px; font-weight: 800; border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); padding-bottom: 3px; }
