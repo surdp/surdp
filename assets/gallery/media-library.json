@@ -1,0 +1,872 @@
+{
+  "version": 2,
+  "description": "Personal travel photos and videos, mixed together in one collage wall. Original filenames are retained.",
+  "photos": [
+    {
+      "id": "TRAVEL-PHOTO-0001",
+      "type": "image",
+      "filename": "17848352871248479r.webp",
+      "sourceRelativePath": "17848352871248479r.webp",
+      "src": "assets/gallery/photos/17848352871248479r.webp",
+      "bytes": 413035
+    },
+    {
+      "id": "TRAVEL-PHOTO-0002",
+      "type": "image",
+      "filename": "17870633763160424.webp",
+      "sourceRelativePath": "17870633763160424.webp",
+      "src": "assets/gallery/photos/17870633763160424.webp",
+      "bytes": 276681
+    },
+    {
+      "id": "TRAVEL-PHOTO-0003",
+      "type": "image",
+      "filename": "17910718790977149.webp",
+      "sourceRelativePath": "17910718790977149.webp",
+      "src": "assets/gallery/photos/17910718790977149.webp",
+      "bytes": 364062
+    },
+    {
+      "id": "TRAVEL-PHOTO-0004",
+      "type": "image",
+      "filename": "17930950451867053.webp",
+      "sourceRelativePath": "17930950451867053.webp",
+      "src": "assets/gallery/photos/17930950451867053.webp",
+      "bytes": 278973
+    },
+    {
+      "id": "TRAVEL-PHOTO-0005",
+      "type": "image",
+      "filename": "17935558196854887r.webp",
+      "sourceRelativePath": "17935558196854887r.webp",
+      "src": "assets/gallery/photos/17935558196854887r.webp",
+      "bytes": 311726
+    },
+    {
+      "id": "TRAVEL-PHOTO-0006",
+      "type": "image",
+      "filename": "17970048371743868r.webp",
+      "sourceRelativePath": "17970048371743868r.webp",
+      "src": "assets/gallery/photos/17970048371743868r.webp",
+      "bytes": 518694
+    },
+    {
+      "id": "TRAVEL-PHOTO-0007",
+      "type": "image",
+      "filename": "18002374805626004.webp",
+      "sourceRelativePath": "18002374805626004.webp",
+      "src": "assets/gallery/photos/18002374805626004.webp",
+      "bytes": 464293
+    },
+    {
+      "id": "TRAVEL-PHOTO-0008",
+      "type": "image",
+      "filename": "18004821008413378.webp",
+      "sourceRelativePath": "18004821008413378.webp",
+      "src": "assets/gallery/photos/18004821008413378.webp",
+      "bytes": 67351
+    },
+    {
+      "id": "TRAVEL-PHOTO-0009",
+      "type": "image",
+      "filename": "18018195365346738.webp",
+      "sourceRelativePath": "18018195365346738.webp",
+      "src": "assets/gallery/photos/18018195365346738.webp",
+      "bytes": 358835
+    },
+    {
+      "id": "TRAVEL-PHOTO-0010",
+      "type": "image",
+      "filename": "18027619004477366.webp",
+      "sourceRelativePath": "18027619004477366.webp",
+      "src": "assets/gallery/photos/18027619004477366.webp",
+      "bytes": 291709
+    },
+    {
+      "id": "TRAVEL-PHOTO-0011",
+      "type": "image",
+      "filename": "18042542446740212.webp",
+      "sourceRelativePath": "18042542446740212.webp",
+      "src": "assets/gallery/photos/18042542446740212.webp",
+      "bytes": 252718
+    },
+    {
+      "id": "TRAVEL-PHOTO-0012",
+      "type": "image",
+      "filename": "18055995229632874.webp",
+      "sourceRelativePath": "18055995229632874.webp",
+      "src": "assets/gallery/photos/18055995229632874.webp",
+      "bytes": 457465
+    },
+    {
+      "id": "TRAVEL-PHOTO-0013",
+      "type": "image",
+      "filename": "18343596400186738.webp",
+      "sourceRelativePath": "18343596400186738.webp",
+      "src": "assets/gallery/photos/18343596400186738.webp",
+      "bytes": 300152
+    },
+    {
+      "id": "TRAVEL-PHOTO-0014",
+      "type": "image",
+      "filename": "18410746996076649.webp",
+      "sourceRelativePath": "18410746996076649.webp",
+      "src": "assets/gallery/photos/18410746996076649.webp",
+      "bytes": 488103
+    },
+    {
+      "id": "TRAVEL-PHOTO-0015",
+      "type": "image",
+      "filename": "2ObJ8nXiFDx.jpg",
+      "sourceRelativePath": "2ObJ8nXiFDx.jpg",
+      "src": "assets/gallery/photos/2ObJ8nXiFDx.jpg",
+      "bytes": 287106
+    },
+    {
+      "id": "TRAVEL-PHOTO-0016",
+      "type": "image",
+      "filename": "3fzdhx1tvbF.jpg",
+      "sourceRelativePath": "3fzdhx1tvbF.jpg",
+      "src": "assets/gallery/photos/3fzdhx1tvbF.jpg",
+      "bytes": 276759
+    },
+    {
+      "id": "TRAVEL-PHOTO-0017",
+      "type": "image",
+      "filename": "5tCDwZwGWUH.jpg",
+      "sourceRelativePath": "5tCDwZwGWUH.jpg",
+      "src": "assets/gallery/photos/5tCDwZwGWUH.jpg",
+      "bytes": 478663
+    },
+    {
+      "id": "TRAVEL-PHOTO-0018",
+      "type": "image",
+      "filename": "6p6FdlwfRxA.jpg",
+      "sourceRelativePath": "6p6FdlwfRxA.jpg",
+      "src": "assets/gallery/photos/6p6FdlwfRxA.jpg",
+      "bytes": 67429
+    },
+    {
+      "id": "TRAVEL-PHOTO-0019",
+      "type": "image",
+      "filename": "88weUf4CFkZ.jpg",
+      "sourceRelativePath": "88weUf4CFkZ.jpg",
+      "src": "assets/gallery/photos/88weUf4CFkZ.jpg",
+      "bytes": 794417
+    },
+    {
+      "id": "TRAVEL-PHOTO-0020",
+      "type": "image",
+      "filename": "9GQBnhSaqdo.jpg",
+      "sourceRelativePath": "9GQBnhSaqdo.jpg",
+      "src": "assets/gallery/photos/9GQBnhSaqdo.jpg",
+      "bytes": 191562
+    },
+    {
+      "id": "TRAVEL-PHOTO-0021",
+      "type": "image",
+      "filename": "IMG-20250414-WA0118.jpg",
+      "sourceRelativePath": "IMG-20250414-WA0118.jpg",
+      "src": "assets/gallery/photos/IMG-20250414-WA0118.jpg",
+      "bytes": 199947
+    },
+    {
+      "id": "TRAVEL-PHOTO-0022",
+      "type": "image",
+      "filename": "IMG-20250414-WA0123.jpg",
+      "sourceRelativePath": "IMG-20250414-WA0123.jpg",
+      "src": "assets/gallery/photos/IMG-20250414-WA0123.jpg",
+      "bytes": 100365
+    },
+    {
+      "id": "TRAVEL-PHOTO-0023",
+      "type": "image",
+      "filename": "IMG-20250415-WA0013.jpg",
+      "sourceRelativePath": "IMG-20250415-WA0013.jpg",
+      "src": "assets/gallery/photos/IMG-20250415-WA0013.jpg",
+      "bytes": 165513
+    },
+    {
+      "id": "TRAVEL-PHOTO-0024",
+      "type": "image",
+      "filename": "IMG-20250418-WA0011.jpg",
+      "sourceRelativePath": "IMG-20250418-WA0011.jpg",
+      "src": "assets/gallery/photos/IMG-20250418-WA0011.jpg",
+      "bytes": 1023340
+    },
+    {
+      "id": "TRAVEL-PHOTO-0025",
+      "type": "image",
+      "filename": "IMG-20250419-WA0159.jpg",
+      "sourceRelativePath": "IMG-20250419-WA0159.jpg",
+      "src": "assets/gallery/photos/IMG-20250419-WA0159.jpg",
+      "bytes": 555065
+    },
+    {
+      "id": "TRAVEL-PHOTO-0026",
+      "type": "image",
+      "filename": "IMG-20250419-WA0294.jpg",
+      "sourceRelativePath": "IMG-20250419-WA0294.jpg",
+      "src": "assets/gallery/photos/IMG-20250419-WA0294.jpg",
+      "bytes": 1046802
+    },
+    {
+      "id": "TRAVEL-PHOTO-0027",
+      "type": "image",
+      "filename": "IMG-20250419-WA0392.jpg",
+      "sourceRelativePath": "IMG-20250419-WA0392.jpg",
+      "src": "assets/gallery/photos/IMG-20250419-WA0392.jpg",
+      "bytes": 792438
+    },
+    {
+      "id": "TRAVEL-PHOTO-0028",
+      "type": "image",
+      "filename": "IMG20240510152748.jpg",
+      "sourceRelativePath": "IMG20240510152748.jpg",
+      "src": "assets/gallery/photos/IMG20240510152748.jpg",
+      "bytes": 3587516
+    },
+    {
+      "id": "TRAVEL-PHOTO-0029",
+      "type": "image",
+      "filename": "IMG20241012170450.jpg",
+      "sourceRelativePath": "IMG20241012170450.jpg",
+      "src": "assets/gallery/photos/IMG20241012170450.jpg",
+      "bytes": 4609697
+    },
+    {
+      "id": "TRAVEL-PHOTO-0030",
+      "type": "image",
+      "filename": "IMG20241020152751.jpg",
+      "sourceRelativePath": "IMG20241020152751.jpg",
+      "src": "assets/gallery/photos/IMG20241020152751.jpg",
+      "bytes": 3448255
+    },
+    {
+      "id": "TRAVEL-PHOTO-0031",
+      "type": "image",
+      "filename": "IMG20241020152803.jpg",
+      "sourceRelativePath": "IMG20241020152803.jpg",
+      "src": "assets/gallery/photos/IMG20241020152803.jpg",
+      "bytes": 2944710
+    },
+    {
+      "id": "TRAVEL-PHOTO-0032",
+      "type": "image",
+      "filename": "IMG20241020152817.jpg",
+      "sourceRelativePath": "IMG20241020152817.jpg",
+      "src": "assets/gallery/photos/IMG20241020152817.jpg",
+      "bytes": 3543061
+    },
+    {
+      "id": "TRAVEL-PHOTO-0033",
+      "type": "image",
+      "filename": "IMG20241020160408.jpg",
+      "sourceRelativePath": "IMG20241020160408.jpg",
+      "src": "assets/gallery/photos/IMG20241020160408.jpg",
+      "bytes": 2744538
+    },
+    {
+      "id": "TRAVEL-PHOTO-0034",
+      "type": "image",
+      "filename": "IMG20241027104940.jpg",
+      "sourceRelativePath": "IMG20241027104940.jpg",
+      "src": "assets/gallery/photos/IMG20241027104940.jpg",
+      "bytes": 2162884
+    },
+    {
+      "id": "TRAVEL-PHOTO-0035",
+      "type": "image",
+      "filename": "IMG20241027105354.jpg",
+      "sourceRelativePath": "IMG20241027105354.jpg",
+      "src": "assets/gallery/photos/IMG20241027105354.jpg",
+      "bytes": 2894164
+    },
+    {
+      "id": "TRAVEL-PHOTO-0036",
+      "type": "image",
+      "filename": "IMG20241027105557.jpg",
+      "sourceRelativePath": "IMG20241027105557.jpg",
+      "src": "assets/gallery/photos/IMG20241027105557.jpg",
+      "bytes": 2071684
+    },
+    {
+      "id": "TRAVEL-PHOTO-0037",
+      "type": "image",
+      "filename": "IMG20241027111734.jpg",
+      "sourceRelativePath": "IMG20241027111734.jpg",
+      "src": "assets/gallery/photos/IMG20241027111734.jpg",
+      "bytes": 2925255
+    },
+    {
+      "id": "TRAVEL-PHOTO-0038",
+      "type": "image",
+      "filename": "IMG20241228061939.jpg",
+      "sourceRelativePath": "IMG20241228061939.jpg",
+      "src": "assets/gallery/photos/IMG20241228061939.jpg",
+      "bytes": 9969199
+    },
+    {
+      "id": "TRAVEL-PHOTO-0039",
+      "type": "image",
+      "filename": "IMG20241228070822.jpg",
+      "sourceRelativePath": "IMG20241228070822.jpg",
+      "src": "assets/gallery/photos/IMG20241228070822.jpg",
+      "bytes": 13701042
+    },
+    {
+      "id": "TRAVEL-PHOTO-0040",
+      "type": "image",
+      "filename": "IMG20241228173554.jpg",
+      "sourceRelativePath": "IMG20241228173554.jpg",
+      "src": "assets/gallery/photos/IMG20241228173554.jpg",
+      "bytes": 11749387
+    },
+    {
+      "id": "TRAVEL-PHOTO-0041",
+      "type": "image",
+      "filename": "IMG20241228181325.jpg",
+      "sourceRelativePath": "IMG20241228181325.jpg",
+      "src": "assets/gallery/photos/IMG20241228181325.jpg",
+      "bytes": 10185653
+    },
+    {
+      "id": "TRAVEL-PHOTO-0042",
+      "type": "image",
+      "filename": "IMG20241228185616.jpg",
+      "sourceRelativePath": "IMG20241228185616.jpg",
+      "src": "assets/gallery/photos/IMG20241228185616.jpg",
+      "bytes": 6414702
+    },
+    {
+      "id": "TRAVEL-PHOTO-0043",
+      "type": "image",
+      "filename": "IMG20241229064012.jpg",
+      "sourceRelativePath": "IMG20241229064012.jpg",
+      "src": "assets/gallery/photos/IMG20241229064012.jpg",
+      "bytes": 11544408
+    },
+    {
+      "id": "TRAVEL-PHOTO-0044",
+      "type": "image",
+      "filename": "IMG20241230123735.jpg",
+      "sourceRelativePath": "IMG20241230123735.jpg",
+      "src": "assets/gallery/photos/IMG20241230123735.jpg",
+      "bytes": 12460858
+    },
+    {
+      "id": "TRAVEL-PHOTO-0045",
+      "type": "image",
+      "filename": "IMG20241230123808.jpg",
+      "sourceRelativePath": "IMG20241230123808.jpg",
+      "src": "assets/gallery/photos/IMG20241230123808.jpg",
+      "bytes": 12797389
+    },
+    {
+      "id": "TRAVEL-PHOTO-0046",
+      "type": "image",
+      "filename": "IMG_20250503_105614470_HDR.jpg",
+      "sourceRelativePath": "IMG_20250503_105614470_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20250503_105614470_HDR.jpg",
+      "bytes": 2676742
+    },
+    {
+      "id": "TRAVEL-PHOTO-0047",
+      "type": "image",
+      "filename": "IMG_20250517_133000072_HDR.jpg",
+      "sourceRelativePath": "IMG_20250517_133000072_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20250517_133000072_HDR.jpg",
+      "bytes": 1637033
+    },
+    {
+      "id": "TRAVEL-PHOTO-0048",
+      "type": "image",
+      "filename": "IMG_20250615_094927649_HDR.jpg",
+      "sourceRelativePath": "IMG_20250615_094927649_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20250615_094927649_HDR.jpg",
+      "bytes": 2511548
+    },
+    {
+      "id": "TRAVEL-PHOTO-0049",
+      "type": "image",
+      "filename": "IMG_20250615_153201392_HDR.jpg",
+      "sourceRelativePath": "IMG_20250615_153201392_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20250615_153201392_HDR.jpg",
+      "bytes": 3080994
+    },
+    {
+      "id": "TRAVEL-PHOTO-0050",
+      "type": "image",
+      "filename": "IMG_20250709_175602411.jpg",
+      "sourceRelativePath": "IMG_20250709_175602411.jpg",
+      "src": "assets/gallery/photos/IMG_20250709_175602411.jpg",
+      "bytes": 2895961
+    },
+    {
+      "id": "TRAVEL-PHOTO-0051",
+      "type": "image",
+      "filename": "IMG_20250709_180505141_HDR.jpg",
+      "sourceRelativePath": "IMG_20250709_180505141_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20250709_180505141_HDR.jpg",
+      "bytes": 2357937
+    },
+    {
+      "id": "TRAVEL-PHOTO-0052",
+      "type": "image",
+      "filename": "IMG_20250830_101910313_HDR.jpg",
+      "sourceRelativePath": "IMG_20250830_101910313_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20250830_101910313_HDR.jpg",
+      "bytes": 3126814
+    },
+    {
+      "id": "TRAVEL-PHOTO-0053",
+      "type": "image",
+      "filename": "IMG_20250830_160102768_HDR.jpg",
+      "sourceRelativePath": "IMG_20250830_160102768_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20250830_160102768_HDR.jpg",
+      "bytes": 4206380
+    },
+    {
+      "id": "TRAVEL-PHOTO-0054",
+      "type": "image",
+      "filename": "IMG_20251025_160453149_HDR.jpg",
+      "sourceRelativePath": "IMG_20251025_160453149_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20251025_160453149_HDR.jpg",
+      "bytes": 3007980
+    },
+    {
+      "id": "TRAVEL-PHOTO-0055",
+      "type": "image",
+      "filename": "IMG_20251025_160659546_HDR.jpg",
+      "sourceRelativePath": "IMG_20251025_160659546_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20251025_160659546_HDR.jpg",
+      "bytes": 3721562
+    },
+    {
+      "id": "TRAVEL-PHOTO-0056",
+      "type": "image",
+      "filename": "IMG_20251025_170453034_HDR.jpg",
+      "sourceRelativePath": "IMG_20251025_170453034_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20251025_170453034_HDR.jpg",
+      "bytes": 2319950
+    },
+    {
+      "id": "TRAVEL-PHOTO-0057",
+      "type": "image",
+      "filename": "IMG_20251025_170822978_HDR.jpg",
+      "sourceRelativePath": "IMG_20251025_170822978_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20251025_170822978_HDR.jpg",
+      "bytes": 1890146
+    },
+    {
+      "id": "TRAVEL-PHOTO-0058",
+      "type": "image",
+      "filename": "IMG_20251206_155213688.jpg",
+      "sourceRelativePath": "IMG_20251206_155213688.jpg",
+      "src": "assets/gallery/photos/IMG_20251206_155213688.jpg",
+      "bytes": 2091862
+    },
+    {
+      "id": "TRAVEL-PHOTO-0059",
+      "type": "image",
+      "filename": "IMG_20251206_164036186_HDR.jpg",
+      "sourceRelativePath": "IMG_20251206_164036186_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20251206_164036186_HDR.jpg",
+      "bytes": 2003624
+    },
+    {
+      "id": "TRAVEL-PHOTO-0060",
+      "type": "image",
+      "filename": "IMG_20251206_165140653_HDR.jpg",
+      "sourceRelativePath": "IMG_20251206_165140653_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20251206_165140653_HDR.jpg",
+      "bytes": 2779783
+    },
+    {
+      "id": "TRAVEL-PHOTO-0061",
+      "type": "image",
+      "filename": "IMG_20251214_173230943_HDR.jpg",
+      "sourceRelativePath": "IMG_20251214_173230943_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20251214_173230943_HDR.jpg",
+      "bytes": 1093599
+    },
+    {
+      "id": "TRAVEL-PHOTO-0062",
+      "type": "image",
+      "filename": "IMG_20251214_180125573_HDR.jpg",
+      "sourceRelativePath": "IMG_20251214_180125573_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20251214_180125573_HDR.jpg",
+      "bytes": 2433226
+    },
+    {
+      "id": "TRAVEL-PHOTO-0063",
+      "type": "image",
+      "filename": "IMG_20251225_064549293_HDR.jpg",
+      "sourceRelativePath": "IMG_20251225_064549293_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20251225_064549293_HDR.jpg",
+      "bytes": 2891547
+    },
+    {
+      "id": "TRAVEL-PHOTO-0064",
+      "type": "image",
+      "filename": "IMG_20251225_065052614.jpg",
+      "sourceRelativePath": "IMG_20251225_065052614.jpg",
+      "src": "assets/gallery/photos/IMG_20251225_065052614.jpg",
+      "bytes": 2408357
+    },
+    {
+      "id": "TRAVEL-PHOTO-0065",
+      "type": "image",
+      "filename": "IMG_20251225_160445294.jpg",
+      "sourceRelativePath": "IMG_20251225_160445294.jpg",
+      "src": "assets/gallery/photos/IMG_20251225_160445294.jpg",
+      "bytes": 2750890
+    },
+    {
+      "id": "TRAVEL-PHOTO-0066",
+      "type": "image",
+      "filename": "IMG_20251225_170319740.jpg",
+      "sourceRelativePath": "IMG_20251225_170319740.jpg",
+      "src": "assets/gallery/photos/IMG_20251225_170319740.jpg",
+      "bytes": 2161654
+    },
+    {
+      "id": "TRAVEL-PHOTO-0067",
+      "type": "image",
+      "filename": "IMG_20251225_170628515.jpg",
+      "sourceRelativePath": "IMG_20251225_170628515.jpg",
+      "src": "assets/gallery/photos/IMG_20251225_170628515.jpg",
+      "bytes": 1940944
+    },
+    {
+      "id": "TRAVEL-PHOTO-0068",
+      "type": "image",
+      "filename": "IMG_20251225_171029047_HDR.jpg",
+      "sourceRelativePath": "IMG_20251225_171029047_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20251225_171029047_HDR.jpg",
+      "bytes": 1870718
+    },
+    {
+      "id": "TRAVEL-PHOTO-0069",
+      "type": "image",
+      "filename": "IMG_20251225_182957126.jpg",
+      "sourceRelativePath": "IMG_20251225_182957126.jpg",
+      "src": "assets/gallery/photos/IMG_20251225_182957126.jpg",
+      "bytes": 2203710
+    },
+    {
+      "id": "TRAVEL-PHOTO-0070",
+      "type": "image",
+      "filename": "IMG_20251225_182958543.jpg",
+      "sourceRelativePath": "IMG_20251225_182958543.jpg",
+      "src": "assets/gallery/photos/IMG_20251225_182958543.jpg",
+      "bytes": 2171631
+    },
+    {
+      "id": "TRAVEL-PHOTO-0071",
+      "type": "image",
+      "filename": "IMG_20251225_183130826.jpg",
+      "sourceRelativePath": "IMG_20251225_183130826.jpg",
+      "src": "assets/gallery/photos/IMG_20251225_183130826.jpg",
+      "bytes": 2149538
+    },
+    {
+      "id": "TRAVEL-PHOTO-0072",
+      "type": "image",
+      "filename": "IMG_20251226_141109783_HDR.jpg",
+      "sourceRelativePath": "IMG_20251226_141109783_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20251226_141109783_HDR.jpg",
+      "bytes": 3614531
+    },
+    {
+      "id": "TRAVEL-PHOTO-0073",
+      "type": "image",
+      "filename": "IMG_20251226_152229850_HDR.jpg",
+      "sourceRelativePath": "IMG_20251226_152229850_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20251226_152229850_HDR.jpg",
+      "bytes": 1699200
+    },
+    {
+      "id": "TRAVEL-PHOTO-0074",
+      "type": "image",
+      "filename": "IMG_20251227_095554984_HDR.jpg",
+      "sourceRelativePath": "IMG_20251227_095554984_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20251227_095554984_HDR.jpg",
+      "bytes": 2133570
+    },
+    {
+      "id": "TRAVEL-PHOTO-0075",
+      "type": "image",
+      "filename": "IMG_20260102_073256301_HDR.jpg",
+      "sourceRelativePath": "IMG_20260102_073256301_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20260102_073256301_HDR.jpg",
+      "bytes": 1340621
+    },
+    {
+      "id": "TRAVEL-PHOTO-0076",
+      "type": "image",
+      "filename": "IMG_20260102_074049355_HDR.jpg",
+      "sourceRelativePath": "IMG_20260102_074049355_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20260102_074049355_HDR.jpg",
+      "bytes": 2244860
+    },
+    {
+      "id": "TRAVEL-PHOTO-0077",
+      "type": "image",
+      "filename": "IMG_20260410_085729584_HDR.jpg",
+      "sourceRelativePath": "IMG_20260410_085729584_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20260410_085729584_HDR.jpg",
+      "bytes": 2719386
+    },
+    {
+      "id": "TRAVEL-PHOTO-0078",
+      "type": "image",
+      "filename": "IMG_20260410_085735093_HDR.jpg",
+      "sourceRelativePath": "IMG_20260410_085735093_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20260410_085735093_HDR.jpg",
+      "bytes": 3547392
+    },
+    {
+      "id": "TRAVEL-PHOTO-0079",
+      "type": "image",
+      "filename": "IMG_20260501_094353908_HDR.jpg",
+      "sourceRelativePath": "IMG_20260501_094353908_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20260501_094353908_HDR.jpg",
+      "bytes": 3617311
+    },
+    {
+      "id": "TRAVEL-PHOTO-0080",
+      "type": "image",
+      "filename": "IMG_20260502_184501340.jpg",
+      "sourceRelativePath": "IMG_20260502_184501340.jpg",
+      "src": "assets/gallery/photos/IMG_20260502_184501340.jpg",
+      "bytes": 2332314
+    },
+    {
+      "id": "TRAVEL-PHOTO-0081",
+      "type": "image",
+      "filename": "IMG_20260502_223406668.jpg",
+      "sourceRelativePath": "IMG_20260502_223406668.jpg",
+      "src": "assets/gallery/photos/IMG_20260502_223406668.jpg",
+      "bytes": 2159157
+    },
+    {
+      "id": "TRAVEL-PHOTO-0082",
+      "type": "image",
+      "filename": "IMG_20260614_182938178_HDR.jpg",
+      "sourceRelativePath": "IMG_20260614_182938178_HDR.jpg",
+      "src": "assets/gallery/photos/IMG_20260614_182938178_HDR.jpg",
+      "bytes": 3348627
+    },
+    {
+      "id": "TRAVEL-PHOTO-0083",
+      "type": "image",
+      "filename": "IMG_9201.HEIC",
+      "sourceRelativePath": "IMG_9201.HEIC",
+      "src": "assets/gallery/photos/IMG_9201.HEIC",
+      "bytes": 2449816
+    },
+    {
+      "id": "TRAVEL-PHOTO-0084",
+      "type": "image",
+      "filename": "IMG_9418.HEIC",
+      "sourceRelativePath": "IMG_9418.HEIC",
+      "src": "assets/gallery/photos/IMG_9418.HEIC",
+      "bytes": 2223208
+    },
+    {
+      "id": "TRAVEL-PHOTO-0085",
+      "type": "image",
+      "filename": "snapgram.io_1c6w1wbn9yvd.webp",
+      "sourceRelativePath": "snapgram.io_1c6w1wbn9yvd.webp",
+      "src": "assets/gallery/photos/snapgram.io_1c6w1wbn9yvd.webp",
+      "bytes": 214226
+    },
+    {
+      "id": "TRAVEL-PHOTO-0086",
+      "type": "image",
+      "filename": "snapgram.io_hf3exzf02eo5.webp",
+      "sourceRelativePath": "snapgram.io_hf3exzf02eo5.webp",
+      "src": "assets/gallery/photos/snapgram.io_hf3exzf02eo5.webp",
+      "bytes": 159244
+    }
+  ],
+  "videos": [
+    {
+      "id": "TRAVEL-VIDEO-0001",
+      "type": "video",
+      "filename": "17991357725769918.mp4",
+      "sourceRelativePath": "17991357725769918.mp4",
+      "src": "assets/gallery/videos/17991357725769918.mp4",
+      "bytes": 213033
+    },
+    {
+      "id": "TRAVEL-VIDEO-0002",
+      "type": "video",
+      "filename": "18098755456513376.mp4",
+      "sourceRelativePath": "18098755456513376.mp4",
+      "src": "assets/gallery/videos/18098755456513376.mp4",
+      "bytes": 133521
+    },
+    {
+      "id": "TRAVEL-VIDEO-0003",
+      "type": "video",
+      "filename": "18098971285497648.mp4",
+      "sourceRelativePath": "18098971285497648.mp4",
+      "src": "assets/gallery/videos/18098971285497648.mp4",
+      "bytes": 192222
+    },
+    {
+      "id": "TRAVEL-VIDEO-0004",
+      "type": "video",
+      "filename": "1Jmsr8I14RG.mp4",
+      "sourceRelativePath": "1Jmsr8I14RG.mp4",
+      "src": "assets/gallery/videos/1Jmsr8I14RG.mp4",
+      "bytes": 170607
+    },
+    {
+      "id": "TRAVEL-VIDEO-0005",
+      "type": "video",
+      "filename": "4Awrc7PSa9b.mp4",
+      "sourceRelativePath": "4Awrc7PSa9b.mp4",
+      "src": "assets/gallery/videos/4Awrc7PSa9b.mp4",
+      "bytes": 582875
+    },
+    {
+      "id": "TRAVEL-VIDEO-0006",
+      "type": "video",
+      "filename": "5tlNrVlbd69.mp4",
+      "sourceRelativePath": "5tlNrVlbd69.mp4",
+      "src": "assets/gallery/videos/5tlNrVlbd69.mp4",
+      "bytes": 310612
+    },
+    {
+      "id": "TRAVEL-VIDEO-0007",
+      "type": "video",
+      "filename": "9pXoRi4pC9o.mp4",
+      "sourceRelativePath": "9pXoRi4pC9o.mp4",
+      "src": "assets/gallery/videos/9pXoRi4pC9o.mp4",
+      "bytes": 1798525
+    },
+    {
+      "id": "TRAVEL-VIDEO-0008",
+      "type": "video",
+      "filename": "snapgram.io_0qucmb5xcg28.mp4",
+      "sourceRelativePath": "snapgram.io_0qucmb5xcg28.mp4",
+      "src": "assets/gallery/videos/snapgram.io_0qucmb5xcg28.mp4",
+      "bytes": 905358
+    },
+    {
+      "id": "TRAVEL-VIDEO-0009",
+      "type": "video",
+      "filename": "snapgram.io_21jeomy4lmqk.mp4",
+      "sourceRelativePath": "snapgram.io_21jeomy4lmqk.mp4",
+      "src": "assets/gallery/videos/snapgram.io_21jeomy4lmqk.mp4",
+      "bytes": 478394
+    },
+    {
+      "id": "TRAVEL-VIDEO-0010",
+      "type": "video",
+      "filename": "snapgram.io_365921297952.mp4",
+      "sourceRelativePath": "snapgram.io_365921297952.mp4",
+      "src": "assets/gallery/videos/snapgram.io_365921297952.mp4",
+      "bytes": 3477968
+    },
+    {
+      "id": "TRAVEL-VIDEO-0011",
+      "type": "video",
+      "filename": "snapgram.io_365921675896.mp4",
+      "sourceRelativePath": "snapgram.io_365921675896.mp4",
+      "src": "assets/gallery/videos/snapgram.io_365921675896.mp4",
+      "bytes": 976132
+    },
+    {
+      "id": "TRAVEL-VIDEO-0012",
+      "type": "video",
+      "filename": "snapgram.io_365991558909.mp4",
+      "sourceRelativePath": "snapgram.io_365991558909.mp4",
+      "src": "assets/gallery/videos/snapgram.io_365991558909.mp4",
+      "bytes": 1577918
+    },
+    {
+      "id": "TRAVEL-VIDEO-0013",
+      "type": "video",
+      "filename": "snapgram.io_a6j85px30o5c.mp4",
+      "sourceRelativePath": "snapgram.io_a6j85px30o5c.mp4",
+      "src": "assets/gallery/videos/snapgram.io_a6j85px30o5c.mp4",
+      "bytes": 484362
+    },
+    {
+      "id": "TRAVEL-VIDEO-0014",
+      "type": "video",
+      "filename": "snapgram.io_a89vfbue7qfr.mp4",
+      "sourceRelativePath": "snapgram.io_a89vfbue7qfr.mp4",
+      "src": "assets/gallery/videos/snapgram.io_a89vfbue7qfr.mp4",
+      "bytes": 439632
+    },
+    {
+      "id": "TRAVEL-VIDEO-0015",
+      "type": "video",
+      "filename": "snapgram.io_hq7fws4hh8kw.mp4",
+      "sourceRelativePath": "snapgram.io_hq7fws4hh8kw.mp4",
+      "src": "assets/gallery/videos/snapgram.io_hq7fws4hh8kw.mp4",
+      "bytes": 3312638
+    },
+    {
+      "id": "TRAVEL-VIDEO-0016",
+      "type": "video",
+      "filename": "snapgram.io_m3d07n6wpz7m.mp4",
+      "sourceRelativePath": "snapgram.io_m3d07n6wpz7m.mp4",
+      "src": "assets/gallery/videos/snapgram.io_m3d07n6wpz7m.mp4",
+      "bytes": 300380
+    },
+    {
+      "id": "TRAVEL-VIDEO-0017",
+      "type": "video",
+      "filename": "snapgram.io_o43p86t0k8wp.mp4",
+      "sourceRelativePath": "snapgram.io_o43p86t0k8wp.mp4",
+      "src": "assets/gallery/videos/snapgram.io_o43p86t0k8wp.mp4",
+      "bytes": 350035
+    },
+    {
+      "id": "TRAVEL-VIDEO-0018",
+      "type": "video",
+      "filename": "snapgram.io_qrwbs1q27at3.mp4",
+      "sourceRelativePath": "snapgram.io_qrwbs1q27at3.mp4",
+      "src": "assets/gallery/videos/snapgram.io_qrwbs1q27at3.mp4",
+      "bytes": 444732
+    },
+    {
+      "id": "TRAVEL-VIDEO-0019",
+      "type": "video",
+      "filename": "snapgram.io_u3rifjt4fjxx.mp4",
+      "sourceRelativePath": "snapgram.io_u3rifjt4fjxx.mp4",
+      "src": "assets/gallery/videos/snapgram.io_u3rifjt4fjxx.mp4",
+      "bytes": 581195
+    },
+    {
+      "id": "TRAVEL-VIDEO-0020",
+      "type": "video",
+      "filename": "snapgram.io_vwbqtg949vvx.mp4",
+      "sourceRelativePath": "snapgram.io_vwbqtg949vvx.mp4",
+      "src": "assets/gallery/videos/snapgram.io_vwbqtg949vvx.mp4",
+      "bytes": 528494
+    },
+    {
+      "id": "TRAVEL-VIDEO-0021",
+      "type": "video",
+      "filename": "VID20241228071505.mp4",
+      "sourceRelativePath": "VID20241228071505.mp4",
+      "src": "assets/gallery/videos/VID20241228071505.mp4",
+      "bytes": 48081145
+    },
+    {
+      "id": "TRAVEL-VIDEO-0022",
+      "type": "video",
+      "filename": "VID_20260614_182917182.mp4",
+      "sourceRelativePath": "VID_20260614_182917182.mp4",
+      "src": "assets/gallery/videos/VID_20260614_182917182.mp4",
+      "bytes": 14955033
+    }
+  ]
+}

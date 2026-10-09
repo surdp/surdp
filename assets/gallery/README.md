@@ -1,12 +1,12 @@
-# Travel gallery media
+# Travel Gallery files
 
-The `assets/gallery/` folder is the destination for personal travel photographs and ride videos used by the portfolio.
+Copy this `assets/gallery/` folder into the matching `assets/` folder in your portfolio repository.
 
-## Add media
+- `photos/` contains supported image files, preserving original relative names.
+- `videos/` contains supported video files, preserving original relative names.
+- `video-thumbnails/` contains optional preview stills when ffmpeg was available.
+- `media-library.json` is the manifest that feeds the mixed photo wall.
 
-1. Upload original files into this folder (for example, `western-ghats-ride.jpg`, `mysore-weekend.mp4`, and a `mysore-weekend-cover.jpg` poster).
-2. Open `assets/js/travel-gallery.js` and add each item to the `travelMedia` array, following the commented schema at the top of that file.
-3. Use `type: "image"` for JPG, PNG, or WebP photos. Use `type: "video"` for MP4/WebM clips; a poster image is optional but improves the gallery card.
-4. Keep captions short and add dates/locations only when you want them displayed.
+The website mixes photos and videos together. Clicking a tile opens a large viewer; photos can be rotated left/right and users can navigate to previous/next memories. Original source folders were not changed.
 
-The gallery has no stock/sample media by design. Original personal media will only appear after its files and entries are added. GitHub repositories are public unless visibility/settings say otherwise, so do not upload private or sensitive footage.
+Only publish files you created or have permission to share publicly.
