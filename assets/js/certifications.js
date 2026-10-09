@@ -1,6 +1,5 @@
 (() => {
 "use strict";
-const linkedinUrl="https://www.linkedin.com/in/suraj-dp-2a91441bb/details/certifications/";
 // Populate only with verified title-to-file matches. Paths are relative to the site root.
 const certificatePdfs = {
   "LambdaTest Test Automation Professional Certificate": "assets/certificates/lambdatest-test-automation-professional-certificate.pdf",
@@ -95,7 +94,7 @@ if(grid){
  function render(){
   const q=(search?.value||"").trim().toLowerCase(), yr=year?.value||"all";
   const filtered=credentials.filter(c=>(category==="all"||c.category===category)&&(yr==="all"||c.year===yr)&&(!q||[c.title,c.issuer,c.date,c.categoryLabel].join(" ").toLowerCase().includes(q)));
-  grid.innerHTML=filtered.map(c=>{const pdf=certificatePdfs[c.title];const action=pdf?'<button type="button" class="credential-preview-link" data-certificate-pdf="'+esc(pdf)+'" data-certificate-title="'+esc(c.title)+'" data-certificate-issuer="'+esc(c.issuer)+'">Preview PDF ↗</button>':'<a class="credential-link" href="'+linkedinUrl+'" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn certification list">LinkedIn ↗</a>';return '<article class="credential-card"><div class="credential-card-top"><span class="credential-mark">'+esc(mark(c.issuer))+'</span><span class="credential-year">'+esc(c.year)+'</span></div><h3>'+esc(c.title)+'</h3><p class="credential-issuer">'+esc(c.issuer)+'</p><span class="credential-category-label">'+esc(c.categoryLabel)+'</span><div class="credential-card-footer"><span class="credential-date">'+esc(c.date)+'</span>'+action+'</div></article>';}).join("");
+  grid.innerHTML=filtered.map(c=>{const pdf=certificatePdfs[c.title];const action=pdf?'<button type="button" class="credential-preview-link" data-certificate-pdf="'+esc(pdf)+'" data-certificate-title="'+esc(c.title)+'" data-certificate-issuer="'+esc(c.issuer)+'">Preview PDF ↗</button>':'<span class="credential-unavailable" aria-label="Certificate PDF not uploaded yet">PDF not uploaded yet</span>';return '<article class="credential-card"><div class="credential-card-top"><span class="credential-mark">'+esc(mark(c.issuer))+'</span><span class="credential-year">'+esc(c.year)+'</span></div><h3>'+esc(c.title)+'</h3><p class="credential-issuer">'+esc(c.issuer)+'</p><span class="credential-category-label">'+esc(c.categoryLabel)+'</span><div class="credential-card-footer"><span class="credential-date">'+esc(c.date)+'</span>'+action+'</div></article>';}).join("");
   if(results)results.textContent="Showing "+filtered.length+" of "+credentials.length+" listed credentials";
   if(empty)empty.hidden=filtered.length!==0;
   grid.hidden=filtered.length===0;
