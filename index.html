@@ -127,31 +127,21 @@
 <section id="movies" class="section divider movie-section">
   <div class="container">
     <div class="section-header reveal">
-      <div><p class="overline">07 / MOVIE COLLECTION</p><h2>Stories on the <em class="gradient">screen.</em></h2></div>
-      <div><p>A personal movie-media index. Every item stays traceable to its original filename; entries without a confirmed title remain in the collection and can be reviewed later.</p><div class="movie-status">MEDIA CATALOGUE · PHOTOS &amp; VIDEOS</div></div>
+      <div><p class="overline">07 / MOVIE COLLECTION</p><h2>Movie <em class="gradient">collection.</em></h2></div>
+      <p>Photos and videos.</p>
     </div>
     <div class="movie-dashboard reveal">
-      <div class="movie-summary">
-        <div><span class="summary-kicker">ALL MEDIA</span><strong id="movieTotal">—</strong><small>catalogued files</small></div>
-        <div><span class="summary-kicker">PHOTOS</span><strong id="moviePhotoCount">—</strong><small>image files</small></div>
-        <div><span class="summary-kicker">VIDEOS</span><strong id="movieVideoCount">—</strong><small>MP4 files</small></div>
-        <div><span class="summary-kicker">TITLES IDENTIFIED</span><strong id="movieIdentifiedCount">—</strong><small>preliminary title matches</small></div>
+      <div class="movie-filters" role="group" aria-label="Choose media type">
+        <button class="movie-filter active" id="moviePhotosButton" data-movie-filter="photo" aria-pressed="true">Photos <span id="moviePhotoCount">—</span></button>
+        <button class="movie-filter" id="movieVideosButton" data-movie-filter="video" aria-pressed="false">Videos <span id="movieVideoCount">—</span></button>
       </div>
-      <div class="movie-controls">
-        <label class="movie-search"><span aria-hidden="true">⌕</span><input id="movieSearch" type="search" placeholder="Search movie title or original filename…" autocomplete="off" aria-label="Search movie media"></label>
+      <div id="movieGallerySetup" class="movie-setup-note">
+        <span class="movie-setup-icon" aria-hidden="true">▣</span>
+        <div><h3>Media files not connected yet</h3><p>Add the contents of <code>MoviePortfolioReadyForGitHub.zip</code> to the portfolio repository. Photos and videos will appear here automatically.</p></div>
       </div>
-      <div class="movie-filters" role="group" aria-label="Filter movie media">
-        <button class="movie-filter active" data-movie-filter="all" aria-pressed="true">All media</button>
-        <button class="movie-filter" data-movie-filter="photo" aria-pressed="false">Photos</button>
-        <button class="movie-filter" data-movie-filter="video" aria-pressed="false">Videos</button>
-        <button class="movie-filter" data-movie-filter="identified" aria-pressed="false">Titles identified</button>
-        <button class="movie-filter" data-movie-filter="review" aria-pressed="false">Needs review</button>
-      </div>
-      <div class="movie-results-bar"><span id="movieResultsCount" aria-live="polite">Loading media library…</span></div>
-      <div id="movieGallerySetup" class="movie-setup-note"><span class="movie-setup-icon" aria-hidden="true">▣</span><div><h3>Movie media bundle ready to connect</h3><p>The gallery will display all images and videos after the <code>assets/movies/</code> folder is added to the repository. The catalogue is designed to retain unidentified files instead of silently dropping them.</p></div></div>
       <div class="movie-media-grid" id="movieGalleryGrid" aria-live="polite" hidden></div>
-      <div class="movie-gallery-empty" id="movieGalleryEmpty" hidden><h3>No matching media</h3><p>Try another search term or filter.</p></div>
-      <div class="movie-load-more-wrap"><button class="button secondary movie-load-more" id="movieLoadMore" type="button" hidden>Load more ↓</button></div>
+      <div class="movie-gallery-empty" id="movieGalleryEmpty" hidden><h3>No media files found.</h3></div>
+      <div class="movie-load-more-wrap"><button class="button secondary movie-load-more" id="movieLoadMore" type="button" hidden>Load more</button></div>
     </div>
   </div>
 </section>
@@ -185,7 +175,7 @@
 <footer class="footer"><div class="container footer-inner"><a class="brand" href="#home"><span class="brand-icon">SD<span>.</span></span><span class="brand-copy">SURAJ D P<small>PORTFOLIO / 2026</small></span></a><p>Designed with clarity. Built with purpose.</p><div class="footer-links"><a href="https://github.com/surdp" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/suraj-dp-2a91441bb/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="mailto:suraj.dp412@gmail.com">Email</a></div><span class="copyright">© <span id="year"></span> Suraj D P</span></div></footer>
 <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
 <script src="assets/js/certifications.js?v=20261009-3" defer></script>
-<script src="assets/js/movie-gallery.js?v=20261009-1" defer></script>
+<script src="assets/js/movie-gallery.js?v=20261009-2" defer></script>
 <script src="assets/js/travel-gallery.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body></html>
