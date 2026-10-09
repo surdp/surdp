@@ -126,7 +126,7 @@ I’m particularly interested in opportunities where I can combine business anal
 ### Focus Flow
 A productivity and focus project included in my GitHub portfolio. Explore the repository for the project's implementation, features, setup instructions, and technology stack.
 
-**Project link:** [Browse my repositories](https://github.com/surdp?tab=repositories)
+**Project link:** [FocusFlow-App](https://github.com/surdp/FocusFlow-App)
 
 ### LinkedIn Skills Automation with Playwright
 [View repository →](https://github.com/surdp/linkedin-skills-automation)
@@ -141,10 +141,18 @@ A Node.js and Playwright prototype that inspects a LinkedIn profile’s skills i
 
 **Technology:** JavaScript · Node.js · Playwright · Chrome DevTools Protocol · Git
 
+### API Testing with Postman
+[View repository →](https://github.com/surdp/postman-api-testing) · [Additional API testing exercises](https://github.com/surdp/My_project_Postman_API_testing)
+
+Postman API testing repositories for practising API requests and validation. Review the repository documentation for the specific endpoints, assertions, and test scenarios included.
+
+### Java & Maven Practice
+[Java Basics](https://github.com/surdp/java-basics) · [Maven Project](https://github.com/surdp/MySampleMavenProject)
+
+Repositories for Java fundamentals and Maven-based project structure, supporting continued development and test automation learning.
+
 ### Explore More Projects
 [Browse all repositories →](https://github.com/surdp?tab=repositories)
-
-I use personal projects to practise problem-solving, explore automation, and build practical tools. Project descriptions and direct links can be added as each repository is reviewed.
 
 ## Achievements & Recognition
 
