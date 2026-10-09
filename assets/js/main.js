@@ -53,6 +53,114 @@
   }));
 
 
+  // Experience Timeline / Career Growth modes and interactive progression.
+  const careerJourney = document.querySelector(".career-journey");
+  const careerModeButtons = [...document.querySelectorAll("[data-career-mode]")];
+  const careerTrackArrow = document.getElementById("careerTrackArrow");
+  const careerTrackPoints = [...document.querySelectorAll("[data-career-jump]")];
+  const careerRoleCards = [...document.querySelectorAll("[data-career-card]")];
+  const careerCardsGrid = document.querySelector(".career-cards-grid");
+  const careerTrack = document.querySelector(".career-track");
+  const careerGrowthView = document.getElementById("careerGrowthView");
+  const careerGrowthRoadmap = document.querySelector(".career-growth-roadmap");
+  const careerGrowthStages = [...document.querySelectorAll("[data-growth-stage]")];
+  const careerGrowthDetail = document.getElementById("careerGrowthDetail");
+  let careerRoleFocus = "techmahindra";
+  let careerMode = "experience";
+
+  const growthStageDetails = [
+    {
+      eyebrow:"STAGE 01 · FOUNDATIONS", title:"Junior QA / Manual Testing",
+      description:"Build a rigorous base in understanding requirements, designing test cases, executing functional checks and documenting defects clearly.",
+      skills:["Requirement Understanding","Test Case Design","Functional Testing","Defect Lifecycle","Regression Basics"]
+    },
+    {
+      eyebrow:"STAGE 02 · HEALTHCARE QUALITY", title:"Healthcare QA & Test Automation",
+      description:"Apply quality engineering to enterprise healthcare workflows, strengthening regression coverage, integration validation and repeatable automation.",
+      skills:["Healthcare Workflows","Regression Testing","Integration Testing","API Validation","Test Automation"]
+    },
+    {
+      eyebrow:"STAGE 03 · SENIOR DELIVERY", title:"Senior Delivery Consultant",
+      description:"Grow into release ownership, upgrade impact assessment, client coordination and resolving complex delivery risks across healthcare applications.",
+      skills:["Upgrade Impact Analysis","Release Readiness","Defect Triage","Stakeholder Coordination","Clinical Applications"]
+    },
+    {
+      eyebrow:"STAGE 04 · BUSINESS ANALYSIS", title:"Senior Business Analyst",
+      description:"Connect stakeholder needs to documented requirements, process improvements, acceptance criteria and well-coordinated implementation and UAT.",
+      skills:["Requirements Elicitation","Process Modelling","Traceability","Stakeholder Management","UAT & Agile Delivery"]
+    },
+    {
+      eyebrow:"STAGE 05 · NEXT DIRECTION", title:"Healthcare Solution & Product Leadership",
+      description:"An aspirational next step: combine healthcare domain knowledge, analytical thinking and delivery experience to help shape end-to-end solutions and product outcomes.",
+      skills:["Solution Design","Product Ownership","Systems Thinking","Cross-functional Leadership","Outcome-driven Delivery"]
+    }
+  ];
+
+  function selectCareerRole(role) {
+    if (!["cerner","techmahindra"].includes(role)) return;
+    careerRoleFocus = role;
+    if (careerJourney) careerJourney.dataset.focusedRole = role;
+    careerTrackPoints.forEach(button => {
+      const active = button.dataset.careerJump === role;
+      button.classList.toggle("is-current", active);
+      button.setAttribute("aria-current", active ? "step" : "false");
+    });
+    careerRoleCards.forEach(card => card.classList.toggle("is-focused", card.dataset.careerCard === role));
+  }
+  function setCareerMode(mode) {
+    if (!["experience","growth"].includes(mode)) return;
+    careerMode = mode;
+    careerModeButtons.forEach(button => {
+      const active = button.dataset.careerMode === mode;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    const showExperience = mode === "experience";
+    if (careerTrack) careerTrack.hidden = !showExperience;
+    if (careerCardsGrid) careerCardsGrid.hidden = !showExperience;
+    if (careerGrowthView) careerGrowthView.hidden = showExperience;
+    if (careerJourney) careerJourney.classList.toggle("is-growth-mode", !showExperience);
+    if (!showExperience) selectCareerGrowthStage(0);
+  }
+  careerModeButtons.forEach(button => button.addEventListener("click", () => setCareerMode(button.dataset.careerMode)));
+  careerTrackPoints.forEach(button => button.addEventListener("click", () => selectCareerRole(button.dataset.careerJump)));
+  careerTrackArrow?.addEventListener("click", () => selectCareerRole(careerRoleFocus === "techmahindra" ? "cerner" : "techmahindra"));
+
+  function selectCareerGrowthStage(index) {
+    const detail = growthStageDetails[index];
+    if (!detail || !careerGrowthDetail) return;
+    careerGrowthStages.forEach((button, i) => {
+      const active = i === index;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    if (careerGrowthRoadmap) careerGrowthRoadmap.style.setProperty("--growth-arrow-left", (4 + index * 22.5) + "%");
+    careerGrowthDetail.innerHTML = "";
+    const icon = document.createElement("div");
+    icon.className = "career-growth-detail-icon";
+    icon.textContent = String(index + 1).padStart(2, "0");
+    const copy = document.createElement("div");
+    const eyebrow = document.createElement("p");
+    eyebrow.className = "overline";
+    eyebrow.textContent = detail.eyebrow;
+    const title = document.createElement("h4");
+    title.textContent = detail.title;
+    const description = document.createElement("p");
+    description.textContent = detail.description;
+    const skills = document.createElement("div");
+    skills.className = "career-skill-cloud";
+    detail.skills.forEach(skill => {
+      const chip = document.createElement("span");
+      chip.textContent = skill;
+      skills.append(chip);
+    });
+    copy.append(eyebrow, title, description, skills);
+    careerGrowthDetail.append(icon, copy);
+  }
+  careerGrowthStages.forEach(button => button.addEventListener("click", () => selectCareerGrowthStage(Number(button.dataset.growthStage))));
+  selectCareerRole("techmahindra");
+  setCareerMode("experience");
+
   // Career experience tabs: each role owns its own tab panel and skill set.
   document.querySelectorAll("[data-role-tab]").forEach(button => {
     button.addEventListener("click", () => {
