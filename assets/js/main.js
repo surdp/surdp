@@ -13,7 +13,7 @@
       themeToggle.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
       themeToggle.title = theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
     }
-    if (themeMeta) themeMeta.content = theme === "dark" ? "#0b1020" : "#f4f7fc";
+    if (themeMeta) themeMeta.content = theme === "dark" ? "#111923" : "#f5f7fa";
     try { localStorage.setItem("suraj-portfolio-theme", theme); } catch (_) {}
   }
   setTheme(root.dataset.theme || "dark");
