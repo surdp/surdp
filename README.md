@@ -4,7 +4,7 @@
 
 ### Business Analyst · Healthcare IT · QA & Test Automation
 
-**Bridging business needs, clinical workflows, and technology solutions.**
+**Turning business needs into clear requirements, reliable delivery, and measurable outcomes.**
 
 [🌐 Portfolio](https://surdp.github.io/surdp/)
 
