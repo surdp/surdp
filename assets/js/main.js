@@ -9,8 +9,12 @@
   function setTheme(theme) {
     root.dataset.theme = theme;
     if (themeToggle) {
-      themeToggle.innerHTML = '<i class="portfolio-lucide" data-lucide="' + (theme === "dark" ? "sun" : "moon") + '" aria-hidden="true"></i>';
-      if (window.lucide && typeof window.lucide.createIcons === "function") window.lucide.createIcons({attrs: {"stroke-width": 1.9, "aria-hidden": "true"}});
+      if (window.lucide && typeof window.lucide.createIcons === "function") {
+        themeToggle.innerHTML = '<i class="portfolio-lucide" data-lucide="' + (theme === "dark" ? "sun" : "moon") + '" aria-hidden="true"></i>';
+        window.lucide.createIcons({attrs: {"stroke-width": 1.9, "aria-hidden": "true"}});
+      } else {
+        themeToggle.textContent = theme === "dark" ? "☼" : "☾";
+      }
       themeToggle.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
       themeToggle.title = theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
     }
