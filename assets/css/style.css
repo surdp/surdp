@@ -579,3 +579,6 @@ html[data-theme="light"] .project-art{box-shadow:0 10px 26px rgba(23,44,70,.07)}
 @media(max-width:1100px){.trip-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.trip-live-map{height:255px}}
 @media(max-width:700px){.trip-grid{grid-template-columns:1fr}.trip-card{max-width:480px;width:100%;margin:0 auto}.trip-live-map{height:300px}.trip-card-title h3{font-size:15px}}
 @media(max-width:600px){.trip-live-map{height:280px;min-height:240px}.trip-card-heading{padding:11px 12px 0}.trip-card-title{padding:8px 12px 10px}.trip-card-copy{padding:12px}.trip-map-attribution-note{font-size:7px}}
+.travel-load-more-wrap{display:flex;justify-content:center;padding-top:18px}
+.travel-load-more[hidden]{display:none}
+@media(max-width:600px){.travel-load-more-wrap .button{width:100%}}
