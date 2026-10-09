@@ -12,7 +12,7 @@
 <header class="header"><div class="container nav">
 <a class="brand" href="#home" aria-label="Suraj D P home"><span class="brand-icon">SD<span>.</span></span><span class="brand-copy">SURAJ D P<small>PORTFOLIO / 2026</small></span></a>
 <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
-<nav id="navLinks" class="nav-links" aria-label="Main navigation"><a href="#about">Story</a><a href="#experience">Career</a><a href="#healthcare-blueprint">Healthcare</a><a href="#projects">Projects</a><a href="#certifications">Credentials</a><a href="#movies">Movies</a><a href="#travel-gallery">Travel</a><a href="#resumes">Resumes</a></nav>
+<nav id="navLinks" class="nav-links" aria-label="Main navigation"><a href="#about">Story</a><a href="#experience">Career</a><a href="#healthcare-blueprint">Healthcare</a><a href="#projects">Projects</a><a href="#certifications">Credentials</a><a href="#movies">Movies</a><a href="#trip-itineraries">Trips</a><a href="#travel-gallery">Gallery</a><a href="#resumes">Resumes</a><a href="#resumes">Resumes</a></nav>
 <div class="nav-actions"><button id="themeToggle" class="theme-toggle" aria-label="Switch color theme" title="Switch color theme">☼</button><a class="nav-cta" href="#contact">Let's connect ↗</a></div>
 </div></header>
 
@@ -25,11 +25,13 @@
   <a href="#projects" class="atlas-link" data-atlas="projects"><span>05</span><b>Projects</b></a>
   <a href="#certifications" class="atlas-link" data-atlas="certifications"><span>06</span><b>Credentials</b></a>
   <a href="#movies" class="atlas-link" data-atlas="movies"><span>07</span><b>Movies</b></a>
-  <a href="#travel-gallery" class="atlas-link" data-atlas="travel-gallery"><span>08</span><b>Travel</b></a>
-  <a href="#contact" class="atlas-link" data-atlas="contact"><span>10</span><b>Contact</b></a>
+  <a href="#trip-itineraries" class="atlas-link" data-atlas="trip-itineraries"><span>08</span><b>Trips</b></a>
+  <a href="#travel-gallery" class="atlas-link" data-atlas="travel-gallery"><span>09</span><b>Gallery</b></a>
+  <a href="#resumes" class="atlas-link" data-atlas="resumes"><span>10</span><b>Resumes</b></a>
+  <a href="#contact" class="atlas-link" data-atlas="contact"><span>11</span><b>Contact</b></a>
 </nav>
 <nav class="mobile-dock" aria-label="Quick navigation">
-  <a href="#home"><span>⌂</span><b>Home</b></a><a href="#projects"><span>▦</span><b>Projects</b></a><a href="#certifications"><span>✳</span><b>Credentials</b></a><a href="#movies"><span>▣</span><b>Movies</b></a><a href="#travel-gallery"><span>⌁</span><b>Travel</b></a><a href="#contact"><span>↗</span><b>Contact</b></a>
+  <a href="#home"><span>⌂</span><b>Home</b></a><a href="#projects"><span>▦</span><b>Projects</b></a><a href="#certifications"><span>✳</span><b>Credentials</b></a><a href="#movies"><span>▣</span><b>Movies</b></a><a href="#trip-itineraries"><span>➜</span><b>Trips</b></a><a href="#travel-gallery"><span>▧</span><b>Gallery</b></a><a href="#contact"><span>↗</span><b>Contact</b></a>
 </nav>
 
 <main id="main">
@@ -146,25 +148,49 @@
   </div>
 </section>
 
-<section id="travel-gallery" class="section divider travel-section">
+<section id="trip-itineraries" class="section divider trip-section">
   <div class="container">
     <div class="section-header reveal">
-      <div><p class="overline">08 / TRAVEL JOURNAL</p><h2>Beyond the <em class="gradient">day job.</em></h2></div>
-      <div><p>A personal space for road trips, places, and moments behind the ride—kept separate from the professional project portfolio.</p><div class="travel-status">PERSONAL PHOTO &amp; VIDEO GALLERY</div></div>
+      <div><p class="overline">08 / TRIPS &amp; ITINERARIES</p><h2>Roads taken. <em class="gradient">Places remembered.</em></h2></div>
+      <p>17 completed trips, arranged in stop order. Open a trip to see its itinerary and Google Maps route links. Dates and distances are not shown because they were not supplied.</p>
     </div>
-    <div class="travel-empty reveal" id="travelGalleryEmpty">
-      <div class="travel-empty-icon" aria-hidden="true">▧</div>
-      <div><h3>Your travel gallery is ready for your media.</h3><p>No sample or stock photos are shown. Original photographs and ride videos will appear here once media files are added to the repository. Photos support full-view previews, and videos open with playback controls.</p></div>
+    <div class="trip-dashboard reveal">
+      <div class="trip-dashboard-top">
+        <div class="trip-total-block"><span class="summary-kicker">TRIPS DOCUMENTED</span><strong id="tripTotal">17</strong><small>completed journeys</small></div>
+        <label class="trip-search"><span aria-hidden="true">⌕</span><input id="tripSearch" type="search" placeholder="Find a trip, region or stop…" autocomplete="off" aria-label="Search trip itineraries"></label>
+      </div>
+      <div class="trip-results-bar" id="tripResultsCount" aria-live="polite">Loading trip itineraries…</div>
+      <div class="trip-grid" id="tripItineraryGrid" aria-live="polite"></div>
+      <noscript><p>Enable JavaScript to browse trip itineraries and open the Google Maps route links.</p></noscript>
     </div>
-    <div class="travel-gallery-grid" id="travelGalleryGrid" aria-live="polite" hidden></div>
   </div>
 </section>
 
-<section id="resumes" class="section divider"><div class="container"><div class="section-header reveal"><div><p class="overline">09 / RESUMES</p><h2>Two perspectives. <em class="gradient">One profile.</em></h2></div><p>Choose the resume that best aligns with the opportunity.</p></div><div class="resume-grid">
+<section id="travel-gallery" class="section divider travel-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div><p class="overline">09 / TRAVEL PHOTOS &amp; VIDEOS</p><h2>Moments from the <em class="gradient">road.</em></h2></div>
+      <div><p>A separate gallery for the photos and videos you have personally captured. Trips and itineraries live in the section above.</p><div class="travel-status">PERSONAL PHOTOS &amp; VIDEOS</div></div>
+    </div>
+    <div class="travel-media-dashboard reveal">
+      <div class="travel-media-filters" role="group" aria-label="Choose travel media type">
+        <button id="travelPhotosButton" class="travel-media-filter active" type="button" aria-pressed="true">Photos <span id="travelPhotoCount">—</span></button>
+        <button id="travelVideosButton" class="travel-media-filter" type="button" aria-pressed="false">Videos <span id="travelVideoCount">—</span></button>
+      </div>
+      <div class="travel-empty" id="travelGalleryEmpty">
+        <div class="travel-empty-icon" aria-hidden="true">▧</div>
+        <div><h3 id="travelGalleryEmptyTitle">Your travel photos will appear here.</h3><p id="travelGalleryEmptyText">Your trip list is documented separately. Add your own travel photos to the gallery when you are ready; no placeholder images are shown.</p></div>
+      </div>
+      <div class="travel-gallery-grid" id="travelGalleryGrid" aria-live="polite" hidden></div>
+    </div>
+  </div>
+</section>
+
+<section id="resumes" class="section divider"><div class="container"><div class="section-header reveal"><div><p class="overline">10 / RESUMES</p><h2>Two perspectives. <em class="gradient">One profile.</em></h2></div><p>Choose the resume that best aligns with the opportunity.</p></div><div class="resume-grid">
 <article class="resume-card reveal"><div class="resume-icon">BA</div><div class="resume-copy"><span>BUSINESS ANALYSIS</span><h3>Business Analyst Resume</h3><p>Requirements analysis, stakeholder management, process improvement, UAT, and healthcare IT delivery.</p><a class="button primary" href="Suraj_DP_Business_Analyst_Resume.pdf" download>Download PDF ↓</a></div><b class="pdf-watermark">PDF</b></article>
 <article class="resume-card reveal delay"><div class="resume-icon qa-icon">QA</div><div class="resume-copy"><span>QUALITY & AUTOMATION</span><h3>Automation Engineer Resume</h3><p>QA engineering, regression testing, automation, API/data validation, and healthcare application testing.</p><a class="button secondary" href="Suraj_DP_Automation_Engineer_Resume.pdf" download>Download PDF ↓</a></div><b class="pdf-watermark">PDF</b></article>
 </div></div></section>
-<section id="contact" class="section contact-section"><div class="container contact-panel reveal"><div class="contact-main"><p class="overline">10 / CONTACT</p><h2>Let's solve the <em class="gradient">right problem.</em></h2><p>If you're working on healthcare technology, business analysis, process improvement, or software quality, let's connect.</p><div class="contact-buttons"><a class="button primary" href="mailto:suraj.dp412@gmail.com">Email me ↗</a><a class="button secondary" href="https://wa.me/917676416123" target="_blank" rel="noopener noreferrer">Message on WhatsApp ↗</a></div></div><div class="contact-list">
+<section id="contact" class="section contact-section"><div class="container contact-panel reveal"><div class="contact-main"><p class="overline">11 / CONTACT</p><h2>Let's solve the <em class="gradient">right problem.</em></h2><p>If you're working on healthcare technology, business analysis, process improvement, or software quality, let's connect.</p><div class="contact-buttons"><a class="button primary" href="mailto:suraj.dp412@gmail.com">Email me ↗</a><a class="button secondary" href="https://wa.me/917676416123" target="_blank" rel="noopener noreferrer">Message on WhatsApp ↗</a></div></div><div class="contact-list">
 <a href="mailto:suraj.dp412@gmail.com"><span><img src="https://cdn.simpleicons.org/gmail/EA4335" alt=""></span><div><small>EMAIL</small><b>suraj.dp412@gmail.com</b></div><em>↗</em></a>
 <a href="https://wa.me/917676416123" target="_blank" rel="noopener noreferrer"><span><img src="https://cdn.simpleicons.org/whatsapp/25D366" alt=""></span><div><small>WHATSAPP</small><b>+91 76764 16123</b></div><em>↗</em></a>
 <a href="https://www.linkedin.com/in/suraj-dp-2a91441bb/" target="_blank" rel="noopener noreferrer"><span><img src="https://cdn.simpleicons.org/linkedin/0A66C2" alt=""></span><div><small>LINKEDIN</small><b>Connect professionally</b></div><em>↗</em></a>
@@ -176,6 +202,7 @@
 <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
 <script src="assets/js/certifications.js?v=20261009-3" defer></script>
 <script src="assets/js/movie-gallery.js?v=20261009-2" defer></script>
-<script src="assets/js/travel-gallery.js" defer></script>
+<script src="assets/js/trip-itineraries.js?v=20261009-1" defer></script>
+<script src="assets/js/travel-gallery.js?v=20261009-1" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body></html>
