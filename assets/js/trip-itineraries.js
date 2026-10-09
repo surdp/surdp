@@ -292,7 +292,7 @@
       '</span><div><b>' + esc(stop.name) + '</b>' +
       (stop.note ? '<p>' + esc(stop.note) + '</p>' : '') + '</div></li>'
     ).join("");
-    return '<article class="trip-card reveal"><div class="trip-card-heading"><span class="trip-index">TRIP ' +
+    return '<article class="trip-card"><div class="trip-card-heading"><span class="trip-index">TRIP ' +
       String(trip.id).padStart(2, "0") + '</span><span class="trip-region">' + esc(trip.region) +
       '</span></div><h3>' + esc(trip.title) + '</h3><p class="trip-overview">' + esc(trip.overview) +
       '</p><div class="trip-route-summary"><span>' + esc(start) + '</span><i aria-hidden="true">→</i><span>' +
