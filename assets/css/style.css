@@ -567,7 +567,7 @@ html[data-theme="light"] .project-art{box-shadow:0 10px 26px rgba(23,44,70,.07)}
 .trip-leaflet-marker-wrap{background:transparent;border:0}
 .trip-leaflet-marker{display:flex;align-items:center;justify-content:center;width:27px;height:27px;box-sizing:border-box;border:2px solid #fff;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);background:#2778df;box-shadow:0 1px 5px rgba(0,0,0,.32);color:#fff;font:700 10px Arial,sans-serif}
 .trip-leaflet-marker{padding-bottom:1px}
-.trip-leaflet-marker::first-letter{transform:rotate(45deg)}
+.trip-leaflet-marker>span{display:block;transform:rotate(45deg);line-height:1}
 .trip-live-map .leaflet-popup-content-wrapper{border-radius:8px}
 .trip-map-popup{font:12px/1.5 Arial,sans-serif;color:#1f2937;min-width:100px}
 .trip-map-popup small{color:#64748b}
