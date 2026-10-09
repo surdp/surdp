@@ -2027,3 +2027,11 @@ html[data-theme="light"] .goals-graph-node.is-active text{fill:#075cc8}
  .workflow-explorer-section .workflow-stage b{font-size:12px}
  .workflow-explorer-section .workflow-stage small{font-size:10px}
 }
+
+.career-journey[data-focused-role="cerner"] .career-track-arrow{left:22%;color:#b69cff}
+.career-journey[data-focused-role="techmahindra"] .career-track-arrow{left:55%;color:var(--accent)}
+.career-track-point.is-current .career-point-dot{transform:scale(1.12);box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 15%,transparent),0 0 17px color-mix(in srgb,var(--accent) 55%,transparent)}
+.career-track-arrow{z-index:4}
+@media(max-width:760px){
+ .career-journey[data-focused-role="cerner"] .career-track-arrow,.career-journey[data-focused-role="techmahindra"] .career-track-arrow{left:-10px!important}
+}
