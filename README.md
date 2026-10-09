@@ -1,91 +1,133 @@
-# Hi, I'm Suraj 👋
+# Hi, I'm Suraj D P 👋
 
-### Healthcare IT | Senior Business Analyst | QA & Test Automation
+### Healthcare IT | Business Analysis | QA & Test Automation
 
-I'm a technology professional with a background in Electronics and Communication Engineering and experience across healthcare IT, business analysis, software testing, and automation.
+I’m a healthcare technology professional with 4+ years of experience spanning business analysis, clinical application workflows, quality assurance, test automation, and enterprise software delivery.
 
-I enjoy solving real-world problems by combining healthcare domain knowledge, analytical thinking, and technology.
+My work sits at the intersection of **business requirements, healthcare systems, software quality, and technology-enabled process improvement**. I enjoy translating complex workflows into clear requirements, validating solutions against business needs, and building practical tools that make repetitive tasks more efficient.
 
-- 🏥 **Domain:** Healthcare IT, EHR/EMR systems, clinical workflows
-- 💼 **Experience:** Oracle Health (Cerner) and Tech Mahindra
-- 🧪 **Interests:** Business Analysis, QA Automation, API Testing, and process improvement
-- 💻 **Currently exploring:** JavaScript, Playwright, Python, and data analytics
-- 🚀 **Goal:** Build practical projects that connect healthcare workflows with reliable software solutions
+- 🏥 **Domain:** Healthcare IT, EHR/EMR, clinical workflows
+- 💼 **Experience:** Tech Mahindra and Oracle Health (Cerner)
+- 📋 **Business Analysis:** Requirements engineering, gap analysis, process mapping, UAT, stakeholder management
+- 🧪 **Quality Engineering:** Functional testing, regression testing, automation, API and data validation
+- 💻 **Technology:** JavaScript, Playwright, SQL, Postman, Git and GitHub
+- 🚀 **Interests:** Healthcare technology, workflow automation, AI applications, and continuous improvement
 
 ---
 
-## 🛠️ Technical Skills
+## 👨‍💻 Technical Expertise
 
-**Healthcare IT**
-- Electronic Health Records (EHR/EMR)
-- Clinical application workflows
-- FirstNet, Oncology, Blood Bank Transfusion, and MPages
-
-**Business Analysis & QA**
-- Requirements analysis
-- Manual testing and test case design
-- Defect tracking and investigation
-- Regression and upgrade testing
-- Jira and Azure DevOps
-
-**Automation & Development**
-- JavaScript and Node.js
-- Playwright
-- Git and GitHub
-- API testing with Postman
-
-**Currently Learning**
-- Python
-- Data analytics and visualization
-- AI and machine learning applications
+| Area | Skills and Tools |
+|---|---|
+| Healthcare IT | Oracle Health/Cerner, EHR/EMR workflows, FirstNet, Oncology, Blood Bank Transfusion, MPages, laboratory workflows |
+| Business Analysis | Requirements gathering, functional specifications, user stories, acceptance criteria, gap analysis, process mapping, traceability |
+| Testing & Quality | Functional, regression, integration and end-to-end testing, UAT, defect analysis, root-cause investigation |
+| Test Automation | Eggplant, Selenium WebDriver/Java, TOSCA and Worksoft exposure |
+| API & Data Validation | Postman, SQL, JSON validation |
+| Delivery & Collaboration | Jira, Azure DevOps, Agile/Scrum, change-impact analysis, stakeholder coordination |
+| Development & Version Control | JavaScript, Node.js, Playwright, Git, GitHub, Maven |
 
 ---
 
 ## 💼 Professional Experience
 
 ### Senior Business Analyst — Tech Mahindra
-*Healthcare IT*
+*April 2026 – Present | Healthcare IT*
 
-- Supporting healthcare technology solutions and client workflows.
-- Applying business analysis and testing experience to support software quality and delivery.
+- Gather and document business, functional, and non-functional requirements.
+- Translate business needs into user stories, acceptance criteria, workflows, and functional specifications.
+- Conduct current-state/future-state analysis and identify process gaps, dependencies, and improvement opportunities.
+- Coordinate business stakeholders, technical teams, requirements clarification, UAT, defect resolution, and delivery activities.
+- Support healthcare application workflows and technology-enabled process improvement.
 
-### Senior Delivery Consultant — Oracle Health (Cerner)
-*October 2022 – March 2026*
+### Senior Delivery Consultant / QA — Oracle Health (Cerner Corporation)
+*October 2022 – April 2026*
 
-- Worked on healthcare application upgrades and regression validation.
-- Supported clinical solutions including FirstNet, PowerChart Oncology, Blood Bank Transfusion, and MPages.
-- Collaborated with international clients and supported upgrade-related testing and issue investigation.
-- Worked with tools and processes supporting automation, defect tracking, and delivery quality.
+- Supported enterprise healthcare application upgrades, functional validation, regression testing, and delivery readiness.
+- Worked across Emergency Medicine, Oncology, Blood Bank Transfusion, and MPages solutions.
+- Supported testing automation initiatives using Eggplant and contributed to regression coverage and validation efficiency.
+- Performed impact analysis, defect investigation, troubleshooting, and coordination with technical and clinical stakeholders.
+- Collaborated with international clients and distributed teams across Australia, Qatar/Kuwait, the UK, and Ireland.
 
 ---
 
-## 🚀 Featured Project
+## 🏆 Achievements & Recognition
 
-### [LinkedIn Skills Automation with Playwright](https://github.com/surdp/linkedin-skills-automation)
+- **SPOT Award (2026):** Recognized for automation leadership, knowledge sharing, and contributions to critical Blood Bank delivery.
+- **UC Excellence Award — Q3 2026:** Recognized for contributions across Emergency Medicine, Oncology, and Blood Bank solutions.
+- **~20% improvement in testing efficiency:** Reported in my resume through automation initiatives and reduced manual effort.
+- **~30% reduction in post-release defects:** Reported through improved regression testing and impact-focused validation.
+- **~25% improvement in issue-resolution turnaround:** Reported through structured defect analysis and stakeholder coordination.
 
-A Node.js and Playwright prototype that demonstrates browser automation for inspecting LinkedIn profile skills.
+*The improvement figures above are taken from my resumes and describe reported project outcomes.*
 
-- Connects to a dedicated Chrome session using Chrome DevTools Protocol.
-- Extracts and alphabetically lists skills from a profile.
-- Uses bounded scrolling and browser automation techniques.
-- Keeps the published version focused on read-only skills inspection.
+---
+
+## 🚀 Featured Projects
+
+### 1. LinkedIn Skills Automation with Playwright
+[View repository →](https://github.com/surdp/linkedin-skills-automation)
+
+A Node.js and Playwright prototype for inspecting LinkedIn profile skills through browser automation.
+
+- Connects to a dedicated Chrome session using Chrome DevTools Protocol (CDP).
+- Extracts and alphabetically organizes skills from the profile.
+- Uses bounded scrolling and accessible page selectors.
+- Keeps the published version focused on read-only inspection.
 
 **Tech stack:** JavaScript · Node.js · Playwright · Git
 
+### 2. Focus Flow
+[Browse my GitHub repositories →](https://github.com/surdp?tab=repositories)
+
+A productivity and focus-related project that I’m including in my project portfolio.
+
+**Project details and direct repository link:** To be added after confirming the exact repository URL.
+
+### More Projects
+
+[Explore all my repositories on GitHub →](https://github.com/surdp?tab=repositories)
+
+I use personal projects to practise problem-solving, explore automation, and apply technology to practical workflows. Additional projects will be featured here with their purpose, technology stack, and key features.
+
 ---
 
-## 🎯 What I'm Working Toward
+## 📄 Resume Downloads
 
-I'm interested in building practical solutions at the intersection of healthcare technology, business analysis, software quality, and automation.
+Choose the resume most relevant to the opportunity.
 
-I enjoy learning by building projects, documenting workflows, and turning repetitive tasks into more structured processes.
+- **[Download Business Analyst Resume (PDF)](./Suraj_DP_Business_Analyst_Resume.pdf)** — Business analysis, requirements management, stakeholder coordination, process improvement, UAT, and healthcare IT.
+- **[Download Automation Engineer Resume (PDF)](./Suraj_DP_Automation_Engineer_Resume.pdf)** — QA engineering, test automation, regression testing, API/data validation, and healthcare application testing.
+
+---
+
+## 🎓 Education
+
+**Bachelor of Engineering — Electronics & Communication Engineering**  
+Bangalore Institute of Technology | 2022  
+CGPA: 8.3
+
+---
+
+## 🌱 Professional Interests
+
+I’m interested in building solutions that connect healthcare domain knowledge with business analysis, software quality, and automation.
+
+Areas I continue to explore include:
+
+- Healthcare application architecture and interoperability
+- Test automation and reliable software delivery
+- Business process analysis and workflow optimization
+- Python, data analytics, and practical AI applications
+
+My approach is to learn by building, document what I learn, and focus on solutions that solve real problems.
 
 ---
 
 ## 🤝 Let's Connect
 
-I'm always interested in learning from other technology professionals and collaborating on meaningful projects.
+I'm happy to connect with professionals working in healthcare technology, business analysis, software quality, and automation.
 
-- 💻 GitHub: [Explore my repositories](https://github.com/surdp)
-- 💼 LinkedIn: Add your LinkedIn profile link here
+- 💻 **GitHub:** [surdp](https://github.com/surdp)
+- 💼 **LinkedIn:** [Connect with me](https://www.linkedin.com/in/suraj-dp-2a91441bb/)
 
