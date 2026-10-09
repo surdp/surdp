@@ -350,3 +350,48 @@ html[data-theme="dark"] .blueprint-note b{color:#d7e9fb;background:#20354b;borde
  .viewer-stage{padding:6px}
 }
 @media(prefers-reduced-motion:reduce){.travel-thumb img{transition:none}}
+
+/* Replace legacy teal-tinted decorative artwork with the selected corporate blue system */
+.brand-icon{background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 14%,var(--panel)),color-mix(in srgb,var(--accent2) 12%,var(--panel)))}
+.monogram{background:linear-gradient(140deg,color-mix(in srgb,var(--accent) 13%,var(--panel)),color-mix(in srgb,var(--accent2) 13%,var(--panel)));border-color:color-mix(in srgb,var(--accent) 40%,var(--line));box-shadow:0 0 42px color-mix(in srgb,var(--accent) 7%,transparent)}
+.orbit-chip.one,.orbit-chip.two,.orbit-chip.three{color:var(--accent)}
+.orbit-two{border-color:color-mix(in srgb,var(--accent2) 42%,var(--line))}
+.hero-card:before{background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent)}
+html[data-theme="light"] .monogram{background:linear-gradient(140deg,#e5eef9,#e9effb);color:#172438;box-shadow:0 0 35px rgba(23,104,172,.07)}
+.timer-art{border-color:var(--accent);box-shadow:0 0 0 7px color-mix(in srgb,var(--accent) 7%,transparent),0 0 30px color-mix(in srgb,var(--accent) 10%,transparent)}
+.timer-art strong{color:var(--text)}
+.timer-art span{color:var(--accent)}
+.art-chip{color:var(--accent2);border-color:color-mix(in srgb,var(--accent) 38%,transparent)}
+.browser-art{background:radial-gradient(circle at 30% 10%,color-mix(in srgb,var(--accent) 22%,var(--panel)),var(--bg) 70%)}
+.browser-row.long{background:color-mix(in srgb,var(--accent) 70%,var(--panel))}
+.browser-ok{background:var(--accent);color:var(--bg)}
+.api-art{background:radial-gradient(circle at 25% 12%,color-mix(in srgb,var(--accent2) 23%,var(--panel)),var(--bg) 72%)}
+.api-row b,.api-foot{color:var(--accent)}
+.api-row b.post{color:var(--accent2)}
+.api-row code{color:var(--text)}
+.flow-art{background:radial-gradient(circle at 50% 50%,color-mix(in srgb,var(--accent2) 20%,var(--panel)),var(--bg) 72%)}
+.flow-art span{border-color:color-mix(in srgb,var(--accent2) 46%,var(--line));background:var(--panel2);color:var(--text)}
+.flow-art span:nth-of-type(2){border-color:var(--accent);color:var(--accent)}
+.flow-art i{color:var(--accent2)}
+html[data-theme="light"] .timer-art strong{color:#172438}
+html[data-theme="light"] .timer-art span{color:#1768ac}
+html[data-theme="light"] .project-art{box-shadow:0 10px 26px rgba(23,44,70,.07)}
+.nav-links a:focus-visible,.atlas-link:focus-visible,.mobile-dock a:focus-visible{outline-offset:2px}
+.credential-preview-link:focus-visible,.viewer-close:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.credential-card-footer{min-height:30px}
+@media(max-width:850px){
+ .nav{gap:10px}
+ .nav-links{max-height:calc(100vh - 100px);overflow-y:auto}
+ .mobile-dock{padding-bottom:max(8px,env(safe-area-inset-bottom))}
+ .mobile-dock a{min-width:0}
+ .mobile-dock a b{font-size:clamp(7px,1.7vw,9px)}
+ .section-header>p,.credentials-heading-copy{max-width:none}
+}
+@media(max-width:380px){
+ .brand-copy small{letter-spacing:.06em}
+ .metrics strong{font-size:21px}
+ .mobile-dock{left:7px;right:7px;bottom:7px}
+ .mobile-dock a span{font-size:16px}
+ .travel-gallery-grid{grid-template-columns:1fr}
+ .story-grid b{font-size:8px}
+}
