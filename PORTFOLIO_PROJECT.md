@@ -21,8 +21,8 @@ These are coordinated parts of one site, not separate themes or disconnected pag
 - Light theme by default plus a working dark/light toggle that remembers the visitor’s choice.
 - Responsive mobile menu and fixed mobile quick-navigation dock.
 - Project filtering by category.
-- Searchable certification library with category and year filters.
-- Experience timeline, healthcare workflow blueprint, project stories, recognition, and resume links.
+- Searchable certification library with category and year filters, plus a PDF preview dialog that can be enabled for individually matched certificate files.
+- Experience timeline, healthcare workflow blueprint, project stories, recognition, resume links, and an original-media travel journal.
 - Direct links to GitHub, LinkedIn, Instagram, email, WhatsApp, project repositories, and FocusFlow.
 - Two downloadable resume PDFs in the repository root.
 - Scroll-reveal animations with reduced-motion support.
@@ -59,10 +59,19 @@ Card titles, issuer labels, and dates reflect the supplied records where availab
 - `index.html` — page content and semantic sections
 - `assets/css/style.css` — theme, responsive layouts, and component styling
 - `assets/js/main.js` — navigation, theme toggle, project filters, and reveal effects
-- `assets/js/certifications.js` — searchable certification data and category/year filters
+- `assets/js/certifications.js` — searchable certification data, category/year filters, and optional per-certificate PDF previews
+- `assets/js/travel-gallery.js` — lightbox-style travel photo and video gallery renderer
+- `assets/gallery/README.md` — workflow for adding personal travel media
+- `assets/certificates/README.md` — instructions for mapping exact certificate PDFs
 - `PORTFOLIO_PROJECT.md` — project purpose, design, use, and deployment notes
 - `Suraj_DP_Business_Analyst_Resume.pdf` — Business Analyst resume
 - `Suraj_DP_Automation_Engineer_Resume.pdf` — Automation Engineer resume
+
+## Certificate previews and travel media
+
+The certificate viewer is wired up, but it only shows a **Preview PDF** action after an exact credential title is mapped to a matching PDF in `assets/js/certifications.js`. Place the verified PDF in `assets/certificates/` and add the relative path in the `certificatePdfs` object. The current repository does not yet contain matched certificate PDFs, so unmatched cards continue to link to LinkedIn.
+
+The travel journal intentionally starts empty rather than inventing example travel photos. Add your own image/video files to `assets/gallery/` and register them in the `travelMedia` array in `assets/js/travel-gallery.js`. Image and video previews use an accessible dialog; video entries support MP4/WebM playback.
 
 ## Run locally
 
