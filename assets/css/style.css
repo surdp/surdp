@@ -2300,3 +2300,141 @@ html[data-theme="light"] .hero-workflow-panel{background:rgba(255,255,255,.84)}
 @media(prefers-reduced-motion:reduce){
  .hero:before{transform:none}
 }
+
+
+/* Portfolio visual system v5: consistent image atmosphere, crisp icons, compact layout */
+body{
+  background-color:var(--bg);
+  background-image:
+    linear-gradient(180deg,color-mix(in srgb,var(--bg) 78%,transparent),color-mix(in srgb,var(--bg) 86%,transparent)),
+    radial-gradient(ellipse at 12% 9%,var(--surface-glow,rgba(72,143,255,.12)),transparent 38%),
+    radial-gradient(ellipse at 88% 25%,color-mix(in srgb,var(--accent2) 7%,transparent),transparent 34%),
+    linear-gradient(var(--surface-grid,rgba(117,183,255,.04)) 1px,transparent 1px),
+    linear-gradient(90deg,var(--surface-grid,rgba(117,183,255,.04)) 1px,transparent 1px),
+    url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=88");
+  background-size:auto,auto,auto,58px 58px,58px 58px,cover;
+  background-position:center,center,center,center,center,center;
+  background-attachment:fixed,fixed,fixed,fixed,fixed,fixed;
+}
+html[data-theme="light"] body{
+  background-image:
+    linear-gradient(180deg,rgba(246,249,253,.88),rgba(246,249,253,.91)),
+    radial-gradient(ellipse at 12% 9%,rgba(72,143,255,.10),transparent 38%),
+    radial-gradient(ellipse at 88% 25%,rgba(98,109,203,.06),transparent 34%),
+    linear-gradient(rgba(37,91,155,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(37,91,155,.045) 1px,transparent 1px),
+    url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=88");
+}
+.section,.section.divider{background-color:transparent}
+.header{background:color-mix(in srgb,var(--bg) 82%,transparent)}
+/* Keep the fixed section rail outside the content column. Hide it before it can collide with the page. */
+.atlas-rail{left:10px;width:124px;padding:10px 8px;gap:5px}
+.atlas-link{grid-template-columns:27px minmax(0,1fr);gap:9px;min-height:41px;padding:7px 8px;border-radius:10px}
+.atlas-link .atlas-icon{width:27px;height:27px;flex-basis:27px;border-radius:9px;font-size:15px}
+.atlas-link b{font-size:10px;line-height:1.35}
+@media(max-width:1450px){.atlas-rail{display:none}}
+/* Lucide line icons: coherent proportions, clean strokes, and visible contrast */
+.portfolio-lucide{display:inline-flex;align-items:center;justify-content:center;line-height:1;vertical-align:middle}
+.portfolio-lucide svg,.atlas-icon svg,.mobile-dock .lucide,.ba-step-icon svg,.ba-process-icon svg,.ba-list-icon svg,.ba-layer-icon svg,.ba-panel-symbol svg,.expertise-icon svg,.workflow-solution-icon svg,.workflow-stage-symbol svg,.career-next-rocket svg,.career-next-star svg,.goals-category span svg,.goals-target-icon svg,.goals-focus-card>span svg{
+  width:1em;height:1em;stroke-width:1.9;flex:none;
+}
+.atlas-icon .portfolio-lucide{font-size:15px}
+.mobile-dock .portfolio-lucide{font-size:18px}
+.ba-step-icon{display:grid;place-items:center}
+.ba-step-icon .portfolio-lucide{font-size:21px}
+.ba-process-icon .portfolio-lucide{font-size:18px}
+.ba-list-icon .portfolio-lucide{font-size:15px}
+.ba-layer-icon .portfolio-lucide{font-size:16px}
+.ba-panel-symbol .portfolio-lucide{font-size:16px}
+.expertise-icon .portfolio-lucide{font-size:24px}
+.workflow-solution-icon .portfolio-lucide{font-size:20px}
+.workflow-stage-symbol .portfolio-lucide{font-size:18px}
+.career-next-rocket .portfolio-lucide,.career-next-star .portfolio-lucide{font-size:22px}
+.goals-category .portfolio-lucide{font-size:15px}
+.goals-focus-card>span .portfolio-lucide{font-size:16px}
+.ba-step-icon,.ba-process-icon,.ba-list-icon,.ba-layer-icon,.ba-panel-symbol,.expertise-icon,.workflow-solution-icon,.workflow-stage-symbol,.atlas-icon,.goals-category span,.goals-focus-card>span{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 3px 10px rgba(16,65,128,.06);
+}
+html[data-theme="light"] .portfolio-lucide svg{filter:drop-shadow(0 1px 0 rgba(255,255,255,.25))}
+/* Full-width scenic image language across the site, not only behind the hero */
+.hero:before{background:
+    linear-gradient(90deg,color-mix(in srgb,var(--bg) 77%,transparent),color-mix(in srgb,var(--bg) 38%,transparent) 48%,color-mix(in srgb,var(--bg) 61%,transparent)),
+    linear-gradient(0deg,var(--bg) 0%,transparent 34%,color-mix(in srgb,var(--bg) 8%,transparent)),
+    url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=88") center 43%/cover;
+  opacity:.65}
+html[data-theme="light"] .hero:before{opacity:.72}
+.career-journey{
+  isolation:isolate;
+  background:
+    linear-gradient(130deg,color-mix(in srgb,var(--panel) 88%,transparent),color-mix(in srgb,var(--bg2) 74%,transparent)),
+    url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=88") center 52%/cover;
+}
+.career-journey:before{
+  z-index:-1;
+  background:radial-gradient(circle at 18% 0,color-mix(in srgb,var(--accent) 12%,transparent),transparent 42%),linear-gradient(90deg,color-mix(in srgb,var(--panel) 24%,transparent),color-mix(in srgb,var(--bg) 28%,transparent));
+}
+html[data-theme="light"] .career-journey{
+  background:linear-gradient(130deg,rgba(255,255,255,.91),rgba(239,245,253,.84)),url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=88") center 52%/cover;
+}
+.career-role-visual:before{
+  background:
+    linear-gradient(100deg,color-mix(in srgb,var(--panel) 71%,transparent),color-mix(in srgb,var(--panel) 43%,transparent) 64%,color-mix(in srgb,var(--panel) 29%,transparent)),
+    var(--role-image);
+  background-position:center;background-size:cover;filter:saturate(1.02) contrast(1.04);
+}
+.career-role-visual--cerner{--role-image:url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1300&q=88")}
+.career-role-visual--techm{--role-image:url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1300&q=88")}
+html[data-theme="light"] .career-role-visual:before{
+  background:linear-gradient(100deg,rgba(255,255,255,.83),rgba(255,255,255,.58) 64%,rgba(255,255,255,.34)),var(--role-image);
+  background-position:center;background-size:cover;filter:saturate(1.03) contrast(1.02);
+}
+/* Avoid content/card overlap on normal laptop widths; Growth Ahead becomes a horizontal feature card. */
+@media(max-width:1450px){
+  .career-cards-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;gap:14px}
+  .career-role-card--cerner,.career-role-card--techm{grid-row:auto;grid-column:auto;align-self:start;height:auto}
+  .career-next-card{grid-column:1/-1;grid-row:auto;display:grid;grid-template-columns:104px minmax(0,1fr) auto;align-items:center;gap:10px;min-height:110px;padding:14px}
+  .career-next-art{grid-column:1;grid-row:1/span 5;width:104px;height:88px;margin:0}
+  .career-next-card .overline{grid-column:2;grid-row:1;margin:0}
+  .career-next-card h3{grid-column:2;grid-row:2;margin:0;font-size:17px}
+  .career-next-card>p:not(.overline){grid-column:2;grid-row:3;margin:0;font-size:10px;line-height:1.7}
+  .career-next-pill{grid-column:2;grid-row:4;margin:0}
+  .career-next-card .career-goals-open{grid-column:3;grid-row:1/span 4;width:auto;min-width:145px;margin:0}
+  .career-role-body{min-width:0}
+  .career-tabs{gap:5px}
+  .experience-hub .career-tab{font-size:10px;padding:7px 8px}
+}
+@media(max-width:850px){
+  .career-cards-grid{grid-template-columns:minmax(0,1fr)}
+  .career-role-card--cerner,.career-role-card--techm{grid-column:1;grid-row:auto}
+  .career-next-card{grid-column:1;grid-template-columns:76px minmax(0,1fr);align-items:start}
+  .career-next-art{width:76px;height:76px;grid-row:1/span 4}
+  .career-next-card .career-goals-open{grid-column:2;grid-row:auto;justify-self:start}
+  .career-next-card .overline,.career-next-card h3,.career-next-card>p:not(.overline),.career-next-pill{grid-column:2}
+}
+@media(max-width:600px){
+  .career-journey{padding:12px}
+  .career-role-visual--cerner{--role-image:url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=82")}
+  .career-role-visual--techm{--role-image:url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=82")}
+  .career-next-card{grid-template-columns:62px minmax(0,1fr);gap:9px}
+  .career-next-art{width:62px;height:62px}
+  .career-next-card h3{font-size:16px}
+  .career-next-card>p:not(.overline){font-size:10px}
+  .career-next-card .career-goals-open{width:auto;min-width:0;padding:10px 12px}
+}
+/* Readable baseline for dense secondary content */
+.workflow-explorer-section .workflow-solution-tab b{font-size:12px}
+.workflow-explorer-section .workflow-solution-tab small{font-size:10px}
+.workflow-explorer-section .workflow-subtab{font-size:10px}
+.workflow-explorer-section .workflow-stage b{font-size:12px}
+.workflow-explorer-section .workflow-stage small{font-size:10px;line-height:1.55}
+.workflow-explorer-section .workflow-stage-detail b{font-size:13px}
+.workflow-explorer-section .workflow-stage-detail p{font-size:12px;line-height:1.7}
+.experience-hub .career-detail-list li{font-size:11px;line-height:1.7}
+.experience-hub .career-skill-cloud span{font-size:10px}
+.experience-hub .career-tab{font-size:10px}
+.ba-visual-main .ba-info-list b{font-size:10px}
+.ba-visual-main .ba-info-list small{font-size:9px}
+@media(prefers-reduced-motion:reduce){
+  body{background-attachment:scroll}
+  .hero:before{transform:none}
+}
