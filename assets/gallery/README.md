@@ -1,6 +1,6 @@
 # Travel gallery media
 
-This folder is the destination for personal travel photographs and ride videos used by the portfolio.
+The `assets/gallery/` folder is the destination for personal travel photographs and ride videos used by the portfolio.
 
 ## Add media
 
