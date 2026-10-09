@@ -906,3 +906,10 @@ html[data-theme="light"] .project-art{box-shadow:0 10px 26px rgba(23,44,70,.07)}
   .about-copy .quote p { font-size: 10px; }
   .footer-tagline { width: 100%; max-width: 100%; order: 3; }
 }
+
+
+/* About quote: unify quote mark and quoted statement in blue */
+.about-copy .quote > span,
+.about-copy .quote b {
+  color: #78adff;
+}
