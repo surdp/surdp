@@ -6,7 +6,7 @@
 
 **Bridging business needs, clinical workflows, and technology solutions.**
 
-[🌐 View my interactive portfolio](https://surdp.github.io/surdp/) · [Project source and guide](https://github.com/surdp/surdp/blob/main/PORTFOLIO_PROJECT.md)
+[🌐 Portfolio](https://surdp.github.io/surdp/) ·
 
 <a href="https://github.com/surdp" title="GitHub profile"><img src="https://cdn.simpleicons.org/github/FFFFFF" width="34" alt="GitHub"/></a>&nbsp;&nbsp;
 <a href="https://www.linkedin.com/in/suraj-dp-2a91441bb/" title="LinkedIn profile"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="34" alt="LinkedIn"/></a>&nbsp;&nbsp;
