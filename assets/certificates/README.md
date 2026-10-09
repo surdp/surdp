@@ -1,6 +1,6 @@
 # Certificate documents
 
-Place certificate PDFs in this folder when ready, then map exact credential titles to their relative file paths in `assets/js/certifications.js` inside the `certificatePdfs` object.
+Place matched certificate PDFs in `assets/certificates/` when ready, then add exact credential titles and their relative file paths to the `certificatePdfs` object in `assets/js/certifications.js`.
 
 Example mapping:
 ```js
