@@ -12,7 +12,7 @@
 <header class="header"><div class="container nav">
 <a class="brand" href="#home" aria-label="Suraj D P home"><span class="brand-icon">SD<span>.</span></span><span class="brand-copy">SURAJ D P<small>PORTFOLIO / 2026</small></span></a>
 <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
-<nav id="navLinks" class="nav-links" aria-label="Main navigation"><a href="#about">Story</a><a href="#experience">Career</a><a href="#healthcare-blueprint">Healthcare</a><a href="#projects">Projects</a><a href="#certifications">Credentials</a><a href="#travel-gallery">Travel</a><a href="#resumes">Resumes</a></nav>
+<nav id="navLinks" class="nav-links" aria-label="Main navigation"><a href="#about">Story</a><a href="#experience">Career</a><a href="#healthcare-blueprint">Healthcare</a><a href="#projects">Projects</a><a href="#certifications">Credentials</a><a href="#movies">Movies</a><a href="#travel-gallery">Travel</a><a href="#resumes">Resumes</a></nav>
 <div class="nav-actions"><button id="themeToggle" class="theme-toggle" aria-label="Switch color theme" title="Switch color theme">☼</button><a class="nav-cta" href="#contact">Let's connect ↗</a></div>
 </div></header>
 
@@ -24,11 +24,12 @@
   <a href="#healthcare-blueprint" class="atlas-link" data-atlas="healthcare-blueprint"><span>04</span><b>Healthcare</b></a>
   <a href="#projects" class="atlas-link" data-atlas="projects"><span>05</span><b>Projects</b></a>
   <a href="#certifications" class="atlas-link" data-atlas="certifications"><span>06</span><b>Credentials</b></a>
-  <a href="#travel-gallery" class="atlas-link" data-atlas="travel-gallery"><span>07</span><b>Travel</b></a>
-  <a href="#contact" class="atlas-link" data-atlas="contact"><span>09</span><b>Contact</b></a>
+  <a href="#movies" class="atlas-link" data-atlas="movies"><span>07</span><b>Movies</b></a>
+  <a href="#travel-gallery" class="atlas-link" data-atlas="travel-gallery"><span>08</span><b>Travel</b></a>
+  <a href="#contact" class="atlas-link" data-atlas="contact"><span>10</span><b>Contact</b></a>
 </nav>
 <nav class="mobile-dock" aria-label="Quick navigation">
-  <a href="#home"><span>⌂</span><b>Home</b></a><a href="#projects"><span>▦</span><b>Projects</b></a><a href="#certifications"><span>✳</span><b>Credentials</b></a><a href="#travel-gallery"><span>⌁</span><b>Travel</b></a><a href="#contact"><span>↗</span><b>Contact</b></a>
+  <a href="#home"><span>⌂</span><b>Home</b></a><a href="#projects"><span>▦</span><b>Projects</b></a><a href="#certifications"><span>✳</span><b>Credentials</b></a><a href="#movies"><span>▣</span><b>Movies</b></a><a href="#travel-gallery"><span>⌁</span><b>Travel</b></a><a href="#contact"><span>↗</span><b>Contact</b></a>
 </nav>
 
 <main id="main">
@@ -123,10 +124,42 @@
   <div class="viewer-stage" id="mediaViewerStage"></div>
 </dialog>
 
+<section id="movies" class="section divider movie-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div><p class="overline">07 / MOVIE COLLECTION</p><h2>Stories on the <em class="gradient">screen.</em></h2></div>
+      <div><p>A personal movie-media index. Every item stays traceable to its original filename; entries without a confirmed title remain in the collection and can be reviewed later.</p><div class="movie-status">MEDIA CATALOGUE · PHOTOS &amp; VIDEOS</div></div>
+    </div>
+    <div class="movie-dashboard reveal">
+      <div class="movie-summary">
+        <div><span class="summary-kicker">ALL MEDIA</span><strong id="movieTotal">—</strong><small>catalogued files</small></div>
+        <div><span class="summary-kicker">PHOTOS</span><strong id="moviePhotoCount">—</strong><small>image files</small></div>
+        <div><span class="summary-kicker">VIDEOS</span><strong id="movieVideoCount">—</strong><small>MP4 files</small></div>
+        <div><span class="summary-kicker">TITLES IDENTIFIED</span><strong id="movieIdentifiedCount">—</strong><small>preliminary title matches</small></div>
+      </div>
+      <div class="movie-controls">
+        <label class="movie-search"><span aria-hidden="true">⌕</span><input id="movieSearch" type="search" placeholder="Search movie title or original filename…" autocomplete="off" aria-label="Search movie media"></label>
+      </div>
+      <div class="movie-filters" role="group" aria-label="Filter movie media">
+        <button class="movie-filter active" data-movie-filter="all" aria-pressed="true">All media</button>
+        <button class="movie-filter" data-movie-filter="photo" aria-pressed="false">Photos</button>
+        <button class="movie-filter" data-movie-filter="video" aria-pressed="false">Videos</button>
+        <button class="movie-filter" data-movie-filter="identified" aria-pressed="false">Titles identified</button>
+        <button class="movie-filter" data-movie-filter="review" aria-pressed="false">Needs review</button>
+      </div>
+      <div class="movie-results-bar"><span id="movieResultsCount" aria-live="polite">Loading media library…</span></div>
+      <div id="movieGallerySetup" class="movie-setup-note"><span class="movie-setup-icon" aria-hidden="true">▣</span><div><h3>Movie media bundle ready to connect</h3><p>The gallery will display all images and videos after the <code>assets/movies/</code> folder is added to the repository. The catalogue is designed to retain unidentified files instead of silently dropping them.</p></div></div>
+      <div class="movie-media-grid" id="movieGalleryGrid" aria-live="polite" hidden></div>
+      <div class="movie-gallery-empty" id="movieGalleryEmpty" hidden><h3>No matching media</h3><p>Try another search term or filter.</p></div>
+      <div class="movie-load-more-wrap"><button class="button secondary movie-load-more" id="movieLoadMore" type="button" hidden>Load more ↓</button></div>
+    </div>
+  </div>
+</section>
+
 <section id="travel-gallery" class="section divider travel-section">
   <div class="container">
     <div class="section-header reveal">
-      <div><p class="overline">07 / TRAVEL JOURNAL</p><h2>Beyond the <em class="gradient">day job.</em></h2></div>
+      <div><p class="overline">08 / TRAVEL JOURNAL</p><h2>Beyond the <em class="gradient">day job.</em></h2></div>
       <div><p>A personal space for road trips, places, and moments behind the ride—kept separate from the professional project portfolio.</p><div class="travel-status">PERSONAL PHOTO &amp; VIDEO GALLERY</div></div>
     </div>
     <div class="travel-empty reveal" id="travelGalleryEmpty">
@@ -137,11 +170,11 @@
   </div>
 </section>
 
-<section id="resumes" class="section divider"><div class="container"><div class="section-header reveal"><div><p class="overline">08 / RESUMES</p><h2>Two perspectives. <em class="gradient">One profile.</em></h2></div><p>Choose the resume that best aligns with the opportunity.</p></div><div class="resume-grid">
+<section id="resumes" class="section divider"><div class="container"><div class="section-header reveal"><div><p class="overline">09 / RESUMES</p><h2>Two perspectives. <em class="gradient">One profile.</em></h2></div><p>Choose the resume that best aligns with the opportunity.</p></div><div class="resume-grid">
 <article class="resume-card reveal"><div class="resume-icon">BA</div><div class="resume-copy"><span>BUSINESS ANALYSIS</span><h3>Business Analyst Resume</h3><p>Requirements analysis, stakeholder management, process improvement, UAT, and healthcare IT delivery.</p><a class="button primary" href="Suraj_DP_Business_Analyst_Resume.pdf" download>Download PDF ↓</a></div><b class="pdf-watermark">PDF</b></article>
 <article class="resume-card reveal delay"><div class="resume-icon qa-icon">QA</div><div class="resume-copy"><span>QUALITY & AUTOMATION</span><h3>Automation Engineer Resume</h3><p>QA engineering, regression testing, automation, API/data validation, and healthcare application testing.</p><a class="button secondary" href="Suraj_DP_Automation_Engineer_Resume.pdf" download>Download PDF ↓</a></div><b class="pdf-watermark">PDF</b></article>
 </div></div></section>
-<section id="contact" class="section contact-section"><div class="container contact-panel reveal"><div class="contact-main"><p class="overline">09 / CONTACT</p><h2>Let's solve the <em class="gradient">right problem.</em></h2><p>If you're working on healthcare technology, business analysis, process improvement, or software quality, let's connect.</p><div class="contact-buttons"><a class="button primary" href="mailto:suraj.dp412@gmail.com">Email me ↗</a><a class="button secondary" href="https://wa.me/917676416123" target="_blank" rel="noopener noreferrer">Message on WhatsApp ↗</a></div></div><div class="contact-list">
+<section id="contact" class="section contact-section"><div class="container contact-panel reveal"><div class="contact-main"><p class="overline">10 / CONTACT</p><h2>Let's solve the <em class="gradient">right problem.</em></h2><p>If you're working on healthcare technology, business analysis, process improvement, or software quality, let's connect.</p><div class="contact-buttons"><a class="button primary" href="mailto:suraj.dp412@gmail.com">Email me ↗</a><a class="button secondary" href="https://wa.me/917676416123" target="_blank" rel="noopener noreferrer">Message on WhatsApp ↗</a></div></div><div class="contact-list">
 <a href="mailto:suraj.dp412@gmail.com"><span><img src="https://cdn.simpleicons.org/gmail/EA4335" alt=""></span><div><small>EMAIL</small><b>suraj.dp412@gmail.com</b></div><em>↗</em></a>
 <a href="https://wa.me/917676416123" target="_blank" rel="noopener noreferrer"><span><img src="https://cdn.simpleicons.org/whatsapp/25D366" alt=""></span><div><small>WHATSAPP</small><b>+91 76764 16123</b></div><em>↗</em></a>
 <a href="https://www.linkedin.com/in/suraj-dp-2a91441bb/" target="_blank" rel="noopener noreferrer"><span><img src="https://cdn.simpleicons.org/linkedin/0A66C2" alt=""></span><div><small>LINKEDIN</small><b>Connect professionally</b></div><em>↗</em></a>
@@ -152,6 +185,7 @@
 <footer class="footer"><div class="container footer-inner"><a class="brand" href="#home"><span class="brand-icon">SD<span>.</span></span><span class="brand-copy">SURAJ D P<small>PORTFOLIO / 2026</small></span></a><p>Designed with clarity. Built with purpose.</p><div class="footer-links"><a href="https://github.com/surdp" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/suraj-dp-2a91441bb/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="mailto:suraj.dp412@gmail.com">Email</a></div><span class="copyright">© <span id="year"></span> Suraj D P</span></div></footer>
 <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
 <script src="assets/js/certifications.js?v=20261009-3" defer></script>
+<script src="assets/js/movie-gallery.js?v=20261009-1" defer></script>
 <script src="assets/js/travel-gallery.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body></html>
