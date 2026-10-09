@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" data-theme="light">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f5f4ee">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f5f7fa">
 <meta name="description" content="Suraj D P — Business Analyst and Healthcare IT professional focused on business analysis, clinical workflows, QA automation, and software delivery.">
 <meta property="og:title" content="Suraj D P | Business Analyst & Healthcare IT"><meta property="og:description" content="Business analysis, healthcare technology, quality engineering, automation, and practical software projects.">
 <title>Suraj D P — Business Analysis · Healthcare IT · QA Automation</title><link rel="stylesheet" href="assets/css/style.css">
@@ -12,7 +12,7 @@
 <header class="header"><div class="container nav">
 <a class="brand" href="#home" aria-label="Suraj D P home"><span class="brand-icon">SD<span>.</span></span><span class="brand-copy">SURAJ D P<small>PORTFOLIO / 2026</small></span></a>
 <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
-<nav id="navLinks" class="nav-links" aria-label="Main navigation"><a href="#about">Story</a><a href="#experience">Career</a><a href="#healthcare-blueprint">Healthcare</a><a href="#projects">Projects</a><a href="#certifications">Credentials</a><a href="#resumes">Resumes</a></nav>
+<nav id="navLinks" class="nav-links" aria-label="Main navigation"><a href="#about">Story</a><a href="#experience">Career</a><a href="#healthcare-blueprint">Healthcare</a><a href="#projects">Projects</a><a href="#certifications">Credentials</a><a href="#travel-gallery">Travel</a><a href="#resumes">Resumes</a></nav>
 <div class="nav-actions"><button id="themeToggle" class="theme-toggle" aria-label="Switch color theme" title="Switch color theme">☼</button><a class="nav-cta" href="#contact">Let's connect ↗</a></div>
 </div></header>
 
@@ -24,10 +24,11 @@
   <a href="#healthcare-blueprint" class="atlas-link" data-atlas="healthcare-blueprint"><span>04</span><b>Healthcare</b></a>
   <a href="#projects" class="atlas-link" data-atlas="projects"><span>05</span><b>Projects</b></a>
   <a href="#certifications" class="atlas-link" data-atlas="certifications"><span>06</span><b>Credentials</b></a>
-  <a href="#contact" class="atlas-link" data-atlas="contact"><span>07</span><b>Contact</b></a>
+  <a href="#travel-gallery" class="atlas-link" data-atlas="travel-gallery"><span>07</span><b>Travel</b></a>
+  <a href="#contact" class="atlas-link" data-atlas="contact"><span>08</span><b>Contact</b></a>
 </nav>
 <nav class="mobile-dock" aria-label="Quick navigation">
-  <a href="#home"><span>⌂</span><b>Home</b></a><a href="#projects"><span>▦</span><b>Projects</b></a><a href="#certifications"><span>✳</span><b>Credentials</b></a><a href="#contact"><span>↗</span><b>Contact</b></a>
+  <a href="#home"><span>⌂</span><b>Home</b></a><a href="#projects"><span>▦</span><b>Projects</b></a><a href="#certifications"><span>✳</span><b>Credentials</b></a><a href="#travel-gallery"><span>⌁</span><b>Travel</b></a><a href="#contact"><span>↗</span><b>Contact</b></a>
 </nav>
 
 <main id="main">
@@ -103,6 +104,30 @@
   </div>
 </section>
 
+
+<dialog class="certificate-viewer" id="certificatePreviewDialog" aria-labelledby="certificatePreviewTitle">
+  <div class="viewer-header">
+    <div><h3 id="certificatePreviewTitle">Certificate preview</h3><p id="certificatePreviewIssuer"></p></div>
+    <button class="viewer-close" id="certificatePreviewClose" type="button">Close ✕</button>
+  </div>
+  <div class="viewer-stage"><iframe id="certificatePreviewFrame" title="Certificate PDF preview" src="about:blank"></iframe></div>
+</dialog>
+
+
+<section id="travel-gallery" class="section divider travel-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div><p class="overline">07 / TRAVEL JOURNAL</p><h2>Beyond the <em class="gradient">day job.</em></h2></div>
+      <div><p>A personal space for road trips, places, and moments behind the ride—kept separate from the professional project portfolio.</p><div class="travel-status">PERSONAL PHOTO &amp; VIDEO GALLERY</div></div>
+    </div>
+    <div class="travel-empty reveal" id="travelGalleryEmpty">
+      <div class="travel-empty-icon" aria-hidden="true">▧</div>
+      <div><h3>Your travel gallery is ready for your media.</h3><p>No sample or stock photos are shown. Original photographs and ride videos will appear here once media files are added to the repository. Photos support full-view previews, and videos open with playback controls.</p></div>
+    </div>
+    <div class="travel-gallery-grid" id="travelGalleryGrid" aria-live="polite" hidden></div>
+  </div>
+</section>
+
 <section id="resumes" class="section divider"><div class="container"><div class="section-header reveal"><div><p class="overline">07 / RESUMES</p><h2>Two perspectives. <em class="gradient">One profile.</em></h2></div><p>Choose the resume that best aligns with the opportunity.</p></div><div class="resume-grid">
 <article class="resume-card reveal"><div class="resume-icon">BA</div><div class="resume-copy"><span>BUSINESS ANALYSIS</span><h3>Business Analyst Resume</h3><p>Requirements analysis, stakeholder management, process improvement, UAT, and healthcare IT delivery.</p><a class="button primary" href="Suraj_DP_Business_Analyst_Resume.pdf" download>Download PDF ↓</a></div><b class="pdf-watermark">PDF</b></article>
 <article class="resume-card reveal delay"><div class="resume-icon qa-icon">QA</div><div class="resume-copy"><span>QUALITY & AUTOMATION</span><h3>Automation Engineer Resume</h3><p>QA engineering, regression testing, automation, API/data validation, and healthcare application testing.</p><a class="button secondary" href="Suraj_DP_Automation_Engineer_Resume.pdf" download>Download PDF ↓</a></div><b class="pdf-watermark">PDF</b></article>
@@ -118,5 +143,6 @@
 <footer class="footer"><div class="container footer-inner"><a class="brand" href="#home"><span class="brand-icon">SD<span>.</span></span><span class="brand-copy">SURAJ D P<small>PORTFOLIO / 2026</small></span></a><p>Designed with clarity. Built with purpose.</p><div class="footer-links"><a href="https://github.com/surdp" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/suraj-dp-2a91441bb/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="mailto:suraj.dp412@gmail.com">Email</a></div><span class="copyright">© <span id="year"></span> Suraj D P</span></div></footer>
 <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
 <script src="assets/js/certifications.js" defer></script>
+<script src="assets/js/travel-gallery.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body></html>
