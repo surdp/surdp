@@ -9,7 +9,8 @@
   function setTheme(theme) {
     root.dataset.theme = theme;
     if (themeToggle) {
-      themeToggle.textContent = theme === "dark" ? "☼" : "☾";
+      themeToggle.innerHTML = '<i class="portfolio-lucide" data-lucide="' + (theme === "dark" ? "sun" : "moon") + '" aria-hidden="true"></i>';
+      if (window.lucide && typeof window.lucide.createIcons === "function") window.lucide.createIcons({attrs: {"stroke-width": 1.9, "aria-hidden": "true"}});
       themeToggle.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
       themeToggle.title = theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
     }
@@ -26,11 +27,18 @@
     ".ba-list-icon", ".ba-layer-icon", ".ba-visual-outcomes > div > span",
     ".ba-panel-symbol", ".expertise-icon", ".workflow-solution-icon",
     ".workflow-stage-symbol", ".career-next-rocket", ".career-next-star",
-    ".goals-category span", ".goals-target-icon", ".goals-focus-card > span"
+    ".goals-category span", ".goals-target-icon", ".goals-focus-card > span",
+    ".tool-tags span > i", ".resume-icon", ".credential-footer-mark",
+    ".movie-setup-icon", ".travel-empty-icon", ".credential-empty > span", ".theme-toggle"
   ].join(",");
   function portfolioIconName(label, node) {
     const value = String(label || "").toLowerCase();
     const cls = node?.classList || { contains: () => false };
+    if (cls.contains("theme-toggle")) return document.documentElement.dataset.theme === "dark" ? "sun" : "moon";
+    if (cls.contains("resume-icon")) return /^ba$/i.test(value.trim()) ? "briefcase-business" : "shield-check";
+    if (cls.contains("credential-footer-mark")) return "badge-check";
+    if (cls.contains("movie-setup-icon")) return "clapperboard";
+    if (cls.contains("travel-empty-icon")) return "images";
     if (cls.contains("career-next-rocket")) return "rocket";
     if (cls.contains("career-next-star")) return "sparkles";
     if (node?.closest(".workflow-solution-tab")) {
@@ -97,6 +105,7 @@
       const raw = node.textContent.trim();
       if (!raw || /^\d+$/.test(raw)) return;
       let label = raw;
+      if (node.matches(".tool-tags span > i")) label = node.parentElement.textContent.replace(raw, "").trim();
       const link = node.closest(".atlas-link,.mobile-dock a");
       if (link) label = link.querySelector("b")?.textContent || raw;
       const listItem = node.closest("li");
