@@ -3968,3 +3968,13 @@ body.project-modal-open{overflow:hidden}
   #projects .project-modal-details .project-content>ul{grid-template-columns:minmax(0,1fr)}
   #projects .project-modal-details .project-content>.story-grid{grid-template-columns:minmax(0,1fr)}
 }
+
+
+/* Preserve positioned overlays in the photo-backed project art */
+#projects .project-art .art-chip,
+#projects .project-art .code-lines,
+#projects .project-art .java-art>span{
+  position:absolute;
+  z-index:2;
+}
+#projects .project-art .code-lines{left:22px;bottom:24px}
