@@ -5190,3 +5190,145 @@ html[data-theme="light"] #projects .project-detail-info-focus{background:radial-
 .trip-tabs-heading h3{font-size:15px}.trip-tabs-panel .trip-tab{flex-basis:222px;width:222px;min-height:65px}
 }
 @media(prefers-reduced-motion:reduce){.trip-tabs-panel .trip-tab,.trip-section .trip-place-photos .trip-photo-explore{transition:none!important}}
+
+/* Travel Journal refinement: route-book badge, tidy metadata, ride notes, and motorcycle animation */
+.trip-tabs-heading { text-align: center; }
+.trip-tabs-heading > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 6px 11px;
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--line));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 9%, var(--panel));
+  color: var(--accent);
+  font: 800 8px "DM Mono", monospace;
+  letter-spacing: .16em;
+  text-align: center;
+}
+.trip-tabs-heading h3 { text-align: center; }
+.trip-tabs-heading p { text-align: center; }
+.trip-tabs-panel .trip-tab-copy small {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 6px;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.trip-tabs-panel .trip-tab-region {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.trip-tabs-panel .trip-tab-meta-separator {
+  flex: 0 0 auto;
+  color: var(--faint);
+  font-size: 11px;
+  line-height: 1;
+}
+.trip-tabs-panel .trip-tab-stops {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  padding: 3px 5px;
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--line));
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--accent) 7%, var(--panel));
+  color: var(--muted);
+  font: 700 7px "DM Mono", monospace;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.trip-tabs-panel .trip-tab[aria-selected="true"] .trip-tab-stops {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+  background: color-mix(in srgb, var(--accent) 13%, var(--panel));
+  color: var(--accent);
+}
+.trip-ride-note {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 8px 10px;
+  margin: 0 0 12px;
+  padding: 10px 11px;
+  border: 1px solid color-mix(in srgb, var(--accent) 23%, var(--line));
+  border-radius: 9px;
+  background: linear-gradient(110deg, color-mix(in srgb, var(--accent) 7%, var(--panel)), color-mix(in srgb, var(--accent2) 4%, var(--panel)));
+}
+.trip-ride-note > span {
+  display: inline-flex;
+  align-items: center;
+  padding-top: 2px;
+  color: var(--accent);
+  font: 800 7px "DM Mono", monospace;
+  letter-spacing: .11em;
+  white-space: nowrap;
+}
+.trip-ride-note > p {
+  min-width: 0;
+  margin: 0;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.65;
+}
+.trip-section .trip-place-photo-credit { overflow-wrap: anywhere; }
+.trip-section .trip-place-photos .trip-photo-explore {
+  align-content: center;
+  justify-items: start;
+  min-height: 115px;
+}
+.trip-section .trip-place-photos .trip-photo-explore > b,
+.trip-section .trip-place-photos .trip-photo-explore > small {
+  max-width: 100%;
+}
+.trip-route-art.trip-bike-art svg {
+  width: 100%;
+  height: clamp(68px, 7vw, 90px);
+  overflow: visible;
+  color: var(--accent);
+}
+.trip-route-art.trip-bike-art .trip-bike-road {
+  fill: none;
+  stroke: color-mix(in srgb, var(--muted) 45%, transparent);
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+.trip-route-art.trip-bike-art .trip-bike-road-center {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-dasharray: 3 7;
+  opacity: .95;
+  animation: tripRoadDrift 7s linear infinite;
+}
+.trip-route-art.trip-bike-art .trip-bike-waypoint {
+  fill: var(--panel);
+  stroke: var(--accent2);
+  stroke-width: 2;
+}
+.trip-bike-motion { color: var(--accent); }
+.trip-bike-static { display: none; color: var(--accent); }
+@keyframes tripRoadDrift { to { stroke-dashoffset: -100; } }
+@media (max-width: 800px) {
+  .trip-route-art.trip-bike-art svg { height: 67px; }
+  .trip-tabs-heading { padding-top: 17px; }
+}
+@media (max-width: 600px) {
+  .trip-tabs-heading > span { font-size: 7px; padding: 5px 9px; }
+  .trip-tabs-panel .trip-tab-copy small { gap: 5px; }
+  .trip-tabs-panel .trip-tab-stops { padding: 2px 4px; font-size: 6px; }
+  .trip-ride-note { grid-template-columns: minmax(0,1fr); gap: 5px; padding: 9px; }
+  .trip-route-art.trip-bike-art svg { height: 58px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trip-route-art.trip-bike-art .trip-bike-road-center { animation: none !important; }
+  .trip-bike-motion { display: none; }
+  .trip-bike-static { display: inline; }
+}

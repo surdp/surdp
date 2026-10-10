@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f5f7fa">
 <meta name="description" content="Suraj D P is a Business Analyst with experience in requirements analysis, process mapping, functional documentation, API validation, QA automation, and healthcare technology delivery.">
 <meta property="og:title" content="Suraj D P | Business Analyst & Healthcare IT"><meta property="og:description" content="Business analysis, healthcare technology, quality engineering, automation, and practical software projects.">
-<title>Suraj D P · Business Analysis · QA Automation · Healthcare IT</title><link rel="stylesheet" href="assets/css/style.css?v=20261010-travel-journal-v2">
+<title>Suraj D P · Business Analysis · QA Automation · Healthcare IT</title><link rel="stylesheet" href="assets/css/style.css?v=20261010-travel-journal-v3">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script>try{const t=localStorage.getItem("suraj-portfolio-theme");if(t)document.documentElement.dataset.theme=t}catch(_){}</script>
 </head>
@@ -665,12 +665,30 @@
       </div>
       <div class="trip-header-signature" aria-label="One life, many roads">
         <span class="trip-header-eyebrow"><span aria-hidden="true"></span> ONE LIFE · MANY ROADS</span>
-        <div class="trip-route-art" aria-hidden="true">
-          <svg viewBox="0 0 440 92" preserveAspectRatio="none">
-            <defs><linearGradient id="tripRouteGradient" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#58c8ff"/><stop offset=".5" stop-color="#8ba7ff"/><stop offset="1" stop-color="#c29aff"/></linearGradient></defs>
-            <path d="M0 66 C38 66 22 18 62 18 S100 77 143 59 176 9 211 34 241 84 279 57 310 17 348 34 380 65 440 18"/>
-            <path d="M0 75 C38 75 22 27 62 27 S100 86 143 68 176 18 211 43 241 93 279 66 310 26 348 43 380 74 440 27"/>
-            <circle cx="62" cy="18" r="4"/><circle cx="211" cy="34" r="4"/><circle cx="348" cy="34" r="4"/>
+        <div class="trip-route-art trip-bike-art" aria-hidden="true">
+          <svg viewBox="0 0 440 110" preserveAspectRatio="none">
+            <path class="trip-bike-road" d="M8 77 C56 77 48 28 92 28 S142 92 190 67 S245 18 286 44 S331 89 372 56 S414 33 432 22"/>
+            <path id="tripBikePath" class="trip-bike-road-center" d="M8 77 C56 77 48 28 92 28 S142 92 190 67 S245 18 286 44 S331 89 372 56 S414 33 432 22"/>
+            <circle class="trip-bike-waypoint" cx="92" cy="28" r="4"/>
+            <circle class="trip-bike-waypoint" cx="286" cy="44" r="4"/>
+            <circle class="trip-bike-waypoint" cx="372" cy="56" r="4"/>
+            <g class="trip-bike-motion">
+              <animateMotion dur="10s" repeatCount="indefinite" rotate="auto"><mpath href="#tripBikePath"/></animateMotion>
+              <g transform="translate(-14,-8)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                <circle cx="4" cy="12" r="4"/>
+                <circle cx="23" cy="12" r="4"/>
+                <path d="M4 12 L10 5 L16 12 L23 12 L18 4 L13 4 M10 5 L8 2 M8 2 L5 2"/>
+                <path d="M13 4 L18 1 L21 2"/>
+                <circle cx="14" cy="-2" r="2.6" fill="currentColor" stroke="none"/>
+              </g>
+            </g>
+            <g class="trip-bike-static" transform="translate(207,29)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+              <circle cx="4" cy="12" r="4"/>
+              <circle cx="23" cy="12" r="4"/>
+              <path d="M4 12 L10 5 L16 12 L23 12 L18 4 L13 4 M10 5 L8 2 M8 2 L5 2"/>
+              <path d="M13 4 L18 1 L21 2"/>
+              <circle cx="14" cy="-2" r="2.6" fill="currentColor" stroke="none"/>
+            </g>
           </svg>
         </div>
         <p>For the roads that call, the places that stay, and the stories we bring home.</p>
@@ -730,7 +748,7 @@
 <script src="assets/js/certificate-image-support.js?v=20261009-1" defer></script>
 <script src="assets/js/movie-gallery.js?v=20261010-masonry-fill-v1" defer></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
-<script src="assets/js/trip-itineraries.js?v=20261010-travel-journal-v2" defer></script>
+<script src="assets/js/trip-itineraries.js?v=20261010-travel-journal-v3" defer></script>
 <script src="assets/js/travel-gallery.js?v=20261009-4" defer></script>
 <script src="https://unpkg.com/lucide@1.52.0/dist/umd/lucide.min.js" defer></script>
 <script src="assets/js/main.js?v=20261010-project-gallery-v6" defer></script>

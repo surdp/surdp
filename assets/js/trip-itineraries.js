@@ -588,7 +588,8 @@
       '" data-trip-tab="' + trip.id + '">' +
       '<span class="trip-tab-number">' + String(trip.id).padStart(2, "0") + '</span>' +
       '<span class="trip-tab-copy"><b>' + esc(trip.title) + '</b><small><span class="trip-tab-region">' + esc(trip.region) +
-      '</span><span class="trip-tab-stops">' + trip.stops.length + ' STOPS</span></small></span>' +
+      '</span><span class="trip-tab-meta-separator" aria-hidden="true">·</span><span class="trip-tab-stops">' + trip.stops.length +
+      ' stops</span></small></span>' +
       '<span class="trip-tab-arrow" aria-hidden="true">↗</span></button>';
   }
 
@@ -610,6 +611,26 @@
     }
     return chosen;
   }
+
+  const rideNotes = {
+    1: "A heritage-rich loop mixing historic towns, Mysuru landmarks and open stretches between stops. Best enjoyed without rushing the detours.",
+    2: "A big history ride through boulder country, ancient temple complexes and long links between heritage towns. Give yourself time to wander.",
+    3: "A Western Ghats favourite: winding ghat roads, green hills and temple stops where the ride is as memorable as the destination.",
+    4: "A compact nature escape built around the scale of Jog Falls and the slower pace of the Sagara side.",
+    5: "A local loop of reservoirs, forest roads and fort stops. A reminder that a good ride does not always need a long itinerary.",
+    6: "A relaxed nearby circuit with reservoir views, sunset stops and a look at Bhadravathi's industrial landmarks.",
+    7: "A scenic Western Ghats route connecting temple towns and lush landscapes, made for steady riding and plenty of roadside pauses.",
+    8: "Coastal miles, salty air, beach stops and Udupi food. Take the scenic route and leave room for one more beach.",
+    9: "A north-Karnataka run that heads toward Dandeli's river country, balancing highway miles with an outdoorsy finish.",
+    10: "A food-and-hills day out: a biryani stop, open-road stretches and a hilltop viewpoint around Avalabetta.",
+    11: "A long South Indian journey linking temple towns, beach roads and Kerala's backwaters, with the scenery changing as the coastline unfolds.",
+    12: "A focused ride to Coimbatore and Adiyogi, combining a long approach with a striking landmark worth slowing down for.",
+    13: "A city-focused route that trades winding country roads for Hyderabad's historic core and modern IT district.",
+    14: "A simple escape from Bengaluru with a hill stop and a temple visit near Kolar. Easy to shape into a relaxed day ride.",
+    15: "A temple-and-trek route pairing Western Ghats scenery with stops at Kukke Subramanya and Sowthadka.",
+    16: "A varied ride from temple heritage to Puducherry's coast and the spiritual roads around Tiruvannamalai.",
+    17: "A pilgrimage journey from the highway approach to Tirupati and the climb toward Tirumala, with time for the temples along the way."
+  };
 
   function renderTrip(trip) {
     const stops = visibleStops(trip);
@@ -635,6 +656,7 @@
         '<section class="trip-photos-panel" aria-labelledby="trip-photos-title-' + trip.id + '">' +
           '<div class="trip-panel-heading"><div><span class="trip-panel-kicker">PLACES &amp; PERSPECTIVES</span><h4 id="trip-photos-title-' + trip.id + '">Scenes from the journey</h4></div><span class="trip-panel-mark" aria-hidden="true">02 / DISCOVER</span></div>' +
           '<p class="trip-photos-intro">A few favourite frames from the places along the way.</p>' +
+          '<div class="trip-ride-note"><span>RIDE NOTES</span><p>' + esc(rideNotes[trip.id] || trip.overview) + '</p></div>' +
           '<div class="trip-place-photos" id="tripPlacePhotos-' + trip.id + '" data-photo-trip="' + trip.id + '" aria-live="polite"><div class="trip-photo-loading"><span></span><span></span><span></span></div></div>' +
           '' +
         '</section>' +
@@ -660,9 +682,9 @@
   async function searchCommonsPhoto(placeName, region) {
     const place = String(placeName || "").trim();
     const regionName = String(region || "").trim();
-    const searchTerm = regionName && !place.toLowerCase().includes(regionName.toLowerCase())
-      ? place + " " + regionName
-      : place;
+    const placeLower = place.toLowerCase();
+    const regionLower = regionName.toLowerCase();
+    const searchTerm = regionLower && !placeLower.includes(regionLower) ? place + " " + regionName : place;
     const cacheKey = searchTerm.toLowerCase();
     if (photoResultsCache.has(cacheKey)) return photoResultsCache.get(cacheKey);
 
@@ -672,7 +694,7 @@
         generator: "search",
         gsrsearch: searchTerm,
         gsrnamespace: "6",
-        gsrlimit: "8",
+        gsrlimit: "12",
         prop: "imageinfo",
         iiprop: "mime|url|extmetadata",
         iiurlwidth: "720",
@@ -685,6 +707,7 @@
       if (!response.ok) throw new Error("Photo search unavailable.");
       const data = await response.json();
       const pages = Object.values(data && data.query && data.query.pages || {});
+      const placeMain = place.split(",")[0].trim().toLowerCase();
       const candidates = pages.map(page => {
         const info = page && page.imageinfo && page.imageinfo[0];
         if (!info || !info.thumburl || !String(info.mime || "").startsWith("image/") || /svg/i.test(info.mime || "")) return null;
@@ -699,8 +722,10 @@
         };
       }).filter(Boolean);
       candidates.sort((a, b) => {
-        const aExact = a.title.toLowerCase().includes(place.toLowerCase()) ? 1 : 0;
-        const bExact = b.title.toLowerCase().includes(place.toLowerCase()) ? 1 : 0;
+        const aTitle = a.title.toLowerCase();
+        const bTitle = b.title.toLowerCase();
+        const aExact = placeMain && aTitle.includes(placeMain) ? 1 : 0;
+        const bExact = placeMain && bTitle.includes(placeMain) ? 1 : 0;
         return bExact - aExact;
       });
       return candidates[0] || null;
