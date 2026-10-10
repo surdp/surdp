@@ -3242,3 +3242,13 @@ html[data-theme="light"] .ba-impact-option.is-active{background:linear-gradient(
   .ba-stack-title{font-size:10px}
   .ba-stack-detail{font-size:9px}
 }
+
+
+/* About alignment guard: the header already provides navigation, so no floating rail may cover content */
+.atlas-rail{display:none!important}
+.about-grid{width:100%;max-width:100%;margin-inline:auto}
+.about-visual{max-width:100%;min-width:0;box-sizing:border-box}
+.about-visual .ba-visual-main{width:100%;max-width:100%;min-width:0;box-sizing:border-box}
+.ba-visual-main>.ba-industries-panel,
+.ba-visual-main>.ba-core-panel,
+.ba-visual-main>.ba-tools-panel{min-width:0;max-width:100%;box-sizing:border-box}
