@@ -474,7 +474,7 @@
     // Arrow moves only after a user selects a role. It is aligned to the
     // selected marker; CSS switches to the vertical coordinate on mobile.
     if (careerTrackArrow) {
-      careerTrackArrow.style.left = role === "techmahindra" ? "0%" : "46%";
+      careerTrackArrow.style.left = role === "techmahindra" ? "calc(0% - 30px)" : "calc(46% - 30px)";
       careerTrackArrow.style.setProperty("--career-arrow-top", role === "techmahindra" ? "4%" : "48%");
       careerTrackArrow.setAttribute("aria-label", "Selected role: " + (role === "techmahindra" ? "Tech Mahindra" : "Oracle Health (Cerner)"));
     }
