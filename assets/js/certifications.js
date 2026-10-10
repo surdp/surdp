@@ -108,9 +108,9 @@ if(grid){
  function credentialIcon(c){
   const text=(c.title+" "+c.categoryLabel+" "+c.issuer).toLowerCase();
   let name="book";
-  if(/claude|artificial intelligence|machine learning|\\bai\\b|neural/.test(text))name="ai";
-  else if(/cybersecurity|security|protection|privacy/.test(text))name="security";
-  else if(/lambdatest|test automation|software testing|selenium|quality assurance|\\btesting\\b/.test(text))name="qa";
+  if(/cybersecurity|security|protection|privacy/.test(text))name="security";
+  else if(/claude|artificial intelligence|machine learning|\bai\b|neural/.test(text))name="ai";
+  else if(/lambdatest|test automation|software testing|selenium|quality assurance|\btesting\b/.test(text))name="qa";
   else if(/power bi|data analyst|data visualization|analytics|business intelligence|charts and graphs/.test(text))name="analytics";
   else if(/healthcare|health care|clinical|covid-19 contact tracing/.test(text))name="healthcare";
   else if(/devops|azure|cloud|infrastructure as code|continuous delivery|continuous integration/.test(text))name="cloud";
