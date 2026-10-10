@@ -3294,7 +3294,7 @@ html[data-theme="light"] .ba-impact-option.is-active{background:linear-gradient(
     margin-left:22px;
     margin-right:22px;
   }
-  #main .about-grid{width:100%;max-width:100%;margin-left:22px;margin-right:22px}
+  #main .about-grid{width:calc(100% - 44px);max-width:none;margin-left:22px;margin-right:22px}
 }
 @media(max-width:1450px){
   .atlas-rail{display:none!important}
