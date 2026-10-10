@@ -158,7 +158,7 @@ if(grid){
   issuer.textContent=button.dataset.certificateIssuer||"";
   const pdfPath=button.dataset.certificatePdf||"";
   frame.src=pdfPath+"#view=FitH";
-  if(externalLink){externalLink.href=pdfPath;externalLink.hidden=!pdfPath;}
+  if(externalLink){const phoneLayout=window.matchMedia("(max-width: 850px), (orientation: landscape) and (max-width: 1200px) and (max-height: 750px)").matches;externalLink.href=pdfPath;externalLink.hidden=!pdfPath||!phoneLayout;}
   if(!dialog.open)dialog.showModal();
  });
  const previewDialog=document.getElementById("certificatePreviewDialog");
