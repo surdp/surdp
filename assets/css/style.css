@@ -2955,3 +2955,55 @@ html[data-theme="light"] .ba-impact-option.is-active{background:linear-gradient(
  .ba-impact-detail-icon{width:32px;height:32px}
 }
 @media(prefers-reduced-motion:reduce){.ba-impact-option,.ba-impact-detail{transition:none;animation:none}}
+
+
+/* Final content alignment: keep portfolio panels within their parent columns */
+.ba-impact-explorer,
+.ba-value-panel,
+.ba-industry-detail{
+  box-sizing:border-box;
+  width:100%;
+  max-width:100%;
+  min-width:0;
+}
+.ba-impact-explorer{
+  overflow:hidden;
+}
+.ba-impact-heading,
+.ba-impact-heading>div,
+.ba-impact-detail,
+.ba-impact-detail>div,
+.ba-value-header,
+.ba-value-header>div{
+  min-width:0;
+  max-width:100%;
+}
+.ba-impact-heading h3,
+.ba-impact-option>b,
+.ba-impact-option>small,
+.ba-impact-detail>div>p,
+.ba-value-header p{
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+.ba-impact-hint{display:none!important}
+.ba-value-status{display:none!important}
+.ba-impact-options{width:100%;min-width:0}
+.ba-impact-option{box-sizing:border-box;width:100%;min-width:0}
+.ba-impact-detail{grid-template-columns:38px minmax(0,1fr);width:100%;box-sizing:border-box}
+.ba-impact-tags{max-width:100%;min-width:0}
+.ba-impact-tags span,.ba-industry-tags span{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+.ba-value-header{display:flex;align-items:flex-start;justify-content:flex-start;gap:16px}
+.ba-value-header>div{flex:1 1 auto}
+@media(max-width:900px){
+ .ba-impact-explorer{padding:12px}
+ .ba-impact-options{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .ba-impact-option{min-height:95px}
+}
+@media(max-width:600px){
+ .ba-impact-explorer{padding:10px}
+ .ba-impact-options{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .ba-impact-heading h3{font-size:16px}
+ .ba-impact-option>small{font-size:9px}
+ .ba-impact-detail{grid-template-columns:30px minmax(0,1fr)}
+}
