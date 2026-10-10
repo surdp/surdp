@@ -418,6 +418,112 @@
   }));
 
 
+  // Project case-study dialog: cards open full details, with keyboard support,
+  // existing repository/live links, and reliable focus restoration.
+  const projectModal = document.getElementById("projectModal");
+  const projectDialog = projectModal?.querySelector(".project-modal-dialog");
+  const projectModalImage = document.getElementById("projectModalImage");
+  const projectModalKicker = document.getElementById("projectModalKicker");
+  const projectModalTitle = document.getElementById("projectModalTitle");
+  const projectModalSummary = document.getElementById("projectModalSummary");
+  const projectModalStack = document.getElementById("projectModalStack");
+  const projectModalDetails = document.getElementById("projectModalDetails");
+  let projectModalReturnFocus = null;
+
+  function openProjectDetails(card) {
+    if (!card || !projectModal || !projectDialog) return;
+    const title = card.querySelector(".project-content h3")?.textContent.trim() || "Project details";
+    const category = card.querySelector(".project-meta>span:first-child")?.textContent.trim() || "PROJECT OVERVIEW";
+    const summary = card.querySelector(".project-content>p")?.textContent.trim() || "";
+    const image = card.querySelector(".project-photo");
+    const stack = [...card.querySelectorAll(".project-stack span")].map(node => node.textContent.trim());
+    const content = card.querySelector(".project-content")?.cloneNode(true);
+
+    projectModalReturnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : card;
+    if (projectModalImage) {
+      projectModalImage.src = image?.currentSrc || image?.src || "";
+      projectModalImage.alt = image?.alt || title;
+    }
+    if (projectModalKicker) projectModalKicker.textContent = category;
+    if (projectModalTitle) projectModalTitle.textContent = title;
+    if (projectModalSummary) projectModalSummary.textContent = summary;
+    if (projectModalStack) {
+      projectModalStack.replaceChildren();
+      stack.forEach(label => {
+        const chip = document.createElement("span");
+        chip.textContent = label;
+        projectModalStack.append(chip);
+      });
+    }
+    if (content && projectModalDetails) {
+      content.querySelector("h3")?.remove();
+      content.querySelector(".project-stack")?.remove();
+      content.querySelector(".project-open-button")?.remove();
+      [...content.children].filter(node => node.tagName === "P").forEach(node => node.remove());
+      projectModalDetails.replaceChildren(content);
+    }
+    projectModal.hidden = false;
+    document.body.classList.add("project-modal-open");
+    document.addEventListener("keydown", handleProjectModalKeydown);
+    window.lucide?.createIcons?.({attrs: {"stroke-width": 1.9, "aria-hidden": "true"}});
+    projectDialog.scrollTop = 0;
+    projectModal.querySelector(".project-modal-close")?.focus({preventScroll:true});
+  }
+
+  function closeProjectDetails() {
+    if (!projectModal || projectModal.hidden) return;
+    projectModal.hidden = true;
+    document.body.classList.remove("project-modal-open");
+    document.removeEventListener("keydown", handleProjectModalKeydown);
+    if (projectModalImage) projectModalImage.removeAttribute("src");
+    if (projectModalDetails) projectModalDetails.replaceChildren();
+    if (projectModalReturnFocus instanceof HTMLElement) projectModalReturnFocus.focus({preventScroll:true});
+  }
+
+  function handleProjectModalKeydown(event) {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeProjectDetails();
+      return;
+    }
+    if (event.key !== "Tab" || !projectDialog) return;
+    const focusable = [...projectDialog.querySelectorAll('a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])')]
+      .filter(node => !node.hidden && node.getAttribute("aria-hidden") !== "true");
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
+  cards.forEach(card => {
+    card.addEventListener("click", event => {
+      if (event.target.closest("a,button")) return;
+      openProjectDetails(card);
+    });
+    card.addEventListener("keydown", event => {
+      if ((event.key === "Enter" || event.key === " ") && event.target === card) {
+        event.preventDefault();
+        openProjectDetails(card);
+      }
+    });
+  });
+  document.querySelectorAll("[data-open-project]").forEach(button => {
+    button.addEventListener("click", event => {
+      event.stopPropagation();
+      const card = cards.find(item => item.dataset.projectId === button.dataset.openProject);
+      if (card) openProjectDetails(card);
+    });
+  });
+  projectModal?.querySelectorAll("[data-project-close]").forEach(button => {
+    button.addEventListener("click", closeProjectDetails);
+  });
+
   // Experience Timeline / Career Growth modes and interactive progression.
   const careerJourney = document.querySelector(".career-journey");
   const careerModeButtons = [...document.querySelectorAll("[data-career-mode]")];
