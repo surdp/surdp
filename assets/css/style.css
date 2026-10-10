@@ -3941,3 +3941,30 @@ body.project-modal-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){
   #projects .project-card,#projects .project-photo,#projects .project-open-button,.project-modal-dialog{transition:none;animation:none}
 }
+
+
+/* Modal content lives inside #projects, so restore the full details hidden in compact cards. */
+#projects .project-modal-details .project-content>ul{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;
+  margin:0 0 18px;
+}
+#projects .project-modal-details .project-content>.story-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:9px;
+  margin:0 0 18px;
+}
+#projects .project-modal-details .project-content>.project-links{
+  display:flex!important;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:9px;
+  margin:0;
+}
+#projects .project-modal-details .project-content>.project-open-button{display:none!important}
+@media(max-width:720px){
+  #projects .project-modal-details .project-content>ul{grid-template-columns:minmax(0,1fr)}
+  #projects .project-modal-details .project-content>.story-grid{grid-template-columns:minmax(0,1fr)}
+}
