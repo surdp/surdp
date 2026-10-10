@@ -2607,3 +2607,136 @@ html[data-theme="light"] .career-track-point--techm .career-point-dot{box-shadow
 html[data-theme="light"] .career-next-icon{background:linear-gradient(145deg,#e2f4ff,#f0eaff);color:#306bd3}
 html[data-theme="light"] .career-growth-stage:nth-child(3) .career-growth-node{color:#865c06}
 html[data-theme="light"] .career-growth-stage.is-active:nth-child(3) .career-growth-node{color:#382505}
+
+
+/* Career experience refinement: fixed track geometry, click-driven marker and active-card sizing */
+.career-track{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 150px;align-items:start}
+.career-track-line{top:21px!important;height:3px!important}
+.career-track-point,.career-track-future{padding-top:7px}
+.career-point-dot{margin-top:0!important;flex:0 0 15px}
+.career-track-copy{padding-top:0}
+.career-track-point--techm{grid-column:1!important;grid-row:1}
+.career-track-point--cerner{grid-column:2!important;grid-row:1}
+.career-track-future{grid-column:3!important;grid-row:1}
+.career-track-arrow{
+  top:50%!important;
+  left:0%;
+  transform:translate(-50%,-50%)!important;
+  animation:none!important;
+  transition:left .5s cubic-bezier(.2,.75,.25,1),filter .25s,box-shadow .25s!important;
+  z-index:5;
+}
+.career-track-arrow:after{right:22px;width:18px;opacity:.9}
+.career-journey[data-focused-role="techmahindra"] .career-track-arrow{left:0%;animation:none!important}
+.career-journey[data-focused-role="cerner"] .career-track-arrow{left:46%;animation:none!important}
+.career-track-point{transition:background .25s,transform .25s}
+.career-track-point.is-current{transform:translateY(-2px)}
+.career-track-point.is-current .career-track-copy b{color:var(--text)}
+.career-track-point--techm.is-current .career-point-dot{border-color:#52d6ff}
+.career-track-point--cerner.is-current .career-point-dot{border-color:#a98bff}
+.career-cards-grid{transition:grid-template-columns .45s cubic-bezier(.2,.75,.25,1),gap .3s}
+.career-role-card{
+  transform:scale(.975);
+  transform-origin:center top;
+  opacity:.89;
+  transition:transform .42s cubic-bezier(.2,.75,.25,1),opacity .3s,border-color .28s,box-shadow .28s;
+}
+.career-role-card.is-focused{transform:scale(1);opacity:1}
+.career-role-card:focus-within{opacity:1}
+.career-role-visual[role="button"]{cursor:pointer}
+.career-role-visual[role="button"]:focus-visible{outline:3px solid var(--role-accent,var(--accent));outline-offset:-4px}
+@media(min-width:1451px){
+  .career-cards-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 160px;align-items:stretch}
+  .career-cards-grid:has(.career-role-card--techm.is-focused){grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr) 160px}
+  .career-cards-grid:has(.career-role-card--cerner.is-focused){grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr) 160px}
+  .career-role-card--techm{grid-column:1!important;grid-row:1}
+  .career-role-card--cerner{grid-column:2!important;grid-row:1}
+  .career-next-card{grid-column:3!important;grid-row:1}
+}
+@media(max-width:1450px) and (min-width:851px){
+  .career-cards-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;gap:14px}
+  .career-cards-grid:has(.career-role-card--techm.is-focused){grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr)}
+  .career-cards-grid:has(.career-role-card--cerner.is-focused){grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr)}
+  .career-role-card--techm,.career-role-card--cerner{grid-column:auto!important;grid-row:auto;align-self:start}
+  .career-next-card{grid-column:1/-1!important;grid-row:auto;display:grid;grid-template-columns:100px minmax(0,1fr) auto;align-items:center;gap:10px}
+  .career-next-art{grid-column:1;grid-row:1/span 5;width:100px;height:90px;margin:0}
+  .career-next-card .overline{grid-column:2;grid-row:1}
+  .career-next-card h3{grid-column:2;grid-row:2}
+  .career-next-card>p:not(.overline){grid-column:2;grid-row:3}
+  .career-next-card .career-next-pill{grid-column:2;grid-row:4}
+  .career-next-card .career-goals-open{grid-column:3;grid-row:1/span 4;width:auto;min-width:145px}
+}
+@media(max-width:850px){
+  .career-track{grid-template-columns:minmax(0,1fr);height:auto;gap:8px}
+  .career-track-point--techm,.career-track-point--cerner,.career-track-future{grid-column:1!important;grid-row:auto}
+  .career-track-line{top:0!important;left:6px!important;right:auto!important;width:3px!important;height:100%!important}
+  .career-point-dot{margin-top:0!important}
+  .career-track-arrow{top:var(--career-arrow-top,4%)!important;left:-13px!important;transform:rotate(90deg) translateX(0)!important;transition:top .5s cubic-bezier(.2,.75,.25,1),filter .25s!important}
+  .career-journey[data-focused-role="techmahindra"] .career-track-arrow,.career-journey[data-focused-role="cerner"] .career-track-arrow{left:-13px!important;animation:none!important}
+  .career-journey[data-focused-role="techmahindra"] .career-track-arrow{--career-arrow-top:4%}
+  .career-journey[data-focused-role="cerner"] .career-track-arrow{--career-arrow-top:35%}
+  .career-track-arrow:after{right:auto;left:18px;top:50%;width:18px;transform:translateY(-50%) rotate(180deg)}
+  .career-cards-grid{grid-template-columns:minmax(0,1fr)!important}
+  .career-role-card--techm,.career-role-card--cerner,.career-next-card{grid-column:1!important;grid-row:auto}
+  .career-role-card--techm{order:0}
+  .career-role-card--cerner{order:1}
+  .career-next-card{order:2}
+}
+@media(max-width:600px){
+  .career-track{padding-left:4px}
+  .career-track-point{gap:10px}
+  .career-track-arrow{left:-13px!important}
+  .career-next-card{grid-template-columns:62px minmax(0,1fr);gap:9px}
+  .career-next-art{width:62px;height:62px}
+  .career-next-card .career-goals-open{grid-column:2;grid-row:auto;justify-self:start}
+}
+/* Swap background headers to realistic office interiors for both roles */
+.career-role-visual--techm{--role-image:url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=90")}
+.career-role-visual--cerner{--role-image:url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=90")}
+.career-role-visual:before{
+  background:
+    linear-gradient(95deg,color-mix(in srgb,var(--panel) 82%,transparent),color-mix(in srgb,var(--panel) 65%,transparent) 49%,color-mix(in srgb,var(--panel) 35%,transparent)),
+    var(--role-image);
+  background-position:center;background-size:cover;
+}
+html[data-theme="light"] .career-role-visual:before{
+  background:
+    linear-gradient(95deg,rgba(255,255,255,.88),rgba(255,255,255,.7) 49%,rgba(255,255,255,.39)),
+    var(--role-image);
+  background-position:center;background-size:cover;
+}
+/* Achievements and contribution highlights: readable five-point lists */
+.career-role-card [data-role-panel$="-impact"] .career-detail-list{gap:2px}
+.career-role-card [data-role-panel$="-impact"] .career-detail-list li{font-size:10px;line-height:1.6;padding:6px 0}
+@media(min-width:1000px){
+ .career-role-card [data-role-panel$="-impact"] .career-detail-list li{font-size:11px;line-height:1.65}
+}
+/* Make the progress phrase a single, rounded status pill and centre the rocket in its orbit */
+.career-next-pill{
+  display:flex;align-items:center;justify-content:flex-start;gap:8px;
+  width:100%;max-width:100%;box-sizing:border-box;
+  border:1px solid rgba(41,212,176,.34);
+  border-radius:999px;
+  background:linear-gradient(100deg,rgba(16,164,143,.13),rgba(30,105,131,.09));
+  padding:9px 11px;
+  font-size:9px;line-height:1.5;
+  min-height:42px;
+}
+.career-next-pill span{
+  display:block;flex:0 0 7px;width:7px;height:7px;min-width:7px;
+  border-radius:50%;background:#29d4b0;
+  box-shadow:0 0 0 4px rgba(41,212,176,.12),0 0 11px rgba(41,212,176,.52);
+}
+.career-next-art{position:relative;isolation:isolate}
+.career-next-orbit{position:absolute;right:27px;top:23px;width:45px;height:45px;border-radius:50%;display:block}
+.career-next-rocket{
+  position:absolute;right:27px;top:23px;
+  width:45px;height:45px;margin:0;padding:0;
+  display:grid;place-items:center;
+  line-height:1;text-align:center;
+  transform:none!important;
+}
+.career-next-rocket .portfolio-lucide{display:grid;place-items:center;width:100%;height:100%}
+.career-next-rocket svg{display:block;width:23px!important;height:23px!important;margin:0}
+.career-next-star{position:absolute;right:18px;top:13px;display:grid;place-items:center;width:22px;height:22px;line-height:1}
+html[data-theme="light"] .career-next-pill{background:linear-gradient(100deg,rgba(16,164,143,.09),rgba(30,105,131,.05));border-color:rgba(17,151,134,.28)}
