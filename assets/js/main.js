@@ -233,6 +233,55 @@
       window.lucide.createIcons({attrs: {"stroke-width": 1.9, "aria-hidden": "true"}});
     }
   }
+
+  const baPracticeProfiles = {
+    requirements:{
+      icon:"file-check",title:"Make requirements actionable",
+      text:"Translate stakeholder needs into clear scope, business rules, acceptance criteria and traceable delivery artefacts.",
+      tags:["Scope","Acceptance criteria","Traceability"]
+    },
+    workflow:{
+      icon:"workflow",title:"Make complex processes clear",
+      text:"Map current and future states, uncover gaps and dependencies, and improve hand-offs across people and systems.",
+      tags:["AS-IS / TO-BE","Gap analysis","BPMN"]
+    },
+    quality:{
+      icon:"shield-check",title:"Build quality into delivery",
+      text:"Connect requirements to test scenarios, UAT, defect follow-up and release-readiness checks.",
+      tags:["Test scenarios","UAT","Defect triage"]
+    },
+    outcomes:{
+      icon:"chart-no-axes-combined",title:"Keep outcomes measurable",
+      text:"Agree success measures early and use validation evidence and clear ownership to assess whether the change delivers value.",
+      tags:["Success measures","Evidence","Follow-through"]
+    }
+  };
+  const baPracticeTabs = [...document.querySelectorAll("[data-ba-practice]")];
+  const baPracticeIcon = document.getElementById("baPracticeIcon");
+  const baPracticeTitle = document.getElementById("baPracticeTitle");
+  const baPracticeText = document.getElementById("baPracticeText");
+  const baPracticeTags = document.getElementById("baPracticeTags");
+  function selectBaPractice(key) {
+    const item = baPracticeProfiles[key];
+    if (!item) return;
+    baPracticeTabs.forEach(button => {
+      const active = button.dataset.baPractice === key;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    if (baPracticeTitle) baPracticeTitle.textContent = item.title;
+    if (baPracticeText) baPracticeText.textContent = item.text;
+    paintBaIcon(baPracticeIcon, item.icon);
+    if (baPracticeTags) {
+      baPracticeTags.innerHTML = "";
+      item.tags.forEach(tag => {
+        const chip = document.createElement("span");
+        chip.textContent = tag;
+        baPracticeTags.append(chip);
+      });
+    }
+  }
+  baPracticeTabs.forEach(button => button.addEventListener("click", () => selectBaPractice(button.dataset.baPractice)));
   function selectBaIndustry(key) {
     const item = baIndustryProfiles[key];
     if (!item) return;
@@ -333,6 +382,7 @@
   selectBaIndustry("healthcare");
   selectBaValue("alignment");
   selectBaImpact("clarity");
+  selectBaPractice("requirements");
 
   function closeMenu() {
     nav?.classList.remove("open");
