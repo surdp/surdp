@@ -461,3 +461,423 @@
   .section{overflow-x:hidden!important;overflow-x:clip!important}
   img,video,canvas,iframe{max-width:100%!important;height:auto}
 }
+
+
+/* Phone usability pass: contained dialogs, travel journal reflow, credential cards, and two-row portrait dock. */
+/* Scope: phones in portrait + compact landscape phones. Laptop/tablet layout is unchanged. */
+@media screen and (max-width:850px), screen and (orientation:landscape) and (max-width:1200px) and (max-height:750px){
+
+  /* 1) Every modal/dialog stays inside the visible viewport and scrolls internally. */
+  html[data-theme] dialog.goals-dialog[open],
+  html[data-theme] dialog.certificate-viewer[open],
+  html[data-theme] dialog.media-viewer[open],
+  html[data-theme] dialog.resume-preview-dialog[open],
+  html[data-theme] dialog.award-image-viewer[open]{
+    position:fixed!important;
+    inset:max(8px,env(safe-area-inset-top,0px)) max(8px,env(safe-area-inset-right,0px)) max(8px,env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))!important;
+    width:auto!important;max-width:none!important;min-width:0!important;
+    height:auto!important;max-height:none!important;min-height:0!important;
+    margin:0!important;box-sizing:border-box!important;
+    overflow:hidden!important;overscroll-behavior:contain!important;
+    transform:none!important;
+  }
+  html[data-theme] dialog.goals-dialog[open]{
+    display:block!important;overflow-y:auto!important;overflow-x:hidden!important;
+    border-radius:16px!important;
+  }
+  html[data-theme] .goals-dialog-shell{
+    min-height:0!important;height:auto!important;padding:14px!important;
+  }
+  html[data-theme] .goals-dialog-header{
+    position:relative;gap:10px!important;padding-bottom:12px!important;
+  }
+  html[data-theme] .goals-dialog-header>div{min-width:0;flex:1 1 auto}
+  html[data-theme] .goals-dialog-header h2{font-size:clamp(21px,5.4vw,28px)!important;line-height:1.15!important;overflow-wrap:anywhere}
+  html[data-theme] .goals-dialog-header p{font-size:11px!important;line-height:1.65!important}
+  html[data-theme] .goals-close{flex:0 0 35px!important;width:35px!important;height:35px!important;position:sticky;top:0}
+  html[data-theme] .goals-dialog-layout{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:12px!important;padding-top:12px!important}
+  html[data-theme] .goals-category-nav{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important;padding:7px!important}
+  html[data-theme] .goals-category{min-width:0!important;min-height:40px!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;gap:7px!important;padding:8px!important;text-align:left!important;font-size:10px!important;overflow-wrap:anywhere}
+  html[data-theme] .goals-category span{flex:0 0 auto}
+  html[data-theme] .goals-main,html[data-theme] .goals-roadmap-copy,html[data-theme] .goals-focus-card{min-width:0!important;max-width:100%!important}
+  html[data-theme] .goals-main h3{font-size:17px!important;line-height:1.25!important;overflow-wrap:anywhere}
+  html[data-theme] .goals-main p,html[data-theme] .goals-main li{font-size:11px!important;line-height:1.65!important;overflow-wrap:anywhere}
+  html[data-theme] .goals-main *{max-width:100%;overflow-wrap:anywhere}
+  html[data-theme] dialog.certificate-viewer[open],
+  html[data-theme] dialog.media-viewer[open],
+  html[data-theme] dialog.award-image-viewer[open]{
+    display:flex!important;flex-direction:column!important;align-items:stretch!important;
+    padding:0!important;border-radius:14px!important;overflow:hidden!important;
+  }
+  html[data-theme] .certificate-viewer[open] .viewer-header,
+  html[data-theme] .media-viewer[open] .viewer-header,
+  html[data-theme] .award-image-viewer[open] .viewer-header{
+    display:flex!important;flex:0 0 auto!important;align-items:flex-start!important;gap:8px!important;
+    padding:10px!important;min-width:0!important;
+  }
+  html[data-theme] .viewer-header>div{flex:1 1 auto!important;min-width:0!important}
+  html[data-theme] .viewer-header h3{font-size:14px!important;line-height:1.3!important;overflow-wrap:anywhere}
+  html[data-theme] .viewer-header p{font-size:10px!important;line-height:1.5!important;overflow-wrap:anywhere}
+  html[data-theme] .viewer-close{flex:0 0 auto!important;min-height:34px!important;padding:7px 9px!important;font-size:10px!important;white-space:nowrap}
+  html[data-theme] .certificate-viewer[open] .viewer-stage,
+  html[data-theme] .media-viewer[open] .viewer-stage,
+  html[data-theme] .award-image-viewer[open] .viewer-stage{
+    position:relative!important;display:grid!important;flex:1 1 0!important;
+    width:100%!important;min-width:0!important;min-height:0!important;max-height:none!important;height:auto!important;
+    box-sizing:border-box!important;overflow:auto!important;overscroll-behavior:contain!important;
+    padding:6px!important;
+  }
+  html[data-theme] .certificate-viewer[open] .viewer-stage iframe{
+    display:block!important;flex:1 1 auto!important;width:100%!important;height:100%!important;
+    min-height:0!important;max-height:none!important;border:0!important;
+  }
+  html[data-theme] .media-viewer[open] .travel-viewer-toolbar{
+    display:flex!important;flex:0 0 auto!important;flex-wrap:wrap!important;align-items:center!important;
+    justify-content:center!important;gap:5px!important;padding:7px!important;min-width:0!important;
+  }
+  html[data-theme] .travel-viewer-toolbar button{min-height:33px!important;max-width:100%;padding:6px 8px!important;font-size:9px!important}
+  html[data-theme] .media-viewer[open] .travel-viewer-stage img,
+  html[data-theme] .media-viewer[open] .travel-viewer-stage video{
+    display:block!important;width:auto!important;height:auto!important;max-width:100%!important;
+    max-height:100%!important;object-fit:contain!important;
+  }
+  html[data-theme] dialog.resume-preview-dialog[open]{
+    display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;
+    padding:0!important;border-radius:14px!important;overflow:hidden!important;
+  }
+  html[data-theme] .resume-preview-dialog[open] .resume-preview-header{
+    position:relative!important;top:auto!important;flex:0 0 auto!important;gap:8px!important;
+    padding:10px!important;min-width:0!important;
+  }
+  html[data-theme] .resume-preview-dialog[open] .resume-preview-heading{min-width:0!important;flex:1 1 auto!important}
+  html[data-theme] .resume-preview-dialog[open] .resume-preview-heading h3{font-size:15px!important;line-height:1.3!important;overflow-wrap:anywhere}
+  html[data-theme] .resume-preview-dialog[open] .resume-preview-heading p{font-size:9px!important;line-height:1.5!important}
+  html[data-theme] .resume-preview-dialog[open] .resume-preview-close{flex:0 0 auto!important;max-width:42%;font-size:9px!important;padding:7px 8px!important}
+  html[data-theme] .resume-preview-dialog[open] .resume-preview-stage{
+    flex:1 1 0!important;width:100%!important;min-width:0!important;min-height:0!important;max-height:none!important;height:auto!important;
+    padding:9px!important;overflow:auto!important;overscroll-behavior:contain!important;
+  }
+  html[data-theme] .resume-preview-dialog[open] .resume-preview-render-note{font-size:7px!important;line-height:1.5!important}
+  html[data-theme] .resume-preview-dialog[open] .resume-preview-page{max-width:100%!important;margin-bottom:13px!important}
+  html[data-theme] .resume-preview-dialog[open] .resume-preview-canvas{max-width:100%!important;height:auto!important}
+  html[data-theme] .resume-preview-dialog[open] .resume-preview-contact{width:100%!important;padding:13px!important;margin-top:5px!important}
+  html[data-theme] .resume-preview-dialog[open] .resume-preview-contact p{font-size:10px!important;line-height:1.6!important}
+  html[data-theme] .project-modal{
+    position:fixed!important;inset:0!important;display:grid!important;place-items:center!important;
+    width:100%!important;height:100%!important;max-width:100vw!important;max-height:100dvh!important;
+    padding:max(6px,env(safe-area-inset-top,0px)) max(6px,env(safe-area-inset-right,0px)) max(6px,env(safe-area-inset-bottom,0px)) max(6px,env(safe-area-inset-left,0px))!important;
+    overflow:hidden!important;box-sizing:border-box!important;
+  }
+  html[data-theme] .project-modal-dialog{
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    height:auto!important;max-height:100%!important;min-height:0!important;
+    margin:0!important;border-radius:14px!important;overflow-x:hidden!important;overflow-y:auto!important;
+    overscroll-behavior:contain!important;
+  }
+  html[data-theme] .project-modal-close{position:sticky!important;float:right;top:8px!important;right:8px!important;margin:8px 8px -42px auto!important;width:35px!important;height:35px!important}
+  html[data-theme] .project-modal-hero{min-height:0!important;padding:25px 14px 15px!important}
+  html[data-theme] .project-modal-hero h2{max-width:100%!important;font-size:clamp(21px,5.7vw,29px)!important;line-height:1.15!important;overflow-wrap:anywhere}
+  html[data-theme] .project-modal-hero p{max-width:100%!important;font-size:11px!important;line-height:1.65!important;overflow-wrap:anywhere}
+  html[data-theme] .project-modal-stack{display:flex!important;flex-wrap:wrap!important;gap:5px!important}
+  html[data-theme] .project-modal-details{min-width:0!important;padding:12px!important}
+  html[data-theme] .project-modal-tabs{display:flex!important;flex-wrap:nowrap!important;gap:5px!important;max-width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:thin!important}
+  html[data-theme] .project-modal-tabs>*{flex:0 0 auto!important;white-space:nowrap!important}
+  html[data-theme] .project-modal-tabpanel{min-width:0!important;overflow-wrap:anywhere!important}
+  html[data-theme] .project-modal-tabpanel *{max-width:100%;overflow-wrap:anywhere}
+  html[data-theme] .project-modal-details .project-content>ul{grid-template-columns:minmax(0,1fr)!important}
+  html[data-theme] .project-modal-details .project-content{padding:12px!important}
+  html[data-theme] .project-modal-details .project-content>p{font-size:11px!important;line-height:1.7!important;overflow-wrap:anywhere}
+  html[data-theme] .project-modal-details .project-content li{font-size:10px!important;line-height:1.6!important;overflow-wrap:anywhere}
+  html[data-theme] .project-modal::backdrop{background:rgba(2,8,15,.74)!important}
+
+  /* 2) Travel Journal / Route Book becomes a deliberate, full-width mobile experience. */
+  html[data-theme] #trip-itineraries .trip-editorial-header{
+    display:grid!important;grid-template-columns:minmax(0,1fr)!important;align-items:stretch!important;
+    gap:15px!important;width:100%!important;max-width:100%!important;margin:0 0 20px!important;
+  }
+  html[data-theme] #trip-itineraries .trip-editorial-title,
+  html[data-theme] #trip-itineraries .trip-header-signature{
+    display:block!important;grid-column:1/-1!important;width:100%!important;max-width:100%!important;
+    min-width:0!important;margin:0!important;justify-self:stretch!important;
+  }
+  html[data-theme] #trip-itineraries .trip-editorial-title .overline{
+    display:block!important;font-size:10px!important;line-height:1.6!important;letter-spacing:.13em!important;margin:0 0 10px!important;
+  }
+  html[data-theme] #trip-itineraries .trip-editorial-title h2{
+    display:block!important;width:100%!important;max-width:none!important;min-width:0!important;
+    margin:0 0 12px!important;font-size:clamp(30px,8vw,43px)!important;line-height:1.08!important;
+    letter-spacing:-.045em!important;word-break:normal!important;overflow-wrap:normal!important;hyphens:none!important;
+  }
+  html[data-theme] #trip-itineraries .trip-editorial-title h2 em{display:inline!important;white-space:normal!important}
+  html[data-theme] #trip-itineraries .trip-passion-line{
+    max-width:100%!important;margin:0!important;font-size:13px!important;line-height:1.7!important;overflow-wrap:anywhere!important;
+  }
+  html[data-theme] #trip-itineraries .trip-header-signature-copy{
+    max-width:100%!important;margin:12px 0 0!important;font-size:12px!important;line-height:1.7!important;overflow-wrap:anywhere!important;
+  }
+  html[data-theme] #trip-itineraries .trip-bike-scene{width:100%!important;max-width:100%!important}
+  html[data-theme] #trip-itineraries .trip-scenic-landscape{height:clamp(135px,38vw,190px)!important}
+  html[data-theme] #tripItineraryGrid.trip-explorer{
+    display:grid!important;grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto auto!important;
+    align-items:stretch!important;width:100%!important;max-width:100%!important;min-width:0!important;
+    height:auto!important;max-height:none!important;overflow:hidden!important;
+    border-radius:16px!important;
+  }
+  html[data-theme] #tripItineraryGrid .trip-tabs-panel{
+    display:flex!important;flex-direction:column!important;align-self:stretch!important;
+    width:100%!important;max-width:100%!important;height:auto!important;min-height:0!important;max-height:none!important;
+    margin:0!important;padding:0!important;border-right:0!important;border-bottom:1px solid var(--line)!important;
+    overflow:hidden!important;box-sizing:border-box!important;
+  }
+  html[data-theme] #tripItineraryGrid .trip-tabs-panel .trip-tabs-heading{
+    display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:flex-start!important;
+    width:100%!important;max-width:100%!important;padding:18px 14px 15px!important;gap:0!important;text-align:left!important;
+  }
+  html[data-theme] #tripItineraryGrid .trip-tabs-panel .trip-tabs-heading>span{
+    align-self:flex-start!important;width:max-content!important;max-width:100%!important;margin:0 0 12px!important;
+    padding:7px 11px!important;font-size:8px!important;line-height:1.5!important;white-space:normal!important;
+  }
+  html[data-theme] #tripItineraryGrid .trip-tabs-panel .trip-tabs-heading h3{
+    width:100%!important;max-width:none!important;margin:0 0 6px!important;padding:0!important;
+    font-size:clamp(17px,4.8vw,22px)!important;line-height:1.25!important;text-align:left!important;overflow-wrap:anywhere!important;
+  }
+  html[data-theme] #tripItineraryGrid .trip-tabs-panel .trip-tabs-heading p{
+    width:100%!important;max-width:none!important;margin:0!important;font-size:11px!important;line-height:1.6!important;text-align:left!important;
+  }
+  html[data-theme] #tripItineraryGrid .trip-tabs-panel #tripItineraryTabs,
+  html[data-theme] #tripItineraryGrid .trip-tabs-panel .trip-tabs{
+    display:flex!important;flex:0 0 auto!important;flex-direction:row!important;align-items:stretch!important;
+    gap:8px!important;width:100%!important;max-width:100%!important;min-width:0!important;height:auto!important;min-height:0!important;
+    max-height:none!important;margin:0!important;padding:12px 12px 14px!important;box-sizing:border-box!important;
+    overflow-x:auto!important;overflow-y:hidden!important;overscroll-behavior-x:contain!important;
+    touch-action:pan-x!important;scroll-snap-type:x proximity!important;scrollbar-width:thin!important;
+    border:0!important;background:transparent!important;
+  }
+  html[data-theme] #tripItineraryGrid .trip-tabs-panel #tripItineraryTabs .trip-tab,
+  html[data-theme] #tripItineraryGrid .trip-tabs-panel .trip-tabs .trip-tab{
+    display:grid!important;grid-template-columns:25px minmax(0,1fr) 10px!important;align-items:start!important;gap:7px!important;
+    flex:0 0 clamp(142px,43vw,176px)!important;width:clamp(142px,43vw,176px)!important;min-width:clamp(142px,43vw,176px)!important;
+    max-width:clamp(142px,43vw,176px)!important;min-height:95px!important;height:auto!important;box-sizing:border-box!important;
+    padding:9px!important;margin:0!important;white-space:normal!important;overflow:visible!important;
+    scroll-snap-align:start!important;transform:none!important;border-radius:11px!important;
+  }
+  html[data-theme] #tripItineraryGrid .trip-tabs-panel .trip-tab-number{
+    display:grid!important;place-items:center!important;width:25px!important;height:27px!important;min-width:25px!important;
+    font-size:8px!important;margin:0!important;
+  }
+  html[data-theme] #tripItineraryGrid .trip-tabs-panel .trip-tab-copy{
+    display:flex!important;flex-direction:column!important;gap:6px!important;min-width:0!important;width:100%!important;
+    white-space:normal!important;overflow-wrap:anywhere!important;
+  }
+  html[data-theme] #tripItineraryGrid .trip-tabs-panel .trip-tab-copy>b{
+    display:block!important;min-width:0!important;max-width:100%!important;font-size:10px!important;line-height:1.35!important;
+    white-space:normal!important;overflow-wrap:anywhere!important;word-break:normal!important;
+  }
+  html[data-theme] #tripItineraryGrid .trip-tabs-panel .trip-tab-copy>small{
+    display:flex!important;flex-wrap:wrap!important;gap:3px!important;min-width:0!important;max-width:100%!important;
+    font-size:8px!important;line-height:1.35!important;white-space:normal!important;overflow-wrap:anywhere!important;
+  }
+  html[data-theme] #tripItineraryGrid .trip-tabs-panel .trip-tab-region,
+  html[data-theme] #tripItineraryGrid .trip-tabs-panel .trip-tab-stops{display:inline!important;white-space:normal!important;overflow-wrap:anywhere!important}
+  html[data-theme] #tripItineraryGrid .trip-tabs-panel .trip-tab-arrow{font-size:10px!important;line-height:1.3!important}
+  html[data-theme] #tripItineraryGrid .trip-tabs-panel .trip-tabs-foot{
+    display:flex!important;flex:0 0 auto!important;align-items:center!important;justify-content:flex-start!important;
+    gap:8px!important;width:100%!important;max-width:100%!important;min-height:42px!important;padding:10px 14px!important;
+    font-size:7px!important;line-height:1.5!important;white-space:normal!important;overflow-wrap:anywhere!important;
+  }
+  html[data-theme] #tripItineraryGrid #tripSelectedDetail{
+    display:block!important;position:relative!important;width:100%!important;max-width:100%!important;min-width:0!important;
+    height:auto!important;max-height:none!important;margin:0!important;padding:12px!important;overflow:visible!important;box-sizing:border-box!important;
+  }
+  html[data-theme] #tripSelectedDetail .trip-detail-heading{
+    display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;margin:0 0 13px!important;
+  }
+  html[data-theme] #tripSelectedDetail .trip-detail-heading h3{
+    font-size:clamp(21px,5.7vw,29px)!important;line-height:1.18!important;overflow-wrap:anywhere!important;word-break:normal!important;
+  }
+  html[data-theme] #tripSelectedDetail .trip-overview{
+    font-size:12px!important;line-height:1.7!important;overflow-wrap:anywhere!important;
+  }
+  html[data-theme] #tripSelectedDetail .trip-detail-lower{
+    display:grid!important;grid-template-columns:minmax(0,1fr)!important;grid-auto-flow:row!important;gap:12px!important;
+    width:100%!important;max-width:100%!important;min-width:0!important;margin-top:14px!important;
+  }
+  html[data-theme] #tripSelectedDetail .trip-stops-panel,
+  html[data-theme] #tripSelectedDetail .trip-story-panel{
+    display:flex!important;flex-direction:column!important;align-items:stretch!important;
+    width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;margin:0!important;
+    padding:13px!important;border-radius:12px!important;overflow-wrap:anywhere!important;
+  }
+  html[data-theme] #tripSelectedDetail .trip-panel-heading{
+    display:flex!important;flex-direction:row!important;align-items:flex-start!important;justify-content:space-between!important;
+    gap:8px!important;min-width:0!important;margin:0 0 12px!important;
+  }
+  html[data-theme] #tripSelectedDetail .trip-panel-heading h4{
+    min-width:0!important;font-size:14px!important;line-height:1.35!important;overflow-wrap:anywhere!important;
+  }
+  html[data-theme] #tripSelectedDetail .trip-panel-mark{flex:0 0 auto!important;font-size:7px!important;white-space:normal!important}
+  html[data-theme] #tripSelectedDetail .trip-stop-list{
+    display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:7px!important;width:100%!important;min-width:0!important;
+  }
+  html[data-theme] #tripSelectedDetail .trip-stop{
+    display:grid!important;grid-template-columns:25px minmax(0,1fr)!important;gap:8px!important;
+    width:100%!important;min-width:0!important;padding:9px!important;box-sizing:border-box!important;
+  }
+  html[data-theme] #tripSelectedDetail .trip-stop *{min-width:0!important;max-width:100%!important;overflow-wrap:anywhere!important}
+  html[data-theme] #tripSelectedDetail .trip-story-panel .trip-panel-heading{margin-bottom:13px!important}
+  html[data-theme] #tripSelectedDetail .trip-story-body{padding:12px!important;margin:0 0 14px!important}
+  html[data-theme] #tripSelectedDetail .trip-story-body p{font-size:11px!important;line-height:1.75!important;overflow-wrap:anywhere!important}
+  html[data-theme] #tripSelectedDetail .trip-story-highlights{gap:6px!important;margin-bottom:14px!important}
+  html[data-theme] #tripSelectedDetail .trip-story-tag{min-height:27px!important;padding:6px 8px!important;font-size:8px!important;white-space:normal!important}
+  html[data-theme] #tripSelectedDetail .trip-story-signoff{gap:8px!important;padding-top:11px!important;font-size:10px!important;line-height:1.6!important}
+  html[data-theme] #tripSelectedDetail .trip-directions-panel{width:100%!important;max-width:100%!important;min-width:0!important;margin-top:12px!important}
+  html[data-theme] #tripSelectedDetail .trip-directions-panel>summary{
+    grid-template-columns:minmax(0,1fr) auto!important;gap:7px!important;align-items:start!important;font-size:10px!important;overflow-wrap:anywhere!important;
+  }
+  html[data-theme] #tripSelectedDetail .trip-directions-action{white-space:normal!important}
+  html[data-theme] #tripSelectedDetail .trip-map-links{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:7px!important}
+  html[data-theme] #tripSelectedDetail .trip-map-link{width:100%!important;min-width:0!important;box-sizing:border-box!important}
+  html[data-theme] #tripSelectedDetail .trip-map-link small{overflow-wrap:anywhere!important;word-break:normal!important}
+  html[data-theme] #tripSelectedDetail .trip-map-shell{width:100%!important;max-width:100%!important;min-width:0!important;overflow:hidden!important;border-radius:10px!important}
+  html[data-theme] #tripSelectedDetail .trip-live-map{width:100%!important;max-width:100%!important;height:clamp(210px,58vw,270px)!important;min-height:200px!important}
+  html[data-theme] #tripSelectedDetail .trip-live-map .leaflet-container{width:100%!important;max-width:100%!important;height:100%!important}
+  html[data-theme] #tripSelectedDetail .trip-live-map .leaflet-popup-content-wrapper{max-width:calc(100vw - 86px)!important}
+  html[data-theme] #tripSelectedDetail .trip-live-map .leaflet-popup-content{max-width:calc(100vw - 110px)!important;margin:9px!important;overflow-wrap:anywhere!important}
+  html[data-theme] #tripSelectedDetail .trip-map-popup{max-width:100%!important;overflow-wrap:anywhere!important;word-break:normal!important}
+  html[data-theme] #tripSelectedDetail .trip-map-attribution-note{font-size:8px!important;line-height:1.5!important;overflow-wrap:anywhere!important}
+
+  /* 3) Credentials gets readable summary rows, reachable filters, and full-width records on phones. */
+  html[data-theme] #certifications .credentials-heading{
+    display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:10px!important;
+    width:100%!important;max-width:100%!important;margin:0 0 17px!important;
+  }
+  html[data-theme] #certifications .credentials-heading>div,
+  html[data-theme] #certifications .credentials-heading-copy{
+    width:100%!important;max-width:100%!important;min-width:0!important;
+  }
+  html[data-theme] #certifications .credentials-heading h2{
+    max-width:100%!important;font-size:clamp(27px,7.2vw,36px)!important;line-height:1.12!important;overflow-wrap:anywhere!important;
+  }
+  html[data-theme] #certifications .credentials-heading-copy p{font-size:12px!important;line-height:1.7!important}
+  html[data-theme] #certifications .credential-dashboard{
+    width:100%!important;max-width:100%!important;min-width:0!important;padding:12px!important;border-radius:14px!important;
+  }
+  html[data-theme] #certifications .credential-summary{
+    display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:7px!important;margin:0 0 14px!important;
+  }
+  html[data-theme] #certifications .credential-summary>div{
+    display:grid!important;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;
+    grid-template-rows:auto auto!important;align-items:center!important;column-gap:10px!important;row-gap:2px!important;
+    width:100%!important;min-width:0!important;padding:10px!important;border-radius:10px!important;
+  }
+  html[data-theme] #certifications .credential-summary .summary-kicker{
+    grid-column:1!important;grid-row:1!important;min-width:0!important;font-size:7px!important;line-height:1.35!important;letter-spacing:.07em!important;overflow-wrap:anywhere!important;
+  }
+  html[data-theme] #certifications .credential-summary strong{
+    grid-column:1!important;grid-row:2!important;min-width:0!important;font-size:19px!important;line-height:1.25!important;overflow-wrap:anywhere!important;word-break:normal!important;
+  }
+  html[data-theme] #certifications .credential-summary small{
+    grid-column:2!important;grid-row:1/3!important;min-width:0!important;font-size:9px!important;line-height:1.5!important;overflow-wrap:anywhere!important;
+  }
+  html[data-theme] #certifications .credential-controls{
+    display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:8px!important;width:100%!important;margin:0 0 12px!important;
+  }
+  html[data-theme] #certifications .credential-search,
+  html[data-theme] #certifications .year-select{
+    width:100%!important;min-width:0!important;min-height:43px!important;box-sizing:border-box!important;
+  }
+  html[data-theme] #certifications .credential-search input{width:100%!important;min-width:0!important;font-size:12px!important}
+  html[data-theme] #certifications .year-select select{min-width:0!important;max-width:100%!important;font-size:11px!important}
+  html[data-theme] #certifications .credential-categories{
+    display:flex!important;flex-wrap:nowrap!important;align-items:center!important;gap:6px!important;
+    width:100%!important;max-width:100%!important;min-width:0!important;padding:5px 1px 12px!important;
+    overflow-x:auto!important;overflow-y:hidden!important;overscroll-behavior-x:contain!important;touch-action:pan-x!important;
+    scrollbar-width:thin!important;
+  }
+  html[data-theme] #certifications .credential-filter{
+    display:inline-flex!important;flex:0 0 auto!important;align-items:center!important;justify-content:center!important;
+    min-height:34px!important;max-width:85vw!important;padding:8px 10px!important;font-size:9px!important;line-height:1.3!important;
+    white-space:nowrap!important;
+  }
+  html[data-theme] #certifications .credential-results-bar{
+    display:flex!important;flex-wrap:wrap!important;align-items:center!important;justify-content:space-between!important;
+    gap:8px!important;width:100%!important;min-width:0!important;padding:11px 0!important;font-size:9px!important;
+  }
+  html[data-theme] #certifications #credentialResults{flex:1 1 150px!important;min-width:0!important;overflow-wrap:anywhere!important;line-height:1.5!important}
+  html[data-theme] #certifications #clearCredentialFilters{flex:0 0 auto!important;font-size:9px!important;white-space:normal!important}
+  html[data-theme] #certifications .credential-grid{
+    display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:8px!important;width:100%!important;min-width:0!important;
+  }
+  html[data-theme] #certifications .credential-card{
+    display:flex!important;flex-direction:column!important;gap:0!important;width:100%!important;min-width:0!important;max-width:100%!important;
+    padding:13px!important;border-radius:11px!important;box-sizing:border-box!important;
+  }
+  html[data-theme] #certifications .credential-card-top{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important;margin:0 0 10px!important}
+  html[data-theme] #certifications .credential-mark{width:34px!important;height:34px!important;flex:0 0 34px!important}
+  html[data-theme] #certifications .credential-year{font-size:9px!important;white-space:nowrap!important}
+  html[data-theme] #certifications .credential-card h3{
+    min-width:0!important;font-size:13px!important;line-height:1.5!important;letter-spacing:-.01em!important;margin:0 0 6px!important;
+    overflow-wrap:anywhere!important;word-break:normal!important;
+  }
+  html[data-theme] #certifications .credential-issuer{min-width:0!important;font-size:10px!important;line-height:1.6!important;overflow-wrap:anywhere!important}
+  html[data-theme] #certifications .credential-category-label{font-size:8px!important;line-height:1.5!important;margin-top:8px!important;overflow-wrap:anywhere!important}
+  html[data-theme] #certifications .credential-card-footer{
+    display:flex!important;flex-wrap:wrap!important;align-items:center!important;justify-content:space-between!important;gap:7px!important;
+    margin-top:10px!important;padding-top:10px!important;
+  }
+  html[data-theme] #certifications .credential-date{font-size:9px!important;line-height:1.4!important;overflow-wrap:anywhere!important}
+  html[data-theme] #certifications .credential-link,
+  html[data-theme] #certifications .credential-preview-link,
+  html[data-theme] #certifications .credential-unavailable{
+    max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important;font-size:9px!important;line-height:1.4!important;
+  }
+  html[data-theme] #certifications .credential-footer{
+    display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:9px!important;
+    margin-top:14px!important;
+  }
+  html[data-theme] #certifications .credential-footer>div{width:100%!important;min-width:0!important}
+  html[data-theme] #certifications .credential-footer p{font-size:9px!important;line-height:1.6!important;overflow-wrap:anywhere!important}
+  html[data-theme] #certifications .credential-footer>a{max-width:100%!important;white-space:normal!important;font-size:10px!important;overflow-wrap:anywhere!important}
+  html[data-theme] #certifications .credential-empty{padding:25px 10px!important}
+  html[data-theme] #certifications .credential-empty p{font-size:11px!important;line-height:1.6!important}
+
+  /* Leaflet's own popups should stay inside the map rather than spilling beyond the phone. */
+  html[data-theme] .leaflet-popup{max-width:calc(100vw - 52px)!important}
+  html[data-theme] .leaflet-popup-content-wrapper{max-width:calc(100vw - 52px)!important}
+  html[data-theme] .leaflet-popup-content{max-width:calc(100vw - 82px)!important;overflow-wrap:anywhere!important;word-break:normal!important}
+
+  /* Fixed navigation catalogue in compact landscape: retain its existing one-row behavior. */
+  .mobile-dock{z-index:120!important}
+}
+
+/* Portrait: two accessible rows so all seven catalogue links remain visible at once. */
+@media screen and (max-width:850px) and (orientation:portrait){
+  body{padding-bottom:calc(108px + env(safe-area-inset-bottom))!important}
+  .mobile-dock{
+    position:fixed!important;left:5px!important;right:5px!important;bottom:3px!important;
+    display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    grid-template-rows:repeat(2,minmax(34px,1fr))!important;grid-auto-flow:row!important;grid-auto-columns:auto!important;
+    width:auto!important;max-width:none!important;height:auto!important;
+    min-height:78px!important;max-height:calc(88px + env(safe-area-inset-bottom))!important;
+    gap:2px!important;padding:4px 4px calc(4px + env(safe-area-inset-bottom))!important;
+    overflow:hidden!important;border-radius:13px!important;z-index:120!important;
+  }
+  .mobile-dock a{
+    display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;
+    min-width:0!important;min-height:33px!important;height:100%!important;gap:1px!important;padding:2px 1px!important;
+  }
+  .mobile-dock a span{font-size:15px!important;line-height:1.05!important}
+  .mobile-dock a b{font-size:clamp(7px,1.8vw,8.5px)!important;line-height:1.12!important;white-space:nowrap!important}
+  .footer{padding-bottom:calc(118px + env(safe-area-inset-bottom))!important}
+}
+
+/* Portrait devices narrower than older phones keep readable controls and avoid fixed text collisions. */
+@media screen and (max-width:390px) and (orientation:portrait){
+  html[data-theme] #tripItineraryGrid .trip-tabs-panel #tripItineraryTabs .trip-tab,
+  html[data-theme] #tripItineraryGrid .trip-tabs-panel .trip-tabs .trip-tab{
+    flex-basis:145px!important;width:145px!important;min-width:145px!important;max-width:145px!important;
+  }
+  html[data-theme] #certifications .credential-summary>div{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)!important;column-gap:7px!important}
+  html[data-theme] #certifications .credential-summary .summary-kicker{font-size:6.5px!important}
+  html[data-theme] #certifications .credential-summary small{font-size:8.5px!important}
+}
