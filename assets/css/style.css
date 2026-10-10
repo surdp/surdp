@@ -3199,7 +3199,7 @@ html[data-theme="light"] .ba-impact-option.is-active{background:linear-gradient(
 .ba-visual-outcomes b,.ba-visual-outcomes small{overflow-wrap:break-word;word-break:normal}
 @media(max-width:1250px) and (min-width:851px){
   .about-grid{gap:17px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-  .ba-visual{padding:14px}
+  .about-visual{padding:14px}
   .ba-visual-main{grid-template-columns:minmax(0,1fr) minmax(0,.94fr) minmax(0,1fr);gap:6px}
   .ba-visual-main .ba-info-panel{padding:9px 6px}
   .ba-visual-main .ba-panel-symbol{width:23px;height:23px}
