@@ -3309,8 +3309,7 @@ html[data-theme="light"] .ba-impact-option.is-active{background:linear-gradient(
 }
 
 
-/* Compact Analysis in Practice panel uses the existing empty area under the BA stack */
-.ba-visual-main{position:relative}
+/* Analysis in Practice is placed in normal flow below the three-column infographic. */
 .ba-practice-panel{
   box-sizing:border-box;
   min-width:0;
@@ -3384,23 +3383,7 @@ html[data-theme="light"] .ba-practice-panel{
 }
 html[data-theme="light"] .ba-practice-tab{background:rgba(241,246,252,.92)}
 html[data-theme="light"] .ba-practice-tab.is-active{background:linear-gradient(145deg,rgba(39,128,224,.12),rgba(112,82,225,.08))}
-@media(min-width:1451px){
-  .ba-visual-main>.ba-practice-panel{
-    position:absolute;
-    left:33%;
-    right:0;
-    bottom:0;
-    top:60%;
-    margin:0;
-  }
-}
 @media(max-width:1450px){
-  .ba-visual-main>.ba-practice-panel{
-    grid-column:1/-1;
-    position:relative;
-    left:auto;right:auto;top:auto;bottom:auto;
-    width:100%;margin-top:12px;
-  }
   .ba-practice-heading h3{font-size:15px}
   .ba-practice-tab span{font-size:9px}
 }
@@ -3417,3 +3400,39 @@ html[data-theme="light"] .ba-practice-tab.is-active{background:linear-gradient(1
   .ba-practice-copy>p{font-size:10px}
 }
 @media(prefers-reduced-motion:reduce){.ba-practice-tab,.ba-practice-content{transition:none;animation:none}}
+
+
+/* The practice panel follows the infographic grid in normal document flow.
+   It always uses its own space and never overlays the capability or tools cards. */
+.about-visual>.ba-practice-panel{
+  position:relative!important;
+  inset:auto!important;
+  float:none!important;
+  clear:both;
+  display:block;
+  flex:0 0 auto;
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  height:auto;
+  min-height:0;
+  margin:14px 0 0;
+  box-sizing:border-box;
+  align-self:stretch;
+  z-index:1;
+}
+.about-visual>.ba-practice-panel .ba-practice-content{
+  min-height:0;
+}
+@media(min-width:1451px){
+  .about-visual>.ba-practice-panel{
+    width:100%;
+    margin-top:14px;
+  }
+}
+@media(max-width:850px){
+  .about-visual>.ba-practice-panel{
+    width:100%;
+    margin-top:13px;
+  }
+}
