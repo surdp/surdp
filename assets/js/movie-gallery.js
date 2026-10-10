@@ -8,7 +8,8 @@
   const videoButton = document.getElementById("movieVideosButton");
   const photoCount = document.getElementById("moviePhotoCount");
   const videoCount = document.getElementById("movieVideoCount");
-  const batchSize = 12;
+  const initialBatchSize = 24;
+  const loadMoreBatchSize = 12;
   const shapePattern = [
     "feature", "wide", "small", "landscape", "large", "wide",
     "feature", "small", "landscape", "wide", "large", "small",
@@ -18,7 +19,7 @@
   let photos = [];
   let videos = [];
   let activeType = "photo";
-  const visibleCounts = { photo: batchSize, video: batchSize };
+  const visibleCounts = { photo: initialBatchSize, video: initialBatchSize };
   if (!grid) return;
 
   function esc(value) {
@@ -75,7 +76,7 @@
       loadMore.hidden = visible.length >= items.length;
       const remaining = Math.max(0, items.length - visible.length);
       loadMore.textContent = "Load more " + (activeType === "photo" ? "photos" : "videos") +
-        (remaining ? " · " + Math.min(batchSize, remaining) + " more" : "");
+        (remaining ? " · " + Math.min(loadMoreBatchSize, remaining) + " more" : "");
       loadMore.setAttribute("aria-label", "Load more " + (activeType === "photo" ? "photos" : "videos"));
     }
     setActiveButtons();
@@ -90,7 +91,7 @@
     render();
   });
   if (loadMore) loadMore.addEventListener("click", function () {
-    visibleCounts[activeType] += batchSize;
+    visibleCounts[activeType] += loadMoreBatchSize;
     render();
   });
 
