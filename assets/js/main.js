@@ -143,6 +143,161 @@
   }
   refreshPortfolioIcons();
 
+  // Interactive About infographic: industry lenses, capability layers,
+  // tools and delivery principles all update the same clear detail area.
+  const baIndustryProfiles = {
+    healthcare:{title:"Healthcare",icon:"heart-pulse",text:"Clinical workflows, EHR context, requirements traceability and dependable application validation."},
+    finance:{title:"Banking & Finance",icon:"landmark",text:"Transaction journeys, business rules, reconciliation, controls and auditable processes."},
+    retail:{title:"Retail & E-commerce",icon:"shopping-bag",text:"Customer journeys, digital platform requirements, order flows and service improvements."},
+    manufacturing:{title:"Manufacturing",icon:"factory",text:"Operational workflows, process efficiency, exceptions, dependencies and system hand-offs."},
+    technology:{title:"Telecom & Technology",icon:"network",text:"System interactions, API dependencies, data movement, acceptance criteria and delivery coordination."},
+    public:{title:"Government & Public",icon:"building-2",text:"Service delivery, case workflows, policy-led rules, accessibility and transparent decision records."},
+    insurance:{title:"Insurance & Payers",icon:"shield-check",text:"Claims journeys, policy rules, eligibility checks, approvals and traceable case handling."},
+    education:{title:"Education & Learning",icon:"graduation-cap",text:"Learner and staff journeys, platform workflows, service requests and information hand-offs."},
+    logistics:{title:"Logistics & Supply Chain",icon:"truck",text:"Order and inventory flows, shipment milestones, exception handling and cross-team hand-offs."},
+    other:{title:"Other Industries",icon:"layers",text:"Apply transferable analysis methods to understand users, simplify workflows, document decisions and validate outcomes."}
+  };
+  const baValuePrinciples = {
+    alignment:{
+      eyebrow:"DELIVERY PRINCIPLE",title:"Stakeholder Alignment",icon:"users-round",
+      text:"Bring business users, clinical stakeholders and delivery teams around the problem to solve, the decisions required and the outcomes that define success.",
+      tags:["Stakeholder workshops","Shared acceptance criteria","Clear ownership"],
+      proofTitle:"Aligned decisions",proofText:"Reduce ambiguity before it becomes rework."
+    },
+    traceability:{
+      eyebrow:"DELIVERY PRINCIPLE",title:"Decision Traceability",icon:"git-branch",
+      text:"Connect business goals to requirements, scope decisions, acceptance criteria and validation evidence so teams can understand what is changing and why.",
+      tags:["Requirement traceability","Business rules","Scope and dependencies"],
+      proofTitle:"Visible rationale",proofText:"Keep decisions, assumptions and scope changes easy to follow."
+    },
+    quality:{
+      eyebrow:"DELIVERY PRINCIPLE",title:"Quality by Design",icon:"shield-check",
+      text:"Bring validation into delivery early by connecting requirements to test scenarios, data checks, UAT, defect triage and release-readiness discussions.",
+      tags:["Testable requirements","UAT planning","Defect follow-up"],
+      proofTitle:"Validation built in",proofText:"Make expected behaviour and acceptance conditions clear before release."
+    },
+    improvement:{
+      eyebrow:"DELIVERY PRINCIPLE",title:"Continuous Improvement",icon:"trending-up",
+      text:"Use stakeholder feedback, workflow evidence and delivery learnings to identify practical changes that improve efficiency, reliability and user experience.",
+      tags:["Gap analysis","Workflow optimisation","Outcome review"],
+      proofTitle:"Improvement that sticks",proofText:"Turn feedback into concrete actions and follow-through."
+    }
+  };
+  const baValueButtons = [...document.querySelectorAll(".ba-value-options [data-ba-value]")];
+  const baValueDetailIcon = document.getElementById("baValueDetailIcon");
+  const baValueDetailEyebrow = document.getElementById("baValueDetailEyebrow");
+  const baValueDetailTitle = document.getElementById("baValueDetailTitle");
+  const baValueDetailText = document.getElementById("baValueDetailText");
+  const baValueTags = document.getElementById("baValueTags");
+  const baValueProofTitle = document.getElementById("baValueProofTitle");
+  const baValueProofText = document.getElementById("baValueProofText");
+  const baIndustryDetailMark = document.querySelector(".ba-industry-detail-mark");
+  const baIndustryDetailTitle = document.getElementById("baIndustryDetailTitle");
+  const baIndustryDetailText = document.getElementById("baIndustryDetailText");
+
+  function paintBaIcon(target, iconName) {
+    if (!target) return;
+    target.innerHTML = '<i class="portfolio-lucide" data-lucide="' + iconName + '" aria-hidden="true"></i>';
+    if (window.lucide && typeof window.lucide.createIcons === "function") {
+      window.lucide.createIcons({attrs: {"stroke-width": 1.9, "aria-hidden": "true"}});
+    }
+  }
+  function selectBaIndustry(key) {
+    const item = baIndustryProfiles[key];
+    if (!item) return;
+    document.querySelectorAll("[data-ba-industry]").forEach(button => {
+      const active = button.dataset.baIndustry === key;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    if (baIndustryDetailTitle) baIndustryDetailTitle.textContent = item.title;
+    if (baIndustryDetailText) baIndustryDetailText.textContent = item.text;
+    paintBaIcon(baIndustryDetailMark, item.icon);
+  }
+  function selectBaValue(key, contextTitle, contextText) {
+    const item = baValuePrinciples[key];
+    if (!item) return;
+    document.querySelectorAll(".ba-value-options [data-ba-value]").forEach(button => {
+      const active = button.dataset.baValue === key;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    document.querySelectorAll(".ba-visual-outcomes [data-ba-value]").forEach(button => {
+      const active = button.dataset.baValue === key;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    if (baValueDetailEyebrow) baValueDetailEyebrow.textContent = item.eyebrow;
+    if (baValueDetailTitle) baValueDetailTitle.textContent = item.title;
+    if (baValueDetailText) baValueDetailText.textContent = item.text;
+    paintBaIcon(baValueDetailIcon, item.icon);
+    if (baValueTags) {
+      baValueTags.innerHTML = "";
+      item.tags.forEach(tag => {
+        const chip = document.createElement("span");
+        chip.textContent = tag;
+        baValueTags.append(chip);
+      });
+    }
+    if (baValueProofTitle) baValueProofTitle.textContent = contextTitle || item.proofTitle;
+    if (baValueProofText) baValueProofText.textContent = contextText || item.proofText;
+  }
+
+  document.querySelectorAll("[data-ba-industry]").forEach(button => {
+    button.addEventListener("click", () => selectBaIndustry(button.dataset.baIndustry));
+  });
+
+  const capabilityValueMap = {
+    "business-strategy":"alignment",
+    "people-stakeholders":"alignment",
+    "processes-workflows":"traceability",
+    "requirements-solutions":"traceability",
+    "technology-data":"quality",
+    "quality-validation":"quality",
+    "outcomes-value":"improvement"
+  };
+  document.querySelectorAll("[data-ba-capability]").forEach(button => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll("[data-ba-capability]").forEach(layer => {
+        const active = layer === button;
+        layer.classList.toggle("is-selected", active);
+        layer.setAttribute("aria-pressed", String(active));
+      });
+      const title = button.querySelector(".ba-stack-title")?.textContent.trim() || "Selected capability";
+      const summary = button.querySelector(".ba-stack-detail")?.textContent.trim() || "";
+      selectBaValue(capabilityValueMap[button.dataset.baCapability] || "alignment", title, summary);
+      document.querySelector(".ba-value-panel")?.scrollIntoView({behavior:"smooth",block:"nearest"});
+    });
+  });
+
+  document.querySelectorAll("[data-ba-tool]").forEach(button => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll("[data-ba-tool]").forEach(tool => {
+        const active = tool === button;
+        tool.classList.toggle("is-active", active);
+        tool.setAttribute("aria-pressed", String(active));
+      });
+      const title = button.querySelector("b")?.textContent.trim() || "Selected tool";
+      const summary = button.querySelector("small")?.textContent.trim() || "";
+      selectBaValue(button.dataset.baValueLink || "quality", title, summary);
+      document.querySelector(".ba-value-panel")?.scrollIntoView({behavior:"smooth",block:"nearest"});
+    });
+  });
+
+  document.querySelectorAll(".ba-value-options [data-ba-value]").forEach(button => {
+    button.addEventListener("click", () => selectBaValue(button.dataset.baValue));
+  });
+  document.querySelectorAll(".ba-visual-outcomes [data-ba-value]").forEach(button => {
+    button.addEventListener("click", () => {
+      const title = button.querySelector("b")?.textContent.trim();
+      const summary = button.querySelector("small")?.textContent.trim();
+      selectBaValue(button.dataset.baValue, title, summary);
+      document.querySelector(".ba-value-panel")?.scrollIntoView({behavior:"smooth",block:"nearest"});
+    });
+  });
+  selectBaIndustry("healthcare");
+  selectBaValue("alignment");
+
   function closeMenu() {
     nav?.classList.remove("open");
     navButton?.setAttribute("aria-expanded", "false");
