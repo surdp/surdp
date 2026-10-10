@@ -423,6 +423,7 @@
   const projectModal = document.getElementById("projectModal");
   const projectDialog = projectModal?.querySelector(".project-modal-dialog");
   const projectModalImage = document.getElementById("projectModalImage");
+  const projectModalMark = document.getElementById("projectModalMark");
   const projectModalKicker = document.getElementById("projectModalKicker");
   const projectModalTitle = document.getElementById("projectModalTitle");
   const projectModalSummary = document.getElementById("projectModalSummary");
@@ -644,6 +645,7 @@
     });
 
     projectModalTabContent.replaceChildren();
+    projectModalTabContent.setAttribute("aria-labelledby", "projectTab" + tabKey.charAt(0).toUpperCase() + tabKey.slice(1));
     const content = projectModalTabContent;
     const links = [...card.querySelectorAll(".project-links a")];
 
