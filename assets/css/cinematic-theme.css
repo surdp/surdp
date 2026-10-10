@@ -23,7 +23,7 @@ html[data-theme="light"]{
 html{scroll-behavior:smooth;scroll-padding-top:88px}
 body{
   background-color:#090f16!important;
-  background-image:linear-gradient(180deg,rgba(5,12,19,.86) 0%,rgba(5,12,19,.92) 44%,rgba(5,12,19,.88) 100%),url("https://images.unsplash.com/photo-1722595198053-49a384f1fcba?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=85&w=2200")!important;
+  background-image:linear-gradient(180deg,rgba(5,12,19,.88) 0%,rgba(5,12,19,.94) 44%,rgba(5,12,19,.90) 100%),url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=88")!important;
   background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important;background-attachment:fixed!important;
   color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
 }
@@ -61,7 +61,7 @@ body{
   background:
     linear-gradient(90deg,rgba(4,10,16,.96) 0%,rgba(4,10,16,.90) 30%,rgba(4,10,16,.82) 52%,rgba(4,10,16,.70) 76%,rgba(4,10,16,.64) 100%),
     linear-gradient(0deg,rgba(9,15,22,.96) 0%,rgba(9,15,22,.86) 13%,rgba(9,15,22,.45) 54%,rgba(4,10,16,.23) 100%),
-    url("https://images.unsplash.com/photo-1722595198053-49a384f1fcba?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=85&w=2200") center 43%/cover;
+    url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=88") center 43%/cover;
   opacity:1;transform:none;
 }
 .hero:after{content:none!important;background:none!important;opacity:0!important}
@@ -69,7 +69,7 @@ html[data-theme="light"] .hero:before{
   background:
     linear-gradient(90deg,rgba(4,10,16,.96) 0%,rgba(4,10,16,.90) 33%,rgba(4,10,16,.82) 58%,rgba(4,10,16,.69) 100%),
     linear-gradient(0deg,rgba(9,15,22,.96) 0%,rgba(9,15,22,.84) 16%,rgba(9,15,22,.44) 56%,rgba(4,10,16,.20) 100%),
-    url("https://images.unsplash.com/photo-1722595198053-49a384f1fcba?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=85&w=2200") center 43%/cover;
+    url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=88") center 43%/cover;
   opacity:1;
 }
 .hero>.container{position:relative;z-index:1}
@@ -214,7 +214,7 @@ html[data-theme="light"] .hero:before{
     background:
       linear-gradient(90deg,rgba(4,10,16,.94),rgba(4,10,16,.78)),
       linear-gradient(0deg,rgba(9,15,22,.95) 0%,rgba(9,15,22,.68) 58%,rgba(4,10,16,.38) 100%),
-      url("https://images.unsplash.com/photo-1722595198053-49a384f1fcba?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1400") 61% center/cover;
+      url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=85") 61% center/cover;
   }
   .hero-grid{gap:22px}
   .hero h1{font-size:clamp(36px,9.2vw,50px);line-height:1.08}
@@ -239,7 +239,7 @@ html[data-theme="light"] .hero:before{
 }
 
 
-/* Global image continuity: the same Himalayan 411 photograph stays faintly visible behind every section. */
+/* Restore the original mountain-landscape treatment, softly layered behind the full page. */
 @media(max-width:850px){
   body{background-attachment:scroll!important;background-position:center top!important}
 }
