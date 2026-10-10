@@ -1,6 +1,5 @@
 (() => {
   "use strict";
-
   const grid = document.getElementById("movieGalleryGrid");
   const setup = document.getElementById("movieGallerySetup");
   const empty = document.getElementById("movieGalleryEmpty");
@@ -9,12 +8,17 @@
   const videoButton = document.getElementById("movieVideosButton");
   const photoCount = document.getElementById("moviePhotoCount");
   const videoCount = document.getElementById("movieVideoCount");
-  const batchSize = 48;
+  const batchSize = 12;
+  const shapePattern = [
+    "feature", "square", "wide", "tall", "small", "landscape",
+    "feature", "portrait", "square", "wide", "small", "tall",
+    "landscape", "small", "feature", "square", "wide", "portrait",
+    "tall", "landscape", "small", "square", "feature", "wide"
+  ];
   let photos = [];
   let videos = [];
   let activeType = "photo";
-  let visibleCount = batchSize;
-
+  const visibleCounts = { photo: batchSize, video: batchSize };
   if (!grid) return;
 
   function esc(value) {
@@ -23,21 +27,28 @@
     });
   }
 
+  function shapeFor(index, item) {
+    const offset = item.type === "video" ? 3 : 0;
+    return shapePattern[(index * 7 + offset) % shapePattern.length];
+  }
+
   function card(item, index) {
     const label = (item.type === "video" ? "Video " : "Photo ") + String(index + 1);
     const src = esc(item.src || "");
+    const shape = shapeFor(index, item);
     if (item.type === "video") {
-      return '<article class="movie-media-card movie-video-card"><div class="movie-media-frame">' +
-        '<video class="movie-media-video" controls preload="metadata" playsinline aria-label="' + label + '">' +
-        '<source src="' + src + '" type="video/mp4">Your browser does not support HTML video.</video></div></article>';
+      return '<article class="movie-media-card movie-video-card" data-shape="' + shape + '">' +
+        '<div class="movie-media-frame"><video class="movie-media-video" controls preload="metadata" playsinline aria-label="' + label + '">' +
+        '<source src="' + src + '" type="video/mp4">Your browser does not support HTML video.</video>' +
+        '<span class="movie-cinema-badge" aria-hidden="true">▶ FILM</span></div></article>';
     }
-    return '<article class="movie-media-card movie-photo-card"><a class="movie-media-open" href="' + src +
+    return '<article class="movie-media-card movie-photo-card" data-shape="' + shape + '"><a class="movie-media-open" href="' + src +
       '" target="_blank" rel="noopener noreferrer" aria-label="Open photo ' + String(index + 1) +
       ' in a new tab"><div class="movie-media-frame"><img src="' + src +
       '" loading="lazy" decoding="async" alt="Photo ' + String(index + 1) +
       '" onerror="this.style.display=\'none\';this.parentElement.classList.add(\'movie-image-failed\')">' +
       '<span class="movie-image-fallback" aria-hidden="true">IMAGE UNAVAILABLE</span>' +
-      '<span class="movie-open-hint" aria-hidden="true">Open photo ↗</span></div></a></article>';
+      '<span class="movie-open-hint" aria-hidden="true">VIEW FRAME ↗</span></div></a></article>';
   }
 
   function setActiveButtons() {
@@ -55,36 +66,37 @@
 
   function render() {
     const items = activeType === "photo" ? photos : videos;
+    const visibleCount = visibleCounts[activeType];
     const visible = items.slice(0, visibleCount);
     grid.innerHTML = visible.map(card).join("");
     grid.hidden = visible.length === 0;
     if (empty) empty.hidden = items.length !== 0;
     if (loadMore) {
       loadMore.hidden = visible.length >= items.length;
+      const remaining = Math.max(0, items.length - visible.length);
       loadMore.textContent = "Load more " + (activeType === "photo" ? "photos" : "videos") +
-        " (" + (items.length - visible.length) + " remaining)";
+        (remaining ? " · " + Math.min(batchSize, remaining) + " more" : "");
+      loadMore.setAttribute("aria-label", "Load more " + (activeType === "photo" ? "photos" : "videos"));
     }
     setActiveButtons();
   }
 
   if (photoButton) photoButton.addEventListener("click", function () {
     activeType = "photo";
-    visibleCount = batchSize;
     render();
   });
   if (videoButton) videoButton.addEventListener("click", function () {
     activeType = "video";
-    visibleCount = batchSize;
     render();
   });
   if (loadMore) loadMore.addEventListener("click", function () {
-    visibleCount += batchSize;
+    visibleCounts[activeType] += batchSize;
     render();
   });
 
-  fetch("assets/movies/media-library.json?v=1")
+  fetch("assets/movies/media-library.json?v=20261010-movie-mosaic-v1")
     .then(function (response) {
-      if (!response.ok) throw new Error("Media library is not installed.");
+      if (!response.ok) throw new Error("Media library is not available.");
       return response.json();
     })
     .then(function (library) {
