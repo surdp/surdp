@@ -587,7 +587,8 @@
       '" aria-selected="' + String(selected) + '" aria-controls="tripSelectedDetail" tabindex="' + (selected ? "0" : "-1") +
       '" data-trip-tab="' + trip.id + '">' +
       '<span class="trip-tab-number">' + String(trip.id).padStart(2, "0") + '</span>' +
-      '<span class="trip-tab-copy"><b>' + esc(trip.title) + '</b><small>' + esc(trip.region) + '</small></span>' +
+      '<span class="trip-tab-copy"><b>' + esc(trip.title) + '</b><small><span class="trip-tab-region">' + esc(trip.region) +
+      '</span><span class="trip-tab-stops">' + trip.stops.length + ' STOPS</span></small></span>' +
       '<span class="trip-tab-arrow" aria-hidden="true">↗</span></button>';
   }
 
@@ -633,9 +634,9 @@
         '</section>' +
         '<section class="trip-photos-panel" aria-labelledby="trip-photos-title-' + trip.id + '">' +
           '<div class="trip-panel-heading"><div><span class="trip-panel-kicker">PLACES &amp; PERSPECTIVES</span><h4 id="trip-photos-title-' + trip.id + '">Scenes from the journey</h4></div><span class="trip-panel-mark" aria-hidden="true">02 / DISCOVER</span></div>' +
-          '<p class="trip-photos-intro">A visual glimpse of places on this route.</p>' +
+          '<p class="trip-photos-intro">A few favourite frames from the places along the way.</p>' +
           '<div class="trip-place-photos" id="tripPlacePhotos-' + trip.id + '" data-photo-trip="' + trip.id + '" aria-live="polite"><div class="trip-photo-loading"><span></span><span></span><span></span></div></div>' +
-          '<p class="trip-photo-credit-note">Open-licensed photography · creator, source, and licence linked on every image.</p>' +
+          '' +
         '</section>' +
       '</div>' +
     '</article>';
@@ -657,7 +658,11 @@
   }
 
   async function searchCommonsPhoto(placeName, region) {
-    const searchTerm = (placeName + " " + region + " India").trim();
+    const place = String(placeName || "").trim();
+    const regionName = String(region || "").trim();
+    const searchTerm = regionName && !place.toLowerCase().includes(regionName.toLowerCase())
+      ? place + " " + regionName
+      : place;
     const cacheKey = searchTerm.toLowerCase();
     if (photoResultsCache.has(cacheKey)) return photoResultsCache.get(cacheKey);
 
@@ -669,7 +674,7 @@
         gsrnamespace: "6",
         gsrlimit: "8",
         prop: "imageinfo",
-        iiprop: "url|extmetadata",
+        iiprop: "mime|url|extmetadata",
         iiurlwidth: "720",
         format: "json",
         origin: "*"
@@ -677,7 +682,7 @@
       const response = await fetch("https://commons.wikimedia.org/w/api.php?" + params.toString(), {
         headers: {"Accept":"application/json"}
       });
-      if (!response.ok) throw new Error("Wikimedia Commons search failed.");
+      if (!response.ok) throw new Error("Photo search unavailable.");
       const data = await response.json();
       const pages = Object.values(data && data.query && data.query.pages || {});
       const candidates = pages.map(page => {
@@ -688,11 +693,16 @@
           title: cleanMeta(page.title || "Place photograph").replace(/^File:\s*/i, ""),
           imageUrl: info.thumburl,
           pageUrl: info.descriptionurl || "https://commons.wikimedia.org/wiki/" + encodeURIComponent(page.title || ""),
-          artist: cleanMeta((meta.Artist && meta.Artist.value) || (meta.Credit && meta.Credit.value) || "") || "Creator listed on source page",
-          license: cleanMeta((meta.LicenseShortName && meta.LicenseShortName.value) || (meta.UsageTerms && meta.UsageTerms.value) || "") || "View licence",
+          artist: cleanMeta((meta.Artist && meta.Artist.value) || (meta.Credit && meta.Credit.value) || "") || "Creator details",
+          license: cleanMeta((meta.LicenseShortName && meta.LicenseShortName.value) || (meta.UsageTerms && meta.UsageTerms.value) || "") || "Licence details",
           licenseUrl: cleanMeta((meta.LicenseUrl && meta.LicenseUrl.value) || "") || (info.descriptionurl || "")
         };
       }).filter(Boolean);
+      candidates.sort((a, b) => {
+        const aExact = a.title.toLowerCase().includes(place.toLowerCase()) ? 1 : 0;
+        const bExact = b.title.toLowerCase().includes(place.toLowerCase()) ? 1 : 0;
+        return bExact - aExact;
+      });
       return candidates[0] || null;
     })().catch(() => null);
 
@@ -785,7 +795,7 @@
         const name = document.createElement("b");
         name.textContent = subject.name;
         const caption = document.createElement("small");
-        caption.textContent = "Explore place photography";
+        caption.textContent = "Browse destination photos ↗";
         fallback.append(arrow, name, caption);
         gallery.appendChild(fallback);
         rendered += 1;
