@@ -3631,3 +3631,43 @@ html[data-theme="light"] .ba-analysis-map g[fill="var(--text)"]{fill:#192a40}
   .ba-analysis-footer span{font-size:8px}
 }
 @media(prefers-reduced-motion:reduce){.ba-analysis-visual{scroll-behavior:auto}}
+
+
+/* Pipeline treatment is intentionally distinct from the curved career-goals graphic. */
+.ba-analysis-visual{
+  background:
+    linear-gradient(135deg,rgba(46,116,183,.10) 0 1px,transparent 1px 18px),
+    linear-gradient(145deg,rgba(27,43,63,.985),rgba(19,31,48,.995))!important;
+  background-size:18px 18px,auto!important;
+  border-color:rgba(99,175,242,.31);
+}
+.ba-analysis-visual-copy{position:relative}
+.ba-analysis-visual-copy:before{
+  content:"";
+  display:block;
+  width:34px;
+  height:3px;
+  margin:0 0 7px;
+  border-radius:3px;
+  background:linear-gradient(90deg,#68baff,#b39aff,#51dfca);
+  box-shadow:0 0 12px rgba(105,186,255,.18);
+}
+.ba-analysis-visual-copy h3{letter-spacing:-.025em}
+.ba-analysis-map--pipeline{max-height:132px;margin:5px 0 0}
+.ba-analysis-map--pipeline text{user-select:none}
+html[data-theme="light"] .ba-analysis-visual{
+  background:
+    linear-gradient(135deg,rgba(58,129,195,.07) 0 1px,transparent 1px 18px),
+    linear-gradient(145deg,rgba(250,252,255,.99),rgba(235,243,252,.99))!important;
+  background-size:18px 18px,auto!important;
+}
+@media(min-width:1451px){
+  .ba-visual-main>.ba-analysis-visual{
+    top:70%!important;
+    background-color:#172638;
+  }
+  html[data-theme="light"] .ba-visual-main>.ba-analysis-visual{background-color:#f7faff}
+}
+@media(max-width:1450px){
+  .ba-analysis-map--pipeline{max-height:none}
+}
