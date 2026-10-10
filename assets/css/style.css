@@ -4887,3 +4887,52 @@ html[data-theme="light"] #projects .project-detail-info-focus{background:radial-
   .movie-media-card[data-shape="small"] { grid-column: span 1; grid-row: span 1; }
   .movie-media-card[data-shape="large"] { grid-column: span 3; grid-row: span 2; }
 }
+
+/* Guaranteed center-band poster crop: preserve title strips in portrait movie artwork */
+.movie-media-open {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: #0c131b;
+}
+.movie-media-open .movie-media-frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: auto;
+  overflow: hidden;
+  background: #0c131b;
+}
+.movie-media-open img {
+  position: absolute !important;
+  left: 50% !important;
+  top: 52% !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: none !important;
+  max-height: none !important;
+  padding: 0 !important;
+  object-fit: initial !important;
+  object-position: center !important;
+  transform: translate(-50%, -52%) !important;
+}
+.movie-image-fallback {
+  z-index: 1;
+  pointer-events: none;
+}
+@media (max-width: 600px) {
+  .movie-media-open img {
+    top: 52% !important;
+    transform: translate(-50%, -52%) !important;
+  }
+}
