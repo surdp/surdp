@@ -430,42 +430,341 @@
   const projectModalDetails = document.getElementById("projectModalDetails");
   let projectModalReturnFocus = null;
 
+  const projectDetailProfiles = {
+    focusflow: {
+      overview: "FocusFlow is a cross-platform focus, productivity and study timer that combines a single-session timer with structured intervals, study plans and daily focus goals.",
+      overviewCards: [
+        {label:"FOCUS TIMER",title:"Set a session",text:"Choose a duration in hours, minutes and seconds, then start a dedicated focus session."},
+        {label:"STRUCTURED TIME",title:"Intervals & study plans",text:"Alternate work and breaks or arrange study periods into a repeatable sequence."},
+        {label:"DAILY PROGRESS",title:"Work toward a goal",text:"Set a daily focus target separately from the duration of an individual session."}
+      ],
+      modes: [
+        {icon:"timer",title:"Focus Timer",text:"A single session with adjustable duration and pause/resume controls."},
+        {icon:"repeat-2",title:"Intervals",text:"Configured work and break phases across repeated cycles."},
+        {icon:"calendar-check",title:"Study Plans",text:"A sequence of study and break periods for structured learning."},
+        {icon:"target",title:"Daily Focus",text:"A daily time goal that can be tracked independently of one session."}
+      ],
+      features: [
+        {icon:"clock-3",title:"Flexible session duration",text:"Set hours, minutes and seconds instead of being restricted to a single preset."},
+        {icon:"circle-pause",title:"Session controls",text:"Pause, resume, skip a supported phase, or end an active session."},
+        {icon:"repeat-2",title:"Intervals and cycles",text:"Configure work and recovery periods for Pomodoro-style and repeated focus routines."},
+        {icon:"book-open",title:"Study plans",text:"Organise study, revision, reading and practice into a planned sequence."},
+        {icon:"target",title:"Daily focus goal",text:"Set a daily target independently of the maximum duration of a single timer."},
+        {icon:"sun-moon",title:"Account and appearance",text:"The project documents account-based features, email/password or Google sign-in, and light/dark appearance."}
+      ],
+      approachIntro:"The product is organised around several time-management modes rather than a countdown alone. Each mode addresses a different way of structuring focused time.",
+      approachItems:[
+        {title:"Separate session modes",text:"Keep a straightforward timer available while also supporting intervals and study plans for more structured routines."},
+        {title:"Keep controls close to the session",text:"Pause, resume, skip and end actions let users manage an active timer without treating every interruption as a full restart."},
+        {title:"Treat platform behaviour carefully",text:"Notifications and background execution vary between Web, Android and iOS; capabilities depend on platform support and permissions."}
+      ],
+      note:"The public project README describes Web availability and ongoing mobile release/development. Notification and background behaviour can differ by platform."
+    },
+    "linkedin-automation": {
+      overview:"A personal Node.js and Playwright prototype for inspecting a LinkedIn profile's skills, discovering available skill-picker options and assisting with carefully selected changes.",
+      overviewCards:[
+        {label:"CONNECTION",title:"Use a separate browser session",text:"Connect Playwright to an already launched Chrome session through Chrome DevTools Protocol."},
+        {label:"INSPECTION",title:"Read and discover",text:"Inspect the skills inventory and discover available options using bounded browser operations."},
+        {label:"VERIFICATION",title:"Check the visible result",text:"Use a final read-only scan to verify state instead of assuming an interaction succeeded."}
+      ],
+      features:[
+        {icon:"monitor",title:"CDP connection",text:"Connect to a dedicated Chrome session; the user signs in manually rather than supplying a LinkedIn password to the scripts."},
+        {icon:"list-check",title:"Skills inventory",text:"Read visible skill names and produce an organised inventory."},
+        {icon:"search",title:"Option discovery",text:"Inspect which skill-picker options appear for a given search."},
+        {icon:"mouse-pointer-click",title:"Scoped UI actions",text:"Use selector design and dialog scoping to distinguish controls with similar labels."},
+        {icon:"refresh-cw",title:"Bounded retries and waits",text:"Account for asynchronous suggestions and UI timing with bounded waits and retries."},
+        {icon:"shield-check",title:"Verification-first",text:"Separate read-only scans from scripts that can modify profile data; review scripts before any change."}
+      ],
+      approachIntro:"The repository documents this as a personal automation prototype. Not all scripts are intended to run together, and any state-changing script should be reviewed before execution.",
+      approachItems:[
+        {title:"Inspect the interface",text:"Diagnose controls and page structure before attempting automation."},
+        {title:"Automate deliberately",text:"Use selectors, bounded scrolling, scoped dialog handling and asynchronous UI waits."},
+        {title:"Verify instead of assuming",text:"Run a separate final scan to confirm the visible state after actions."}
+      ],
+      note:"The README records a historical final scan of 60 skills with no changes made at that time. That is a point-in-time observation, not a guarantee of current profile state."
+    },
+    "books-api": {
+      overview:"An end-to-end API testing project for the Simple Books API, using Postman and Newman to cover endpoint behaviour, authentication, environment management, automated execution and reporting.",
+      overviewCards:[
+        {label:"SERVICE CHECK",title:"Health and catalog",text:"Check service availability and exercise book-list and single-book retrieval."},
+        {label:"AUTHENTICATION",title:"Register and authorise",text:"Register an API client and reuse a bearer token for secured order requests."},
+        {label:"ORDER LIFECYCLE",title:"CRUD validation",text:"Create, read, update and delete orders while checking request and response behaviour."}
+      ],
+      features:[
+        {icon:"activity",title:"Health check",text:"Call the service status endpoint to verify that the API is responding."},
+        {icon:"book-open",title:"Books endpoints",text:"Retrieve book lists and individual book details, including available query filtering."},
+        {icon:"key-round",title:"Bearer-token handling",text:"Register a client, store the access token in a collection variable and reuse it for authorised calls."},
+        {icon:"list-check",title:"Order CRUD",text:"Cover create, list, retrieve, update and delete operations for orders."},
+        {icon:"settings-2",title:"Environment management",text:"Use variables for the base URL and testing environment so configuration can be switched cleanly."},
+        {icon:"file-chart-column",title:"Repeatable reports",text:"Execute collections using Newman and generate CLI, JSON or HTML reports."}
+      ],
+      approachIntro:"The collection is organised into reusable requests, variables and an execution path that can be run manually or from a command line.",
+      approachItems:[
+        {title:"Arrange tests by module",text:"Keep service status, books, client registration and order management easy to inspect."},
+        {title:"Assert behaviour and authorisation",text:"Check expected status codes, response data and access-token usage across protected requests."},
+        {title:"Automate execution",text:"Use Newman and report output to make test runs repeatable and reviewable."}
+      ],
+      note:"The project README lists Postman, Newman, REST API testing, JSON, Node.js, Git/GitHub and CI/CD integration as technologies and practices."
+    },
+    "api-user-flow": {
+      overview:"A Postman collection that demonstrates an end-to-end API lifecycle through authentication, token reuse, user creation, update, deletion and response validation.",
+      overviewCards:[
+        {label:"AUTHENTICATE",title:"Acquire a token",text:"Validate login and store the returned token for later secured requests."},
+        {label:"CHAIN REQUESTS",title:"Reuse runtime data",text:"Capture a created user's ID and use it in subsequent operations."},
+        {label:"VERIFY",title:"Assert each step",text:"Check status codes, response fields, schemas and negative cases as the flow progresses."}
+      ],
+      features:[
+        {icon:"key-round",title:"Authentication module",text:"Validate login responses, token extraction, authenticated user retrieval and invalid-credential scenarios."},
+        {icon:"workflow",title:"Chained user lifecycle",text:"Link login, create user, update user and delete user requests into one ordered collection."},
+        {icon:"database",title:"Environment variables",text:"Store values such as base URL, token and dynamic user ID for use across requests."},
+        {icon:"check-check",title:"Positive and negative checks",text:"Validate status codes, response time, data, headers, authentication and failure behaviour."},
+        {icon:"play",title:"Runner and Newman",text:"Execute the collection through the Postman Collection Runner or Newman CLI."},
+        {icon:"git-branch",title:"CI/CD readiness",text:"The repository includes a GitHub Actions workflow location for automated collection execution."}
+      ],
+      approachIntro:"The test flow makes dependencies explicit: later requests use data captured from earlier responses, and assertions confirm each stage.",
+      approachItems:[
+        {title:"Login and extract token",text:"Validate the authentication response and store the token in an environment variable."},
+        {title:"Create and update a user",text:"Capture the new user ID and pass it into the update request dynamically."},
+        {title:"Delete and clean up",text:"Complete the user flow, then remove temporary variables as part of cleanup."}
+      ],
+      note:"The repository README describes a ReqRes-based collection and documents required environment values, including the base URL, token and user ID."
+    },
+    "java-collections": {
+      overview:"A hands-on Java practice repository covering language fundamentals, object-oriented programming and core collections, supported by structured examples and explanations.",
+      overviewCards:[
+        {label:"LANGUAGE BASICS",title:"Build foundations",text:"Variables, data types, operators, conditions and loops."},
+        {label:"OBJECT DESIGN",title:"Apply OOP",text:"Classes, objects, inheritance, encapsulation and polymorphism."},
+        {label:"DATA STRUCTURES",title:"Use collections",text:"Practice ArrayList, HashMap, HashSet and List, Set and Map concepts."}
+      ],
+      features:[
+        {icon:"braces",title:"Core Java",text:"Examples for variables, data types, operators, conditional statements and loops."},
+        {icon:"boxes",title:"Object-oriented programming",text:"Classes and objects, inheritance, encapsulation and polymorphism."},
+        {icon:"list",title:"ArrayList and List",text:"Practice working with ordered collections and common collection operations."},
+        {icon:"network",title:"HashMap and Map",text:"Explore key-value storage and the List, Set and Map interfaces."},
+        {icon:"layers",title:"HashSet and Set",text:"Work with set-based collections and their common usage patterns."},
+        {icon:"folder-tree",title:"Structured repository",text:"Keep examples organised across basics, OOP and collections folders."}
+      ],
+      approachIntro:"The project focuses on small, understandable examples that build confidence with the Java language and core collection APIs.",
+      approachItems:[
+        {title:"Start with language syntax",text:"Practise data types, operators, decisions and loops."},
+        {title:"Model code with OOP",text:"Use classes and objects, with examples of inheritance, encapsulation and polymorphism."},
+        {title:"Choose a suitable collection",text:"Compare list, set and map structures and work through concrete Java examples."}
+      ],
+      note:"The repository README lists Java, Eclipse IDE and Git/GitHub as tools used, and identifies mini-projects, more problem-solving examples and JUnit as possible future improvements."
+    },
+    "maven-junit": {
+      overview:"A Java practice project that demonstrates a standard Maven layout, dependency management and unit testing with JUnit 5.",
+      overviewCards:[
+        {label:"STRUCTURE",title:"Separate source and tests",text:"Use standard src/main/java and src/test/java folders."},
+        {label:"DEPENDENCIES",title:"Manage the build",text:"Use Maven project configuration to define dependencies and the build lifecycle."},
+        {label:"UNIT TESTS",title:"Check behaviour",text:"Create JUnit 5 tests and assertions for expected results."}
+      ],
+      features:[
+        {icon:"folder-tree",title:"Standard Maven layout",text:"Separate application code from test code using conventional source folders."},
+        {icon:"package",title:"Dependency management",text:"Keep project dependencies declared in Maven configuration."},
+        {icon:"test-tube",title:"JUnit 5 tests",text:"Use test annotations and assertions to verify expected outcomes."},
+        {icon:"terminal",title:"Test lifecycle",text:"Run tests through the Maven test goal."},
+        {icon:"package-check",title:"Build lifecycle",text:"Use Maven goals such as clean install to build the project."},
+        {icon:"wrench",title:"Maintainable structure",text:"Keep setup simple and consistent so the project can grow with additional tests."}
+      ],
+      approachIntro:"This practice project separates build configuration from application and test code, creating a repeatable baseline for Java test work.",
+      approachItems:[
+        {title:"Keep a conventional project structure",text:"Place production code in src/main/java and test code in src/test/java."},
+        {title:"Define dependencies once",text:"Manage Maven and JUnit 5 configuration in the build descriptor."},
+        {title:"Run tests through the build",text:"Use mvn test for test execution and mvn clean install for a full build lifecycle."}
+      ],
+      note:"The repository README describes this as a practice project and lists Java, Maven, JUnit 5, Eclipse and IntelliJ IDEA in its tech stack."
+    }
+  };
+
+  const projectModalTabs = [...document.querySelectorAll("[data-project-tab]")];
+  const projectModalTabContent = document.getElementById("projectModalDetails");
+  let projectModalActiveCard = null;
+  let projectModalActiveTab = "overview";
+
+  function projectElement(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined && text !== null) node.textContent = text;
+    return node;
+  }
+
+  function projectSectionHeading(parent, eyebrow, title, description) {
+    const heading = projectElement("div", "project-detail-heading");
+    if (eyebrow) heading.append(projectElement("span", "project-detail-eyebrow", eyebrow));
+    heading.append(projectElement("h3", "", title));
+    if (description) heading.append(projectElement("p", "", description));
+    parent.append(heading);
+  }
+
+  function projectInfoCards(parent, items, className = "project-detail-info-grid") {
+    const grid = projectElement("div", className);
+    items.forEach(item => {
+      const card = projectElement("article", "project-detail-info-card");
+      if (item.icon) {
+        const mark = projectElement("span", "project-detail-card-icon");
+        mark.innerHTML = '<i class="portfolio-lucide" data-lucide="' + item.icon + '" aria-hidden="true"></i>';
+        card.append(mark);
+      }
+      if (item.label) card.append(projectElement("small", "project-detail-card-label", item.label));
+      card.append(projectElement("b", "", item.title));
+      if (item.text) card.append(projectElement("p", "", item.text));
+      grid.append(card);
+    });
+    parent.append(grid);
+  }
+
+  function projectBulletGrid(parent, items) {
+    const grid = projectElement("div", "project-detail-feature-grid");
+    items.forEach(item => {
+      const card = projectElement("article", "project-detail-feature");
+      const icon = projectElement("span", "project-detail-feature-icon");
+      icon.innerHTML = '<i class="portfolio-lucide" data-lucide="' + (item.icon || "check") + '" aria-hidden="true"></i>';
+      card.append(icon, projectElement("div", "", ""));
+      const copy = card.lastElementChild;
+      copy.append(projectElement("b", "", item.title), projectElement("p", "", item.text));
+      grid.append(card);
+    });
+    parent.append(grid);
+  }
+
+  function renderProjectModalTab(tabKey) {
+    const card = projectModalActiveCard;
+    if (!card || !projectModalTabContent) return;
+    const id = card.dataset.projectId;
+    const profile = projectDetailProfiles[id];
+    if (!profile) return;
+    projectModalActiveTab = tabKey;
+
+    projectModalTabs.forEach(button => {
+      const active = button.dataset.projectTab === tabKey;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-selected", String(active));
+      button.tabIndex = active ? 0 : -1;
+    });
+
+    projectModalTabContent.replaceChildren();
+    const content = projectModalTabContent;
+    const links = [...card.querySelectorAll(".project-links a")];
+
+    if (tabKey === "overview") {
+      projectSectionHeading(content, "PROJECT OVERVIEW", "Purpose & scope", profile.overview);
+      projectInfoCards(content, profile.overviewCards);
+      if (profile.modes) {
+        const modesHeading = projectElement("div", "project-detail-subheading");
+        modesHeading.append(projectElement("h4", "", "The FocusFlow experience"));
+        modesHeading.append(projectElement("p", "", "Different ways to structure focused time in one product."));
+        content.append(modesHeading);
+        projectInfoCards(content, profile.modes.map(mode => ({
+          ...mode, label:"MODE"
+        })), "project-detail-mode-grid");
+      }
+      const story = card.querySelector(".story-grid");
+      if (story) {
+        const storyCards = [...story.children].map(node => ({
+          label:node.querySelector("span")?.textContent.trim() || "",
+          title:node.querySelector("b")?.textContent.trim() || "",
+          text:""
+        }));
+        if (storyCards.length) {
+          content.append(projectElement("div","project-detail-divider"));
+          projectInfoCards(content, storyCards, "project-detail-story-grid");
+        }
+      }
+    } else if (tabKey === "features") {
+      projectSectionHeading(content, "CAPABILITIES", "What it covers", "Project-specific functions and scenarios documented in the project materials.");
+      projectBulletGrid(content, profile.features);
+      const originalItems = [...card.querySelectorAll(".project-content>ul li")].map(li => li.textContent.trim());
+      if (originalItems.length) {
+        const list = projectElement("div", "project-detail-verified-list");
+        list.append(projectElement("h4", "", "Additional project details"));
+        const ul = projectElement("ul", "");
+        originalItems.forEach(item => ul.append(projectElement("li", "", item)));
+        list.append(ul);
+        content.append(list);
+      }
+    } else if (tabKey === "approach") {
+      projectSectionHeading(content, "DESIGN & QUALITY", "Approach and considerations", profile.approachIntro);
+      const steps = projectElement("div", "project-detail-approach-list");
+      profile.approachItems.forEach((item, index) => {
+        const row = projectElement("article", "project-detail-approach-step");
+        row.append(projectElement("span", "project-detail-step-number", String(index + 1).padStart(2, "0")));
+        const copy = projectElement("div", "");
+        copy.append(projectElement("b", "", item.title), projectElement("p", "", item.text));
+        row.append(copy);
+        steps.append(row);
+      });
+      content.append(steps);
+      if (profile.note) {
+        const note = projectElement("aside", "project-detail-note");
+        const icon = projectElement("span", "project-detail-note-icon");
+        icon.innerHTML = '<i class="portfolio-lucide" data-lucide="info" aria-hidden="true"></i>';
+        note.append(icon, projectElement("div", "", ""));
+        const copy = note.lastElementChild;
+        copy.append(projectElement("b", "", "Project note"), projectElement("p", "", profile.note));
+        content.append(note);
+      }
+    } else if (tabKey === "resources") {
+      projectSectionHeading(content, "NEXT STEPS", "Open the project", "Explore the live experience or inspect the source material using the available project links.");
+      const resourceGrid = projectElement("div", "project-detail-resource-grid");
+      links.forEach(link => {
+        const a = projectElement("a", "project-detail-resource");
+        a.href = link.href;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        const mark = projectElement("span", "project-detail-resource-icon");
+        const isLive = /live app|open live|demo/i.test(link.textContent);
+        mark.innerHTML = '<i class="portfolio-lucide" data-lucide="' + (isLive ? "external-link" : "github") + '" aria-hidden="true"></i>';
+        const copy = projectElement("span", "");
+        copy.append(projectElement("b", "", link.textContent.replace(/[↗→]/g, "").trim()));
+        copy.append(projectElement("small", "", isLive ? "Open the published application in a new tab." : "Review the repository, files and documented implementation."));
+        a.append(mark, copy);
+        a.append(projectElement("span", "project-detail-resource-arrow", "↗"));
+        resourceGrid.append(a);
+      });
+      if (!links.length) {
+        resourceGrid.append(projectElement("p", "project-detail-empty", "No external project links are currently listed for this item."));
+      }
+      content.append(resourceGrid);
+    }
+
+    window.lucide?.createIcons?.({attrs: {"stroke-width": 1.9, "aria-hidden": "true"}});
+  }
+
   function openProjectDetails(card) {
     if (!card || !projectModal || !projectDialog) return;
+    const id = card.dataset.projectId;
     const title = card.querySelector(".project-content h3")?.textContent.trim() || "Project details";
     const category = card.querySelector(".project-meta>span:first-child")?.textContent.trim() || "PROJECT OVERVIEW";
     const summary = card.querySelector(".project-content>p")?.textContent.trim() || "";
     const image = card.querySelector(".project-photo");
     const stack = [...card.querySelectorAll(".project-stack span")].map(node => node.textContent.trim());
-    const content = card.querySelector(".project-content")?.cloneNode(true);
-
+    const iconNode = card.querySelector(".project-icon");
     projectModalReturnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : card;
+    projectModalActiveCard = card;
+
     if (projectModalImage) {
       projectModalImage.src = image?.currentSrc || image?.src || "";
       projectModalImage.alt = image?.alt || title;
+    }
+    if (projectModalMark) {
+      const officialLogo = id === "focusflow";
+      projectModalMark.innerHTML = officialLogo
+        ? '<img src="https://raw.githubusercontent.com/surdp/FocusFlow-App/main/assets/pragunira-logo.png" alt="" aria-hidden="true">'
+        : (iconNode ? iconNode.innerHTML : '<i class="portfolio-lucide" data-lucide="layers" aria-hidden="true"></i>');
+      projectModalMark.classList.toggle("project-modal-mark--brand", officialLogo);
     }
     if (projectModalKicker) projectModalKicker.textContent = category;
     if (projectModalTitle) projectModalTitle.textContent = title;
     if (projectModalSummary) projectModalSummary.textContent = summary;
     if (projectModalStack) {
       projectModalStack.replaceChildren();
-      stack.forEach(label => {
-        const chip = document.createElement("span");
-        chip.textContent = label;
-        projectModalStack.append(chip);
-      });
-    }
-    if (content && projectModalDetails) {
-      content.querySelector("h3")?.remove();
-      content.querySelector(".project-stack")?.remove();
-      content.querySelector(".project-open-button")?.remove();
-      [...content.children].filter(node => node.tagName === "P").forEach(node => node.remove());
-      projectModalDetails.replaceChildren(content);
+      stack.forEach(label => projectModalStack.append(projectElement("span", "", label)));
     }
     projectModal.hidden = false;
     document.body.classList.add("project-modal-open");
     document.addEventListener("keydown", handleProjectModalKeydown);
-    window.lucide?.createIcons?.({attrs: {"stroke-width": 1.9, "aria-hidden": "true"}});
+    renderProjectModalTab("overview");
     projectDialog.scrollTop = 0;
     projectModal.querySelector(".project-modal-close")?.focus({preventScroll:true});
   }
@@ -522,6 +821,20 @@
   });
   projectModal?.querySelectorAll("[data-project-close]").forEach(button => {
     button.addEventListener("click", closeProjectDetails);
+  });
+  projectModalTabs.forEach(button => {
+    button.addEventListener("click", () => renderProjectModalTab(button.dataset.projectTab));
+    button.addEventListener("keydown", event => {
+      if (!["ArrowLeft","ArrowRight","Home","End"].includes(event.key)) return;
+      event.preventDefault();
+      let next = projectModalTabs.indexOf(button);
+      if (event.key === "ArrowRight") next = (next + 1) % projectModalTabs.length;
+      else if (event.key === "ArrowLeft") next = (next - 1 + projectModalTabs.length) % projectModalTabs.length;
+      else if (event.key === "Home") next = 0;
+      else if (event.key === "End") next = projectModalTabs.length - 1;
+      projectModalTabs[next].focus();
+      renderProjectModalTab(projectModalTabs[next].dataset.projectTab);
+    });
   });
 
   // Experience Timeline / Career Growth modes and interactive progression.
