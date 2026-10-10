@@ -923,7 +923,7 @@
         content.append(note);
       }
     } else if (tabKey === "resources") {
-      projectSectionHeading(content, "VISUALS & LINKS", "Explore the project", "Browse related imagery, explore FocusFlow's documented modes, or open the source and live app.");
+      projectSectionHeading(content, "VISUALS & LINKS", "Explore the project", id === "focusflow" ? "Preview the FocusFlow interface concepts, explore its four documented modes, and open the live app or source repository." : "Browse the project's visual gallery and open the available source repository or live application.");
       if (profile.modes) renderFocusFlowModes(content, profile);
       renderProjectMediaGallery(content, id);
       const resourceHeading = projectElement("div","project-detail-subheading");
@@ -969,7 +969,9 @@
     const title = card.querySelector(".project-content h3")?.textContent.trim() || "Project details";
     const category = card.querySelector(".project-meta>span:first-child")?.textContent.trim() || "PROJECT OVERVIEW";
     const summary = card.querySelector(".project-content>p")?.textContent.trim() || "";
-    const image = card.querySelector(".project-photo");
+    const image = id === "focusflow"
+      ? {src:"assets/images/projects/focusflow-timer.svg",alt:"Illustrative FocusFlow timer interface with a focus-session ring and session controls"}
+      : card.querySelector(".project-photo");
     const stack = [...card.querySelectorAll(".project-stack span")].map(node => node.textContent.trim());
     const iconNode = card.querySelector(".project-icon");
     projectModalReturnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : card;
