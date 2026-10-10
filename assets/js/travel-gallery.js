@@ -6,6 +6,7 @@
   const emptyTitle = document.getElementById("travelGalleryEmptyTitle");
   const emptyText = document.getElementById("travelGalleryEmptyText");
   const wallCount = document.getElementById("travelWallCount");
+  const loadMoreButton = document.getElementById("travelGalleryLoadMore");
   const viewer = document.getElementById("mediaViewer");
   const viewerTitle = document.getElementById("mediaViewerTitle");
   const viewerMeta = document.getElementById("mediaViewerMeta");
@@ -106,19 +107,36 @@
     if (nextButton) nextButton.disabled = allMedia.length < 2;
   }
 
-  function renderWall() {
+  const PAGE_SIZE = 18;
+  let visibleCount = PAGE_SIZE;
+  let renderedCount = 0;
+
+  function renderWall(append = false) {
     if (!allMedia.length) {
       grid.hidden = true;
       empty.hidden = false;
       if (emptyTitle) emptyTitle.textContent = "Your travel memories will appear here.";
-      if (emptyText) emptyText.textContent = "Add your personal photos and videos to assets/gallery. They will appear together in one mosaic wall; no filenames need to be renamed.";
-      if (wallCount) wallCount.textContent = "No photos or videos added yet";
+      if (emptyText) emptyText.textContent = "Photos and videos will appear here as they are added to the travel collection.";
+      if (wallCount) wallCount.textContent = "No travel memories yet";
+      if (loadMoreButton) loadMoreButton.hidden = true;
       return;
     }
     empty.hidden = true;
     grid.hidden = false;
-    if (wallCount) wallCount.textContent = allMedia.length + " memories · photos and videos mixed together";
-    grid.innerHTML = allMedia.map(tileMarkup).join("");
+    const nextCount = Math.min(visibleCount, allMedia.length);
+    if (!append) {
+      grid.innerHTML = "";
+      renderedCount = 0;
+    }
+    if (nextCount > renderedCount) {
+      grid.insertAdjacentHTML("beforeend", allMedia.slice(renderedCount, nextCount).map(tileMarkup).join(""));
+      renderedCount = nextCount;
+    }
+    if (wallCount) wallCount.textContent = "Showing " + renderedCount + " of " + allMedia.length + " travel memories";
+    if (loadMoreButton) {
+      loadMoreButton.hidden = renderedCount >= allMedia.length;
+      if (!loadMoreButton.hidden) loadMoreButton.textContent = "Load more memories · " + (allMedia.length - renderedCount) + " left";
+    }
   }
 
   function applyImageRotation() {
@@ -179,6 +197,12 @@
     openMedia(Number(trigger.dataset.mediaIndex));
   });
 
+  loadMoreButton?.addEventListener("click", () => {
+    if (renderedCount >= allMedia.length) return;
+    visibleCount = Math.min(renderedCount + PAGE_SIZE, allMedia.length);
+    renderWall(true);
+  });
+
   closeButton?.addEventListener("click", () => viewer.close());
   previousButton?.addEventListener("click", () => openMedia(currentIndex - 1));
   nextButton?.addEventListener("click", () => openMedia(currentIndex + 1));
@@ -217,7 +241,7 @@
     currentIndex = -1;
   });
 
-  fetch("assets/gallery/media-library.json?v=20261009-2")
+  fetch("assets/gallery/media-library.json?v=20261010-lazy-gallery-v1")
     .then(response => {
       if (!response.ok) throw new Error("Travel media manifest is not available.");
       return response.json();
