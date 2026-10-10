@@ -923,9 +923,11 @@
       projectModalImage.alt = image?.alt || title;
     }
     if (projectModalMark) {
-      const selectedIcon = iconNode?.querySelector("[data-lucide]")?.getAttribute("data-lucide") || "layers";
-      projectModalMark.innerHTML = '<i class="portfolio-lucide" data-lucide="' + selectedIcon + '" aria-hidden="true"></i>';
-      projectModalMark.classList.remove("project-modal-mark--brand");
+      // Reuse the exact identity shown on the card (FocusFlow's brand mark,
+      // or the relevant Lucide icon for the other projects).
+      projectModalMark.innerHTML = iconNode?.innerHTML || '<i class="portfolio-lucide" data-lucide="layers" aria-hidden="true"></i>';
+      const carriesBrandImage = Boolean(iconNode?.querySelector("img"));
+      projectModalMark.classList.toggle("project-modal-mark--brand", carriesBrandImage);
       projectModalMark.setAttribute("aria-label", title + " project icon");
     }
     if (projectModalKicker) projectModalKicker.textContent = category;
