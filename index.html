@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f5f7fa">
 <meta name="description" content="Suraj D P is a Business Analyst with experience in requirements analysis, process mapping, functional documentation, API validation, QA automation, and healthcare technology delivery.">
 <meta property="og:title" content="Suraj D P | Business Analyst & Healthcare IT"><meta property="og:description" content="Business analysis, healthcare technology, quality engineering, automation, and practical software projects.">
-<title>Suraj D P · Business Analysis · QA Automation · Healthcare IT</title><link rel="stylesheet" href="assets/css/style.css?v=20261010-masonry-fill-v1">
+<title>Suraj D P · Business Analysis · QA Automation · Healthcare IT</title><link rel="stylesheet" href="assets/css/style.css?v=20261010-travel-journal-v1">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script>try{const t=localStorage.getItem("suraj-portfolio-theme");if(t)document.documentElement.dataset.theme=t}catch(_){}</script>
 </head>
@@ -657,19 +657,30 @@
 
 <section id="trip-itineraries" class="section divider trip-section">
   <div class="container">
-    <div class="section-header reveal">
-      <div><p class="overline">Trips &amp; Itineraries</p><h2>Roads taken. <em class="gradient">Places remembered.</em></h2></div>
-      <p>17 completed trips, arranged in stop order. Open a trip to see its itinerary and Google Maps route links. Dates and distances are not shown because they were not supplied.</p>
-    </div>
-    <div class="trip-dashboard reveal">
-      <div class="trip-dashboard-top">
-        <div class="trip-total-block"><span class="summary-kicker">TRIPS DOCUMENTED</span><strong id="tripTotal">17</strong><small>completed journeys</small></div>
-        <label class="trip-search"><span aria-hidden="true">⌕</span><input id="tripSearch" type="search" placeholder="Find a trip, region or stop…" autocomplete="off" aria-label="Search trip itineraries"></label>
+    <div class="section-header reveal trip-editorial-header">
+      <div class="trip-editorial-title">
+        <p class="overline">Travel Journal</p>
+        <h2>Travel for life. <em class="gradient">Stories from every road.</em></h2>
+        <p class="trip-passion-line">Take the long way. Chase new horizons. Collect stories worth telling.</p>
       </div>
-      <div class="trip-results-bar" id="tripResultsCount" aria-live="polite">Loading trip itineraries…</div>
-      <div class="trip-grid" id="tripItineraryGrid" aria-live="polite"></div>
-      <noscript><p>Enable JavaScript to browse trip itineraries and open the Google Maps route links.</p></noscript>
+      <div class="trip-header-signature" aria-label="One life, many roads">
+        <span class="trip-header-eyebrow"><span aria-hidden="true"></span> ONE LIFE · MANY ROADS</span>
+        <div class="trip-route-art" aria-hidden="true">
+          <svg viewBox="0 0 440 92" preserveAspectRatio="none">
+            <defs><linearGradient id="tripRouteGradient" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#58c8ff"/><stop offset=".5" stop-color="#8ba7ff"/><stop offset="1" stop-color="#c29aff"/></linearGradient></defs>
+            <path d="M0 66 C38 66 22 18 62 18 S100 77 143 59 176 9 211 34 241 84 279 57 310 17 348 34 380 65 440 18"/>
+            <path d="M0 75 C38 75 22 27 62 27 S100 86 143 68 176 18 211 43 241 93 279 66 310 26 348 43 380 74 440 27"/>
+            <circle cx="62" cy="18" r="4"/><circle cx="211" cy="34" r="4"/><circle cx="348" cy="34" r="4"/>
+          </svg>
+        </div>
+        <p>For the roads that call, the places that stay, and the stories we bring home.</p>
+      </div>
     </div>
+    <div class="trip-explorer reveal" id="tripItineraryGrid">
+      <nav class="trip-tabs" id="tripItineraryTabs" role="tablist" aria-label="Choose a journey" aria-orientation="vertical"></nav>
+      <div class="trip-selected-detail" id="tripSelectedDetail" role="tabpanel" aria-live="polite" aria-label="Selected journey details"></div>
+    </div>
+    <noscript><p>Enable JavaScript to explore trip routes, itineraries, and place photography.</p></noscript>
   </div>
 </section>
 
@@ -711,7 +722,7 @@
 <script src="assets/js/certificate-image-support.js?v=20261009-1" defer></script>
 <script src="assets/js/movie-gallery.js?v=20261010-masonry-fill-v1" defer></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
-<script src="assets/js/trip-itineraries.js?v=20261009-3" defer></script>
+<script src="assets/js/trip-itineraries.js?v=20261010-travel-journal-v1" defer></script>
 <script src="assets/js/travel-gallery.js?v=20261009-4" defer></script>
 <script src="https://unpkg.com/lucide@1.52.0/dist/umd/lucide.min.js" defer></script>
 <script src="assets/js/main.js?v=20261010-project-gallery-v6" defer></script>

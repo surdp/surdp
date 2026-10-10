@@ -224,8 +224,21 @@
     "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
   }[char]));
 
+  function displayStopName(stop) {
+    let name = String(stop && stop.name || "").trim();
+    name = name.replace(/\s*\(name as provided\)/ig, "");
+    name = name.replace(/\s*\(name not specified\)/ig, "");
+    if (/floating stones/i.test(name) && /Pamban Bridge/i.test(String(stop.mapQuery || ""))) name = "Pamban Bridge";
+    return name.trim();
+  }
+
+  function isHiddenPlaceholder(stop) {
+    const name = String(stop && stop.name || "");
+    return /name not specified|other Hyderabad places|other places in Tirumala|unnamed stop|bridge in Hyderabad/i.test(name);
+  }
+
   function mappedStops(stops) {
-    return stops.filter(stop => stop.mapQuery && String(stop.mapQuery).trim());
+    return stops.filter(stop => stop && stop.mapQuery && String(stop.mapQuery).trim() && !isHiddenPlaceholder(stop));
   }
 
   function splitIntoMapLegs(stops) {
@@ -393,7 +406,7 @@
   let mapObserver = null;
 
   function tripMapPoints(trip) {
-    return trip.stops.map((stop, index) => {
+    return mappedStops(trip.stops).map((stop, index) => {
       const coordinates = getCoordinates(stop);
       if (!coordinates) return null;
       return { stop: stop, index: index, lat: coordinates.lat, lng: coordinates.lng };
@@ -407,7 +420,7 @@
       ': ' + esc(trip.title) + '">' +
       '<div class="trip-map-loading"><span class="trip-map-spinner" aria-hidden="true"></span>Loading street map…</div></div>' +
       '<div class="trip-map-attribution-note" id="trip-map-note-' + trip.id +
-      '">OpenStreetMap · marker positions are estimates; use Google Maps for navigation</div></div>';
+      '">Street map by OpenStreetMap · Google Maps for turn-by-turn directions</div></div>';
   }
 
   function renderTripMapError(element, message) {
@@ -556,43 +569,275 @@
     }
   }
 
-  function renderTrip(trip) {
-    const stopsHtml = trip.stops.map((stop, index) =>
-      '<li class="trip-stop"><span class="trip-stop-number">' + (index + 1) +
-      '</span><div><b>' + esc(stop.name) + '</b>' +
-      (stop.note ? '<p>' + esc(stop.note) + '</p>' : '') + '</div></li>'
-    ).join("");
-    return '<article class="trip-card"><div class="trip-card-heading"><span class="trip-index">TRIP ' +
-      String(trip.id).padStart(2, "0") + '</span><span class="trip-region">' + esc(trip.region) +
-      '</span></div><div class="trip-card-title"><h3>' + esc(trip.title) + '</h3><span class="trip-stop-total">' +
-      trip.stops.length + ' stops</span></div>' + renderLiveMap(trip) +
-      '<div class="trip-card-copy"><p class="trip-overview">' + esc(trip.overview) +
-      '</p><details class="trip-details"><summary>Full itinerary &amp; Google Maps <span>' +
-      trip.stops.length + ' stops</span></summary><div class="trip-details-content"><ol class="trip-stop-list">' +
-      stopsHtml + '</ol><div class="trip-map-area"><h4>Open in Google Maps</h4><p>These links open real directions for the selected route legs.</p>' +
-      renderMapLinks(trip) + '</div></div></details></div></article>';
+  const tabs = document.getElementById("tripItineraryTabs");
+  const detailPanel = document.getElementById("tripSelectedDetail");
+  if (!tabs || !detailPanel) return;
+  let activeTripId = trips[0] ? trips[0].id : null;
+  const photoResultsCache = new Map();
+
+  function visibleStops(trip) {
+    return mappedStops(trip.stops)
+      .map((stop, index) => ({stop, index, name: displayStopName(stop)}))
+      .filter(item => item.name);
   }
 
-  container.innerHTML = trips.map(renderTrip).join("");
-  observeTripMaps();
-  const tripCount = document.getElementById("tripTotal");
-  if (tripCount) tripCount.textContent = String(trips.length);
+  function renderTripTab(trip) {
+    const selected = trip.id === activeTripId;
+    return '<button type="button" class="trip-tab" role="tab" id="trip-tab-' + trip.id +
+      '" aria-selected="' + String(selected) + '" aria-controls="tripSelectedDetail" tabindex="' + (selected ? "0" : "-1") +
+      '" data-trip-tab="' + trip.id + '">' +
+      '<span class="trip-tab-number">' + String(trip.id).padStart(2, "0") + '</span>' +
+      '<span class="trip-tab-copy"><b>' + esc(trip.title) + '</b><small>' + esc(trip.region) + '</small></span>' +
+      '<span class="trip-tab-arrow" aria-hidden="true">↗</span></button>';
+  }
 
-  const search = document.getElementById("tripSearch");
-  if (search) {
-    search.addEventListener("input", () => {
-      const query = search.value.trim().toLowerCase();
-      const filtered = trips.filter(trip =>
-        [trip.title, trip.region, trip.overview, ...trip.stops.map(stop => stop.name)]
-          .join(" ").toLowerCase().includes(query)
-      );
-      disposeTripMaps();
-      container.innerHTML = filtered.map(renderTrip).join("");
-      observeTripMaps();
-      const count = document.getElementById("tripResultsCount");
-      if (count) count.textContent = "Showing " + filtered.length + " of " + trips.length + " trips";
+  function renderPhotoStops(trip) {
+    const home = /bengaluru|bangalore|shivamogga|shimoga/i;
+    const seen = new Set();
+    const candidates = mappedStops(trip.stops).filter(stop => {
+      const name = displayStopName(stop);
+      return name && !home.test(name) && !/floating stones/i.test(name);
+    });
+    const chosen = [];
+    for (const stop of candidates) {
+      const name = displayStopName(stop);
+      const key = name.toLowerCase();
+      if (seen.has(key)) continue;
+      seen.add(key);
+      chosen.push({name, mapQuery:stop.mapQuery});
+      if (chosen.length === 3) break;
+    }
+    return chosen;
+  }
+
+  function renderTrip(trip) {
+    const stops = visibleStops(trip);
+    const stopsHtml = stops.map((item, index) =>
+      '<li class="trip-stop"><span class="trip-stop-number">' + (index + 1) +
+      '</span><div><b>' + esc(item.name) + '</b></div></li>'
+    ).join("");
+    const photoStops = renderPhotoStops(trip);
+    return '<article class="trip-detail-view" aria-labelledby="trip-detail-title-' + trip.id + '">' +
+      '<header class="trip-detail-heading">' +
+        '<div class="trip-detail-kicker"><span>JOURNEY ' + String(trip.id).padStart(2, "0") + '</span><i></i><span>' + esc(trip.region.toUpperCase()) + '</span></div>' +
+        '<h3 id="trip-detail-title-' + trip.id + '">' + esc(trip.title) + '</h3>' +
+        '<p class="trip-overview">' + esc(trip.overview) + '</p>' +
+      '</header>' +
+      renderLiveMap(trip) +
+      '<div class="trip-detail-lower">' +
+        '<section class="trip-stops-panel" aria-labelledby="trip-stops-title-' + trip.id + '">' +
+          '<div class="trip-panel-heading"><div><span class="trip-panel-kicker">THE ROUTE</span><h4 id="trip-stops-title-' + trip.id + '">Places along the way</h4></div><span class="trip-panel-mark" aria-hidden="true">01 / JOURNEY</span></div>' +
+          '<ol class="trip-stop-list">' + stopsHtml + '</ol>' +
+          '<details class="trip-directions-panel"><summary><span>Open route in Google Maps</span><span class="trip-directions-action">View directions ↗</span></summary>' +
+          '<div class="trip-directions-content">' + renderMapLinks(trip) + '</div></details>' +
+        '</section>' +
+        '<section class="trip-photos-panel" aria-labelledby="trip-photos-title-' + trip.id + '">' +
+          '<div class="trip-panel-heading"><div><span class="trip-panel-kicker">PLACES &amp; PERSPECTIVES</span><h4 id="trip-photos-title-' + trip.id + '">Scenes from the journey</h4></div><span class="trip-panel-mark" aria-hidden="true">02 / DISCOVER</span></div>' +
+          '<p class="trip-photos-intro">A visual glimpse of places on this route.</p>' +
+          '<div class="trip-place-photos" id="tripPlacePhotos-' + trip.id + '" data-photo-trip="' + trip.id + '" aria-live="polite"><div class="trip-photo-loading"><span></span><span></span><span></span></div></div>' +
+          '<p class="trip-photo-credit-note">Open-licensed photography · creator, source, and licence linked on every image.</p>' +
+        '</section>' +
+      '</div>' +
+    '</article>';
+  }
+
+  function cleanMeta(value) {
+    return String(value || "")
+      .replace(/<script[\s\S]*?<\/script>/gi, "")
+      .replace(/<style[\s\S]*?<\/style>/gi, "")
+      .replace(/<[^>]*>/g, " ")
+      .replace(/&nbsp;/gi, " ")
+      .replace(/&amp;/gi, "&")
+      .replace(/&quot;/gi, '"')
+      .replace(/&#39;|&apos;/gi, "'")
+      .replace(/&lt;/gi, "<")
+      .replace(/&gt;/gi, ">")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  async function searchCommonsPhoto(placeName, region) {
+    const searchTerm = (placeName + " " + region + " India").trim();
+    const cacheKey = searchTerm.toLowerCase();
+    if (photoResultsCache.has(cacheKey)) return photoResultsCache.get(cacheKey);
+
+    const task = (async () => {
+      const params = new URLSearchParams({
+        action: "query",
+        generator: "search",
+        gsrsearch: searchTerm,
+        gsrnamespace: "6",
+        gsrlimit: "8",
+        prop: "imageinfo",
+        iiprop: "url|extmetadata",
+        iiurlwidth: "720",
+        format: "json",
+        origin: "*"
+      });
+      const response = await fetch("https://commons.wikimedia.org/w/api.php?" + params.toString(), {
+        headers: {"Accept":"application/json"}
+      });
+      if (!response.ok) throw new Error("Wikimedia Commons search failed.");
+      const data = await response.json();
+      const pages = Object.values(data && data.query && data.query.pages || {});
+      const candidates = pages.map(page => {
+        const info = page && page.imageinfo && page.imageinfo[0];
+        if (!info || !info.thumburl || !String(info.mime || "").startsWith("image/") || /svg/i.test(info.mime || "")) return null;
+        const meta = info.extmetadata || {};
+        return {
+          title: cleanMeta(page.title || "Place photograph").replace(/^File:\s*/i, ""),
+          imageUrl: info.thumburl,
+          pageUrl: info.descriptionurl || "https://commons.wikimedia.org/wiki/" + encodeURIComponent(page.title || ""),
+          artist: cleanMeta((meta.Artist && meta.Artist.value) || (meta.Credit && meta.Credit.value) || "") || "Creator listed on source page",
+          license: cleanMeta((meta.LicenseShortName && meta.LicenseShortName.value) || (meta.UsageTerms && meta.UsageTerms.value) || "") || "View licence",
+          licenseUrl: cleanMeta((meta.LicenseUrl && meta.LicenseUrl.value) || "") || (info.descriptionurl || "")
+        };
+      }).filter(Boolean);
+      return candidates[0] || null;
+    })().catch(() => null);
+
+    photoResultsCache.set(cacheKey, task);
+    return task;
+  }
+
+  function commonsSearchPage(placeName, region) {
+    const query = encodeURIComponent((placeName + " " + region + " India").trim());
+    return "https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=" + query;
+  }
+
+  function buildPhotoCard(photo, placeName) {
+    const card = document.createElement("article");
+    card.className = "trip-place-photo";
+    const imageLink = document.createElement("a");
+    imageLink.className = "trip-place-photo-image";
+    imageLink.href = photo.pageUrl;
+    imageLink.target = "_blank";
+    imageLink.rel = "noopener noreferrer";
+    imageLink.setAttribute("aria-label", "Open source photo: " + photo.title);
+    const image = document.createElement("img");
+    image.src = photo.imageUrl;
+    image.alt = placeName;
+    image.loading = "lazy";
+    image.decoding = "async";
+    image.addEventListener("error", () => card.remove(), {once:true});
+    imageLink.appendChild(image);
+
+    const titleLink = document.createElement("a");
+    titleLink.className = "trip-place-photo-title";
+    titleLink.href = photo.pageUrl;
+    titleLink.target = "_blank";
+    titleLink.rel = "noopener noreferrer";
+    titleLink.textContent = photo.title;
+
+    const credit = document.createElement("div");
+    credit.className = "trip-place-photo-credit";
+    const artist = document.createElement("span");
+    artist.textContent = photo.artist;
+    const license = document.createElement("a");
+    license.href = photo.licenseUrl || photo.pageUrl;
+    license.target = "_blank";
+    license.rel = "noopener noreferrer";
+    license.textContent = photo.license;
+    license.setAttribute("aria-label", "View photo licence");
+    credit.append(artist, license);
+
+    const source = document.createElement("a");
+    source.className = "trip-place-photo-source";
+    source.href = photo.pageUrl;
+    source.target = "_blank";
+    source.rel = "noopener noreferrer";
+    source.textContent = "Wikimedia Commons ↗";
+
+    const caption = document.createElement("div");
+    caption.className = "trip-place-photo-caption";
+    caption.append(titleLink, credit, source);
+    card.append(imageLink, caption);
+    return card;
+  }
+
+  async function loadTripPhotos(trip) {
+    const gallery = document.getElementById("tripPlacePhotos-" + trip.id);
+    if (!gallery) return;
+    const subjects = renderPhotoStops(trip);
+    if (!subjects.length) {
+      gallery.replaceChildren();
+      return;
+    }
+    gallery.innerHTML = '<div class="trip-photo-loading"><span></span><span></span><span></span></div>';
+    const photos = await Promise.all(subjects.map(subject => searchCommonsPhoto(subject.name, trip.region)));
+    if (!gallery.isConnected || activeTripId !== trip.id) return;
+    gallery.replaceChildren();
+    let rendered = 0;
+    photos.forEach((photo, index) => {
+      const subject = subjects[index];
+      if (photo) {
+        gallery.appendChild(buildPhotoCard(photo, subject.name));
+        rendered += 1;
+      } else {
+        const fallback = document.createElement("a");
+        fallback.className = "trip-photo-explore";
+        fallback.href = commonsSearchPage(subject.name, trip.region);
+        fallback.target = "_blank";
+        fallback.rel = "noopener noreferrer";
+        const arrow = document.createElement("span");
+        arrow.setAttribute("aria-hidden", "true");
+        arrow.textContent = "↗";
+        const name = document.createElement("b");
+        name.textContent = subject.name;
+        const caption = document.createElement("small");
+        caption.textContent = "Explore place photography";
+        fallback.append(arrow, name, caption);
+        gallery.appendChild(fallback);
+        rendered += 1;
+      }
+    });
+    gallery.classList.toggle("is-single", rendered === 1);
+  }
+
+  function updateTabSelection() {
+    Array.from(tabs.querySelectorAll("[data-trip-tab]")).forEach(button => {
+      const selected = Number(button.dataset.tripTab) === activeTripId;
+      button.setAttribute("aria-selected", String(selected));
+      button.tabIndex = selected ? 0 : -1;
     });
   }
-  const count = document.getElementById("tripResultsCount");
-  if (count) count.textContent = "Showing " + trips.length + " completed trips";
+
+  function selectTrip(tripId, focusTab) {
+    const trip = trips.find(item => item.id === tripId);
+    if (!trip) return;
+    activeTripId = tripId;
+    disposeTripMaps();
+    updateTabSelection();
+    if (focusTab) {
+      const selectedTab = tabs.querySelector('[data-trip-tab="' + tripId + '"]');
+      if (selectedTab) selectedTab.focus();
+    }
+    detailPanel.innerHTML = renderTrip(trip);
+    detailPanel.setAttribute("aria-labelledby", "trip-tab-" + trip.id);
+    observeTripMaps();
+    loadTripPhotos(trip);
+  }
+
+  tabs.innerHTML = trips.map(renderTripTab).join("");
+  tabs.addEventListener("click", event => {
+    const button = event.target.closest("[data-trip-tab]");
+    if (!button) return;
+    selectTrip(Number(button.dataset.tripTab), false);
+  });
+  tabs.addEventListener("keydown", event => {
+    const button = event.target.closest("[data-trip-tab]");
+    if (!button) return;
+    const tabButtons = Array.from(tabs.querySelectorAll("[data-trip-tab]"));
+    const currentIndex = tabButtons.indexOf(button);
+    let nextIndex = currentIndex;
+    if (event.key === "ArrowDown" || event.key === "ArrowRight") nextIndex = (currentIndex + 1) % tabButtons.length;
+    else if (event.key === "ArrowUp" || event.key === "ArrowLeft") nextIndex = (currentIndex - 1 + tabButtons.length) % tabButtons.length;
+    else if (event.key === "Home") nextIndex = 0;
+    else if (event.key === "End") nextIndex = tabButtons.length - 1;
+    else return;
+    event.preventDefault();
+    selectTrip(Number(tabButtons[nextIndex].dataset.tripTab), true);
+  });
+
+  if (activeTripId !== null) selectTrip(activeTripId, false);
 })();

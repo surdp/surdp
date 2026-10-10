@@ -5021,3 +5021,110 @@ html[data-theme="light"] #projects .project-detail-info-focus{background:radial-
 @media (prefers-reduced-motion: reduce) {
   .movie-media-card { transition: none !important; }
 }
+
+/* Travel Journal: selectable journeys with interactive routes and sourced place photography */
+.trip-section .trip-editorial-header{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(290px,.8fr);align-items:center;gap:clamp(26px,4.5vw,64px);margin-bottom:27px}
+.trip-editorial-title{min-width:0}
+.trip-editorial-title .overline{margin-bottom:12px}
+.trip-editorial-title h2{max-width:760px;margin:0}
+.trip-section .trip-passion-line{max-width:650px;margin:16px 0 0;padding-top:12px;border-top:1px solid color-mix(in srgb,var(--accent) 36%,transparent);color:var(--muted);font-size:clamp(12px,1.1vw,14px);line-height:1.8}
+.trip-header-signature{min-width:0;max-width:510px;width:100%;justify-self:end;padding:10px 0}
+.trip-header-eyebrow{display:flex;align-items:center;gap:9px;color:var(--accent);font:800 9px "DM Mono",monospace;letter-spacing:.13em}
+.trip-header-eyebrow span{width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#82d9ff;box-shadow:0 0 0 4px rgba(117,183,255,.1),0 0 15px rgba(117,183,255,.56)}
+.trip-route-art{width:100%;margin:12px 0 3px}
+.trip-route-art svg{display:block;width:100%;height:clamp(55px,6.5vw,83px);overflow:visible}
+.trip-route-art path{fill:none;stroke:url(#tripRouteGradient);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:5 5;animation:tripRouteDash 12s linear infinite}
+.trip-route-art path:nth-child(2){opacity:.36;stroke-width:1;animation-duration:17s;animation-direction:reverse}
+.trip-route-art circle{fill:#91caff;stroke:#142334;stroke-width:2}
+.trip-header-signature>p{margin:3px 0 0;color:var(--muted);font-size:11px;line-height:1.7}
+@keyframes tripRouteDash{to{stroke-dashoffset:-180}}
+.trip-explorer{display:grid;grid-template-columns:minmax(235px,.38fr) minmax(0,1fr);align-items:start;min-width:0;overflow:hidden;border:1px solid var(--line2);border-radius:18px;background:color-mix(in srgb,var(--panel) 96%,transparent);box-shadow:var(--shadow)}
+.trip-tabs{display:flex;flex-direction:column;gap:5px;max-height:850px;overflow-y:auto;min-width:0;padding:12px;border-right:1px solid var(--line);background:color-mix(in srgb,var(--bg) 45%,var(--panel));scrollbar-width:thin;scrollbar-color:var(--line2) transparent}
+.trip-tab{display:grid;grid-template-columns:30px minmax(0,1fr) 15px;align-items:center;gap:10px;min-width:0;width:100%;padding:11px 9px;border:1px solid transparent;border-radius:10px;background:transparent;color:var(--muted);text-align:left;cursor:pointer;transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease}
+.trip-tab:hover{border-color:var(--line2);background:color-mix(in srgb,var(--panel2) 65%,transparent);color:var(--text)}
+.trip-tab[aria-selected="true"]{border-color:color-mix(in srgb,var(--accent) 38%,var(--line2));background:linear-gradient(105deg,color-mix(in srgb,var(--accent) 15%,var(--panel2)),color-mix(in srgb,var(--panel) 85%,transparent));color:var(--text);box-shadow:inset 2px 0 0 var(--accent)}
+.trip-tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.trip-tab-number{display:grid;place-items:center;width:28px;height:30px;border:1px solid var(--line2);border-radius:7px;color:var(--faint);font:9px "DM Mono",monospace}
+.trip-tab[aria-selected="true"] .trip-tab-number{border-color:color-mix(in srgb,var(--accent) 50%,var(--line));color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent)}
+.trip-tab-copy{display:flex;flex-direction:column;gap:5px;min-width:0}
+.trip-tab-copy b{color:inherit;font-size:10px;line-height:1.5;font-weight:750}
+.trip-tab-copy small{color:var(--faint);font-size:8px;line-height:1.4}
+.trip-tab-arrow{color:var(--faint);font-size:13px;opacity:0;transform:translate(-2px,2px);transition:opacity .18s ease,transform .18s ease}
+.trip-tab:hover .trip-tab-arrow,.trip-tab[aria-selected="true"] .trip-tab-arrow{opacity:1;transform:translate(0,0);color:var(--accent)}
+.trip-selected-detail{min-width:0;padding:clamp(14px,1.6vw,22px)}
+.trip-detail-view{min-width:0;animation:tripDetailReveal .28s ease both}
+@keyframes tripDetailReveal{from{opacity:.55;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.trip-detail-heading{padding:3px 2px 16px}
+.trip-detail-kicker{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:9px;color:var(--accent);font:800 8px "DM Mono",monospace;letter-spacing:.13em}
+.trip-detail-kicker i{width:18px;height:1px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.trip-detail-heading h3{margin:0;color:var(--text);font-size:clamp(20px,2.3vw,29px);line-height:1.25;letter-spacing:-.035em}
+.trip-detail-heading .trip-overview{max-width:800px;margin:9px 0 0;color:var(--muted);font-size:11px;line-height:1.8}
+.trip-detail-view .trip-live-map{height:clamp(235px,27vw,350px);min-height:220px;border-radius:11px 11px 0 0}
+.trip-detail-view .trip-map-shell{border:1px solid var(--line2);border-radius:12px;overflow:hidden}
+.trip-detail-view .trip-map-attribution-note{padding:7px 10px;font-size:8px}
+.trip-detail-lower{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:start;gap:13px;margin-top:14px}
+.trip-stops-panel,.trip-photos-panel{min-width:0;border:1px solid var(--line);border-radius:12px;padding:14px;background:color-mix(in srgb,var(--bg) 36%,var(--panel))}
+.trip-panel-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:13px}
+.trip-panel-kicker{display:block;margin-bottom:6px;color:var(--accent);font:800 7px "DM Mono",monospace;letter-spacing:.13em}
+.trip-panel-heading h4{margin:0;color:var(--text);font-size:14px;line-height:1.35;letter-spacing:-.02em}
+.trip-panel-mark{flex:0 0 auto;color:var(--faint);font:7px "DM Mono",monospace;letter-spacing:.08em}
+.trip-stop-list{display:flex;flex-direction:column;list-style:none;gap:0;margin:0;padding:0}
+.trip-stop{position:relative;display:grid;grid-template-columns:23px minmax(0,1fr);gap:10px;min-width:0;padding:0 0 13px}
+.trip-stop:not(:last-child):before{position:absolute;top:22px;bottom:-1px;left:10px;width:1px;content:"";background:linear-gradient(var(--accent),color-mix(in srgb,var(--accent) 7%,var(--line))}
+.trip-stop-number{position:relative;z-index:1;display:grid;place-items:center;width:22px;height:22px;border:1px solid color-mix(in srgb,var(--accent) 36%,var(--line));border-radius:50%;background:var(--panel2);color:var(--accent);font:8px "DM Mono",monospace}
+.trip-stop b{display:block;padding-top:4px;color:var(--text);font-size:10px;line-height:1.6;font-weight:650}
+.trip-directions-panel{margin-top:7px;padding-top:12px;border-top:1px solid var(--line)}
+.trip-directions-panel>summary{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--text);font-size:10px;font-weight:800;cursor:pointer;list-style:none}
+.trip-directions-panel>summary::-webkit-details-marker{display:none}
+.trip-directions-action{color:var(--accent);font-size:9px;white-space:nowrap}
+.trip-directions-content{padding-top:12px}
+.trip-directions-content .trip-map-links{display:grid;grid-template-columns:minmax(0,1fr);gap:7px}
+.trip-directions-content .trip-map-link{border:1px solid var(--line);border-radius:8px;padding:9px;background:var(--panel)}
+.trip-directions-content .trip-map-link b{font-size:9px}
+.trip-directions-content .trip-map-link small{font-size:8px;line-height:1.5}
+.trip-map-option{color:var(--muted);font-size:9px}
+.trip-photos-intro{margin:-3px 0 11px;color:var(--muted);font-size:10px;line-height:1.6}
+.trip-place-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;min-width:0}
+.trip-place-photos.is-single{grid-template-columns:minmax(0,1fr)}
+.trip-place-photo{display:flex;flex-direction:column;min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:9px;background:var(--panel)}
+.trip-place-photo-image{display:block;width:100%;height:132px;overflow:hidden;background:var(--panel2)}
+.trip-place-photo-image img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .25s ease}
+.trip-place-photo:hover .trip-place-photo-image img{transform:scale(1.035)}
+.trip-place-photo-caption{display:flex;flex-direction:column;gap:6px;min-width:0;padding:9px}
+.trip-place-photo-title{display:-webkit-box;overflow:hidden;color:var(--text);font-size:9px;font-weight:800;line-height:1.5;text-decoration:none;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.trip-place-photo-title:hover,.trip-place-photo-source:hover{color:var(--accent)}
+.trip-place-photo-credit{display:flex;flex-direction:column;gap:3px;color:var(--faint);font-size:8px;line-height:1.5;overflow-wrap:anywhere}
+.trip-place-photo-credit span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.trip-place-photo-credit a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+.trip-place-photo-source{align-self:flex-start;color:var(--accent);font:800 7px "DM Mono",monospace;text-decoration:none}
+.trip-photo-credit-note{margin:10px 0 0;color:var(--faint);font:7px "DM Mono",monospace;line-height:1.6}
+.trip-photo-loading{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.trip-photo-loading span{display:block;height:180px;border:1px solid var(--line);border-radius:9px;background:linear-gradient(100deg,var(--panel2) 20%,color-mix(in srgb,var(--accent) 7%,var(--panel2)) 40%,var(--panel2) 60%);background-size:200% 100%;animation:tripPhotoShimmer 1.7s ease-in-out infinite}
+.trip-photo-loading span:last-child{display:none}
+@keyframes tripPhotoShimmer{to{background-position-x:-200%}}
+.trip-photo-explore{display:flex;flex-direction:column;justify-content:center;gap:7px;min-height:110px;padding:12px;border:1px solid var(--line);border-radius:9px;background:var(--panel2);color:var(--text);text-decoration:none}
+.trip-photo-explore>span{color:var(--accent);font-size:18px}
+.trip-photo-explore>b{font-size:10px;line-height:1.5}
+.trip-photo-explore>small{color:var(--muted);font-size:8px;line-height:1.5}
+@media(max-width:1100px){.trip-section .trip-editorial-header{gap:27px}.trip-explorer{grid-template-columns:minmax(210px,.38fr) minmax(0,1fr)}.trip-selected-detail{padding:13px}.trip-detail-lower{grid-template-columns:minmax(0,1fr)}.trip-stops-panel,.trip-photos-panel{padding:13px}.trip-place-photo-image{height:170px}}
+@media(max-width:800px){
+.trip-section .trip-editorial-header{grid-template-columns:minmax(0,1fr);gap:14px}
+.trip-header-signature{max-width:560px;justify-self:start}.trip-route-art svg{height:62px}
+.trip-explorer{grid-template-columns:minmax(0,1fr)}
+.trip-tabs{flex-direction:row;max-height:none;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--line);padding:10px;gap:7px;scroll-snap-type:x proximity}
+.trip-tab{display:grid;grid-template-columns:26px minmax(0,1fr);flex:0 0 245px;width:245px;min-height:66px;padding:10px;scroll-snap-align:start}
+.trip-tab-number{grid-row:1;grid-column:1;width:25px;height:28px}.trip-tab-copy{grid-row:1;grid-column:2}.trip-tab-arrow{display:none}
+.trip-selected-detail{padding:12px}.trip-detail-view .trip-live-map{height:280px}
+}
+@media(max-width:600px){
+.trip-section .trip-editorial-header{margin-bottom:18px}.trip-editorial-title h2{font-size:clamp(29px,8vw,40px);line-height:1.15}
+.trip-section .trip-passion-line{margin-top:11px;padding-top:9px;font-size:11px}.trip-header-eyebrow{font-size:8px}
+.trip-route-art svg{height:52px}.trip-explorer{border-radius:13px}.trip-tabs{padding:8px;gap:6px}
+.trip-tab{flex-basis:215px;width:215px;min-height:62px;padding:8px}.trip-tab-copy b{font-size:9px}
+.trip-selected-detail{padding:9px}.trip-detail-heading h3{font-size:21px}
+.trip-detail-view .trip-live-map{min-height:215px;height:245px}.trip-detail-lower{gap:10px;margin-top:10px}
+.trip-stops-panel,.trip-photos-panel{padding:11px;border-radius:10px}.trip-panel-heading h4{font-size:13px}
+.trip-panel-mark{font-size:6px}.trip-place-photos{gap:7px}.trip-place-photo-image{height:132px}
+.trip-place-photo-caption{padding:8px}.trip-place-photo-title{font-size:8px}
+}
+@media(prefers-reduced-motion:reduce){.trip-route-art path,.trip-tab,.trip-detail-view,.trip-photo-loading span,.trip-place-photo-image img{animation:none!important;transition:none!important}}
