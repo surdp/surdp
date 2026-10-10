@@ -1033,3 +1033,67 @@
     max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important;
   }
 }
+
+
+/* Final credential visibility/cache guard and mobile-native PDF fallback. */
+@media screen and (max-width:850px), screen and (orientation:landscape) and (max-width:1200px) and (max-height:750px){
+  /* The credential dashboard is core content; never leave it transparent on a phone if
+     an anchor jump or IntersectionObserver fails to fire. */
+  html[data-theme] #certifications .credentials-heading.reveal,
+  html[data-theme] #certifications .credential-dashboard.reveal,
+  html[data-theme] #certifications .credential-footer.reveal{
+    opacity:1!important;visibility:visible!important;transform:none!important;
+  }
+  html[data-theme] #certifications .credential-grid{
+    display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+    width:100%!important;max-width:100%!important;min-width:0!important;
+  }
+  html[data-theme] #certifications .credential-grid[hidden]{display:none!important}
+  html[data-theme] #certifications .credential-load-fallback{
+    display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:10px!important;
+    width:100%!important;min-width:0!important;padding:18px!important;box-sizing:border-box!important;
+    border:1px solid var(--line2)!important;border-radius:11px!important;
+    background:var(--panel2)!important;color:var(--muted)!important;
+    font-size:11px!important;line-height:1.65!important;overflow-wrap:anywhere!important;
+  }
+  html[data-theme] #certifications .credential-load-fallback a{
+    display:inline-flex!important;align-items:center!important;max-width:100%!important;
+    padding:8px 11px!important;border:1px solid var(--line2)!important;border-radius:8px!important;
+    color:var(--accent)!important;font-size:10px!important;font-weight:800!important;
+    line-height:1.4!important;white-space:normal!important;overflow-wrap:anywhere!important;
+  }
+  html[data-theme] #certifications .credential-card{
+    text-align:left!important;align-items:stretch!important;overflow-wrap:anywhere!important;
+  }
+  html[data-theme] #certifications .credential-card h3,
+  html[data-theme] #certifications .credential-card p,
+  html[data-theme] #certifications .credential-card .credential-category-label{
+    max-width:100%!important;white-space:normal!important;word-break:normal!important;overflow-wrap:anywhere!important;
+  }
+  html[data-theme] #certifications .credential-card-footer>*{min-width:0!important;max-width:100%!important}
+  html[data-theme] #certifications .credential-unavailable{
+    display:inline-flex!important;align-items:center!important;justify-content:center!important;
+    min-height:30px!important;padding:6px 9px!important;border:1px solid var(--line2)!important;border-radius:7px!important;
+    background:var(--panel2)!important;color:var(--accent)!important;text-decoration:none!important;
+  }
+
+  /* Keep an external native PDF option available in phone dialogs only. */
+  html[data-theme] #certificatePreviewDialog[open] .viewer-header{
+    display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;
+    grid-template-rows:auto auto!important;align-items:start!important;gap:7px 10px!important;
+  }
+  html[data-theme] #certificatePreviewDialog[open] .viewer-header>div{
+    grid-column:1!important;grid-row:1!important;min-width:0!important;width:100%!important;
+  }
+  html[data-theme] #certificatePreviewDialog[open] #credentialPreviewExternal:not([hidden]){
+    display:inline-flex!important;grid-column:1!important;grid-row:2!important;align-items:center!important;
+    justify-content:center!important;justify-self:start!important;min-width:0!important;max-width:100%!important;
+    min-height:32px!important;padding:7px 10px!important;border:1px solid var(--line2)!important;border-radius:8px!important;
+    background:var(--panel2)!important;color:var(--accent)!important;font-size:9px!important;font-weight:800!important;
+    line-height:1.35!important;text-decoration:none!important;white-space:normal!important;overflow-wrap:anywhere!important;
+  }
+  html[data-theme] #certificatePreviewDialog[open] #credentialPreviewExternal[hidden]{display:none!important}
+  html[data-theme] #certificatePreviewDialog[open] #certificatePreviewClose{
+    grid-column:2!important;grid-row:1!important;align-self:start!important;
+  }
+}
