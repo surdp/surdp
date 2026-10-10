@@ -3307,3 +3307,113 @@ html[data-theme="light"] .ba-impact-option.is-active{background:linear-gradient(
 @media(prefers-reduced-motion:reduce){
   .atlas-rail{scroll-behavior:auto}
 }
+
+
+/* Compact Analysis in Practice panel uses the existing empty area under the BA stack */
+.ba-visual-main{position:relative}
+.ba-practice-panel{
+  box-sizing:border-box;
+  min-width:0;
+  border:1px solid rgba(104,171,239,.28);
+  border-radius:13px;
+  padding:11px 12px 10px;
+  color:var(--text);
+  background:
+    radial-gradient(ellipse at 8% 0,rgba(64,145,243,.13),transparent 48%),
+    linear-gradient(145deg,color-mix(in srgb,var(--panel) 97%,transparent),color-mix(in srgb,var(--bg2) 96%,transparent));
+  box-shadow:0 8px 22px rgba(4,15,35,.11),inset 0 1px 0 rgba(255,255,255,.035);
+  z-index:4;
+  overflow:hidden;
+}
+.ba-practice-heading{
+  display:flex;align-items:center;justify-content:space-between;gap:9px;margin-bottom:8px;min-width:0
+}
+.ba-practice-kicker{
+  margin:0 0 2px;color:var(--accent);font:700 7px "DM Mono",monospace;letter-spacing:.13em
+}
+.ba-practice-heading h3{
+  font-size:clamp(12px,.95vw,15px);line-height:1.25;letter-spacing:-.025em;margin:0
+}
+.ba-practice-heading-mark{
+  flex:0 0 28px;width:28px;height:28px;border:1px solid rgba(84,190,255,.3);
+  border-radius:9px;display:grid;place-items:center;color:#77cbff;
+  background:linear-gradient(145deg,rgba(44,145,255,.2),rgba(132,87,255,.13))
+}
+.ba-practice-heading-mark svg{width:15px;height:15px}
+.ba-practice-tabs{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;min-width:0
+}
+.ba-practice-tab{
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;
+  min-width:0;min-height:43px;padding:6px 7px;border:1px solid var(--line);
+  border-radius:8px;background:color-mix(in srgb,var(--panel2) 76%,transparent);
+  color:var(--muted);cursor:pointer;text-align:left;
+  transition:background .2s,border-color .2s,color .2s,transform .2s
+}
+.ba-practice-tab:hover{border-color:rgba(105,186,255,.65);transform:translateY(-1px);color:var(--text)}
+.ba-practice-tab.is-active{border-color:rgba(91,181,255,.72);background:linear-gradient(145deg,rgba(39,128,224,.2),rgba(112,82,225,.12));color:var(--text);box-shadow:inset 0 0 0 1px rgba(99,174,255,.05)}
+.ba-practice-tab:nth-child(2) .portfolio-lucide{color:#bd9cff}
+.ba-practice-tab:nth-child(3) .portfolio-lucide{color:#ffd078}
+.ba-practice-tab:nth-child(4) .portfolio-lucide{color:#50dfc6}
+.ba-practice-tab .portfolio-lucide{display:grid;place-items:center;font-size:15px;color:#72c4ff}
+.ba-practice-tab svg{width:15px;height:15px}
+.ba-practice-tab span{font-size:clamp(8px,.61vw,9px);line-height:1.2;font-weight:750;white-space:normal;overflow-wrap:normal}
+.ba-practice-content{
+  display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;align-items:start;
+  margin-top:8px;padding-top:8px;border-top:1px solid var(--line);min-width:0;
+  animation:baPracticeIn .24s ease both
+}
+.ba-practice-content-icon{
+  display:grid;place-items:center;width:27px;height:27px;border:1px solid rgba(87,177,255,.32);
+  border-radius:8px;background:rgba(47,137,232,.13);color:#73c6ff
+}
+.ba-practice-content-icon svg{width:15px;height:15px}
+.ba-practice-copy{min-width:0}
+.ba-practice-copy>b{display:block;font-size:10px;line-height:1.3;margin:0 0 3px}
+.ba-practice-copy>p{font-size:9px;line-height:1.45;color:var(--muted);margin:0 0 6px;overflow-wrap:break-word}
+.ba-practice-tags{display:flex;flex-wrap:wrap;gap:4px;min-width:0}
+.ba-practice-tags span{
+  display:inline-flex;align-items:center;max-width:100%;min-height:18px;padding:3px 6px;
+  border:1px solid var(--line);border-radius:99px;background:rgba(69,140,211,.07);
+  font-size:7px;line-height:1.25;color:var(--muted);white-space:normal
+}
+@keyframes baPracticeIn{from{opacity:.5;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+html[data-theme="light"] .ba-practice-panel{
+  background:radial-gradient(ellipse at 8% 0,rgba(64,145,243,.09),transparent 48%),linear-gradient(145deg,rgba(255,255,255,.98),rgba(239,245,253,.98));
+  border-color:rgba(73,124,182,.28);box-shadow:0 8px 22px rgba(25,51,90,.08)
+}
+html[data-theme="light"] .ba-practice-tab{background:rgba(241,246,252,.92)}
+html[data-theme="light"] .ba-practice-tab.is-active{background:linear-gradient(145deg,rgba(39,128,224,.12),rgba(112,82,225,.08))}
+@media(min-width:1451px){
+  .ba-visual-main>.ba-practice-panel{
+    position:absolute;
+    left:33%;
+    right:0;
+    bottom:0;
+    top:60%;
+    margin:0;
+  }
+}
+@media(max-width:1450px){
+  .ba-visual-main>.ba-practice-panel{
+    grid-column:1/-1;
+    position:relative;
+    left:auto;right:auto;top:auto;bottom:auto;
+    width:100%;margin-top:12px;
+  }
+  .ba-practice-heading h3{font-size:15px}
+  .ba-practice-tab span{font-size:9px}
+}
+@media(max-width:850px){
+  .ba-practice-panel{padding:12px}
+  .ba-practice-content{grid-template-columns:30px minmax(0,1fr)}
+  .ba-practice-copy>p{font-size:10px}
+  .ba-practice-tags span{font-size:8px}
+}
+@media(max-width:520px){
+  .ba-practice-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ba-practice-tab{flex-direction:row;align-items:center;min-height:37px}
+  .ba-practice-tab span{font-size:10px}
+  .ba-practice-copy>p{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){.ba-practice-tab,.ba-practice-content{transition:none;animation:none}}
