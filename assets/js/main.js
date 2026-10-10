@@ -230,6 +230,13 @@
       button.setAttribute("aria-current", active ? "step" : "false");
     });
     careerRoleCards.forEach(card => card.classList.toggle("is-focused", card.dataset.careerCard === role));
+    // Arrow moves only after a user selects a role. It is aligned to the
+    // selected marker; CSS switches to the vertical coordinate on mobile.
+    if (careerTrackArrow) {
+      careerTrackArrow.style.left = role === "techmahindra" ? "0%" : "46%";
+      careerTrackArrow.style.setProperty("--career-arrow-top", role === "techmahindra" ? "4%" : "48%");
+      careerTrackArrow.setAttribute("aria-label", "Selected role: " + (role === "techmahindra" ? "Tech Mahindra" : "Oracle Health (Cerner)"));
+    }
   }
   function setCareerMode(mode) {
     if (!["experience","growth"].includes(mode)) return;
@@ -249,6 +256,16 @@
   careerModeButtons.forEach(button => button.addEventListener("click", () => setCareerMode(button.dataset.careerMode)));
   careerTrackPoints.forEach(button => button.addEventListener("click", () => selectCareerRole(button.dataset.careerJump)));
   careerTrackArrow?.addEventListener("click", () => selectCareerRole(careerRoleFocus === "techmahindra" ? "cerner" : "techmahindra"));
+  document.querySelectorAll("[data-role-select]").forEach(surface => {
+    const activate = () => selectCareerRole(surface.dataset.roleSelect);
+    surface.addEventListener("click", activate);
+    surface.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        activate();
+      }
+    });
+  });
 
   function selectCareerGrowthStage(index) {
     const detail = growthStageDetails[index];
