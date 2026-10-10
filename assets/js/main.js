@@ -823,16 +823,37 @@
       }
     } else if (tabKey === "approach") {
       projectSectionHeading(content, "DESIGN & QUALITY", "Approach and considerations", profile.approachIntro);
+      const explorer = projectElement("div", "project-detail-approach-explorer");
       const steps = projectElement("div", "project-detail-approach-list");
+      const stepDetail = projectElement("article", "project-detail-approach-focus");
+      function selectApproachStep(index) {
+        [...steps.children].forEach((button,i) => {
+          const active = i === index;
+          button.classList.toggle("is-active", active);
+          button.setAttribute("aria-pressed", String(active));
+        });
+        const item = profile.approachItems[index];
+        stepDetail.replaceChildren();
+        stepDetail.append(
+          projectElement("span", "project-detail-eyebrow", "APPROACH STEP " + String(index+1).padStart(2,"0")),
+          projectElement("h4", "", item.title),
+          projectElement("p", "", item.text)
+        );
+      }
       profile.approachItems.forEach((item, index) => {
-        const row = projectElement("article", "project-detail-approach-step");
+        const row = projectElement("button", "project-detail-approach-step");
+        row.type = "button";
+        row.setAttribute("aria-pressed", String(index === 0));
         row.append(projectElement("span", "project-detail-step-number", String(index + 1).padStart(2, "0")));
-        const copy = projectElement("div", "");
-        copy.append(projectElement("b", "", item.title), projectElement("p", "", item.text));
-        row.append(copy);
+        const copy = projectElement("span", "project-detail-approach-copy");
+        copy.append(projectElement("b", "", item.title), projectElement("small", "", "View this step"));
+        row.append(copy, projectIcon("chevron-right","project-detail-approach-arrow"));
+        row.addEventListener("click", () => selectApproachStep(index));
         steps.append(row);
       });
-      content.append(steps);
+      explorer.append(steps, stepDetail);
+      content.append(explorer);
+      selectApproachStep(0);
       if (profile.note) {
         const note = projectElement("aside", "project-detail-note");
         const icon = projectElement("span", "project-detail-note-icon");
@@ -894,6 +915,8 @@
     const iconNode = card.querySelector(".project-icon");
     projectModalReturnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : card;
     projectModalActiveCard = card;
+    projectModalActivePhoto = 0;
+    projectModalActiveFocusMode = 0;
 
     if (projectModalImage) {
       projectModalImage.src = image?.currentSrc || image?.src || "";
