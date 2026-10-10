@@ -3436,3 +3436,48 @@ html[data-theme="light"] .ba-practice-tab.is-active{background:linear-gradient(1
     margin-top:13px;
   }
 }
+
+
+/* Desktop: place Analysis in Practice inside the unused lower-right space.
+   At compact breakpoints, return it to the normal flow to prevent overlap. */
+.about-visual .ba-visual-main{position:relative}
+@media(min-width:1451px){
+  .about-visual .ba-visual-main>.ba-practice-panel{
+    position:absolute!important;
+    left:33.3%!important;
+    right:0!important;
+    top:23%!important;
+    bottom:0!important;
+    width:auto!important;
+    max-width:none!important;
+    height:auto!important;
+    min-height:0!important;
+    margin:0!important;
+    align-self:stretch;
+    overflow:auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    padding:11px 12px 10px;
+    z-index:5;
+  }
+  .about-visual .ba-visual-main>.ba-practice-panel .ba-practice-heading{flex:0 0 auto;margin-bottom:7px}
+  .about-visual .ba-visual-main>.ba-practice-panel .ba-practice-tabs{flex:0 0 auto}
+  .about-visual .ba-visual-main>.ba-practice-panel .ba-practice-content{flex:1 1 auto;min-height:0;align-content:start}
+}
+@media(max-width:1450px){
+  .about-visual .ba-visual-main>.ba-practice-panel{
+    position:relative!important;
+    inset:auto!important;
+    grid-column:1/-1;
+    width:100%!important;
+    max-width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    margin:12px 0 0!important;
+    overflow:visible;
+  }
+}
+@media(max-width:850px){
+  .about-visual .ba-visual-main>.ba-practice-panel{grid-column:1/-1}
+}
