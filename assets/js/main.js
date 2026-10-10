@@ -578,10 +578,44 @@
     }
   };
 
+  const projectPhotoCollections = {
+    focusflow:[
+      {src:"https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=88",alt:"Laptop and workstation associated with focused digital work",label:"Focused work",caption:"A dedicated setup for uninterrupted tasks."},
+      {src:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=88",alt:"Workspace representing planning and structured study",label:"Study planning",caption:"Plan a repeatable rhythm for learning sessions."},
+      {src:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=88",alt:"Calm desk environment for a work routine",label:"Work routine",caption:"Keep focus routines clear and easy to return to."}
+    ],
+    "linkedin-automation":[
+      {src:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=88",alt:"Workspace representing a browser-based automation task",label:"Browser session",caption:"Work through a dedicated signed-in browser session."},
+      {src:"https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=88",alt:"Computer and notes representing skills organization",label:"Skills inventory",caption:"Review and organize a list with a consistent process."},
+      {src:"https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=88",alt:"Code editor representing Playwright automation",label:"Automation logic",caption:"Use selectors, waits and verification deliberately."}
+    ],
+    "books-api":[
+      {src:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=88",alt:"Data dashboard representing API test reporting",label:"Test reporting",caption:"Make run outcomes easier to review."},
+      {src:"https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=88",alt:"Code editor representing API test scripts",label:"Request validation",caption:"Structure requests and response checks."},
+      {src:"https://images.unsplash.com/photo-1518186233392-c232efbf2373?auto=format&fit=crop&w=1200&q=88",alt:"Technology dashboard representing service data",label:"API data",caption:"Exercise retrieval and order behaviour."}
+    ],
+    "api-user-flow":[
+      {src:"https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=88",alt:"Code editor representing automated request chaining",label:"Request chaining",caption:"Pass response values between requests."},
+      {src:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=88",alt:"Data dashboard representing automated validation results",label:"Response checks",caption:"Validate status, data and schema."},
+      {src:"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=88",alt:"Hardware and computer setup representing a technical test environment",label:"Test environment",caption:"Use environment-driven values for repeatable runs."}
+    ],
+    "java-collections":[
+      {src:"https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=88",alt:"Programming workspace representing Java practice",label:"Java practice",caption:"Strengthen fundamentals through written examples."},
+      {src:"https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=88",alt:"Code editor representing object-oriented development",label:"OOP examples",caption:"Connect classes and objects with clear code."},
+      {src:"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=88",alt:"Electronic and computer components representing technical practice",label:"Collections & data",caption:"Practise selecting appropriate data structures."}
+    ],
+    "maven-junit":[
+      {src:"https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1200&q=88",alt:"Software development environment representing unit-test practice",label:"Unit testing",caption:"Check expected behaviour with explicit assertions."},
+      {src:"https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=88",alt:"Code editor representing Java development",label:"Java code",caption:"Keep implementation and test code organized."},
+      {src:"https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=88",alt:"Laptop development workspace representing a build workflow",label:"Build workflow",caption:"Use standard commands to run a repeatable build."}
+    ]
+  };
   const projectModalTabs = [...document.querySelectorAll("[data-project-tab]")];
   const projectModalTabContent = document.getElementById("projectModalDetails");
   let projectModalActiveCard = null;
   let projectModalActiveTab = "overview";
+  let projectModalActivePhoto = 0;
+  let projectModalActiveFocusMode = 0;
 
   function projectElement(tag, className, text) {
     const node = document.createElement(tag);
@@ -616,17 +650,119 @@
   }
 
   function projectBulletGrid(parent, items) {
-    const grid = projectElement("div", "project-detail-feature-grid");
-    items.forEach(item => {
-      const card = projectElement("article", "project-detail-feature");
+    const explorer = projectElement("div", "project-detail-feature-explorer");
+    const list = projectElement("div", "project-detail-feature-list");
+    const detail = projectElement("article", "project-detail-feature-focus");
+    function selectFeature(index) {
+      [...list.children].forEach((button,i) => {
+        const active = i === index;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+      const item = items[index];
+      detail.replaceChildren();
+      const mark = projectElement("span", "project-detail-feature-focus-icon");
+      mark.innerHTML = '<i class="portfolio-lucide" data-lucide="' + (item.icon || "check") + '" aria-hidden="true"></i>';
+      detail.append(mark, projectElement("span", "project-detail-eyebrow", "CAPABILITY " + String(index+1).padStart(2,"0")), projectElement("h4", "", item.title), projectElement("p", "", item.text));
+      const chips = projectElement("div", "project-detail-feature-chips");
+      (item.title.split(/\s+/).filter(word => word.length > 3).slice(0,3)).forEach(word => chips.append(projectElement("span","",word.replace(/[.,:;]/g,""))));
+      if (chips.children.length) detail.append(chips);
+      window.lucide?.createIcons?.({attrs: {"stroke-width": 1.9, "aria-hidden": "true"}});
+    }
+    items.forEach((item,index) => {
+      const button = projectElement("button", "project-detail-feature-choice");
+      button.type = "button";
+      button.setAttribute("aria-pressed", String(index === 0));
       const icon = projectElement("span", "project-detail-feature-icon");
       icon.innerHTML = '<i class="portfolio-lucide" data-lucide="' + (item.icon || "check") + '" aria-hidden="true"></i>';
-      card.append(icon, projectElement("div", "", ""));
-      const copy = card.lastElementChild;
-      copy.append(projectElement("b", "", item.title), projectElement("p", "", item.text));
-      grid.append(card);
+      button.append(icon, projectElement("b", "", item.title), projectIconText(item.text));
+      button.addEventListener("click", () => selectFeature(index));
+      list.append(button);
     });
-    parent.append(grid);
+    explorer.append(list, detail);
+    parent.append(explorer);
+    selectFeature(0);
+  }
+  function projectIconText(text) {
+    return projectElement("small", "project-detail-feature-summary", text);
+  }
+
+  function renderProjectMediaGallery(parent, projectId) {
+    const photos = projectPhotoCollections[projectId] || [];
+    if (!photos.length) return;
+    const galleryHeading = projectElement("div","project-detail-subheading");
+    galleryHeading.append(projectElement("h4","","Visual gallery"),projectElement("p","","Choose an image to update the project cover."));
+    parent.append(galleryHeading);
+    const gallery = projectElement("div","project-detail-gallery");
+    photos.forEach((photo,index) => {
+      const button = projectElement("button","project-detail-gallery-item" + (index===projectModalActivePhoto?" is-active":""));
+      button.type = "button";
+      button.setAttribute("aria-pressed",String(index===projectModalActivePhoto));
+      const image = document.createElement("img");
+      image.src = photo.src;image.alt = photo.alt;image.loading="lazy";image.decoding="async";
+      button.append(image,projectElement("span","",""),projectElement("b","",photo.label),projectElement("small","",photo.caption));
+      button.addEventListener("click",()=>{
+        projectModalActivePhoto=index;
+        [...gallery.children].forEach((el,i)=>{el.classList.toggle("is-active",i===index);el.setAttribute("aria-pressed",String(i===index));});
+        if(projectModalImage){projectModalImage.src=photo.src;projectModalImage.alt=photo.alt;}
+      });
+      gallery.append(button);
+    });
+    parent.append(gallery);
+  }
+
+  function renderFocusFlowModes(parent, profile) {
+    if (!profile.modes) return;
+    const section = projectElement("section","project-focusflow-explorer");
+    const heading = projectElement("div","project-detail-subheading");
+    heading.append(projectElement("span","project-detail-eyebrow","FOCUSFLOW MODES"),projectElement("h4","","Explore how FocusFlow structures time"),projectElement("p","","Select a mode to see the core interaction it supports."));
+    section.append(heading);
+    const body = projectElement("div","project-focusflow-content");
+    const modeList = projectElement("div","project-focusflow-mode-list");
+    const stage = projectElement("div","project-focusflow-stage");
+    function chooseMode(index) {
+      projectModalActiveFocusMode = index;
+      const mode = profile.modes[index] || profile.modes[0];
+      [...modeList.children].forEach((button,i)=>{const active=i===index;button.classList.toggle("is-active",active);button.setAttribute("aria-pressed",String(active));});
+      stage.replaceChildren();
+      const top = projectElement("div","project-focusflow-stage-top");
+      top.append(projectIcon(mode.icon),projectElement("span","",mode.title.toUpperCase()));
+      const screen = projectElement("div","project-focusflow-screen focusflow-mode-"+index);
+      if(index===0){
+        const ring=projectElement("div","focusflow-timer-ring");
+        ring.append(projectElement("small","","FOCUS SESSION"),projectElement("strong","","25:00"),projectElement("span","","CUSTOM DURATION"));
+        screen.append(ring,projectElement("div","focusflow-screen-actions","PAUSE  ·  RESUME  ·  END"));
+      } else if(index===1){
+        const pair=projectElement("div","focusflow-interval-pair");
+        pair.append(projectElement("div","focusflow-work-phase").append(projectElement("small","","WORK"),projectElement("b","","25 min")));
+        pair.append(projectElement("span","focusflow-phase-arrow","→"));
+        pair.append(projectElement("div","focusflow-break-phase").append(projectElement("small","","BREAK"),projectElement("b","","5 min")));
+        screen.append(pair,projectElement("p","focusflow-screen-caption","Repeat configured work and recovery cycles."));
+      } else if(index===2){
+        [["01","Study block"],["02","Short break"],["03","Study block"]].forEach((row,i)=>{
+          const item=projectElement("div","focusflow-study-row"+(i===0?" is-active":""));
+          item.append(projectElement("span","",row[0]),projectElement("b","",row[1]),projectIcon(i===1?"coffee":"book-open"));
+          screen.append(item);
+        });
+      } else {
+        const goal=projectElement("div","focusflow-daily-goal");
+        goal.append(projectElement("small","","EXAMPLE DAILY GOAL"),projectElement("strong","","2h 40m"),projectElement("span","","of 4 hours"));
+        const progress=projectElement("div","focusflow-daily-progress");progress.append(projectElement("i",""));
+        goal.append(progress,projectElement("b","","67% of goal"));
+        screen.append(goal);
+      }
+      stage.append(top,screen,projectElement("p","project-focusflow-stage-copy",mode.text));
+    }
+    profile.modes.forEach((mode,index)=>{
+      const button=projectElement("button","project-focusflow-mode"+(index===projectModalActiveFocusMode?" is-active":""));
+      button.type="button";button.setAttribute("aria-pressed",String(index===projectModalActiveFocusMode));
+      button.append(projectIcon(mode.icon),projectElement("span","",""));
+      button.lastElementChild.append(projectElement("b","",mode.title),projectElement("small","",mode.text));
+      button.addEventListener("click",()=>chooseMode(index));
+      modeList.append(button);
+    });
+    body.append(modeList,stage);section.append(body);parent.append(section);
+    chooseMode(projectModalActiveFocusMode);
   }
 
   function renderProjectModalTab(tabKey) {
@@ -707,7 +843,12 @@
         content.append(note);
       }
     } else if (tabKey === "resources") {
-      projectSectionHeading(content, "NEXT STEPS", "Open the project", "Explore the live experience or inspect the source material using the available project links.");
+      projectSectionHeading(content, "VISUALS & LINKS", "Explore the project", "Browse related imagery, explore FocusFlow's documented modes, or open the source and live app.");
+      if (profile.modes) renderFocusFlowModes(content, profile);
+      renderProjectMediaGallery(content, id);
+      const resourceHeading = projectElement("div","project-detail-subheading");
+      resourceHeading.append(projectElement("h4","","Project resources"),projectElement("p","","Open the live experience or inspect its source material."));
+      content.append(resourceHeading);
       const resourceGrid = projectElement("div", "project-detail-resource-grid");
       links.forEach(link => {
         const a = projectElement("a", "project-detail-resource");
@@ -724,9 +865,18 @@
         a.append(projectElement("span", "project-detail-resource-arrow", "↗"));
         resourceGrid.append(a);
       });
-      if (!links.length) {
-        resourceGrid.append(projectElement("p", "project-detail-empty", "No external project links are currently listed for this item."));
+      if (id === "focusflow") {
+        const apk = projectElement("a","project-detail-resource");
+        apk.href = "https://github.com/surajdp411/FocusFlow-App/releases/download/v1.0.0/app-release.apk";
+        apk.target="_blank";apk.rel="noopener noreferrer";
+        const mark=projectElement("span","project-detail-resource-icon");
+        mark.innerHTML='<i class="portfolio-lucide" data-lucide="download" aria-hidden="true"></i>';
+        const copy=projectElement("span","");
+        copy.append(projectElement("b","","Download Android release"),projectElement("small","","Open the release APK listed by the project README."));
+        apk.append(mark,copy,projectElement("span","project-detail-resource-arrow","↗"));
+        resourceGrid.append(apk);
       }
+      if (!links.length) resourceGrid.append(projectElement("p", "project-detail-empty", "No external project links are currently listed for this item."));
       content.append(resourceGrid);
     }
 
@@ -750,11 +900,10 @@
       projectModalImage.alt = image?.alt || title;
     }
     if (projectModalMark) {
-      const officialLogo = id === "focusflow";
-      projectModalMark.innerHTML = officialLogo
-        ? '<img src="https://raw.githubusercontent.com/surdp/FocusFlow-App/main/assets/pragunira-logo.png" alt="" aria-hidden="true">'
-        : (iconNode ? iconNode.innerHTML : '<i class="portfolio-lucide" data-lucide="layers" aria-hidden="true"></i>');
-      projectModalMark.classList.toggle("project-modal-mark--brand", officialLogo);
+      const selectedIcon = iconNode?.querySelector("[data-lucide]")?.getAttribute("data-lucide") || "layers";
+      projectModalMark.innerHTML = '<i class="portfolio-lucide" data-lucide="' + selectedIcon + '" aria-hidden="true"></i>';
+      projectModalMark.classList.remove("project-modal-mark--brand");
+      projectModalMark.setAttribute("aria-label", title + " project icon");
     }
     if (projectModalKicker) projectModalKicker.textContent = category;
     if (projectModalTitle) projectModalTitle.textContent = title;
