@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f5f7fa">
 <meta name="description" content="Suraj D P is a Business Analyst with experience in requirements analysis, process mapping, functional documentation, API validation, QA automation, and healthcare technology delivery.">
 <meta property="og:title" content="Suraj D P | Business Analyst & Healthcare IT"><meta property="og:description" content="Business analysis, healthcare technology, quality engineering, automation, and practical software projects.">
-<title>Suraj D P · Business Analysis · QA Automation · Healthcare IT</title><link rel="stylesheet" href="assets/css/style.css?v=20261010-road-rider-v4">
+<title>Suraj D P · Business Analysis · QA Automation · Healthcare IT</title><link rel="stylesheet" href="assets/css/style.css?v=20261010-road-rider-v5">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script>try{const t=localStorage.getItem("suraj-portfolio-theme");if(t)document.documentElement.dataset.theme=t}catch(_){}</script>
 </head>
@@ -719,6 +719,232 @@
 @media(max-width:600px){#tripItineraryGrid .trip-tabs-panel .trip-tabs-heading{padding:23px 15px 22px!important}#tripItineraryGrid .trip-tabs-panel .trip-tabs-heading>span{margin-bottom:15px!important;padding:7px 11px!important;font-size:7px!important}#tripItineraryGrid .trip-tabs-panel .trip-tabs-heading h3{margin-bottom:11px!important;font-size:15px!important}#tripItineraryGrid .trip-tabs-panel .trip-tabs-heading p{font-size:9px!important;line-height:1.9!important}#tripItineraryGrid .trip-tabs-panel .trip-tabs-foot{min-height:46px!important;padding:12px 9px!important;font-size:7px!important}#tripSelectedDetail .trip-story-panel{padding:16px!important}#tripSelectedDetail .trip-story-panel .trip-panel-heading{gap:8px!important;margin-bottom:18px!important}#tripSelectedDetail .trip-story-panel .trip-panel-heading h4{font-size:14px!important}#tripSelectedDetail .trip-story-panel .trip-panel-mark{font-size:6px!important}#tripSelectedDetail .trip-story-body{padding:14px 12px 15px!important;margin-bottom:19px!important}#tripSelectedDetail .trip-story-body p{font-size:10px!important;line-height:1.9!important}#tripSelectedDetail .trip-story-highlights{gap:7px!important;margin-bottom:20px!important}#tripSelectedDetail .trip-story-tag{min-height:27px!important;padding:6px 8px!important;font-size:8px!important}#tripSelectedDetail .trip-directions-panel>summary{grid-template-columns:minmax(0,1fr)!important;gap:4px!important}#tripSelectedDetail .trip-directions-panel>summary .trip-directions-action{padding-left:0!important}}
 @media(prefers-reduced-motion:reduce){#trip-itineraries .trip-scene-cloud,#trip-itineraries .trip-scene-sun-halo,#trip-itineraries .trip-scene-road-mark{animation:none!important}}
 </style>
+
+
+<style id="trip-journal-inline-fix-v5">
+/* Blended travel artwork: no card, no pasted-image edges. The illustration shares the hero backdrop. */
+#trip-itineraries.trip-section {
+  --trip-mountain-far: rgba(139,170,191,.25);
+  --trip-mountain-near: rgba(86,132,151,.34);
+  --trip-hill-far: rgba(92,157,121,.28);
+  --trip-hill-near: rgba(37,111,84,.43);
+  --trip-forest: rgba(20, seventy, 55, .72);
+  --trip-road-surface: rgba(14,27,39,.86);
+  --trip-road-stripe: rgba(255,225,166,.88);
+  --trip-cloud-fill: rgba(240,248,255,.48);
+}
+html[data-theme="dark"] #trip-itineraries.trip-section {
+  --trip-mountain-far: rgba(146,183,204,.22);
+  --trip-mountain-near: rgba(100,148,166,.28);
+  --trip-hill-far: rgba(78,150,116,.23);
+  --trip-hill-near: rgba(35,110,82,.36);
+  --trip-forest: rgba(12,48,39,.65);
+  --trip-road-surface: rgba(9,20,31,.82);
+  --trip-road-stripe: rgba(228,224,194,.78);
+  --trip-cloud-fill: rgba(227,241,255,.36);
+}
+html[data-theme="light"] #trip-itineraries.trip-section {
+  --trip-mountain-far: rgba(75,119,149,.23);
+  --trip-mountain-near: rgba(64,111,130,.3);
+  --trip-hill-far: rgba(45,126,86,.25);
+  --trip-hill-near: rgba(26,104,75,.39);
+  --trip-forest: rgba(18,81,57,.62);
+  --trip-road-surface: rgba(28,43,53,.78);
+  --trip-road-stripe: rgba(255,230,167,.92);
+  --trip-cloud-fill: rgba(255,255,255,.55);
+}
+#trip-itineraries .trip-header-signature {
+  align-self:center!important;
+  width:100%!important;
+  max-width:600px!important;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+#trip-itineraries .trip-bike-scene {
+  display:flex!important;
+  flex-direction:column!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:visible!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+#trip-itineraries .trip-bike-scene-label {
+  display:grid!important;
+  grid-template-columns:8px minmax(0,1fr)!important;
+  grid-template-rows:auto auto!important;
+  align-items:center!important;
+  justify-content:start!important;
+  gap:5px 11px!important;
+  width:100%!important;
+  box-sizing:border-box!important;
+  margin:0!important;
+  padding:0 5px 13px!important;
+  color:var(--accent)!important;
+  font:800 8px "DM Mono",monospace!important;
+  letter-spacing:.14em!important;
+  line-height:1.7!important;
+  background:transparent!important;
+  border:0!important;
+}
+#trip-itineraries .trip-bike-scene-label .trip-scene-status {
+  display:block!important;
+  grid-column:1!important;
+  grid-row:1!important;
+  width:7px!important;
+  height:7px!important;
+  margin:0!important;
+  border-radius:50%!important;
+  background:var(--accent)!important;
+  box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 12%,transparent)!important;
+  animation:tripStatusPulseV5 3.5s ease-in-out infinite!important;
+}
+#trip-itineraries .trip-bike-scene-label>span:nth-child(2) {
+  display:block!important;
+  grid-column:2!important;
+  grid-row:1!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:0!important;
+  line-height:1.7!important;
+}
+#trip-itineraries .trip-bike-scene-label .trip-bike-scene-distance {
+  display:block!important;
+  grid-column:2!important;
+  grid-row:2!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:0!important;
+  color:var(--muted)!important;
+  font:700 7px "DM Mono",monospace!important;
+  letter-spacing:.1em!important;
+  line-height:1.8!important;
+  white-space:normal!important;
+}
+#trip-itineraries .trip-scenic-landscape {
+  position:relative!important;
+  display:block!important;
+  isolation:isolate!important;
+  width:100%!important;
+  height:clamp(145px,16vw,190px)!important;
+  box-sizing:border-box!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:hidden!important;
+  border:0!important;
+  border-radius:0!important;
+  background:
+    radial-gradient(ellipse at 76% 23%, color-mix(in srgb,#f8ce7b 13%,transparent), transparent 24%),
+    linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--accent2) 5%,transparent) 50%,transparent 100%)!important;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 5%,#000 95%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0%,#000 5%,#000 95%,transparent 100%);
+}
+#trip-itineraries .trip-scenic-landscape:after {
+  content:"";
+  position:absolute;
+  z-index:8;
+  pointer-events:none;
+  inset:58% 0 0;
+  background:linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--bg) 10%,transparent) 65%,transparent 100%);
+}
+#trip-itineraries .trip-scene-sun-halo {
+  position:absolute!important; z-index:0!important; top:7%!important; right:17%!important;
+  display:block!important; width:clamp(46px,5vw,64px)!important; height:clamp(46px,5vw,64px)!important;
+  margin:0!important; border-radius:50%!important;
+  background:color-mix(in srgb,#f8ce7b 17%,transparent)!important;
+  filter:blur(1px)!important;
+  animation:tripSunGlowV5 6.5s ease-in-out infinite!important;
+}
+#trip-itineraries .trip-scene-sun {
+  position:absolute!important; z-index:1!important; top:15%!important; right:calc(17% + 12px)!important;
+  display:block!important; width:22px!important; height:22px!important; margin:0!important;
+  border-radius:50%!important; background:#f8ce7b!important;
+  box-shadow:0 0 25px color-mix(in srgb,#f8ce7b 28%,transparent)!important;
+}
+#trip-itineraries .trip-scene-cloud {
+  position:absolute!important; z-index:2!important; display:block!important;
+  width:52px!important; height:10px!important; margin:0!important; border-radius:999px!important;
+  background:var(--trip-cloud-fill)!important;
+  filter:blur(.2px) drop-shadow(0 2px 5px rgba(40,58,72,.08))!important;
+  animation:tripCloudDriftV5 24s linear infinite!important;
+}
+#trip-itineraries .trip-scene-cloud:before,
+#trip-itineraries .trip-scene-cloud:after {
+  position:absolute!important; display:block!important; content:""!important; bottom:0!important;
+  border-radius:50%!important; background:inherit!important;
+}
+#trip-itineraries .trip-scene-cloud:before { left:8px!important; width:17px!important; height:17px!important; }
+#trip-itineraries .trip-scene-cloud:after { left:23px!important; width:22px!important; height:22px!important; }
+#trip-itineraries .trip-scene-cloud-one { top:18%!important; left:-18%!important; animation-delay:-7s!important; }
+#trip-itineraries .trip-scene-cloud-two { top:38%!important; left:-23%!important; transform:scale(.68)!important; opacity:.7!important; animation-duration:31s!important; animation-delay:-17s!important; }
+#trip-itineraries .trip-scene-mountain {
+  position:absolute!important; z-index:1!important; bottom:34%!important; display:block!important;
+  width:86%!important; height:60%!important; margin:0!important;
+  clip-path:polygon(0 88%,13% 46%,21% 65%,35% 8%,46% 51%,57% 27%,70% 69%,81% 38%,100% 84%,100% 100%,0 100%)!important;
+}
+#trip-itineraries .trip-scene-mountain-back { left:-7%!important; background:var(--trip-mountain-far)!important; opacity:1!important; }
+#trip-itineraries .trip-scene-mountain-front { right:-12%!important; bottom:31%!important; width:88%!important; height:57%!important; transform:scaleX(-1)!important; background:var(--trip-mountain-near)!important; opacity:1!important; }
+#trip-itineraries .trip-scene-hill { position:absolute!important; z-index:2!important; left:-8%!important; display:block!important; width:116%!important; margin:0!important; border-radius:50% 48% 0 0!important; }
+#trip-itineraries .trip-scene-hill-back { bottom:22%!important; height:34%!important; transform:rotate(-3deg)!important; background:var(--trip-hill-far)!important; }
+#trip-itineraries .trip-scene-hill-front { bottom:7%!important; height:31%!important; transform:rotate(3deg)!important; background:var(--trip-hill-near)!important; }
+#trip-itineraries .trip-scene-tree { position:absolute!important; z-index:3!important; bottom:19%!important; display:block!important; width:0!important; height:0!important; margin:0!important; border-left:8px solid transparent!important; border-right:8px solid transparent!important; border-bottom:29px solid var(--trip-forest)!important; }
+#trip-itineraries .trip-scene-tree-one { left:9%!important; transform:scale(.85)!important; }
+#trip-itineraries .trip-scene-tree-two { right:10%!important; bottom:20%!important; transform:scale(1.05)!important; }
+#trip-itineraries .trip-scene-road { position:absolute!important; z-index:4!important; left:-5%!important; bottom:-39%!important; display:block!important; width:112%!important; height:83%!important; margin:0!important; background:var(--trip-road-surface)!important; clip-path:polygon(0 73%,14% 41%,31% 50%,46% 85%,61% 92%,74% 64%,88% 29%,100% 22%,100% 100%,0 100%)!important; }
+#trip-itineraries .trip-scene-road-mark {
+  position:absolute!important; z-index:5!important; left:-5%!important; bottom:-35%!important; display:block!important;
+  width:112%!important; height:78%!important; margin:0!important;
+  background:repeating-linear-gradient(90deg,transparent 0 32px,var(--trip-road-stripe) 32px 45px,transparent 45px 72px)!important;
+  background-size:170px 100%!important;
+  clip-path:polygon(0 75%,14% 44%,31% 53%,46% 88%,61% 95%,74% 66%,88% 31%,100% 24%,100% 28%,88% 35%,75% 70%,62% 99%,45% 92%,30% 57%,14% 48%,0 79%)!important;
+  animation:tripRoadFlowV5 3.2s linear infinite!important;
+}
+#trip-itineraries .trip-header-signature-copy {
+  display:block!important; margin:12px 5px 0!important; padding:0 5px!important;
+  color:var(--muted)!important; font-size:11px!important; line-height:1.9!important;
+  border:0!important; background:transparent!important;
+}
+@keyframes tripCloudDriftV5 {
+  0% { left:-18%; translate:0 0; }
+  45% { translate:0 3px; }
+  100% { left:105%; translate:0 -1px; }
+}
+@keyframes tripSunGlowV5 {
+  0%,100% { transform:scale(.94); opacity:.65; }
+  50% { transform:scale(1.12); opacity:1; }
+}
+@keyframes tripRoadFlowV5 {
+  from { background-position:0 0; }
+  to { background-position:170px 0; }
+}
+@keyframes tripStatusPulseV5 {
+  0%,100% { box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 10%,transparent); opacity:.8; }
+  50% { box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 7%,transparent); opacity:1; }
+}
+@media(max-width:800px) {
+  #trip-itineraries .trip-header-signature { max-width:650px!important; }
+  #trip-itineraries .trip-scenic-landscape { height:155px!important; }
+}
+@media(max-width:600px) {
+  #trip-itineraries .trip-bike-scene-label { padding:0 2px 10px!important; gap:4px 9px!important; }
+  #trip-itineraries .trip-bike-scene-label .trip-bike-scene-distance { font-size:6px!important; }
+  #trip-itineraries .trip-scenic-landscape { height:122px!important; }
+  #trip-itineraries .trip-header-signature-copy { margin-top:8px!important; font-size:10px!important; }
+}
+@media(prefers-reduced-motion:reduce) {
+  #trip-itineraries .trip-scene-cloud,
+  #trip-itineraries .trip-scene-sun-halo,
+  #trip-itineraries .trip-scene-road-mark,
+  #trip-itineraries .trip-bike-scene-label .trip-scene-status { animation:none!important; }
+}
+</style>
+
 
   <div class="container">
     <div class="section-header reveal trip-editorial-header">
