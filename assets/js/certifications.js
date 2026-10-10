@@ -152,16 +152,19 @@ if(grid){
   const title=document.getElementById("certificatePreviewTitle");
   const issuer=document.getElementById("certificatePreviewIssuer");
   const frame=document.getElementById("certificatePreviewFrame");
+  const externalLink=document.getElementById("credentialPreviewExternal");
   if(!dialog||!title||!issuer||!frame)return;
   title.textContent=button.dataset.certificateTitle||"Certificate preview";
   issuer.textContent=button.dataset.certificateIssuer||"";
-  frame.src=(button.dataset.certificatePdf||"")+"#view=FitH";
+  const pdfPath=button.dataset.certificatePdf||"";
+  frame.src=pdfPath+"#view=FitH";
+  if(externalLink){externalLink.href=pdfPath;externalLink.hidden=!pdfPath;}
   if(!dialog.open)dialog.showModal();
  });
  const previewDialog=document.getElementById("certificatePreviewDialog");
  document.getElementById("certificatePreviewClose")?.addEventListener("click",()=>previewDialog?.close());
  previewDialog?.addEventListener("click",event=>{if(event.target===previewDialog)previewDialog.close();});
- previewDialog?.addEventListener("close",()=>{const frame=document.getElementById("certificatePreviewFrame");if(frame)frame.src="about:blank";});
+ previewDialog?.addEventListener("close",()=>{const frame=document.getElementById("certificatePreviewFrame");if(frame)frame.src="about:blank";const link=document.getElementById("credentialPreviewExternal");if(link){link.removeAttribute("href");link.hidden=true;}});
  render();
 }
 const atlasLinks=[...document.querySelectorAll(".atlas-link")];
