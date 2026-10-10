@@ -578,11 +578,45 @@
     }
   };
 
+  const projectOverviewDetails = {
+    focusflow:[
+      "The single-session timer supports a user-chosen duration in hours, minutes and seconds, with controls to pause, resume, skip where supported, or end a session.",
+      "Intervals let people define work and break phases and repeat them as a cycle. Study Plans arrange study and break periods into an ordered routine rather than a single countdown.",
+      "Daily Focus is a separate target from an individual session. The product README documents account features, appearance preferences and platform-dependent notification behaviour."
+    ],
+    "linkedin-automation":[
+      "The repository describes a personal Node.js and Playwright prototype. It connects to a dedicated Chrome session through Chrome DevTools Protocol rather than asking the script to store a LinkedIn password.",
+      "The skills inventory and option-discovery tasks are separated so the browser can inspect visible state before any possible change. Bounded scrolling and selector-based extraction help keep the automation controlled.",
+      "The documented approach uses scoped UI actions, waits and a separate final scan to verify visible state. State-changing scripts should be reviewed before running."
+    ],
+    "books-api":[
+      "The collection covers service status and book retrieval, providing a starting point for checking availability and validating returned resource data.",
+      "Client registration and bearer-token reuse allow protected order requests to be exercised with authentication data stored in collection variables.",
+      "The order lifecycle covers create, list, retrieve, update and delete scenarios. Newman execution and report outputs make the same collection easier to rerun and review."
+    ],
+    "api-user-flow":[
+      "The flow begins with login, checks the response and stores the returned token so subsequent requests can use the same authenticated context.",
+      "The created user's identifier is captured from the response and passed to later requests. This demonstrates request chaining without hard-coding a user ID into each step.",
+      "Assertions cover expected statuses and response data across create, update and delete actions. The README also documents environment values and Newman-based execution."
+    ],
+    "java-collections":[
+      "The repository groups small examples around Java syntax, data types, operators, conditions and loops, making the fundamentals easy to revisit independently.",
+      "OOP examples demonstrate classes and objects, inheritance, encapsulation and polymorphism, connecting language concepts to practical code structure.",
+      "Collection examples cover List, Set and Map concepts, including ArrayList, HashSet and HashMap, and help demonstrate when ordered values, uniqueness or key-value access is useful."
+    ],
+    "maven-junit":[
+      "The conventional src/main/java and src/test/java layout separates production code from test code and keeps the repository easy to navigate.",
+      "Maven configuration declares project dependencies and provides a repeatable build lifecycle rather than relying on manual library setup.",
+      "JUnit 5 tests and assertions provide a foundation for checking expected behaviour. The documented workflow includes mvn test and mvn clean install."
+    ]
+  };
+
   const projectPhotoCollections = {
     focusflow:[
-      {src:"https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=88",alt:"Laptop and workstation associated with focused digital work",label:"Focused work",caption:"A dedicated setup for uninterrupted tasks."},
-      {src:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=88",alt:"Workspace representing planning and structured study",label:"Study planning",caption:"Plan a repeatable rhythm for learning sessions."},
-      {src:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=88",alt:"Calm desk environment for a work routine",label:"Work routine",caption:"Keep focus routines clear and easy to return to."}
+      {src:"assets/images/projects/focusflow-timer.svg",alt:"Illustrative FocusFlow timer interface with a focus-session ring and session controls",label:"Focus timer",caption:"A branded interface concept for custom-duration focus sessions."},
+      {src:"assets/images/projects/focusflow-intervals.svg",alt:"Illustrative FocusFlow intervals interface showing work and break phases",label:"Intervals",caption:"A visual of configurable work and recovery cycles."},
+      {src:"assets/images/projects/focusflow-plans.svg",alt:"Illustrative FocusFlow study plan interface showing an ordered study routine",label:"Study plans",caption:"A sample sequence for study blocks and breaks."},
+      {src:"assets/images/projects/focusflow-daily.svg",alt:"Illustrative FocusFlow daily focus dashboard showing a progress goal",label:"Daily focus",caption:"A sample daily-goal progress view; not live account data."}
     ],
     "linkedin-automation":[
       {src:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=88",alt:"Workspace representing a browser-based automation task",label:"Browser session",caption:"Work through a dedicated signed-in browser session."},
@@ -632,10 +666,33 @@
     parent.append(heading);
   }
 
-  function projectInfoCards(parent, items, className = "project-detail-info-grid") {
+  function projectInfoCards(parent, items, className = "project-detail-info-grid", extendedDetails = []) {
     const grid = projectElement("div", className);
-    items.forEach(item => {
-      const card = projectElement("article", "project-detail-info-card");
+    const detail = projectElement("article", "project-detail-info-focus");
+    const selectCard = index => {
+      [...grid.children].forEach((button,i) => {
+        const active = i === index;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+      const item = items[index];
+      detail.replaceChildren();
+      if (item.icon) {
+        const mark = projectElement("span", "project-detail-feature-focus-icon");
+        mark.innerHTML = '<i class="portfolio-lucide" data-lucide="' + item.icon + '" aria-hidden="true"></i>';
+        detail.append(mark);
+      }
+      detail.append(
+        projectElement("span", "project-detail-eyebrow", item.label || "PROJECT DETAIL"),
+        projectElement("h4", "", item.title),
+        projectElement("p", "", extendedDetails[index] || item.detail || item.text || "This area forms part of the project's documented scope.")
+      );
+      window.lucide?.createIcons?.({attrs: {"stroke-width": 1.9, "aria-hidden": "true"}});
+    };
+    items.forEach((item,index) => {
+      const card = projectElement("button", "project-detail-info-card" + (index===0 ? " is-active" : ""));
+      card.type = "button";
+      card.setAttribute("aria-pressed", String(index===0));
       if (item.icon) {
         const mark = projectElement("span", "project-detail-card-icon");
         mark.innerHTML = '<i class="portfolio-lucide" data-lucide="' + item.icon + '" aria-hidden="true"></i>';
@@ -644,9 +701,11 @@
       if (item.label) card.append(projectElement("small", "project-detail-card-label", item.label));
       card.append(projectElement("b", "", item.title));
       if (item.text) card.append(projectElement("p", "", item.text));
+      card.addEventListener("click", () => selectCard(index));
       grid.append(card);
     });
-    parent.append(grid);
+    parent.append(grid, detail);
+    if(items.length) selectCard(0);
   }
 
   function projectBulletGrid(parent, items) {
@@ -691,7 +750,7 @@
     const photos = projectPhotoCollections[projectId] || [];
     if (!photos.length) return;
     const galleryHeading = projectElement("div","project-detail-subheading");
-    galleryHeading.append(projectElement("h4","","Visual gallery"),projectElement("p","","Choose an image to update the project cover."));
+    galleryHeading.append(projectElement("h4","",projectId==="focusflow" ? "FocusFlow interface gallery" : "Visual gallery"),projectElement("p","",projectId==="focusflow" ? "Select a product view to preview the timer, intervals, study plan or daily goal. These are designed interface illustrations based on the documented features, not captured live app screens." : "Choose an image to update the project cover."));
     parent.append(galleryHeading);
     const gallery = projectElement("div","project-detail-gallery");
     photos.forEach((photo,index) => {
@@ -787,7 +846,7 @@
 
     if (tabKey === "overview") {
       projectSectionHeading(content, "PROJECT OVERVIEW", "Purpose & scope", profile.overview);
-      projectInfoCards(content, profile.overviewCards);
+      projectInfoCards(content, profile.overviewCards, "project-detail-info-grid", projectOverviewDetails[id] || []);
       if (profile.modes) {
         const modesHeading = projectElement("div", "project-detail-subheading");
         modesHeading.append(projectElement("h4", "", "The FocusFlow experience"));
