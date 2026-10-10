@@ -3493,3 +3493,53 @@ html[data-theme="light"] .ba-practice-tab.is-active{background:linear-gradient(1
     overflow:hidden!important;
   }
 }
+
+
+/* Correct final placement: size the infographic grid from its columns,
+   then anchor Delivery Approach to the unused lower-right area only. */
+@media(min-width:1451px){
+  .about-visual .ba-visual-main{
+    flex:0 0 auto!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    align-self:stretch;
+    align-content:start;
+    overflow:visible!important;
+    position:relative!important;
+  }
+  .about-visual .ba-visual-main>.ba-practice-panel{
+    position:absolute!important;
+    left:32%!important;
+    right:0!important;
+    top:auto!important;
+    bottom:0!important;
+    width:auto!important;
+    height:77%!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+    overflow:hidden!important;
+    z-index:6;
+    background:linear-gradient(155deg,rgba(25,40,59,.985),rgba(20,32,49,.99))!important;
+    box-shadow:0 10px 25px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.045);
+  }
+  html[data-theme="light"] .about-visual .ba-visual-main>.ba-practice-panel{
+    background:linear-gradient(155deg,rgba(250,252,255,.99),rgba(235,243,252,.99))!important;
+    box-shadow:0 10px 25px rgba(32,60,95,.12),inset 0 1px 0 rgba(255,255,255,.8);
+  }
+}
+@media(max-width:1450px){
+  .about-visual .ba-visual-main{
+    flex:0 0 auto!important;
+    height:auto!important;
+    min-height:0!important;
+  }
+  .about-visual .ba-visual-main>.ba-practice-panel{
+    position:relative!important;
+    inset:auto!important;
+    height:auto!important;
+    min-height:0!important;
+    margin:12px 0 0!important;
+  }
+}
