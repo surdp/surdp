@@ -90,11 +90,52 @@ let category="all";
 if(grid){
  if(total)total.textContent=String(credentials.length);
  function esc(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
- function mark(v){return v.split(/\s+/).filter(Boolean).slice(0,2).map(w=>w[0]).join("").toUpperCase().slice(0,3);}
+ const credentialIconPaths = {
+  ai: '<path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3Z"/><path d="m19 14 .9 2.1L22 17l-2.1.9L19 20l-.9-2.1L16 17l2.1-.9L19 14Z"/>',
+  security: '<path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/>',
+  qa: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3.5h6"/><path d="m8.5 13 2.2 2.2 4.8-4.8"/>',
+  analytics: '<path d="M3 3v18h18"/><path d="M8 16v-4"/><path d="M13 16V7"/><path d="M18 16v-7"/>',
+  healthcare: '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/><path d="M3.5 12h5l2-3 3 6 2-3h5"/>',
+  cloud: '<path d="M20 16.2A4.5 4.5 0 0 0 18 7h-1.3A8 8 0 1 0 4 16.3"/><path d="m8 13 4-4 4 4"/><path d="M12 9v12"/>',
+  code: '<path d="m8 17-5-5 5-5"/><path d="m16 7 5 5-5 5"/><path d="m14 4-4 16"/>',
+  product: '<path d="M9 18h6"/><path d="M10 22h4"/><path d="M15 14c1.8-1 3-2.7 3-5a6 6 0 0 0-12 0c0 2.3 1.2 4 3 5 .7.4 1 1.2 1 2h4c0-.8.3-1.6 1-2Z"/>',
+  workflow: '<rect x="3" y="3" width="7" height="6" rx="1.5"/><rect x="14" y="15" width="7" height="6" rx="1.5"/><rect x="14" y="3" width="7" height="6" rx="1.5"/><path d="M6.5 9v3.5A2.5 2.5 0 0 0 9 15h5"/><path d="m11 12 3 3-3 3"/>',
+  settings: '<path d="M4 21v-7"/><path d="M4 10V3"/><path d="M12 21v-9"/><path d="M12 8V3"/><path d="M20 21v-5"/><path d="M20 12V3"/><path d="M2 14h4"/><path d="M10 8h4"/><path d="M18 16h4"/>',
+  collaboration: '<path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/>',
+  business: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/><path d="M10 12v2h4v-2"/>',
+  book: '<path d="M12 7v14"/><path d="M3 18V5a2 2 0 0 1 2-2h3a4 4 0 0 1 4 4 4 4 0 0 1 4-4h3a2 2 0 0 1 2 2v13"/><path d="M3 18a2 2 0 0 0 2 2h3a4 4 0 0 1 4 1 4 4 0 0 1 4-1h3a2 2 0 0 0 2-2"/>'
+ };
+ function credentialIcon(c){
+  const text=(c.title+" "+c.categoryLabel+" "+c.issuer).toLowerCase();
+  let name="book";
+  if(/claude|artificial intelligence|machine learning|\\bai\\b|neural/.test(text))name="ai";
+  else if(/cybersecurity|security|protection|privacy/.test(text))name="security";
+  else if(/lambdatest|test automation|software testing|selenium|quality assurance|\\btesting\\b/.test(text))name="qa";
+  else if(/power bi|data analyst|data visualization|analytics|business intelligence|charts and graphs/.test(text))name="analytics";
+  else if(/healthcare|health care|clinical|covid-19 contact tracing/.test(text))name="healthcare";
+  else if(/devops|azure|cloud|infrastructure as code|continuous delivery|continuous integration/.test(text))name="cloud";
+  else if(/web apis|programming|python|html5|c# for beginners|oracle apex|virtual reality and augmented reality/.test(text))name="code";
+  else if(/service management|service desk|itsm|change management|problem management|monitoring and metrics/.test(text))name="settings";
+  else if(/product management|product strategy|product roadmap|customer development/.test(text))name="product";
+  else if(/project management|project portfolio|agile|scrum|jira|stakeholder|budgets|schedules|requirements|risk|teams/.test(text))name="workflow";
+  else if(/google workspace|microsoft 365|remote work|time management|webex|productivity|collaborat|working from home/.test(text))name="collaboration";
+  else if(/supply chain|operations management|digital marketing/.test(text))name="business";
+  else if(c.category==="ai")name="ai";
+  else if(c.category==="qa")name="qa";
+  else if(c.category==="product")name="product";
+  else if(c.category==="project")name="workflow";
+  else if(c.category==="itsm")name="settings";
+  else if(c.category==="devops")name="cloud";
+  else if(c.category==="data")name="analytics";
+  else if(c.category==="productivity")name="collaboration";
+  else if(c.category==="digital")name="code";
+  const svg='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">'+(credentialIconPaths[name]||credentialIconPaths.book)+'</svg>';
+  return {name,svg};
+ }
  function render(){
   const q=(search?.value||"").trim().toLowerCase(), yr=year?.value||"all";
   const filtered=credentials.filter(c=>(category==="all"||c.category===category)&&(yr==="all"||c.year===yr)&&(!q||[c.title,c.issuer,c.date,c.categoryLabel].join(" ").toLowerCase().includes(q)));
-  grid.innerHTML=filtered.map(c=>{const pdf=certificatePdfs[c.title];const action=pdf?'<button type="button" class="credential-preview-link" data-certificate-pdf="'+esc(pdf)+'" data-certificate-title="'+esc(c.title)+'" data-certificate-issuer="'+esc(c.issuer)+'">Preview PDF ↗</button>':'<span class="credential-unavailable" aria-label="Certificate PDF not uploaded yet">PDF not uploaded yet</span>';return '<article class="credential-card"><div class="credential-card-top"><span class="credential-mark">'+esc(mark(c.issuer))+'</span><span class="credential-year">'+esc(c.year)+'</span></div><h3>'+esc(c.title)+'</h3><p class="credential-issuer">'+esc(c.issuer)+'</p><span class="credential-category-label">'+esc(c.categoryLabel)+'</span><div class="credential-card-footer"><span class="credential-date">'+esc(c.date)+'</span>'+action+'</div></article>';}).join("");
+  grid.innerHTML=filtered.map(c=>{const icon=credentialIcon(c);const pdf=certificatePdfs[c.title];const action=pdf?'<button type="button" class="credential-preview-link" data-certificate-pdf="'+esc(pdf)+'" data-certificate-title="'+esc(c.title)+'" data-certificate-issuer="'+esc(c.issuer)+'">Preview PDF ↗</button>':'<span class="credential-unavailable" aria-label="Certificate PDF not uploaded yet">PDF not uploaded yet</span>';return '<article class="credential-card"><div class="credential-card-top"><span class="credential-mark credential-mark--'+icon.name+'" aria-hidden="true">'+icon.svg+'</span><span class="credential-year">'+esc(c.year)+'</span></div><h3>'+esc(c.title)+'</h3><p class="credential-issuer">'+esc(c.issuer)+'</p><span class="credential-category-label">'+esc(c.categoryLabel)+'</span><div class="credential-card-footer"><span class="credential-date">'+esc(c.date)+'</span>'+action+'</div></article>';}).join("");
   if(results)results.textContent="Showing "+filtered.length+" of "+credentials.length+" listed credentials";
   if(empty)empty.hidden=filtered.length!==0;
   grid.hidden=filtered.length===0;

@@ -4707,3 +4707,43 @@ html[data-theme="light"] #projects .project-detail-info-focus{background:radial-
     padding-inline: 13px;
   }
 }
+
+/* Credential cards: polished category-aware icons instead of issuer initials */
+.credential-mark {
+  box-sizing: border-box;
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px;
+  border: 1px solid color-mix(in srgb, var(--credential-icon-accent, var(--accent)) 30%, var(--line));
+  border-radius: 11px !important;
+  background: linear-gradient(145deg,
+    color-mix(in srgb, var(--credential-icon-accent, var(--accent)) 16%, var(--panel2)),
+    color-mix(in srgb, var(--credential-icon-accent, var(--accent2)) 7%, var(--panel));
+  color: var(--credential-icon-accent, var(--accent));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 4px 12px rgba(0,0,0,.08);
+  font-size: 0 !important;
+}
+.credential-mark svg {
+  display: block;
+  width: 19px;
+  height: 19px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+.credential-mark--ai { --credential-icon-accent: #a5b4fc; }
+.credential-mark--security, .credential-mark--qa { --credential-icon-accent: #75b7ff; }
+.credential-mark--analytics { --credential-icon-accent: #5bd6c5; }
+.credential-mark--healthcare { --credential-icon-accent: #f49ac2; }
+.credential-mark--cloud { --credential-icon-accent: #78ccff; }
+.credential-mark--code { --credential-icon-accent: #8bd8ff; }
+.credential-mark--product, .credential-mark--business { --credential-icon-accent: #c5a5ff; }
+.credential-mark--workflow, .credential-mark--settings { --credential-icon-accent: #92b8ff; }
+.credential-mark--collaboration { --credential-icon-accent: #ffc77d; }
+.credential-mark--book { --credential-icon-accent: #b0c5df; }
+@media (max-width: 600px) {
+  .credential-mark { width: 36px !important; height: 36px !important; min-width: 36px; }
+  .credential-mark svg { width: 18px; height: 18px; }
+}
