@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f5f7fa">
 <meta name="description" content="Suraj D P is a Business Analyst with experience in requirements analysis, process mapping, functional documentation, API validation, QA automation, and healthcare technology delivery.">
 <meta property="og:title" content="Suraj D P | Business Analyst & Healthcare IT"><meta property="og:description" content="Business analysis, healthcare technology, quality engineering, automation, and practical software projects.">
-<title>Suraj D P · Business Analysis · QA Automation · Healthcare IT</title><link rel="stylesheet" href="assets/css/style.css?v=20261010-career-polish-v2">
+<title>Suraj D P · Business Analysis · QA Automation · Healthcare IT</title><link rel="stylesheet" href="assets/css/style.css?v=20261010-about-interactive-v1">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script>try{const t=localStorage.getItem("suraj-portfolio-theme");if(t)document.documentElement.dataset.theme=t}catch(_){}</script>
 </head>
@@ -72,15 +72,22 @@
   <div class="ba-visual-main">
     <section class="ba-info-panel ba-industries-panel" aria-labelledby="ba-industries-heading">
       <header><span class="ba-panel-symbol" aria-hidden="true">▦</span><h3 id="ba-industries-heading">Industries</h3></header>
-      <ul class="ba-info-list">
-        <li><span class="ba-list-icon" data-tone="blue" aria-hidden="true">♡</span><span><b>Healthcare</b><small>EMR, clinical workflows</small></span></li>
-        <li><span class="ba-list-icon" data-tone="green" aria-hidden="true">▤</span><span><b>Banking &amp; Finance</b><small>Business applications</small></span></li>
-        <li><span class="ba-list-icon" data-tone="violet" aria-hidden="true">▣</span><span><b>Retail &amp; E-commerce</b><small>Digital platforms</small></span></li>
-        <li><span class="ba-list-icon" data-tone="cyan" aria-hidden="true">⚙</span><span><b>Manufacturing</b><small>Process optimisation</small></span></li>
-        <li><span class="ba-list-icon" data-tone="blue" aria-hidden="true">⌁</span><span><b>Telecom &amp; Technology</b><small>Systems &amp; data</small></span></li>
-        <li><span class="ba-list-icon" data-tone="violet" aria-hidden="true">▦</span><span><b>Government &amp; Public</b><small>Services &amp; operations</small></span></li>
-        <li><span class="ba-list-icon" data-tone="green" aria-hidden="true">◈</span><span><b>Other Industries</b><small>Adaptable solutions</small></span></li>
+      <ul class="ba-info-list ba-industry-list">
+        <li><button class="ba-industry-option is-active" type="button" data-ba-industry="healthcare" aria-pressed="true"><span class="ba-list-icon" data-tone="blue" aria-hidden="true">♡</span><span class="ba-industry-copy"><b>Healthcare</b><small>EMR &amp; clinical workflows</small></span><span class="ba-industry-arrow" aria-hidden="true">↗</span></button></li>
+        <li><button class="ba-industry-option" type="button" data-ba-industry="finance" aria-pressed="false"><span class="ba-list-icon" data-tone="green" aria-hidden="true">▤</span><span class="ba-industry-copy"><b>Banking &amp; Finance</b><small>Business applications</small></span><span class="ba-industry-arrow" aria-hidden="true">↗</span></button></li>
+        <li><button class="ba-industry-option" type="button" data-ba-industry="retail" aria-pressed="false"><span class="ba-list-icon" data-tone="violet" aria-hidden="true">▣</span><span class="ba-industry-copy"><b>Retail &amp; E-commerce</b><small>Digital platforms</small></span><span class="ba-industry-arrow" aria-hidden="true">↗</span></button></li>
+        <li><button class="ba-industry-option" type="button" data-ba-industry="manufacturing" aria-pressed="false"><span class="ba-list-icon" data-tone="cyan" aria-hidden="true">⚙</span><span class="ba-industry-copy"><b>Manufacturing</b><small>Process optimisation</small></span><span class="ba-industry-arrow" aria-hidden="true">↗</span></button></li>
+        <li><button class="ba-industry-option" type="button" data-ba-industry="technology" aria-pressed="false"><span class="ba-list-icon" data-tone="blue" aria-hidden="true">⌁</span><span class="ba-industry-copy"><b>Telecom &amp; Technology</b><small>Systems &amp; data</small></span><span class="ba-industry-arrow" aria-hidden="true">↗</span></button></li>
+        <li><button class="ba-industry-option" type="button" data-ba-industry="public" aria-pressed="false"><span class="ba-list-icon" data-tone="violet" aria-hidden="true">▦</span><span class="ba-industry-copy"><b>Government &amp; Public</b><small>Services &amp; operations</small></span><span class="ba-industry-arrow" aria-hidden="true">↗</span></button></li>
+        <li><button class="ba-industry-option" type="button" data-ba-industry="insurance" aria-pressed="false"><span class="ba-list-icon" data-tone="green" aria-hidden="true">◇</span><span class="ba-industry-copy"><b>Insurance &amp; Payers</b><small>Claims &amp; policy journeys</small></span><span class="ba-industry-arrow" aria-hidden="true">↗</span></button></li>
+        <li><button class="ba-industry-option" type="button" data-ba-industry="education" aria-pressed="false"><span class="ba-list-icon" data-tone="violet" aria-hidden="true">✦</span><span class="ba-industry-copy"><b>Education &amp; Learning</b><small>Service &amp; platform workflows</small></span><span class="ba-industry-arrow" aria-hidden="true">↗</span></button></li>
+        <li><button class="ba-industry-option" type="button" data-ba-industry="logistics" aria-pressed="false"><span class="ba-list-icon" data-tone="cyan" aria-hidden="true">↔</span><span class="ba-industry-copy"><b>Logistics &amp; Supply Chain</b><small>Operations &amp; handoffs</small></span><span class="ba-industry-arrow" aria-hidden="true">↗</span></button></li>
+        <li><button class="ba-industry-option" type="button" data-ba-industry="other" aria-pressed="false"><span class="ba-list-icon" data-tone="green" aria-hidden="true">◈</span><span class="ba-industry-copy"><b>Other Industries</b><small>Adaptable analysis methods</small></span><span class="ba-industry-arrow" aria-hidden="true">↗</span></button></li>
       </ul>
+      <div class="ba-industry-detail" id="baIndustryDetail" aria-live="polite">
+        <span class="ba-industry-detail-mark" aria-hidden="true"><i class="portfolio-lucide" data-lucide="heart-pulse"></i></span>
+        <div><small>INDUSTRY LENS</small><b id="baIndustryDetailTitle">Healthcare</b><p id="baIndustryDetailText">Clinical workflows, EHR context, requirements traceability and dependable application validation.</p></div>
+      </div>
     </section>
 
     <div class="ba-core-panel" aria-label="Business Analyst capability framework">
@@ -90,47 +97,55 @@
         <small>People · Process · Technology</small>
       </div>
       <div class="ba-visual-stack">
-        <article class="ba-stack-layer" data-tone="blue"><span class="ba-layer-icon" aria-hidden="true">◎</span><span class="ba-stack-title">Business Strategy</span><span class="ba-stack-detail">Goals, stakeholders, value</span></article>
-        <article class="ba-stack-layer" data-tone="violet"><span class="ba-layer-icon" aria-hidden="true">♧</span><span class="ba-stack-title">People &amp; Stakeholders</span><span class="ba-stack-detail">Users, teams, collaboration</span></article>
-        <article class="ba-stack-layer" data-tone="cyan"><span class="ba-layer-icon" aria-hidden="true">⌘</span><span class="ba-stack-title">Processes &amp; Workflows</span><span class="ba-stack-detail">AS-IS, TO-BE, gap analysis</span></article>
-        <article class="ba-stack-layer" data-tone="blue"><span class="ba-layer-icon" aria-hidden="true">▤</span><span class="ba-stack-title">Requirements &amp; Solutions</span><span class="ba-stack-detail">Stories, acceptance criteria</span></article>
-        <article class="ba-stack-layer" data-tone="violet"><span class="ba-layer-icon" aria-hidden="true">◈</span><span class="ba-stack-title">Technology &amp; Data</span><span class="ba-stack-detail">Systems, APIs, data analysis</span></article>
-        <article class="ba-stack-layer" data-tone="cyan"><span class="ba-layer-icon" aria-hidden="true">✓</span><span class="ba-stack-title">Quality &amp; Validation</span><span class="ba-stack-detail">Testing, UAT, defect resolution</span></article>
-        <article class="ba-stack-layer" data-tone="green"><span class="ba-layer-icon" aria-hidden="true">↗</span><span class="ba-stack-title">Outcomes &amp; Value</span><span class="ba-stack-detail">Efficiency and measurable impact</span></article>
+        <button class="ba-stack-layer" type="button" data-tone="blue" data-ba-capability="business-strategy" aria-pressed="false"><span class="ba-layer-icon" aria-hidden="true">◎</span><span class="ba-stack-title">Business Strategy</span><span class="ba-stack-detail">Goals, stakeholders, value</span><span class="ba-capability-chevron" aria-hidden="true">↗</span></button>
+        <button class="ba-stack-layer" type="button" data-tone="violet" data-ba-capability="people-and-stakeholders" aria-pressed="false"><span class="ba-layer-icon" aria-hidden="true">♧</span><span class="ba-stack-title">People &amp; Stakeholders</span><span class="ba-stack-detail">Users, teams, collaboration</span><span class="ba-capability-chevron" aria-hidden="true">↗</span></button>
+        <button class="ba-stack-layer" type="button" data-tone="cyan" data-ba-capability="processes-and-workflows" aria-pressed="false"><span class="ba-layer-icon" aria-hidden="true">⌘</span><span class="ba-stack-title">Processes &amp; Workflows</span><span class="ba-stack-detail">AS-IS, TO-BE, gap analysis</span><span class="ba-capability-chevron" aria-hidden="true">↗</span></button>
+        <button class="ba-stack-layer" type="button" data-tone="blue" data-ba-capability="requirements-and-solutions" aria-pressed="false"><span class="ba-layer-icon" aria-hidden="true">▤</span><span class="ba-stack-title">Requirements &amp; Solutions</span><span class="ba-stack-detail">Stories, acceptance criteria</span><span class="ba-capability-chevron" aria-hidden="true">↗</span></button>
+        <button class="ba-stack-layer" type="button" data-tone="violet" data-ba-capability="technology-and-data" aria-pressed="false"><span class="ba-layer-icon" aria-hidden="true">◈</span><span class="ba-stack-title">Technology &amp; Data</span><span class="ba-stack-detail">Systems, APIs, data analysis</span><span class="ba-capability-chevron" aria-hidden="true">↗</span></button>
+        <button class="ba-stack-layer" type="button" data-tone="cyan" data-ba-capability="quality-and-validation" aria-pressed="false"><span class="ba-layer-icon" aria-hidden="true">✓</span><span class="ba-stack-title">Quality &amp; Validation</span><span class="ba-stack-detail">Testing, UAT, defect resolution</span><span class="ba-capability-chevron" aria-hidden="true">↗</span></button>
+        <button class="ba-stack-layer" type="button" data-tone="green" data-ba-capability="outcomes-and-value" aria-pressed="false"><span class="ba-layer-icon" aria-hidden="true">↗</span><span class="ba-stack-title">Outcomes &amp; Value</span><span class="ba-stack-detail">Efficiency and measurable impact</span><span class="ba-capability-chevron" aria-hidden="true">↗</span></button>
       </div>
     </div>
 
     <section class="ba-info-panel ba-tools-panel" aria-labelledby="ba-tools-heading">
       <header><span class="ba-panel-symbol" aria-hidden="true">⌘</span><h3 id="ba-tools-heading">Tools &amp; Skills</h3></header>
-      <ul class="ba-info-list">
-        <li><span class="ba-list-icon" data-tone="blue" aria-hidden="true">⇄</span><span><b>Jira / Azure DevOps</b><small>Tracking &amp; requirements</small></span></li>
-        <li><span class="ba-list-icon" data-tone="cyan" aria-hidden="true">⌁</span><span><b>Postman</b><small>API validation</small></span></li>
-        <li><span class="ba-list-icon" data-tone="violet" aria-hidden="true">▤</span><span><b>SQL</b><small>Data analysis</small></span></li>
-        <li><span class="ba-list-icon" data-tone="green" aria-hidden="true">⌘</span><span><b>Process Mapping</b><small>BPMN, AS-IS / TO-BE</small></span></li>
-        <li><span class="ba-list-icon" data-tone="blue" aria-hidden="true">✓</span><span><b>Test Cases &amp; UAT</b><small>Functional &amp; regression</small></span></li>
-        <li><span class="ba-list-icon" data-tone="violet" aria-hidden="true">⚙</span><span><b>Eggplant Automation</b><small>Test automation</small></span></li>
-        <li><span class="ba-list-icon" data-tone="cyan" aria-hidden="true">▤</span><span><b>Documentation</b><small>BRD, FRD, RTM, reports</small></span></li>
-        <li><span class="ba-list-icon" data-tone="green" aria-hidden="true">♧</span><span><b>Stakeholder Management</b><small>Communication &amp; alignment</small></span></li>
+      <ul class="ba-info-list ba-tool-list">
+        <li><button class="ba-tool-option" type="button" data-ba-tool="jira" data-ba-value-link="traceability" aria-pressed="false"><span class="ba-list-icon" data-tone="blue" aria-hidden="true">⇄</span><span class="ba-tool-copy"><b>Jira / Azure DevOps</b><small>Tracking &amp; requirements</small></span></button></li>
+        <li><button class="ba-tool-option" type="button" data-ba-tool="postman" data-ba-value-link="quality" aria-pressed="false"><span class="ba-list-icon" data-tone="cyan" aria-hidden="true">⌁</span><span class="ba-tool-copy"><b>Postman</b><small>API validation</small></span></button></li>
+        <li><button class="ba-tool-option" type="button" data-ba-tool="sql" data-ba-value-link="quality" aria-pressed="false"><span class="ba-list-icon" data-tone="violet" aria-hidden="true">▤</span><span class="ba-tool-copy"><b>SQL</b><small>Data analysis</small></span></button></li>
+        <li><button class="ba-tool-option" type="button" data-ba-tool="process" data-ba-value-link="alignment" aria-pressed="false"><span class="ba-list-icon" data-tone="green" aria-hidden="true">⌘</span><span class="ba-tool-copy"><b>Process Mapping</b><small>BPMN, AS-IS / TO-BE</small></span></button></li>
+        <li><button class="ba-tool-option" type="button" data-ba-tool="uat" data-ba-value-link="quality" aria-pressed="false"><span class="ba-list-icon" data-tone="blue" aria-hidden="true">✓</span><span class="ba-tool-copy"><b>Test Cases &amp; UAT</b><small>Functional &amp; regression</small></span></button></li>
+        <li><button class="ba-tool-option" type="button" data-ba-tool="eggplant" data-ba-value-link="quality" aria-pressed="false"><span class="ba-list-icon" data-tone="violet" aria-hidden="true">⚙</span><span class="ba-tool-copy"><b>Eggplant Automation</b><small>Test automation</small></span></button></li>
+        <li><button class="ba-tool-option" type="button" data-ba-tool="documentation" data-ba-value-link="traceability" aria-pressed="false"><span class="ba-list-icon" data-tone="cyan" aria-hidden="true">▤</span><span class="ba-tool-copy"><b>Documentation</b><small>BRD, FRD, RTM, reports</small></span></button></li>
+        <li><button class="ba-tool-option" type="button" data-ba-tool="stakeholders" data-ba-value-link="alignment" aria-pressed="false"><span class="ba-list-icon" data-tone="green" aria-hidden="true">♧</span><span class="ba-tool-copy"><b>Stakeholder Management</b><small>Communication &amp; alignment</small></span></button></li>
       </ul>
     </section>
   </div>
 
-  <section class="ba-process-panel" aria-labelledby="ba-process-heading">
-    <div class="ba-process-header"><h3 id="ba-process-heading">Business Analyst Process</h3><span>DISCOVER <i>→</i> ANALYZE <i>→</i> DEFINE <i>→</i> DESIGN <i>→</i> DELIVER</span></div>
-    <div class="ba-process-steps">
-      <article class="ba-process-step"><span class="ba-process-icon" aria-hidden="true">⌕</span><b>Discover</b><small>Goals &amp; pain points</small></article>
-      <article class="ba-process-step"><span class="ba-process-icon" aria-hidden="true">⌁</span><b>Analyze</b><small>Processes &amp; gaps</small></article>
-      <article class="ba-process-step"><span class="ba-process-icon" aria-hidden="true">▤</span><b>Define</b><small>Requirements &amp; scope</small></article>
-      <article class="ba-process-step"><span class="ba-process-icon" aria-hidden="true">◇</span><b>Design</b><small>Options &amp; priorities</small></article>
-      <article class="ba-process-step"><span class="ba-process-icon" aria-hidden="true">↗</span><b>Deliver</b><small>Validation &amp; outcomes</small></article>
+  <section class="ba-value-panel" aria-labelledby="ba-value-heading">
+    <header class="ba-value-header">
+      <div><p class="ba-visual-eyebrow">VALUE IN ACTION</p><h3 id="ba-value-heading">What Teams Can Expect From Me</h3><p>Select a principle to see how I help teams make better decisions and deliver dependable outcomes.</p></div>
+      <span class="ba-value-status"><i aria-hidden="true"></i> Interactive delivery principles</span>
+    </header>
+    <div class="ba-value-options" role="group" aria-label="Delivery principles">
+      <button class="ba-value-option is-active" type="button" data-ba-value="alignment" aria-pressed="true"><span class="ba-value-icon" aria-hidden="true"><i class="portfolio-lucide" data-lucide="users-round"></i></span><b>Stakeholder Alignment</b><small>Shared context. Clear ownership.</small><span class="ba-value-option-arrow" aria-hidden="true">↗</span></button>
+      <button class="ba-value-option" type="button" data-ba-value="traceability" aria-pressed="false"><span class="ba-value-icon" aria-hidden="true"><i class="portfolio-lucide" data-lucide="git-branch"></i></span><b>Decision Traceability</b><small>Visible scope and rationale.</small><span class="ba-value-option-arrow" aria-hidden="true">↗</span></button>
+      <button class="ba-value-option" type="button" data-ba-value="quality" aria-pressed="false"><span class="ba-value-icon" aria-hidden="true"><i class="portfolio-lucide" data-lucide="shield-check"></i></span><b>Quality by Design</b><small>Validate early and clearly.</small><span class="ba-value-option-arrow" aria-hidden="true">↗</span></button>
+      <button class="ba-value-option" type="button" data-ba-value="improvement" aria-pressed="false"><span class="ba-value-icon" aria-hidden="true"><i class="portfolio-lucide" data-lucide="trending-up"></i></span><b>Continuous Improvement</b><small>Feedback that drives action.</small><span class="ba-value-option-arrow" aria-hidden="true">↗</span></button>
+    </div>
+    <div class="ba-value-detail" id="baValueDetail" aria-live="polite">
+      <span class="ba-value-detail-icon" id="baValueDetailIcon" aria-hidden="true"><i class="portfolio-lucide" data-lucide="users-round"></i></span>
+      <div class="ba-value-detail-copy"><p class="overline" id="baValueDetailEyebrow">DELIVERY PRINCIPLE</p><h4 id="baValueDetailTitle">Stakeholder Alignment</h4><p id="baValueDetailText">Bring business users, clinical stakeholders and delivery teams around the problem to solve, the decisions required and the outcomes that define success.</p><div class="ba-value-tags" id="baValueTags"><span>Stakeholder workshops</span><span>Shared acceptance criteria</span><span>Clear ownership</span></div></div>
+      <div class="ba-value-proof"><small>FOCUS</small><b id="baValueProofTitle">Aligned decisions</b><p id="baValueProofText">Reduce ambiguity before it becomes rework.</p></div>
     </div>
   </section>
 
+
   <div class="ba-visual-outcomes" aria-label="Business analysis outcomes">
-    <div><span aria-hidden="true">↗</span><b>Efficiency</b><small>Streamlined processes</small></div>
-    <div><span aria-hidden="true">◎</span><b>Collaboration</b><small>Aligned stakeholders</small></div>
-    <div><span aria-hidden="true">✓</span><b>Quality</b><small>Validated solutions</small></div>
-    <div><span aria-hidden="true">◉</span><b>Business Value</b><small>Measurable impact</small></div>
+    <button type="button" data-ba-value="improvement"><span aria-hidden="true">↗</span><b>Efficiency</b><small>Streamlined processes</small></button>
+    <button type="button" data-ba-value="alignment"><span aria-hidden="true">◎</span><b>Collaboration</b><small>Aligned stakeholders</small></button>
+    <button type="button" data-ba-value="quality"><span aria-hidden="true">✓</span><b>Quality</b><small>Validated solutions</small></button>
+    <button type="button" data-ba-value="traceability"><span aria-hidden="true">◉</span><b>Business Value</b><small>Measurable impact</small></button>
   </div>
 </div>
 <div class="about-copy reveal"><p class="overline about-copy-heading">About</p><p class="lead">I turn complex business needs into clear requirements, workable processes, and solutions teams can validate with confidence.</p><p>My analysis approach combines stakeholder discovery, requirements elicitation, current-state (AS-IS) and future-state (TO-BE) process mapping, gap analysis, and change-impact assessment. I translate business goals into functional and non-functional requirements, user stories, use cases, business rules, acceptance criteria, and traceable delivery documentation.</p><p>I work across the software delivery lifecycle, partnering with business users, product owners, developers, QA, and delivery teams to refine scope, clarify dependencies, assess options, and prioritize work. My quality engineering background helps connect requirements to practical test scenarios, UAT planning, functional and regression coverage, defect triage, and release readiness.</p><p>My hands-on toolkit includes Jira and Azure DevOps for work and defect tracking, Postman for API validation, SQL for data checks, and Eggplant automation in healthcare application upgrade work. I use these tools to support traceability from business need to implementation and validation, while keeping assumptions, risks, and acceptance conditions visible.</p><p>At <b>Tech Mahindra</b>, I support healthcare technology initiatives as a Senior Business Analyst, helping translate operational needs into structured requirements and supporting validation and delivery. Previously, at <b>Oracle Health (Cerner)</b>, I supported upgrades and clinical workflows across Emergency Medicine/FirstNet, Oncology, Blood Bank/Transfusion, and MPages. My work included upgrade impact analysis, functional and regression validation, defect investigation, Eggplant automation, and coordination with client teams across Australia, Qatar/Kuwait, the UK, and Ireland.</p><div class="quote"><div><b>“Turn ambiguity into alignment. Turn requirements into outcomes.”</b><p>Structured discovery. Traceable decisions. Solutions that can be tested, measured, and improved.</p><a class="quote-link" href="#expertise">Explore my capabilities <span aria-hidden="true">↗</span></a></div></div></div>
@@ -576,7 +591,7 @@
 <script src="assets/js/trip-itineraries.js?v=20261009-3" defer></script>
 <script src="assets/js/travel-gallery.js?v=20261009-4" defer></script>
 <script src="https://unpkg.com/lucide@1.52.0/dist/umd/lucide.min.js" defer></script>
-<script src="assets/js/main.js?v=20261010-career-polish-v2" defer></script>
+<script src="assets/js/main.js?v=20261010-about-interactive-v1" defer></script>
 
 <dialog class="certificate-viewer award-image-viewer" id="awardPreviewDialog" aria-labelledby="awardPreviewTitle">
   <div class="viewer-header">
