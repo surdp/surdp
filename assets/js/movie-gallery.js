@@ -10,10 +10,10 @@
   const videoCount = document.getElementById("movieVideoCount");
   const batchSize = 12;
   const shapePattern = [
-    "feature", "square", "wide", "tall", "small", "landscape",
-    "feature", "portrait", "square", "wide", "small", "tall",
-    "landscape", "small", "feature", "square", "wide", "portrait",
-    "tall", "landscape", "small", "square", "feature", "wide"
+    "feature", "wide", "small", "landscape", "large", "wide",
+    "feature", "small", "landscape", "wide", "large", "small",
+    "wide", "landscape", "feature", "small", "large", "wide",
+    "landscape", "small", "wide", "feature", "large", "landscape"
   ];
   let photos = [];
   let videos = [];
@@ -94,7 +94,7 @@
     render();
   });
 
-  fetch("assets/movies/media-library.json?v=20261010-movie-mosaic-v1")
+  fetch("assets/movies/media-library.json?v=20261010-titleband-mosaic-v1")
     .then(function (response) {
       if (!response.ok) throw new Error("Media library is not available.");
       return response.json();

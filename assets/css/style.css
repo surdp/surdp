@@ -4836,3 +4836,54 @@ html[data-theme="light"] #projects .project-detail-info-focus{background:radial-
   .movie-wave-trace { animation:none!important; stroke-dashoffset:0; }
   .movie-media-card,.movie-open-hint { transition:none!important; }
 }
+
+/* Movie poster title-band focus and final heading polish */
+.movie-section .movie-passion-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  max-width: 590px;
+  margin: 16px 0 0;
+  padding: 11px 0 0;
+  border-top: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+  color: var(--muted);
+  font-size: clamp(11px, 1.05vw, 13px);
+  line-height: 1.8;
+  letter-spacing: .005em;
+}
+.movie-section .movie-passion-line > span {
+  flex: 0 0 auto;
+  color: var(--accent);
+  font-size: 14px;
+  line-height: 1.6;
+  text-shadow: 0 0 15px color-mix(in srgb, var(--accent) 48%, transparent);
+}
+.movie-section .movie-passion-line strong {
+  color: var(--text);
+  font-weight: 800;
+}
+.movie-media-open img {
+  object-fit: cover !important;
+  object-position: 50% 50% !important;
+  padding: 0 !important;
+}
+.movie-media-card[data-shape="feature"] { grid-column: span 2; grid-row: span 3; }
+.movie-media-card[data-shape="wide"] { grid-column: span 2; grid-row: span 2; }
+.movie-media-card[data-shape="landscape"] { grid-column: span 2; grid-row: span 2; }
+.movie-media-card[data-shape="small"] { grid-column: span 1; grid-row: span 1; }
+.movie-media-card[data-shape="large"] { grid-column: span 3; grid-row: span 2; }
+@media (max-width: 1100px) {
+  .movie-media-card[data-shape="large"] { grid-column: span 2; grid-row: span 2; }
+}
+@media (max-width: 850px) {
+  .movie-media-card[data-shape="large"] { grid-column: span 3; grid-row: span 2; }
+}
+@media (max-width: 600px) {
+  .movie-section .movie-passion-line { margin-top: 11px; padding-top: 9px; font-size: 11px; line-height: 1.7; }
+  .movie-media-open img { object-position: 50% 50% !important; }
+  .movie-media-card[data-shape="feature"] { grid-column: span 2; grid-row: span 3; }
+  .movie-media-card[data-shape="wide"] { grid-column: span 2; grid-row: span 2; }
+  .movie-media-card[data-shape="landscape"] { grid-column: span 2; grid-row: span 2; }
+  .movie-media-card[data-shape="small"] { grid-column: span 1; grid-row: span 1; }
+  .movie-media-card[data-shape="large"] { grid-column: span 3; grid-row: span 2; }
+}
