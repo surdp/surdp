@@ -243,3 +243,143 @@ html[data-theme="light"] .hero:before{
 @media(max-width:850px){
   body{background-attachment:scroll!important;background-position:center top!important}
 }
+
+
+/* Light-mode correction: retain the mountain backdrop but make the whole UI genuinely light. */
+html[data-theme="light"] body{
+  background-color:#f4f7fb!important;
+  background-image:
+    linear-gradient(180deg,rgba(247,250,253,.78) 0%,rgba(243,247,251,.88) 48%,rgba(247,250,253,.84) 100%),
+    url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=88")!important;
+  background-size:cover,cover!important;
+  background-position:center center,center center!important;
+  background-repeat:no-repeat,no-repeat!important;
+  background-attachment:fixed,fixed!important;
+  color:var(--text)!important;
+}
+html[data-theme="light"] .header{
+  background:rgba(250,252,255,.90)!important;
+  border-bottom:1px solid rgba(28,57,88,.12)!important;
+  box-shadow:0 5px 22px rgba(25,54,82,.06);
+}
+html[data-theme="light"] .header .nav-links a{color:#30445a!important}
+html[data-theme="light"] .header .nav-links a:hover,
+html[data-theme="light"] .header .nav-links a:focus-visible{color:#087fc4!important}
+html[data-theme="light"] .header .nav-links a::after{background:#168fe0!important}
+html[data-theme="light"] .brand-signature-logo{color:#142639!important}
+html[data-theme="light"] .theme-toggle{
+  color:#173049!important;background:rgba(255,255,255,.85)!important;
+  border-color:rgba(28,57,88,.2)!important;
+}
+html[data-theme="light"] .nav-cta{
+  color:#fff!important;background:#087fc4!important;border-color:#087fc4!important;
+  box-shadow:0 6px 18px rgba(8,127,196,.15);
+}
+html[data-theme="light"] .hero{
+  background:#f3f7fb!important;border-bottom-color:rgba(27,61,91,.08)!important;
+}
+html[data-theme="light"] .hero:before{
+  background:
+    linear-gradient(90deg,rgba(248,251,254,.91) 0%,rgba(248,251,254,.79) 32%,rgba(248,251,254,.64) 60%,rgba(248,251,254,.53) 100%),
+    linear-gradient(0deg,rgba(244,248,252,.88) 0%,rgba(244,248,252,.30) 30%,rgba(255,255,255,.14) 100%),
+    url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=88") center 43%/cover!important;
+  opacity:1!important;
+}
+html[data-theme="light"] .hero-copy{color:#172638!important}
+html[data-theme="light"] .hero .eyebrow{
+  color:#096ca8!important;background:rgba(255,255,255,.74)!important;
+  border-color:rgba(8,127,196,.22)!important;
+}
+html[data-theme="light"] .hero .intro{color:#4b5e72!important}
+html[data-theme="light"] .hero .intro b{color:#13283c!important}
+html[data-theme="light"] .hero h1{color:#132238!important}
+html[data-theme="light"] .hero .gradient{
+  background:none!important;color:#087fc4!important;-webkit-text-fill-color:#087fc4!important;
+}
+html[data-theme="light"] .hero-lede{color:#40556b!important}
+html[data-theme="light"] .hero .pills span{
+  color:#314b62!important;background:rgba(255,255,255,.73)!important;
+  border-color:rgba(38,68,98,.17)!important;
+}
+html[data-theme="light"] .hero .button.primary{
+  color:#fff!important;background:linear-gradient(105deg,#087de2,#26a7ed)!important;
+  border-color:rgba(8,127,196,.3)!important;
+}
+html[data-theme="light"] .hero .button.secondary{
+  color:#17344c!important;background:rgba(255,255,255,.82)!important;
+  border-color:#168fe0!important;
+}
+html[data-theme="light"] .hero .social-row a{color:#40556b!important}
+html[data-theme="light"] .hero .social-row a:hover{color:#087fc4!important}
+html[data-theme="light"] .hero-card,
+html[data-theme="light"] .hero-workflow-panel{
+  color:#172638!important;
+  background:rgba(255,255,255,.88)!important;
+  border-color:rgba(33,65,95,.18)!important;
+  box-shadow:0 18px 50px rgba(38,67,96,.12),inset 0 1px 0 rgba(255,255,255,.9)!important;
+}
+html[data-theme="light"] .workflow-panel-top{border-bottom-color:rgba(32,61,88,.12)!important}
+html[data-theme="light"] .workflow-panel-label{color:#536d83!important}
+html[data-theme="light"] .opportunity-status{
+  color:#096ca8!important;background:rgba(8,127,196,.06)!important;border-color:rgba(8,127,196,.22)!important;
+}
+html[data-theme="light"] .workflow-identity-mark{color:#14283d!important}
+html[data-theme="light"] .workflow-intro-copy .mini{color:#087fc4!important}
+html[data-theme="light"] .workflow-intro-copy h2{color:#15283d!important}
+html[data-theme="light"] .workflow-intro-copy h2 em{color:#087fc4!important}
+html[data-theme="light"] .workflow-intro-copy .card-note{color:#53677a!important}
+html[data-theme="light"] .ba-impact-explorer{
+  background:linear-gradient(135deg,rgba(232,244,252,.93),rgba(248,251,254,.96))!important;
+  border-color:rgba(30,74,109,.14)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.85)!important;
+}
+html[data-theme="light"] .ba-impact-heading h3{color:#172b40!important}
+html[data-theme="light"] .ba-impact-heading .mini{color:#087fc4!important}
+html[data-theme="light"] .ba-impact-option{
+  color:#233d53!important;background:rgba(255,255,255,.86)!important;
+  border-color:rgba(32,65,95,.13)!important;
+}
+html[data-theme="light"] .ba-impact-option b{color:#1b3449!important}
+html[data-theme="light"] .ba-impact-option>small{color:#586d80!important}
+html[data-theme="light"] .ba-impact-option:hover,
+html[data-theme="light"] .ba-impact-option.is-active{
+  background:rgba(219,239,252,.93)!important;border-color:rgba(8,127,196,.38)!important;
+}
+html[data-theme="light"] .ba-impact-detail{
+  background:rgba(255,255,255,.9)!important;border-color:rgba(32,65,95,.12)!important;
+}
+html[data-theme="light"] .ba-impact-detail b{color:#172b40!important}
+html[data-theme="light"] .ba-impact-detail p{color:#566b7e!important}
+html[data-theme="light"] .ba-impact-tags span{
+  background:#edf4fa!important;border-color:rgba(32,65,95,.12)!important;color:#435a70!important;
+}
+html[data-theme="light"] .hero .metrics{
+  background:rgba(255,255,255,.91)!important;border-color:rgba(31,64,94,.15)!important;
+  box-shadow:0 14px 36px rgba(27,57,84,.08)!important;
+}
+html[data-theme="light"] .hero .metrics .metric-link{color:#172b40!important}
+html[data-theme="light"] .hero .metrics .metric-link+.metric-link{border-left-color:rgba(31,64,94,.14)!important}
+html[data-theme="light"] .hero .metrics .metric-link:before{color:#087fc4!important}
+html[data-theme="light"] .hero .metrics strong{color:#172b40!important}
+html[data-theme="light"] .hero .metrics small{color:#53687c!important}
+html[data-theme="light"] .hero .metrics .metric-link:hover{background:rgba(8,127,196,.06)!important}
+html[data-theme="light"] .atlas-rail{
+  background:rgba(255,255,255,.89)!important;border-color:rgba(33,63,91,.15)!important;
+  box-shadow:0 10px 30px rgba(27,57,84,.09)!important;
+}
+html[data-theme="light"] .atlas-link{color:#586c7d!important}
+html[data-theme="light"] .atlas-link:hover,
+html[data-theme="light"] .atlas-link.active{color:#087fc4!important;background:rgba(8,127,196,.09)!important}
+html[data-theme="light"] .mobile-dock{
+  background:rgba(255,255,255,.94)!important;border-color:rgba(33,63,91,.16)!important;
+  box-shadow:0 8px 26px rgba(27,57,84,.1)!important;
+}
+html[data-theme="light"] .mobile-dock a{color:#52677a!important}
+html[data-theme="light"] .mobile-dock a:hover,
+html[data-theme="light"] .mobile-dock a:focus-visible{color:#087fc4!important;background:rgba(8,127,196,.07)!important}
+html[data-theme="light"] .footer{background:linear-gradient(180deg,rgba(248,251,254,.42),rgba(244,248,252,.82))!important}
+html[data-theme="light"] .footer .brand-signature-logo{color:#142639!important}
+@media(max-width:850px){
+  html[data-theme="light"] body{
+    background-attachment:scroll,scroll!important;background-position:center top,center top!important;
+  }
+}
