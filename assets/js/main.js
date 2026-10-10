@@ -249,12 +249,12 @@
 
   const capabilityValueMap = {
     "business-strategy":"alignment",
-    "people-stakeholders":"alignment",
-    "processes-workflows":"traceability",
-    "requirements-solutions":"traceability",
-    "technology-data":"quality",
-    "quality-validation":"quality",
-    "outcomes-value":"improvement"
+    "people-and-stakeholders":"alignment",
+    "processes-and-workflows":"traceability",
+    "requirements-and-solutions":"traceability",
+    "technology-and-data":"quality",
+    "quality-and-validation":"quality",
+    "outcomes-and-value":"improvement"
   };
   document.querySelectorAll("[data-ba-capability]").forEach(button => {
     button.addEventListener("click", () => {
