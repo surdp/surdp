@@ -146,16 +146,16 @@
   // Interactive About infographic: industry lenses, capability layers,
   // tools and delivery principles all update the same clear detail area.
   const baIndustryProfiles = {
-    healthcare:{title:"Healthcare",icon:"heart-pulse",text:"Clinical workflows, EHR context, requirements traceability and dependable application validation."},
-    finance:{title:"Banking & Finance",icon:"landmark",text:"Transaction journeys, business rules, reconciliation, controls and auditable processes."},
-    retail:{title:"Retail & E-commerce",icon:"shopping-bag",text:"Customer journeys, digital platform requirements, order flows and service improvements."},
-    manufacturing:{title:"Manufacturing",icon:"factory",text:"Operational workflows, process efficiency, exceptions, dependencies and system hand-offs."},
-    technology:{title:"Telecom & Technology",icon:"network",text:"System interactions, API dependencies, data movement, acceptance criteria and delivery coordination."},
-    public:{title:"Government & Public",icon:"building-2",text:"Service delivery, case workflows, policy-led rules, accessibility and transparent decision records."},
-    insurance:{title:"Insurance & Payers",icon:"shield-check",text:"Claims journeys, policy rules, eligibility checks, approvals and traceable case handling."},
-    education:{title:"Education & Learning",icon:"graduation-cap",text:"Learner and staff journeys, platform workflows, service requests and information hand-offs."},
-    logistics:{title:"Logistics & Supply Chain",icon:"truck",text:"Order and inventory flows, shipment milestones, exception handling and cross-team hand-offs."},
-    other:{title:"Other Industries",icon:"layers",text:"Apply transferable analysis methods to understand users, simplify workflows, document decisions and validate outcomes."}
+    healthcare:{title:"Healthcare",icon:"heart-pulse",text:"Clinical workflows, EHR context, requirements traceability and dependable application validation.",tags:["Clinical workflows","Requirements traceability","Validation"]},
+    finance:{title:"Banking & Finance",icon:"landmark",text:"Transaction journeys, business rules, reconciliation, controls and auditable processes.",tags:["Transaction rules","Reconciliation","Audit trail"]},
+    retail:{title:"Retail & E-commerce",icon:"shopping-bag",text:"Customer journeys, digital platform requirements, order flows and service improvements.",tags:["Customer journeys","Order management","Service experience"]},
+    manufacturing:{title:"Manufacturing",icon:"factory",text:"Operational workflows, process efficiency, exceptions, dependencies and system hand-offs.",tags:["Process efficiency","Exception handling","System hand-offs"]},
+    technology:{title:"Telecom & Technology",icon:"network",text:"System interactions, API dependencies, data movement, acceptance criteria and delivery coordination.",tags:["API dependencies","Data flows","Integration validation"]},
+    public:{title:"Government & Public",icon:"building-2",text:"Service delivery, case workflows, policy-led rules, accessibility and transparent decision records.",tags:["Case workflows","Policy rules","Accessible services"]},
+    insurance:{title:"Insurance & Payers",icon:"shield-check",text:"Claims journeys, policy rules, eligibility checks, approvals and traceable case handling.",tags:["Claims journeys","Eligibility rules","Approvals"]},
+    education:{title:"Education & Learning",icon:"graduation-cap",text:"Learner and staff journeys, platform workflows, service requests and information hand-offs.",tags:["Learner journeys","Service requests","Platform workflows"]},
+    logistics:{title:"Logistics & Supply Chain",icon:"truck",text:"Order and inventory flows, shipment milestones, exception handling and cross-team hand-offs.",tags:["Inventory flow","Shipment milestones","Exception handling"]},
+    other:{title:"Other Industries",icon:"layers",text:"Transferable analysis practices can support travel and hospitality, energy and utilities, professional services and non-profit operations by clarifying service journeys, business rules, hand-offs and measurable outcomes.",tags:["Travel & hospitality","Energy & utilities","Professional services","Non-profit operations"]}
   };
   const baValuePrinciples = {
     alignment:{
@@ -194,6 +194,37 @@
   const baIndustryDetailMark = document.querySelector(".ba-industry-detail-mark");
   const baIndustryDetailTitle = document.getElementById("baIndustryDetailTitle");
   const baIndustryDetailText = document.getElementById("baIndustryDetailText");
+  const baIndustryTags = document.getElementById("baIndustryTags");
+  const baImpactProfiles = {
+    clarity:{icon:"scan-search",eyebrow:"DELIVERY FOCUS",title:"Decision Clarity",text:"Turn stakeholder input into clear scope, documented decisions, traceable requirements and agreed acceptance criteria.",tags:["Scope clarity","Decision log","Acceptance criteria"]},
+    workflow:{icon:"workflow",eyebrow:"PROCESS IMPROVEMENT",title:"Workflow Improvement",text:"Map current and future states, identify friction and hand-off gaps, and frame practical changes that improve the user journey.",tags:["AS-IS / TO-BE","Gap analysis","Handoffs"]},
+    readiness:{icon:"shield-check",eyebrow:"QUALITY & READINESS",title:"Delivery Readiness",text:"Connect requirements to test scenarios, UAT, defect follow-up and release-readiness checks so teams can validate expected behaviour.",tags:["Testable requirements","UAT","Release readiness"]},
+    outcomes:{icon:"chart-no-axes-combined",eyebrow:"MEASURABLE VALUE",title:"Outcome Visibility",text:"Make expected outcomes visible through agreed success measures, validation evidence, ownership and structured follow-through.",tags:["Success measures","Evidence","Action tracking"]}
+  };
+  const baImpactButtons = [...document.querySelectorAll("[data-impact-focus]")];
+  const baImpactDetailIcon = document.querySelector(".ba-impact-detail-icon");
+  const baImpactDetailEyebrow = document.getElementById("baImpactDetailEyebrow");
+  const baImpactDetailTitle = document.getElementById("baImpactDetailTitle");
+  const baImpactDetailText = document.getElementById("baImpactDetailText");
+  const baImpactTags = document.getElementById("baImpactTags");
+  function selectBaImpact(key) {
+    const item = baImpactProfiles[key];
+    if (!item) return;
+    baImpactButtons.forEach(button => {
+      const active = button.dataset.impactFocus === key;
+      button.classList.toggle("is-active",active);
+      button.setAttribute("aria-pressed",String(active));
+    });
+    if (baImpactDetailEyebrow) baImpactDetailEyebrow.textContent=item.eyebrow;
+    if (baImpactDetailTitle) baImpactDetailTitle.textContent=item.title;
+    if (baImpactDetailText) baImpactDetailText.textContent=item.text;
+    paintBaIcon(baImpactDetailIcon,item.icon);
+    if (baImpactTags) {
+      baImpactTags.innerHTML="";
+      item.tags.forEach(tag=>{const chip=document.createElement("span");chip.textContent=tag;baImpactTags.append(chip);});
+    }
+  }
+  baImpactButtons.forEach(button=>button.addEventListener("click",()=>selectBaImpact(button.dataset.impactFocus)));
 
   function paintBaIcon(target, iconName) {
     if (!target) return;
@@ -212,6 +243,10 @@
     });
     if (baIndustryDetailTitle) baIndustryDetailTitle.textContent = item.title;
     if (baIndustryDetailText) baIndustryDetailText.textContent = item.text;
+    if (baIndustryTags) {
+      baIndustryTags.innerHTML = "";
+      (item.tags || []).forEach(tag => { const chip = document.createElement("span"); chip.textContent = tag; baIndustryTags.append(chip); });
+    }
     paintBaIcon(baIndustryDetailMark, item.icon);
   }
   function selectBaValue(key, contextTitle, contextText) {
@@ -297,6 +332,7 @@
   });
   selectBaIndustry("healthcare");
   selectBaValue("alignment");
+  selectBaImpact("clarity");
 
   function closeMenu() {
     nav?.classList.remove("open");
