@@ -4666,3 +4666,44 @@ html[data-theme="light"] #projects .project-detail-info-focus{background:radial-
 @media(prefers-reduced-motion:reduce){
   .awards.award-cards article.award-card,.award-card-action>span{transition:none!important}
 }
+
+/* Recognition layout fix: remove inherited negative margins that caused award cards to overlap */
+.recognition-awards-grid > .recognition-heading,
+.recognition-awards-grid > .award-cards {
+  min-width: 0;
+  max-width: 100%;
+}
+.awards.award-cards {
+  width: 100%;
+  min-width: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 14px;
+  row-gap: 14px;
+}
+.awards.award-cards article.award-card {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding-inline: 14px;
+}
+.awards.award-cards article.award-card .award-card-copy {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 1000px) {
+  .awards.award-cards { column-gap: 12px; row-gap: 12px; }
+}
+@media (max-width: 600px) {
+  .awards.award-cards {
+    grid-template-columns: minmax(0, 1fr);
+    column-gap: 0;
+    row-gap: 10px;
+  }
+  .awards.award-cards article.award-card {
+    width: 100%;
+    margin: 0;
+    padding-inline: 13px;
+  }
+}
