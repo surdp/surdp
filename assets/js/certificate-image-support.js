@@ -15,6 +15,7 @@
   const title = document.getElementById("certificatePreviewTitle");
   const issuer = document.getElementById("certificatePreviewIssuer");
   const frame = document.getElementById("certificatePreviewFrame");
+  const image = document.getElementById("certificatePreviewImage");
 
   if (!grid) return;
 
@@ -43,14 +44,37 @@
 
     title.textContent = button.dataset.certificateTitle || "Certificate preview";
     issuer.textContent = button.dataset.certificateIssuer || "";
-    frame.title = "Certificate image preview";
-    frame.src = button.dataset.certificateImage || "about:blank";
+    const imagePath = button.dataset.certificateImage || "about:blank";
+    const phoneLayout = typeof window.matchMedia === "function" &&
+      window.matchMedia("(max-width: 850px), (orientation: landscape) and (max-width: 1200px) and (max-height: 750px)").matches;
+
+    if (phoneLayout && image) {
+      frame.src = "about:blank";
+      frame.hidden = true;
+      image.src = imagePath;
+      image.alt = (title.textContent || "Certificate") + " image";
+      image.hidden = false;
+    } else {
+      if (image) {
+        image.hidden = true;
+        image.removeAttribute("src");
+      }
+      frame.hidden = false;
+      frame.title = "Certificate image preview";
+      frame.src = imagePath;
+    }
     if (!dialog.open) dialog.showModal();
   });
 
   if (dialog && frame) {
     dialog.addEventListener("close", () => {
       frame.title = "Certificate PDF preview";
+      frame.hidden = false;
+      if (image) {
+        image.hidden = true;
+        image.removeAttribute("src");
+        image.alt = "Certificate image preview";
+      }
     });
   }
 
