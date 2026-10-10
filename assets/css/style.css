@@ -3671,3 +3671,79 @@ html[data-theme="light"] .ba-analysis-visual{
 @media(max-width:1450px){
   .ba-analysis-map--pipeline{max-height:none}
 }
+
+
+/* Make the metric strip behave like four polished, keyboard-accessible navigation cards */
+.metrics>.metric-link{
+  display:flex;
+  min-width:0;
+  min-height:100px;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  padding:18px 10px;
+  text-align:center;
+  text-decoration:none;
+  color:var(--text);
+  cursor:pointer;
+  background:transparent;
+  transition:background .22s ease,transform .22s ease,box-shadow .22s ease;
+}
+.metrics>.metric-link+.metric-link{border-left:1px solid var(--line)}
+.metrics>.metric-link:hover{
+  background:color-mix(in srgb,var(--accent) 8%,transparent);
+  box-shadow:inset 0 -2px 0 color-mix(in srgb,var(--accent) 60%,transparent);
+}
+.metrics>.metric-link:active{transform:translateY(1px)}
+.metrics>.metric-link:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:-4px;
+  border-radius:10px;
+}
+.metrics>.metric-link strong{
+  display:block;
+  margin:0;
+  color:var(--text);
+  font-size:clamp(27px,2.6vw,34px);
+  line-height:1.05;
+  letter-spacing:-.055em;
+}
+.metrics>.metric-link strong span{color:var(--accent)}
+.metrics>.metric-link small{
+  display:block;
+  max-width:165px;
+  margin:0 auto;
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.5;
+}
+html[data-theme="light"] .metrics{
+  background:rgba(255,255,255,.78);
+  border-color:rgba(66,101,145,.18);
+  box-shadow:0 8px 24px rgba(38,70,110,.035);
+}
+html[data-theme="light"] .metrics>.metric-link:hover{background:rgba(53,133,223,.07)}
+@media(max-width:650px){
+  .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .metrics>.metric-link{min-height:80px;padding:13px 7px}
+  .metrics>.metric-link:nth-child(3){border-left:0;border-top:1px solid var(--line)}
+  .metrics>.metric-link:nth-child(4){border-top:1px solid var(--line)}
+  .metrics>.metric-link strong{font-size:27px}
+  .metrics>.metric-link small{font-size:9px}
+}
+
+/* Light-mode pipeline colours: keep the cards pale and the labels dark and legible */
+html[data-theme="light"] .ba-analysis-map--pipeline .ba-pipeline-card--blue{
+  fill:#e6f2ff!important;stroke:#4a91d4!important;stroke-opacity:1!important;
+}
+html[data-theme="light"] .ba-analysis-map--pipeline .ba-pipeline-card--purple{
+  fill:#f0eaff!important;stroke:#9b82e4!important;stroke-opacity:1!important;
+}
+html[data-theme="light"] .ba-analysis-map--pipeline .ba-pipeline-card--teal{
+  fill:#e1f8f3!important;stroke:#46bda9!important;stroke-opacity:1!important;
+}
+html[data-theme="light"] .ba-analysis-map--pipeline .ba-pipeline-eyebrow{fill:#2869a9!important}
+html[data-theme="light"] .ba-analysis-map--pipeline .ba-pipeline-title{fill:#1a2e46!important}
+html[data-theme="light"] .ba-analysis-map--pipeline .ba-pipeline-caption{fill:#4f647d!important}
+html[data-theme="light"] .ba-analysis-map--pipeline>g>g path{stroke-opacity:.9}
