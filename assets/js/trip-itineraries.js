@@ -573,7 +573,6 @@
   const detailPanel = document.getElementById("tripSelectedDetail");
   if (!tabs || !detailPanel) return;
   let activeTripId = trips[0] ? trips[0].id : null;
-  const photoResultsCache = new Map();
 
   function visibleStops(trip) {
     return mappedStops(trip.stops)
@@ -583,53 +582,55 @@
 
   function renderTripTab(trip) {
     const selected = trip.id === activeTripId;
+    const stopCount = trip.stops.filter(stop => stop && stop.name && !isHiddenPlaceholder(stop)).length;
     return '<button type="button" class="trip-tab" role="tab" id="trip-tab-' + trip.id +
       '" aria-selected="' + String(selected) + '" aria-controls="tripSelectedDetail" tabindex="' + (selected ? "0" : "-1") +
       '" data-trip-tab="' + trip.id + '">' +
       '<span class="trip-tab-number">' + String(trip.id).padStart(2, "0") + '</span>' +
       '<span class="trip-tab-copy"><b>' + esc(trip.title) + '</b><small><span class="trip-tab-region">' + esc(trip.region) +
-      '</span><span class="trip-tab-meta-separator" aria-hidden="true">·</span><span class="trip-tab-stops">' + trip.stops.length +
+      '</span><span class="trip-tab-meta-separator" aria-hidden="true">·</span><span class="trip-tab-stops">' + stopCount +
       ' stops</span></small></span>' +
       '<span class="trip-tab-arrow" aria-hidden="true">↗</span></button>';
   }
 
-  function renderPhotoStops(trip) {
-    const home = /bengaluru|bangalore|shivamogga|shimoga/i;
-    const seen = new Set();
-    const candidates = mappedStops(trip.stops).filter(stop => {
-      const name = displayStopName(stop);
-      return name && !home.test(name) && !/floating stones/i.test(name);
-    });
-    const chosen = [];
-    for (const stop of candidates) {
-      const name = displayStopName(stop);
-      const key = name.toLowerCase();
-      if (seen.has(key)) continue;
-      seen.add(key);
-      chosen.push({name, mapQuery:stop.mapQuery});
-      if (chosen.length === 3) break;
-    }
-    return chosen;
-  }
-
   const rideNotes = {
-    1: "A heritage-rich loop mixing historic towns, Mysuru landmarks and open stretches between stops. Best enjoyed without rushing the detours.",
-    2: "A big history ride through boulder country, ancient temple complexes and long links between heritage towns. Give yourself time to wander.",
-    3: "A Western Ghats favourite: winding ghat roads, green hills and temple stops where the ride is as memorable as the destination.",
-    4: "A compact nature escape built around the scale of Jog Falls and the slower pace of the Sagara side.",
-    5: "A local loop of reservoirs, forest roads and fort stops. A reminder that a good ride does not always need a long itinerary.",
-    6: "A relaxed nearby circuit with reservoir views, sunset stops and a look at Bhadravathi's industrial landmarks.",
-    7: "A scenic Western Ghats route connecting temple towns and lush landscapes, made for steady riding and plenty of roadside pauses.",
-    8: "Coastal miles, salty air, beach stops and Udupi food. Take the scenic route and leave room for one more beach.",
-    9: "A north-Karnataka run that heads toward Dandeli's river country, balancing highway miles with an outdoorsy finish.",
-    10: "A food-and-hills day out: a biryani stop, open-road stretches and a hilltop viewpoint around Avalabetta.",
-    11: "A long South Indian journey linking temple towns, beach roads and Kerala's backwaters, with the scenery changing as the coastline unfolds.",
-    12: "A focused ride to Coimbatore and Adiyogi, combining a long approach with a striking landmark worth slowing down for.",
-    13: "A city-focused route that trades winding country roads for Hyderabad's historic core and modern IT district.",
-    14: "A simple escape from Bengaluru with a hill stop and a temple visit near Kolar. Easy to shape into a relaxed day ride.",
-    15: "A temple-and-trek route pairing Western Ghats scenery with stops at Kukke Subramanya and Sowthadka.",
-    16: "A varied ride from temple heritage to Puducherry's coast and the spiritual roads around Tiruvannamalai.",
-    17: "A pilgrimage journey from the highway approach to Tirupati and the climb toward Tirumala, with time for the temples along the way."
+    1: "This loop has a satisfying mix of open-road time and places worth lingering at. Start with Shravanabelagola, take in Srirangapatna's history, then let Mysuru's landmarks and the KRS Dam round out the ride before heading home.",
+    2: "This is the big heritage ride: Hampi's boulder country, the carved cave temples around Badami, and the remarkable temple clusters at Aihole and Pattadakal. There is a lot to take in, so the best version of this trip leaves time to wander instead of racing between stops.",
+    3: "The road through Charmadi Ghat is part of the reason to make this trip. Green hills, bends in the road and temple stops give the journey a slower rhythm, with Sakleshpur, Dharmasthala, Kukke Subramanya, Belur and Halebidu each bringing a different feel.",
+    4: "A simple escape with one big natural highlight. The route from Shivamogga towards Jog Falls and Sagara is about getting out of town, spending time around the falls, and enjoying a quieter pace on the way back.",
+    5: "This local loop connects reservoirs, small towns, forest stretches and old forts. Gajanur, Mandagadde and Thirthahalli make the ride feel unhurried, while Kavaledurga, Nagara Fort and Kuppali add the history that makes a familiar region feel new again.",
+    6: "A close-to-home circuit with a different mix of sights: Gondi for sunset views, the Bhadra reservoir area, and Bhadravathi's industrial landmarks. It is a good reminder that a worthwhile ride does not always need a faraway destination.",
+    7: "This route is made for taking the scenic way between temple towns. Sringeri, Shatakopura, Hariharapura and Horanadu sit within a landscape of green hills and winding roads, so it is worth leaving space for breaks instead of watching the clock.",
+    8: "Follow the coast for beach stops, sea air and good food. From Surathkal and Mangaluru to Udupi, Malpe, St. Mary's Island and Kapu, the best part of this route is how easily a ride can turn into one more beach stop or an unplanned food break.",
+    9: "This journey moves from the Hubballi-Dharwad side towards Dandeli's river country. It mixes longer connecting stretches with a more outdoors-focused destination, making it a route to enjoy for the change of scenery as much as the places themselves.",
+    10: "A ride with a clear reward at each end: a biryani stop at Hoskote, then the open views around Avalabetta before looping back via Kolar. Keep the plan simple and leave time to enjoy the hilltop rather than squeezing in too many stops.",
+    11: "This is the long-haul South India journey, moving from Madurai and Rameswaram down to Kanyakumari, then following Kerala's coast and backwaters north. The landscapes and pace change across the route, from temple towns and sea views to the slower waterways around Alappuzha.",
+    12: "A focused run to Coimbatore with Adiyogi as the standout stop. It is a journey where the long approach is part of the experience, and where keeping the schedule light gives the destination the time it deserves.",
+    13: "A city ride with a different rhythm from the mountain and coastal routes. Charminar brings the historic side of Hyderabad into focus, while HITEC City shows its modern edge; plan around city traffic and keep the named stops as anchors.",
+    14: "A compact day ride out of Bengaluru towards Mallappakonda and Kotilingeshwara Temple near Kolar. It is straightforward by design: a change of scenery, a temple visit and enough flexibility to enjoy the road without overplanning the day.",
+    15: "This route pairs a Western Ghats approach with a temple visit and a trek around Kukke Subramanya, followed by Sowthadka Ganapathi Temple. It works best as a steady ride with comfortable breaks, especially when the plan includes time on foot.",
+    16: "A varied route that brings temple heritage and the coast into the same journey. Srirangam and the Tiruvannamalai temple circuit give the ride a strong cultural thread, while Puducherry offers a different pace with its beaches and waterfront stops.",
+    17: "The approach to Tirupati leads into the climb towards Tirumala, with time for Sri Venkateswara Swamy Temple and Sri Govindaraja Swamy Temple. This journey is centred on the pilgrimage, so allowing room for queues, temple timings and the hill road makes the day feel less rushed."
+  };
+
+  const rideHighlights = {
+    1: ["Heritage loop", "Mysuru landmarks", "Open-road stretches"],
+    2: ["Ancient architecture", "Boulder landscapes", "Long-distance ride"],
+    3: ["Western Ghats", "Ghat roads", "Temple circuit"],
+    4: ["Waterfall escape", "Nature break", "Short road trip"],
+    5: ["Forest roads", "Reservoirs", "Historic forts"],
+    6: ["Sunset views", "Reservoir route", "Local discoveries"],
+    7: ["Hill roads", "Temple towns", "Green landscapes"],
+    8: ["Coastal riding", "Beaches and islands", "Udupi food"],
+    9: ["North Karnataka", "River country", "Outdoor adventure"],
+    10: ["Food stop", "Hilltop views", "Easy day ride"],
+    11: ["Multi-state journey", "Coastal highways", "Backwaters"],
+    12: ["Coimbatore", "Adiyogi", "Long ride"],
+    13: ["Historic Hyderabad", "City landmarks", "Urban ride"],
+    14: ["Day ride", "Temple stop", "Kolar region"],
+    15: ["Western Ghats", "Temple and trek", "Scenic approach"],
+    16: ["Temple heritage", "Puducherry coast", "Cultural route"],
+    17: ["Tirupati", "Tirumala hill road", "Pilgrimage"]
   };
 
   function renderTrip(trip) {
@@ -638,7 +639,9 @@
       '<li class="trip-stop"><span class="trip-stop-number">' + (index + 1) +
       '</span><div><b>' + esc(item.name) + '</b></div></li>'
     ).join("");
-    const photoStops = renderPhotoStops(trip);
+    const highlightsHtml = (rideHighlights[trip.id] || ["Road trip", "Places to explore", "Memories made"])
+      .map(label => '<span class="trip-story-tag">' + esc(label) + '</span>').join("");
+    const story = rideNotes[trip.id] || trip.overview;
     return '<article class="trip-detail-view" aria-labelledby="trip-detail-title-' + trip.id + '">' +
       '<header class="trip-detail-heading">' +
         '<div class="trip-detail-kicker"><span>JOURNEY ' + String(trip.id).padStart(2, "0") + '</span><i></i><span>' + esc(trip.region.toUpperCase()) + '</span></div>' +
@@ -653,180 +656,15 @@
           '<details class="trip-directions-panel"><summary><span>Open route in Google Maps</span><span class="trip-directions-action">View directions ↗</span></summary>' +
           '<div class="trip-directions-content">' + renderMapLinks(trip) + '</div></details>' +
         '</section>' +
-        '<section class="trip-photos-panel" aria-labelledby="trip-photos-title-' + trip.id + '">' +
-          '<div class="trip-panel-heading"><div><span class="trip-panel-kicker">PLACES &amp; PERSPECTIVES</span><h4 id="trip-photos-title-' + trip.id + '">Scenes from the journey</h4></div><span class="trip-panel-mark" aria-hidden="true">02 / DISCOVER</span></div>' +
-          '<p class="trip-photos-intro">A few favourite frames from the places along the way.</p>' +
-          '<div class="trip-ride-note"><span>RIDE NOTES</span><p>' + esc(rideNotes[trip.id] || trip.overview) + '</p></div>' +
-          '<div class="trip-place-photos" id="tripPlacePhotos-' + trip.id + '" data-photo-trip="' + trip.id + '" aria-live="polite"><div class="trip-photo-loading"><span></span><span></span><span></span></div></div>' +
-          '' +
+        '<section class="trip-story-panel" aria-labelledby="trip-story-title-' + trip.id + '">' +
+          '<div class="trip-panel-heading"><div><span class="trip-panel-kicker">PLACES &amp; PERSPECTIVES</span><h4 id="trip-story-title-' + trip.id + '">The feel of the ride</h4></div><span class="trip-panel-mark" aria-hidden="true">02 / THE STORY</span></div>' +
+          '<div class="trip-story-body"><span class="trip-story-quote-mark" aria-hidden="true">“</span><p>' + esc(story) + '</p></div>' +
+          '<div class="trip-story-highlights-label">WHAT MAKES THIS ROUTE SPECIAL</div>' +
+          '<div class="trip-story-highlights">' + highlightsHtml + '</div>' +
+          '<div class="trip-story-signoff"><span class="trip-story-signoff-mark" aria-hidden="true">✦</span><span>Take the long way. The little moments are part of the destination.</span></div>' +
         '</section>' +
       '</div>' +
     '</article>';
-  }
-
-  function cleanMeta(value) {
-    return String(value || "")
-      .replace(/<script[\s\S]*?<\/script>/gi, "")
-      .replace(/<style[\s\S]*?<\/style>/gi, "")
-      .replace(/<[^>]*>/g, " ")
-      .replace(/&nbsp;/gi, " ")
-      .replace(/&amp;/gi, "&")
-      .replace(/&quot;/gi, '"')
-      .replace(/&#39;|&apos;/gi, "'")
-      .replace(/&lt;/gi, "<")
-      .replace(/&gt;/gi, ">")
-      .replace(/\s+/g, " ")
-      .trim();
-  }
-
-  async function searchCommonsPhoto(placeName, region) {
-    const place = String(placeName || "").trim();
-    const regionName = String(region || "").trim();
-    const placeLower = place.toLowerCase();
-    const regionLower = regionName.toLowerCase();
-    const searchTerm = regionLower && !placeLower.includes(regionLower) ? place + " " + regionName : place;
-    const cacheKey = searchTerm.toLowerCase();
-    if (photoResultsCache.has(cacheKey)) return photoResultsCache.get(cacheKey);
-
-    const task = (async () => {
-      const params = new URLSearchParams({
-        action: "query",
-        generator: "search",
-        gsrsearch: searchTerm,
-        gsrnamespace: "6",
-        gsrlimit: "12",
-        prop: "imageinfo",
-        iiprop: "mime|url|extmetadata",
-        iiurlwidth: "720",
-        format: "json",
-        origin: "*"
-      });
-      const response = await fetch("https://commons.wikimedia.org/w/api.php?" + params.toString(), {
-        headers: {"Accept":"application/json"}
-      });
-      if (!response.ok) throw new Error("Photo search unavailable.");
-      const data = await response.json();
-      const pages = Object.values(data && data.query && data.query.pages || {});
-      const placeMain = place.split(",")[0].trim().toLowerCase();
-      const candidates = pages.map(page => {
-        const info = page && page.imageinfo && page.imageinfo[0];
-        if (!info || !info.thumburl || !String(info.mime || "").startsWith("image/") || /svg/i.test(info.mime || "")) return null;
-        const meta = info.extmetadata || {};
-        return {
-          title: cleanMeta(page.title || "Place photograph").replace(/^File:\s*/i, ""),
-          imageUrl: info.thumburl,
-          pageUrl: info.descriptionurl || "https://commons.wikimedia.org/wiki/" + encodeURIComponent(page.title || ""),
-          artist: cleanMeta((meta.Artist && meta.Artist.value) || (meta.Credit && meta.Credit.value) || "") || "Creator details",
-          license: cleanMeta((meta.LicenseShortName && meta.LicenseShortName.value) || (meta.UsageTerms && meta.UsageTerms.value) || "") || "Licence details",
-          licenseUrl: cleanMeta((meta.LicenseUrl && meta.LicenseUrl.value) || "") || (info.descriptionurl || "")
-        };
-      }).filter(Boolean);
-      candidates.sort((a, b) => {
-        const aTitle = a.title.toLowerCase();
-        const bTitle = b.title.toLowerCase();
-        const aExact = placeMain && aTitle.includes(placeMain) ? 1 : 0;
-        const bExact = placeMain && bTitle.includes(placeMain) ? 1 : 0;
-        return bExact - aExact;
-      });
-      return candidates[0] || null;
-    })().catch(() => null);
-
-    photoResultsCache.set(cacheKey, task);
-    return task;
-  }
-
-  function commonsSearchPage(placeName, region) {
-    const query = encodeURIComponent((placeName + " " + region + " India").trim());
-    return "https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=" + query;
-  }
-
-  function buildPhotoCard(photo, placeName) {
-    const card = document.createElement("article");
-    card.className = "trip-place-photo";
-    const imageLink = document.createElement("a");
-    imageLink.className = "trip-place-photo-image";
-    imageLink.href = photo.pageUrl;
-    imageLink.target = "_blank";
-    imageLink.rel = "noopener noreferrer";
-    imageLink.setAttribute("aria-label", "Open source photo: " + photo.title);
-    const image = document.createElement("img");
-    image.src = photo.imageUrl;
-    image.alt = placeName;
-    image.loading = "lazy";
-    image.decoding = "async";
-    image.addEventListener("error", () => card.remove(), {once:true});
-    imageLink.appendChild(image);
-
-    const titleLink = document.createElement("a");
-    titleLink.className = "trip-place-photo-title";
-    titleLink.href = photo.pageUrl;
-    titleLink.target = "_blank";
-    titleLink.rel = "noopener noreferrer";
-    titleLink.textContent = photo.title;
-
-    const credit = document.createElement("div");
-    credit.className = "trip-place-photo-credit";
-    const artist = document.createElement("span");
-    artist.textContent = photo.artist;
-    const license = document.createElement("a");
-    license.href = photo.licenseUrl || photo.pageUrl;
-    license.target = "_blank";
-    license.rel = "noopener noreferrer";
-    license.textContent = photo.license;
-    license.setAttribute("aria-label", "View photo licence");
-    credit.append(artist, license);
-
-    const source = document.createElement("a");
-    source.className = "trip-place-photo-source";
-    source.href = photo.pageUrl;
-    source.target = "_blank";
-    source.rel = "noopener noreferrer";
-    source.textContent = "Wikimedia Commons ↗";
-
-    const caption = document.createElement("div");
-    caption.className = "trip-place-photo-caption";
-    caption.append(titleLink, credit, source);
-    card.append(imageLink, caption);
-    return card;
-  }
-
-  async function loadTripPhotos(trip) {
-    const gallery = document.getElementById("tripPlacePhotos-" + trip.id);
-    if (!gallery) return;
-    const subjects = renderPhotoStops(trip);
-    if (!subjects.length) {
-      gallery.replaceChildren();
-      return;
-    }
-    gallery.innerHTML = '<div class="trip-photo-loading"><span></span><span></span><span></span></div>';
-    const photos = await Promise.all(subjects.map(subject => searchCommonsPhoto(subject.name, trip.region)));
-    if (!gallery.isConnected || activeTripId !== trip.id) return;
-    gallery.replaceChildren();
-    let rendered = 0;
-    photos.forEach((photo, index) => {
-      const subject = subjects[index];
-      if (photo) {
-        gallery.appendChild(buildPhotoCard(photo, subject.name));
-        rendered += 1;
-      } else {
-        const fallback = document.createElement("a");
-        fallback.className = "trip-photo-explore";
-        fallback.href = commonsSearchPage(subject.name, trip.region);
-        fallback.target = "_blank";
-        fallback.rel = "noopener noreferrer";
-        const arrow = document.createElement("span");
-        arrow.setAttribute("aria-hidden", "true");
-        arrow.textContent = "↗";
-        const name = document.createElement("b");
-        name.textContent = subject.name;
-        const caption = document.createElement("small");
-        caption.textContent = "Browse destination photos ↗";
-        fallback.append(arrow, name, caption);
-        gallery.appendChild(fallback);
-        rendered += 1;
-      }
-    });
-    gallery.classList.toggle("is-single", rendered === 1);
   }
 
   function updateTabSelection() {
@@ -850,7 +688,6 @@
     detailPanel.innerHTML = renderTrip(trip);
     detailPanel.setAttribute("aria-labelledby", "trip-tab-" + trip.id);
     observeTripMaps();
-    loadTripPhotos(trip);
   }
 
   tabs.innerHTML = trips.map(renderTripTab).join("");
