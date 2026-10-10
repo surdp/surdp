@@ -4479,3 +4479,52 @@ html[data-theme="light"] .project-detail-resource:hover{background:#eaf4ff;borde
 @media(prefers-reduced-motion:reduce){
   .project-modal-tabpanel,.project-detail-feature-choice,.project-detail-gallery-item,.project-detail-resource,.project-focusflow-mode{animation:none;transition:none}
 }
+
+
+/* Click-to-expand approach steps in every project case study */
+.project-detail-approach-explorer{
+  display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  gap:12px;align-items:stretch;margin:14px 0
+}
+.project-detail-approach-list{
+  display:flex;flex-direction:column;gap:7px;min-width:0;margin:0
+}
+.project-detail-approach-step{
+  display:grid;grid-template-columns:34px minmax(0,1fr) 16px;align-items:center;gap:9px;
+  width:100%;min-width:0;padding:10px;text-align:left;color:var(--text);
+  border:1px solid var(--line);border-radius:11px;background:var(--panel2);
+  cursor:pointer;transition:transform .2s,border-color .2s,background .2s
+}
+.project-detail-approach-step:hover{transform:translateX(2px);border-color:color-mix(in srgb,var(--accent) 55%,var(--line))}
+.project-detail-approach-step.is-active{
+  border-color:rgba(105,184,255,.75);
+  background:linear-gradient(120deg,rgba(45,133,232,.18),rgba(134,91,232,.09));
+  box-shadow:inset 0 0 0 1px rgba(105,184,255,.08)
+}
+.project-detail-approach-step .project-detail-step-number{width:32px;height:32px}
+.project-detail-approach-copy{display:flex;min-width:0;flex-direction:column;gap:4px}
+.project-detail-approach-copy>b{font-size:10px;line-height:1.45}
+.project-detail-approach-copy>small{font-size:8px;color:var(--muted);line-height:1.35}
+.project-detail-approach-arrow{display:grid;place-items:center;color:var(--accent)}
+.project-detail-approach-arrow svg{width:14px;height:14px}
+.project-detail-approach-focus{
+  display:flex;flex-direction:column;justify-content:center;min-width:0;
+  padding:20px;border:1px solid rgba(103,180,246,.3);border-radius:14px;
+  background:radial-gradient(ellipse at 0 0,rgba(64,144,236,.14),transparent 62%),linear-gradient(145deg,var(--panel2),var(--panel))
+}
+.project-detail-approach-focus h4{margin:7px 0 8px;font-size:17px;line-height:1.35;letter-spacing:-.025em}
+.project-detail-approach-focus p{margin:0;color:var(--muted);font-size:11px;line-height:1.8}
+html[data-theme="light"] .project-detail-approach-step{background:#f4f8fc;border-color:#d8e3ed;color:#1b344d}
+html[data-theme="light"] .project-detail-approach-step.is-active{background:linear-gradient(120deg,#e4f2ff,#f2edff);border-color:#8cbbe9}
+html[data-theme="light"] .project-detail-approach-focus{background:radial-gradient(ellipse at 0 0,rgba(64,144,236,.08),transparent 62%),linear-gradient(145deg,#f6faff,#fff);border-color:#ccdeee}
+@media(max-width:760px){
+  .project-detail-approach-explorer{grid-template-columns:minmax(0,1fr)}
+  .project-detail-approach-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .project-detail-approach-step{grid-template-columns:30px minmax(0,1fr) 12px;padding:8px}
+  .project-detail-approach-step .project-detail-step-number{width:28px;height:28px}
+  .project-detail-approach-copy>b{font-size:9px}
+  .project-detail-approach-focus{padding:15px}
+}
+@media(max-width:480px){
+  .project-detail-approach-list{grid-template-columns:minmax(0,1fr)}
+}
