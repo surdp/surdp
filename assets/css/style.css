@@ -2536,7 +2536,7 @@ html[data-theme="light"] .atlas-rail .atlas-link:nth-child(6n) .atlas-icon{backg
 .career-track-line{height:3px;background:linear-gradient(90deg,#56bfff 0%,#9a78ff 42%,#38b8ff 68%,#24d8c0 100%);box-shadow:0 0 13px rgba(56,151,255,.2);opacity:1}
 .career-track-line:before{background:repeating-linear-gradient(90deg,transparent 0 20px,rgba(255,255,255,.75) 20px 23px);opacity:.22}
 .career-track-arrow{
-  top:-13px!important;left:3%!important;
+  top:-13px;left:3%;
   display:grid!important;place-items:center;
   width:29px!important;height:29px!important;
   border:1px solid rgba(148,219,255,.65)!important;border-radius:50%!important;
@@ -2546,9 +2546,9 @@ html[data-theme="light"] .atlas-rail .atlas-link:nth-child(6n) .atlas-icon{backg
   animation:careerArrowFlight 6.5s cubic-bezier(.45,0,.45,1) infinite alternate!important;
 }
 @keyframes careerArrowFlight{
-  0%{left:3%!important;transform:translateX(0) rotate(0deg);filter:drop-shadow(0 0 6px rgba(70,178,255,.7))}
+  0%{left:3%;transform:translateX(0) rotate(0deg);filter:drop-shadow(0 0 6px rgba(70,178,255,.7))}
   48%{transform:translateX(-50%) rotate(4deg);filter:drop-shadow(0 0 13px rgba(112,169,255,.95))}
-  100%{left:88%!important;transform:translateX(-100%) rotate(0deg);filter:drop-shadow(0 0 9px rgba(36,224,211,.85))}
+  100%{left:88%;transform:translateX(-100%) rotate(0deg);filter:drop-shadow(0 0 9px rgba(36,224,211,.85))}
 }
 .career-track-arrow:after{content:"";position:absolute;right:20px;top:50%;width:24px;height:2px;transform:translateY(-50%);background:linear-gradient(90deg,transparent,rgba(111,197,255,.9));box-shadow:0 0 8px rgba(89,182,255,.55);pointer-events:none}
 .career-track-arrow:hover{transform:scale(1.08);filter:drop-shadow(0 0 14px rgba(87,187,255,.9))}
@@ -2558,13 +2558,21 @@ html[data-theme="light"] .career-track-arrow{box-shadow:0 0 0 5px rgba(65,153,25
 @media(max-width:760px){
  .career-track-line{width:3px!important;height:auto!important;background:linear-gradient(180deg,#56bfff,#9a78ff,#38b8ff,#24d8c0)!important}
  .career-track-arrow{
-   top:4%!important;left:-13px!important;right:auto!important;
+   top:4%;left:-13px;right:auto;
    animation:careerArrowFlightVertical 6s cubic-bezier(.45,0,.45,1) infinite alternate!important;
  }
  .career-track-arrow:after{right:auto;left:19px;top:50%;width:22px;transform:translateY(-50%) rotate(180deg)}
  @keyframes careerArrowFlightVertical{
-   0%{top:4%!important;transform:rotate(90deg) translateX(0)}
-   100%{top:78%!important;transform:rotate(90deg) translateX(0)}
+   0%{top:4%;transform:rotate(90deg) translateX(0)}
+   100%{top:78%;transform:rotate(90deg) translateX(0)}
  }
 }
 html[data-theme="light"] .career-track-arrow{color:#fff!important}
+
+
+/* Multicolour career markers */
+.career-track-point--cerner .career-point-dot{border-color:#ae8dff;background:radial-gradient(circle at 35% 30%,#f3eaff,#a58bff 45%,#6940d6);box-shadow:0 0 0 5px rgba(158,120,255,.15),0 0 16px rgba(149,107,255,.46)}
+.career-track-point--techm .career-point-dot{border-color:#53d8ff;background:radial-gradient(circle at 35% 30%,#e3fbff,#65d6ff 45%,#1978df);box-shadow:0 0 0 5px rgba(72,192,255,.15),0 0 16px rgba(55,171,255,.46)}
+.career-track-future .career-point-dot{border-color:#54e0c7;background:radial-gradient(circle at 35% 30%,#e0fff5,#4be0c5 45%,#168f91);box-shadow:0 0 0 5px rgba(59,218,190,.13),0 0 16px rgba(39,203,178,.4)}
+html[data-theme="light"] .career-track-point--cerner .career-point-dot{box-shadow:0 0 0 5px rgba(158,120,255,.1),0 0 12px rgba(149,107,255,.28)}
+html[data-theme="light"] .career-track-point--techm .career-point-dot{box-shadow:0 0 0 5px rgba(72,192,255,.1),0 0 12px rgba(55,171,255,.26)}
