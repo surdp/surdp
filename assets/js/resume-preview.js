@@ -96,7 +96,8 @@
         if (token !== renderToken) return;
         const page = await pdf.getPage(pageNumber);
         const baseViewport = page.getViewport({scale: 1});
-        const fitWidth = Math.max(250, Math.min((stage.clientWidth || 900) - 42, 960));
+        const stageWidth = Math.max(320, stage.getBoundingClientRect().width || stage.clientWidth || 900);
+        const fitWidth = Math.max(280, Math.min(stageWidth - 64, 960));
         const scale = Math.min(1.5, fitWidth / baseViewport.width);
         const viewport = page.getViewport({scale});
         const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.6);
@@ -136,12 +137,26 @@
     }
   }
 
-  document.querySelectorAll(".resume-preview-trigger").forEach(button => {
-    button.addEventListener("click", () => {
-      const source = button.dataset.resumeSrc;
-      const resumeTitle = button.dataset.resumeTitle || "Resume preview";
-      if (!source || !/\.pdf$/i.test(source)) return;
-      renderResume(source, resumeTitle);
+  function openResumeCard(card) {
+    const source = card.dataset.resumeSrc;
+    const resumeTitle = card.dataset.resumeTitle || "Resume preview";
+    if (!source || !/\.pdf$/i.test(source)) return;
+    renderResume(source, resumeTitle);
+  }
+
+  document.querySelectorAll("[data-resume-card]").forEach(card => {
+    card.setAttribute("role", "button");
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("aria-haspopup", "dialog");
+    card.setAttribute("aria-controls", "resumePreviewDialog");
+    card.setAttribute("aria-label", "Open " + (card.dataset.resumeTitle || "resume"));
+    card.addEventListener("click", () => openResumeCard(card));
+    card.addEventListener("keydown", event => {
+      if (event.target !== card) return;
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openResumeCard(card);
+      }
     });
   });
 
