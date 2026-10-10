@@ -690,8 +690,9 @@
       window.lucide?.createIcons?.({attrs: {"stroke-width": 1.9, "aria-hidden": "true"}});
     };
     items.forEach((item,index) => {
-      const card = projectElement("button", "project-detail-info-card" + (index===0 ? " is-active" : ""));
-      card.type = "button";
+      const card = projectElement("article", "project-detail-info-card" + (index===0 ? " is-active" : ""));
+      card.setAttribute("role", "button");
+      card.tabIndex = 0;
       card.setAttribute("aria-pressed", String(index===0));
       if (item.icon) {
         const mark = projectElement("span", "project-detail-card-icon");
@@ -702,6 +703,12 @@
       card.append(projectElement("b", "", item.title));
       if (item.text) card.append(projectElement("p", "", item.text));
       card.addEventListener("click", () => selectCard(index));
+      card.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          selectCard(index);
+        }
+      });
       grid.append(card);
     });
     parent.append(grid, detail);
